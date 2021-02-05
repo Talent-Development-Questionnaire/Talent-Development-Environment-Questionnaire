@@ -4,21 +4,23 @@
              x:Class="TDQ.MainPage">
 
     <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+
+        <StackLayout x:Name="CreateQuestionnaireLayout" VerticalOptions="CenterAndExpand" BackgroundColor="#66008B8B"
+                     Margin="30" Padding="15" IsVisible="false">
+            <Entry Placeholder="Enter unique name" HorizontalTextAlignment="Center"/>
+            
+            <Grid Margin="70,0,0,0" ColumnSpacing="-40">
+                <RadioButton Content="59" Grid.Column="0"/>
+                <RadioButton Content="28" Grid.Column="1"/>
+            </Grid>
+            
+            <Entry Placeholder="Enter email" HorizontalTextAlignment="Center"/>
+
+            <Picker x:Name="pickerGroups"/>
+            <Button x:Name="btnSendQuestionnaire" Text="Send" Clicked="btnSendQuestionnaire_Clicked"/>
+        </StackLayout>
+        
+        <Button Text="Add Questionnaire" VerticalOptions="EndAndExpand" Margin="20" Clicked="AddQuestionnaire_Clicked"/>
     </StackLayout>
 
 </ContentPage>

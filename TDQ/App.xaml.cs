@@ -10,7 +10,7 @@ namespace TDQ
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Navigation_Drawer();
         }
 
         protected override void OnStart()

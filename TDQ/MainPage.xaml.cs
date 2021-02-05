@@ -14,5 +14,15 @@ namespace TDQ
         {
             InitializeComponent();
         }
+
+        private void AddQuestionnaire_Clicked(object sender, EventArgs e)
+        {
+            CreateQuestionnaireLayout.IsVisible = true;
+        }
+
+        private void btnSendQuestionnaire_Clicked(object sender, EventArgs e)
+        {
+            CreateQuestionnaireLayout.IsVisible = false;
+        }
     }
 }
