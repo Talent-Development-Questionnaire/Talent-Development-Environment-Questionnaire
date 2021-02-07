@@ -17,7 +17,8 @@
         <ShellContent Title="Groups" Icon="ic_groups.png" IsTabStop="True" ContentTemplate="{DataTemplate local:GroupPage}"/>
         <ShellContent Title="Goals" Icon="ic_goals.png" IsTabStop="True" ContentTemplate="{DataTemplate local:GoalsPage}"/>
     </FlyoutItem>
-
+    
     <ShellContent Title="Settings" Icon="ic_settings.png" IsTabStop="True" ContentTemplate="{DataTemplate local:SettingsPage}"/>
-
+    <ShellContent Title="Login/SignUp" Icon="ic_settings.png" IsTabStop="True" ContentTemplate="{DataTemplate local:SettingsPage}"/>
+    
 </Shell>
