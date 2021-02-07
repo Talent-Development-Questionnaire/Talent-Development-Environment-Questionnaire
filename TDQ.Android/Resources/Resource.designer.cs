@@ -26,7 +26,6 @@ namespace TDQ.Droid
 		public static void UpdateIdValues()
 		{
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::TDQ.Droid.Resource.Attribute.alpha;
-			global::Xamarin.Essentials.Resource.Attribute.coordinatorLayoutStyle = global::TDQ.Droid.Resource.Attribute.coordinatorLayoutStyle;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::TDQ.Droid.Resource.Attribute.font;
 			global::Xamarin.Essentials.Resource.Attribute.fontProviderAuthority = global::TDQ.Droid.Resource.Attribute.fontProviderAuthority;
 			global::Xamarin.Essentials.Resource.Attribute.fontProviderCerts = global::TDQ.Droid.Resource.Attribute.fontProviderCerts;
@@ -37,23 +36,15 @@ namespace TDQ.Droid
 			global::Xamarin.Essentials.Resource.Attribute.fontStyle = global::TDQ.Droid.Resource.Attribute.fontStyle;
 			global::Xamarin.Essentials.Resource.Attribute.fontVariationSettings = global::TDQ.Droid.Resource.Attribute.fontVariationSettings;
 			global::Xamarin.Essentials.Resource.Attribute.fontWeight = global::TDQ.Droid.Resource.Attribute.fontWeight;
-			global::Xamarin.Essentials.Resource.Attribute.keylines = global::TDQ.Droid.Resource.Attribute.keylines;
-			global::Xamarin.Essentials.Resource.Attribute.layout_anchor = global::TDQ.Droid.Resource.Attribute.layout_anchor;
-			global::Xamarin.Essentials.Resource.Attribute.layout_anchorGravity = global::TDQ.Droid.Resource.Attribute.layout_anchorGravity;
-			global::Xamarin.Essentials.Resource.Attribute.layout_behavior = global::TDQ.Droid.Resource.Attribute.layout_behavior;
-			global::Xamarin.Essentials.Resource.Attribute.layout_dodgeInsetEdges = global::TDQ.Droid.Resource.Attribute.layout_dodgeInsetEdges;
-			global::Xamarin.Essentials.Resource.Attribute.layout_insetEdge = global::TDQ.Droid.Resource.Attribute.layout_insetEdge;
-			global::Xamarin.Essentials.Resource.Attribute.layout_keyline = global::TDQ.Droid.Resource.Attribute.layout_keyline;
-			global::Xamarin.Essentials.Resource.Attribute.statusBarBackground = global::TDQ.Droid.Resource.Attribute.statusBarBackground;
 			global::Xamarin.Essentials.Resource.Attribute.ttcIndex = global::TDQ.Droid.Resource.Attribute.ttcIndex;
+			global::Xamarin.Essentials.Resource.Color.androidx_core_ripple_material_light = global::TDQ.Droid.Resource.Color.androidx_core_ripple_material_light;
+			global::Xamarin.Essentials.Resource.Color.androidx_core_secondary_text_default_material_light = global::TDQ.Droid.Resource.Color.androidx_core_secondary_text_default_material_light;
 			global::Xamarin.Essentials.Resource.Color.browser_actions_bg_grey = global::TDQ.Droid.Resource.Color.browser_actions_bg_grey;
 			global::Xamarin.Essentials.Resource.Color.browser_actions_divider_color = global::TDQ.Droid.Resource.Color.browser_actions_divider_color;
 			global::Xamarin.Essentials.Resource.Color.browser_actions_text_color = global::TDQ.Droid.Resource.Color.browser_actions_text_color;
 			global::Xamarin.Essentials.Resource.Color.browser_actions_title_color = global::TDQ.Droid.Resource.Color.browser_actions_title_color;
 			global::Xamarin.Essentials.Resource.Color.notification_action_color_filter = global::TDQ.Droid.Resource.Color.notification_action_color_filter;
 			global::Xamarin.Essentials.Resource.Color.notification_icon_bg_color = global::TDQ.Droid.Resource.Color.notification_icon_bg_color;
-			global::Xamarin.Essentials.Resource.Color.ripple_material_light = global::TDQ.Droid.Resource.Color.ripple_material_light;
-			global::Xamarin.Essentials.Resource.Color.secondary_text_default_material_light = global::TDQ.Droid.Resource.Color.secondary_text_default_material_light;
 			global::Xamarin.Essentials.Resource.Dimension.browser_actions_context_menu_max_width = global::TDQ.Droid.Resource.Dimension.browser_actions_context_menu_max_width;
 			global::Xamarin.Essentials.Resource.Dimension.browser_actions_context_menu_min_padding = global::TDQ.Droid.Resource.Dimension.browser_actions_context_menu_min_padding;
 			global::Xamarin.Essentials.Resource.Dimension.compat_button_inset_horizontal_material = global::TDQ.Droid.Resource.Dimension.compat_button_inset_horizontal_material;
@@ -128,43 +119,28 @@ namespace TDQ.Droid
 			global::Xamarin.Essentials.Resource.Id.action_divider = global::TDQ.Droid.Resource.Id.action_divider;
 			global::Xamarin.Essentials.Resource.Id.action_image = global::TDQ.Droid.Resource.Id.action_image;
 			global::Xamarin.Essentials.Resource.Id.action_text = global::TDQ.Droid.Resource.Id.action_text;
-			global::Xamarin.Essentials.Resource.Id.all = global::TDQ.Droid.Resource.Id.all;
 			global::Xamarin.Essentials.Resource.Id.async = global::TDQ.Droid.Resource.Id.async;
 			global::Xamarin.Essentials.Resource.Id.blocking = global::TDQ.Droid.Resource.Id.blocking;
-			global::Xamarin.Essentials.Resource.Id.bottom = global::TDQ.Droid.Resource.Id.bottom;
 			global::Xamarin.Essentials.Resource.Id.browser_actions_header_text = global::TDQ.Droid.Resource.Id.browser_actions_header_text;
 			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_items = global::TDQ.Droid.Resource.Id.browser_actions_menu_items;
 			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_item_icon = global::TDQ.Droid.Resource.Id.browser_actions_menu_item_icon;
 			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_item_text = global::TDQ.Droid.Resource.Id.browser_actions_menu_item_text;
 			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_view = global::TDQ.Droid.Resource.Id.browser_actions_menu_view;
-			global::Xamarin.Essentials.Resource.Id.center = global::TDQ.Droid.Resource.Id.center;
-			global::Xamarin.Essentials.Resource.Id.center_horizontal = global::TDQ.Droid.Resource.Id.center_horizontal;
-			global::Xamarin.Essentials.Resource.Id.center_vertical = global::TDQ.Droid.Resource.Id.center_vertical;
 			global::Xamarin.Essentials.Resource.Id.chronometer = global::TDQ.Droid.Resource.Id.chronometer;
-			global::Xamarin.Essentials.Resource.Id.clip_horizontal = global::TDQ.Droid.Resource.Id.clip_horizontal;
-			global::Xamarin.Essentials.Resource.Id.clip_vertical = global::TDQ.Droid.Resource.Id.clip_vertical;
 			global::Xamarin.Essentials.Resource.Id.dialog_button = global::TDQ.Droid.Resource.Id.dialog_button;
-			global::Xamarin.Essentials.Resource.Id.end = global::TDQ.Droid.Resource.Id.end;
-			global::Xamarin.Essentials.Resource.Id.fill = global::TDQ.Droid.Resource.Id.fill;
-			global::Xamarin.Essentials.Resource.Id.fill_horizontal = global::TDQ.Droid.Resource.Id.fill_horizontal;
-			global::Xamarin.Essentials.Resource.Id.fill_vertical = global::TDQ.Droid.Resource.Id.fill_vertical;
 			global::Xamarin.Essentials.Resource.Id.forever = global::TDQ.Droid.Resource.Id.forever;
 			global::Xamarin.Essentials.Resource.Id.icon = global::TDQ.Droid.Resource.Id.icon;
 			global::Xamarin.Essentials.Resource.Id.icon_group = global::TDQ.Droid.Resource.Id.icon_group;
 			global::Xamarin.Essentials.Resource.Id.info = global::TDQ.Droid.Resource.Id.info;
 			global::Xamarin.Essentials.Resource.Id.italic = global::TDQ.Droid.Resource.Id.italic;
-			global::Xamarin.Essentials.Resource.Id.left = global::TDQ.Droid.Resource.Id.left;
 			global::Xamarin.Essentials.Resource.Id.line1 = global::TDQ.Droid.Resource.Id.line1;
 			global::Xamarin.Essentials.Resource.Id.line3 = global::TDQ.Droid.Resource.Id.line3;
-			global::Xamarin.Essentials.Resource.Id.none = global::TDQ.Droid.Resource.Id.none;
 			global::Xamarin.Essentials.Resource.Id.normal = global::TDQ.Droid.Resource.Id.normal;
 			global::Xamarin.Essentials.Resource.Id.notification_background = global::TDQ.Droid.Resource.Id.notification_background;
 			global::Xamarin.Essentials.Resource.Id.notification_main_column = global::TDQ.Droid.Resource.Id.notification_main_column;
 			global::Xamarin.Essentials.Resource.Id.notification_main_column_container = global::TDQ.Droid.Resource.Id.notification_main_column_container;
-			global::Xamarin.Essentials.Resource.Id.right = global::TDQ.Droid.Resource.Id.right;
 			global::Xamarin.Essentials.Resource.Id.right_icon = global::TDQ.Droid.Resource.Id.right_icon;
 			global::Xamarin.Essentials.Resource.Id.right_side = global::TDQ.Droid.Resource.Id.right_side;
-			global::Xamarin.Essentials.Resource.Id.start = global::TDQ.Droid.Resource.Id.start;
 			global::Xamarin.Essentials.Resource.Id.tag_accessibility_actions = global::TDQ.Droid.Resource.Id.tag_accessibility_actions;
 			global::Xamarin.Essentials.Resource.Id.tag_accessibility_clickable_spans = global::TDQ.Droid.Resource.Id.tag_accessibility_clickable_spans;
 			global::Xamarin.Essentials.Resource.Id.tag_accessibility_heading = global::TDQ.Droid.Resource.Id.tag_accessibility_heading;
@@ -177,7 +153,6 @@ namespace TDQ.Droid
 			global::Xamarin.Essentials.Resource.Id.text2 = global::TDQ.Droid.Resource.Id.text2;
 			global::Xamarin.Essentials.Resource.Id.time = global::TDQ.Droid.Resource.Id.time;
 			global::Xamarin.Essentials.Resource.Id.title = global::TDQ.Droid.Resource.Id.title;
-			global::Xamarin.Essentials.Resource.Id.top = global::TDQ.Droid.Resource.Id.top;
 			global::Xamarin.Essentials.Resource.Integer.status_bar_notification_info_maxnum = global::TDQ.Droid.Resource.Integer.status_bar_notification_info_maxnum;
 			global::Xamarin.Essentials.Resource.Layout.browser_actions_context_menu_page = global::TDQ.Droid.Resource.Layout.browser_actions_context_menu_page;
 			global::Xamarin.Essentials.Resource.Layout.browser_actions_context_menu_row = global::TDQ.Droid.Resource.Layout.browser_actions_context_menu_row;
@@ -188,6 +163,10 @@ namespace TDQ.Droid
 			global::Xamarin.Essentials.Resource.Layout.notification_template_icon_group = global::TDQ.Droid.Resource.Layout.notification_template_icon_group;
 			global::Xamarin.Essentials.Resource.Layout.notification_template_part_chronometer = global::TDQ.Droid.Resource.Layout.notification_template_part_chronometer;
 			global::Xamarin.Essentials.Resource.Layout.notification_template_part_time = global::TDQ.Droid.Resource.Layout.notification_template_part_time;
+			global::Xamarin.Essentials.Resource.String.copy_toast_msg = global::TDQ.Droid.Resource.String.copy_toast_msg;
+			global::Xamarin.Essentials.Resource.String.fallback_menu_item_copy_link = global::TDQ.Droid.Resource.String.fallback_menu_item_copy_link;
+			global::Xamarin.Essentials.Resource.String.fallback_menu_item_open_in_browser = global::TDQ.Droid.Resource.String.fallback_menu_item_open_in_browser;
+			global::Xamarin.Essentials.Resource.String.fallback_menu_item_share_link = global::TDQ.Droid.Resource.String.fallback_menu_item_share_link;
 			global::Xamarin.Essentials.Resource.String.status_bar_notification_info_overflow = global::TDQ.Droid.Resource.String.status_bar_notification_info_overflow;
 			global::Xamarin.Essentials.Resource.Style.TextAppearance_Compat_Notification = global::TDQ.Droid.Resource.Style.TextAppearance_Compat_Notification;
 			global::Xamarin.Essentials.Resource.Style.TextAppearance_Compat_Notification_Info = global::TDQ.Droid.Resource.Style.TextAppearance_Compat_Notification_Info;
@@ -196,22 +175,10 @@ namespace TDQ.Droid
 			global::Xamarin.Essentials.Resource.Style.TextAppearance_Compat_Notification_Title = global::TDQ.Droid.Resource.Style.TextAppearance_Compat_Notification_Title;
 			global::Xamarin.Essentials.Resource.Style.Widget_Compat_NotificationActionContainer = global::TDQ.Droid.Resource.Style.Widget_Compat_NotificationActionContainer;
 			global::Xamarin.Essentials.Resource.Style.Widget_Compat_NotificationActionText = global::TDQ.Droid.Resource.Style.Widget_Compat_NotificationActionText;
-			global::Xamarin.Essentials.Resource.Style.Widget_Support_CoordinatorLayout = global::TDQ.Droid.Resource.Style.Widget_Support_CoordinatorLayout;
 			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem = global::TDQ.Droid.Resource.Styleable.ColorStateListItem;
 			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem_alpha = global::TDQ.Droid.Resource.Styleable.ColorStateListItem_alpha;
 			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem_android_alpha = global::TDQ.Droid.Resource.Styleable.ColorStateListItem_android_alpha;
 			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem_android_color = global::TDQ.Droid.Resource.Styleable.ColorStateListItem_android_color;
-			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout = global::TDQ.Droid.Resource.Styleable.CoordinatorLayout;
-			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_keylines = global::TDQ.Droid.Resource.Styleable.CoordinatorLayout_keylines;
-			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout = global::TDQ.Droid.Resource.Styleable.CoordinatorLayout_Layout;
-			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::TDQ.Droid.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
-			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::TDQ.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
-			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity = global::TDQ.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity;
-			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior = global::TDQ.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior;
-			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::TDQ.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
-			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::TDQ.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
-			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::TDQ.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
-			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::TDQ.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
 			global::Xamarin.Essentials.Resource.Styleable.FontFamily = global::TDQ.Droid.Resource.Styleable.FontFamily;
 			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont = global::TDQ.Droid.Resource.Styleable.FontFamilyFont;
 			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_android_font = global::TDQ.Droid.Resource.Styleable.FontFamilyFont_android_font;
@@ -246,6 +213,7 @@ namespace TDQ.Droid
 			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_startY = global::TDQ.Droid.Resource.Styleable.GradientColor_android_startY;
 			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_tileMode = global::TDQ.Droid.Resource.Styleable.GradientColor_android_tileMode;
 			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_type = global::TDQ.Droid.Resource.Styleable.GradientColor_android_type;
+			global::Xamarin.Essentials.Resource.Xml.image_share_filepaths = global::TDQ.Droid.Resource.Xml.image_share_filepaths;
 			global::Xamarin.Essentials.Resource.Xml.xamarin_essentials_fileprovider_file_paths = global::TDQ.Droid.Resource.Xml.xamarin_essentials_fileprovider_file_paths;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_in = global::TDQ.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_out = global::TDQ.Droid.Resource.Animation.abc_fade_out;
@@ -11170,103 +11138,118 @@ namespace TDQ.Droid
 			public const int ic_edit_black_24dp = 2131165294;
 			
 			// aapt resource value: 0x7F07006F
-			public const int ic_keyboard_arrow_left_black_24dp = 2131165295;
+			public const int ic_goals = 2131165295;
 			
 			// aapt resource value: 0x7F070070
-			public const int ic_keyboard_arrow_right_black_24dp = 2131165296;
+			public const int ic_groups = 2131165296;
 			
 			// aapt resource value: 0x7F070071
-			public const int ic_menu_arrow_down_black_24dp = 2131165297;
+			public const int ic_home = 2131165297;
 			
 			// aapt resource value: 0x7F070072
-			public const int ic_menu_arrow_up_black_24dp = 2131165298;
+			public const int ic_keyboard_arrow_left_black_24dp = 2131165298;
 			
 			// aapt resource value: 0x7F070073
-			public const int ic_mtrl_checked_circle = 2131165299;
+			public const int ic_keyboard_arrow_right_black_24dp = 2131165299;
 			
 			// aapt resource value: 0x7F070074
-			public const int ic_mtrl_chip_checked_black = 2131165300;
+			public const int ic_menu_arrow_down_black_24dp = 2131165300;
 			
 			// aapt resource value: 0x7F070075
-			public const int ic_mtrl_chip_checked_circle = 2131165301;
+			public const int ic_menu_arrow_up_black_24dp = 2131165301;
 			
 			// aapt resource value: 0x7F070076
-			public const int ic_mtrl_chip_close_circle = 2131165302;
+			public const int ic_mtrl_checked_circle = 2131165302;
 			
 			// aapt resource value: 0x7F070077
-			public const int mtrl_dialog_background = 2131165303;
+			public const int ic_mtrl_chip_checked_black = 2131165303;
 			
 			// aapt resource value: 0x7F070078
-			public const int mtrl_dropdown_arrow = 2131165304;
+			public const int ic_mtrl_chip_checked_circle = 2131165304;
 			
 			// aapt resource value: 0x7F070079
-			public const int mtrl_ic_arrow_drop_down = 2131165305;
+			public const int ic_mtrl_chip_close_circle = 2131165305;
 			
 			// aapt resource value: 0x7F07007A
-			public const int mtrl_ic_arrow_drop_up = 2131165306;
+			public const int ic_question = 2131165306;
 			
 			// aapt resource value: 0x7F07007B
-			public const int mtrl_ic_cancel = 2131165307;
+			public const int ic_settings = 2131165307;
 			
 			// aapt resource value: 0x7F07007C
-			public const int mtrl_ic_error = 2131165308;
+			public const int mtrl_dialog_background = 2131165308;
 			
 			// aapt resource value: 0x7F07007D
-			public const int mtrl_popupmenu_background = 2131165309;
+			public const int mtrl_dropdown_arrow = 2131165309;
 			
 			// aapt resource value: 0x7F07007E
-			public const int mtrl_popupmenu_background_dark = 2131165310;
+			public const int mtrl_ic_arrow_drop_down = 2131165310;
 			
 			// aapt resource value: 0x7F07007F
-			public const int mtrl_tabs_default_indicator = 2131165311;
+			public const int mtrl_ic_arrow_drop_up = 2131165311;
 			
 			// aapt resource value: 0x7F070080
-			public const int navigation_empty_icon = 2131165312;
+			public const int mtrl_ic_cancel = 2131165312;
 			
 			// aapt resource value: 0x7F070081
-			public const int notification_action_background = 2131165313;
+			public const int mtrl_ic_error = 2131165313;
 			
 			// aapt resource value: 0x7F070082
-			public const int notification_bg = 2131165314;
+			public const int mtrl_popupmenu_background = 2131165314;
 			
 			// aapt resource value: 0x7F070083
-			public const int notification_bg_low = 2131165315;
+			public const int mtrl_popupmenu_background_dark = 2131165315;
 			
 			// aapt resource value: 0x7F070084
-			public const int notification_bg_low_normal = 2131165316;
+			public const int mtrl_tabs_default_indicator = 2131165316;
 			
 			// aapt resource value: 0x7F070085
-			public const int notification_bg_low_pressed = 2131165317;
+			public const int navigation_empty_icon = 2131165317;
 			
 			// aapt resource value: 0x7F070086
-			public const int notification_bg_normal = 2131165318;
+			public const int notification_action_background = 2131165318;
 			
 			// aapt resource value: 0x7F070087
-			public const int notification_bg_normal_pressed = 2131165319;
+			public const int notification_bg = 2131165319;
 			
 			// aapt resource value: 0x7F070088
-			public const int notification_icon_background = 2131165320;
+			public const int notification_bg_low = 2131165320;
 			
 			// aapt resource value: 0x7F070089
-			public const int notification_template_icon_bg = 2131165321;
+			public const int notification_bg_low_normal = 2131165321;
 			
 			// aapt resource value: 0x7F07008A
-			public const int notification_template_icon_low_bg = 2131165322;
+			public const int notification_bg_low_pressed = 2131165322;
 			
 			// aapt resource value: 0x7F07008B
-			public const int notification_tile_bg = 2131165323;
+			public const int notification_bg_normal = 2131165323;
 			
 			// aapt resource value: 0x7F07008C
-			public const int notify_panel_notification_icon_bg = 2131165324;
+			public const int notification_bg_normal_pressed = 2131165324;
 			
 			// aapt resource value: 0x7F07008D
-			public const int test_custom_background = 2131165325;
+			public const int notification_icon_background = 2131165325;
 			
 			// aapt resource value: 0x7F07008E
-			public const int tooltip_frame_dark = 2131165326;
+			public const int notification_template_icon_bg = 2131165326;
 			
 			// aapt resource value: 0x7F07008F
-			public const int tooltip_frame_light = 2131165327;
+			public const int notification_template_icon_low_bg = 2131165327;
+			
+			// aapt resource value: 0x7F070090
+			public const int notification_tile_bg = 2131165328;
+			
+			// aapt resource value: 0x7F070091
+			public const int notify_panel_notification_icon_bg = 2131165329;
+			
+			// aapt resource value: 0x7F070092
+			public const int test_custom_background = 2131165330;
+			
+			// aapt resource value: 0x7F070093
+			public const int tooltip_frame_dark = 2131165331;
+			
+			// aapt resource value: 0x7F070094
+			public const int tooltip_frame_light = 2131165332;
 			
 			static Drawable()
 			{

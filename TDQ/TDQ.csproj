@@ -11,12 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.1931" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Navigation_Drawer.xaml.cs">
+    <Compile Update="Templates\Navigation_Drawer.xaml.cs">
       <DependentUpon>Navigation_Drawer.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -28,7 +29,10 @@
     <EmbeddedResource Update="GroupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Navigation_Drawer.xaml">
+    <EmbeddedResource Update="Templates\HeaderContent.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Templates\Navigation_Drawer.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="QuestionnairePage.xaml">
@@ -37,5 +41,9 @@
     <EmbeddedResource Update="SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>
