@@ -1,12 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TDQ.SignUpPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+             x:Class="TDQ.SignUpPage"
+             BackgroundColor="Transparent">
+
+    <StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand" Margin="40">
+            <ScrollView VerticalScrollBarVisibility="Always" Orientation="Vertical" HeightRequest="200">
+                <StackLayout>
+                <Entry Placeholder="First Name"/>
+                <Entry Placeholder="Last Name"/>
+                <Entry Placeholder="D.O.B"/>
+                <Entry Placeholder="Email"/>
+                <Entry Placeholder="Password"/>
+                <Entry Placeholder="Confirm Password"/>
+            </StackLayout>
+            </ScrollView>
+            <Button Text="Sign Up" Margin="30"/>
         </StackLayout>
-    </ContentPage.Content>
+    </StackLayout>
 </ContentPage>

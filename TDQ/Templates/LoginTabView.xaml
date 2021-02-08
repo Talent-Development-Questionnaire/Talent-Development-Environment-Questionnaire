@@ -2,7 +2,8 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:TDQ"
-             x:Class="TDQ.Templates.LoginTabView">
+             x:Class="TDQ.Templates.LoginTabView"
+            BackgroundColor="#1C6894">
 
     <local:LoginPage Title="Login"/>
     <local:SignUpPage Title="Sign Up"/>
