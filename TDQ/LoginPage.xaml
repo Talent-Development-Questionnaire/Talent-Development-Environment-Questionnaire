@@ -1,20 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TDQ.LoginPage">
+             x:Class="TDQ.LoginPage"
+             BackgroundColor="#1C6894">
 
     <StackLayout>
-        <StackLayout VerticalOptions="CenterAndExpand" BackgroundColor="#66000000" Margin="40" Padding="20">
-            <Label Text="Login" TextColor="White" HorizontalOptions="Center" FontSize="Title"/>
-            <Entry Placeholder="Email Address" PlaceholderColor="White"/>
+        <StackLayout VerticalOptions="CenterAndExpand"
+                 Margin="30">
+            <Entry Placeholder="Email Address" PlaceholderColor="White" Opacity="0.6"/>
+
             <Entry Placeholder="Password" PlaceholderColor="White"/>
 
-            <Label Text="Sign up" TextColor="White" HorizontalOptions="Center">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="SignUpLabel_Tapped"/>
-                </Label.GestureRecognizers>
-            </Label>
-            
+            <Button x:Name="BtnLogin" Text="Log In" Clicked="BtnLogin_Clicked" Margin="40"/>
+
         </StackLayout>
     </StackLayout>
 </ContentPage>

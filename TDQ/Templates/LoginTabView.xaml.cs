@@ -7,19 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace TDQ
+namespace TDQ.Templates
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class LoginTabView : TabbedPage
     {
-        public LoginPage()
+        public LoginTabView()
         {
             InitializeComponent();
-        }
-
-        private void BtnLogin_Clicked(object sender, EventArgs e)
-        {
-
         }
     }
 }
