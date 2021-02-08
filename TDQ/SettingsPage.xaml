@@ -5,37 +5,39 @@
 
     <StackLayout Margin="30" HorizontalOptions="CenterAndExpand"
                  Padding="20">
-        <Label Text="Select a Theme" FontSize="Large"/>
+        <Label Text="Select a Theme" FontSize="Large" TextColor="Black"/>
         <Frame HorizontalOptions="CenterAndExpand" HasShadow="True"
                Padding="0">
             <Grid>
-                <RadioButton Content="Colour 1"
-                                Grid.Column="0" Grid.Row="0"/>
-                <RadioButton Content="Colour 2"
+                <RadioButton Content="Colour 1" TextColor="Black"
+                             Grid.Column="0" Grid.Row="0"
+                             IsChecked="True"/>
+                <RadioButton Content="Colour 2" TextColor="Black"
                                 Grid.Column="1" Grid.Row="0"/>
-                <RadioButton Content="Colour 3"
+                <RadioButton Content="Colour 3" TextColor="Black"
                                 Grid.Column="0" Grid.Row="1"/>
-                <RadioButton Content="Colour 4"
+                <RadioButton Content="Colour 4" TextColor="Black"
                                 Grid.Column="1" Grid.Row="1"/>
             </Grid>
         </Frame>
 
-        <Label Text="Select Font Size" FontSize="Large"/>
+        <Label Text="Select Font Size" FontSize="Large" TextColor="Black"/>
         <Frame HorizontalOptions="CenterAndExpand" HasShadow="True"
                Padding="0">
             <Grid>
-                <RadioButton Content="Medium"
-                                Grid.Column="0" Grid.Row="0"/>
-                <RadioButton Content="Large"
+                <RadioButton Content="Medium" TextColor="Black"
+                                Grid.Column="0" Grid.Row="0"
+                                IsChecked="True"/>
+                <RadioButton Content="Large" TextColor="Black"
                                 Grid.Column="1" Grid.Row="0"/>
-                <RadioButton Content="X-Large"
+                <RadioButton Content="X-Large" TextColor="Black"
                                 Grid.Column="0" Grid.Row="1"/>
-                <RadioButton Content="XX-Large"
+                <RadioButton Content="XX-Large" TextColor="Black"
                                 Grid.Column="1" Grid.Row="1"/>
             </Grid>
         </Frame>
 
-        <Label Text="Add Background" FontSize="Large"/>
+        <Label Text="Add Background" FontSize="Large" TextColor="Black"/>
         <Frame HasShadow="True">
             <Grid ColumnSpacing="30">
 
@@ -54,5 +56,6 @@
 
         <Button Text="Log Out" Margin="0,20,0,0"/>
         <Button Text="Delete Account"/>
+
     </StackLayout>
 </ContentPage>
