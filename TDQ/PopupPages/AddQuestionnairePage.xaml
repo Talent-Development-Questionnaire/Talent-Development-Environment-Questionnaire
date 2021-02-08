@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TDQ.PopupPages.AddQuestionnairePage"
+             BackgroundColor="Transparent">
+
+    <StackLayout VerticalOptions="CenterAndExpand">
+        <Frame Margin="50"
+                 Padding="30"
+                 BackgroundColor="#4C000000"
+               CornerRadius="30">
+            <StackLayout>
+
+                <Entry Placeholder="Type Unique Name"/>
+                <Grid HorizontalOptions="Center"
+                  ColumnSpacing="70">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <RadioButton Content="59" Grid.Column="0"/>
+                    <RadioButton Content="28" Grid.Column="1"/>
+                </Grid>
+
+                <Entry Placeholder="Enter new email"/>
+                <Picker/>
+
+                <ListView HeightRequest="150" VerticalScrollBarVisibility="Always"/>
+
+                <Button x:Name="BtnSendQuestionnaire"
+                    Text="Send"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>

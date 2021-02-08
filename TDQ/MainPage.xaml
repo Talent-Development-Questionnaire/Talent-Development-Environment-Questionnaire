@@ -4,23 +4,11 @@
              x:Class="TDQ.MainPage">
 
     <StackLayout>
-
-        <StackLayout x:Name="CreateQuestionnaireLayout" VerticalOptions="CenterAndExpand" BackgroundColor="#66008B8B"
-                     Margin="30" Padding="15" IsVisible="false">
-            <Entry Placeholder="Enter unique name" HorizontalTextAlignment="Center"/>
-            
-            <Grid Margin="70,0,0,0" ColumnSpacing="-40">
-                <RadioButton Content="59" Grid.Column="0"/>
-                <RadioButton Content="28" Grid.Column="1"/>
-            </Grid>
-            
-            <Entry Placeholder="Enter email" HorizontalTextAlignment="Center"/>
-
-            <Picker x:Name="pickerGroups"/>
-            <Button x:Name="btnSendQuestionnaire" Text="Send" Clicked="btnSendQuestionnaire_Clicked"/>
-        </StackLayout>
-        
-        <Button Text="Add Questionnaire" VerticalOptions="EndAndExpand" Margin="20" Clicked="AddQuestionnaire_Clicked"/>
+        <Button x:Name="BtnAddQuestionnaire"
+                VerticalOptions="EndAndExpand"
+                Margin="30,0,30,10"
+                Text="Add Questionnaire"
+                Clicked="BtnAddQuestionnaire_Clicked"/>
     </StackLayout>
 
 </ContentPage>
