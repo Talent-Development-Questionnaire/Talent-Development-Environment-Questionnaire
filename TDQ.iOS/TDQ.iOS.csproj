@@ -154,4 +154,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_add.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_account.png" />
+  </ItemGroup>
 </Project>
