@@ -21,10 +21,9 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <BoxView BackgroundColor="DarkCyan"
+            <BoxView BackgroundColor="#e80f00"
                    Grid.ColumnSpan="5"
-                   Grid.RowSpan="4"
-                   Opacity="0.6"/>
+                   Grid.RowSpan="4"/>
             <Image x:Name="AccountImage" HeightRequest="80" WidthRequest="80"
                    Grid.Column="1"
                    Grid.Row="1"

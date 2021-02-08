@@ -3,13 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:TDQ"
        xmlns:template="clr-namespace:TDQ.Templates"
-             x:Class="TDQ.Navigation_Drawer">
+             x:Class="TDQ.Navigation_Drawer"
+       BackgroundColor="#e80f00">
+
 
     <Shell.FlyoutHeader>
         <template:HeaderContent/>
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="Something"
+    <FlyoutItem
                 Shell.TabBarIsVisible="False"
                 FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Home" Icon="ic_home.png" IsTabStop="True" ContentTemplate="{DataTemplate local:MainPage}"/>
