@@ -16,5 +16,10 @@ namespace TDQ
         {
             InitializeComponent();
         }
+
+        private async void ImgBtnAddGroup_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new AddGroupPage());
+        }
     }
 }
