@@ -9,8 +9,6 @@
                     HorizontalOptions="Center"
                     VerticalOptions="EndAndExpand"
                     BackgroundColor="Transparent"
-                    HeightRequest="72"
-                    WidthRequest="72"
                     Margin="0,0,0,10"
                     Clicked="ImgBtnAddGroup_Clicked"/>
         </StackLayout>
