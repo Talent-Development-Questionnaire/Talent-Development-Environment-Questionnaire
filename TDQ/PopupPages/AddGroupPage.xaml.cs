@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace TDQ
+namespace TDQ.PopupPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddGroupPage : ContentPage
