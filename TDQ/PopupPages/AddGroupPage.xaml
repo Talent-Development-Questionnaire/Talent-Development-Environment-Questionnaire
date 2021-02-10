@@ -9,9 +9,11 @@
                  BackgroundColor="#4C000000"
                CornerRadius="30">
             <StackLayout>
+                <!-- Two Frames act as a circular border for ImageButton -->               
                 <Frame 
                 CornerRadius="90"
                 Padding="2"
+                Margin="0,0,0,10"
                 BackgroundColor="White"
                 HorizontalOptions="Center"
                 VerticalOptions="StartAndExpand">
@@ -25,11 +27,30 @@
                         Source="ic_add_photo.png"                  
                         HorizontalOptions="Center"
                         VerticalOptions="StartAndExpand"
-                        BackgroundColor="Transparent"                    
+                        HeightRequest="64"
+                        WidthRequest="64"
+                        BackgroundColor="Transparent"                            
                         Clicked="ImgBtnAddGroupPhoto_Clicked"/>
                     </Frame>
                 </Frame>
                 <Entry Placeholder="Group Name"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Entry 
+                    Placeholder="Enter Email" 
+                    Grid.Column="0"/>
+                    <ImageButton
+                    x:Name="ImgBtnAddEmail"
+                        Source="ic_add"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    VerticalOptions="CenterAndExpand" 
+                    BackgroundColor="Transparent"
+                    Clicked="ImgBtnAddEmail_Clicked"/>
+                </Grid>
             </StackLayout>
         </Frame>
     </StackLayout>
