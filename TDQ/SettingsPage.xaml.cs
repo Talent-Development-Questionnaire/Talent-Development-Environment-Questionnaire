@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -41,6 +41,26 @@ namespace TDQ
                         break;
                 }
             }        
+        }
+
+        private async void BtnAddBg_Clicked(object sender, EventArgs e)
+        {
+            var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+            {
+                Title = "Pick a photo"
+            });
+
+            ImgBg.Source = ImageSource.FromFile(result.FullPath);
+
+            try
+            {
+                Utils.SavedSettings.BackgroundSettings = result.FullPath;
+            }
+            catch (Exception ex)
+            {
+
+                await App.Current.MainPage.DisplayAlert("Debug", ex.Message, "OK");
+            }
         }
     }
 }

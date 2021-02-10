@@ -18,6 +18,7 @@ namespace TDQ.Utils
         private const string ImageKey = "image_key";
         private const string ThemeIndexKey = "theme_index_key";
         private const string ThemeKey = "theme_key";
+        private const string BgKey = "background_key";
         private static readonly string SettingsDefault = string.Empty;
 
         #endregion
@@ -56,6 +57,18 @@ namespace TDQ.Utils
             set
             {
                 AppSettings.AddOrUpdateValue(ThemeKey, value);
+            }
+        }
+
+        public static string BackgroundSettings
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(BgKey, SettingsDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(BgKey, value);
             }
         }
     }

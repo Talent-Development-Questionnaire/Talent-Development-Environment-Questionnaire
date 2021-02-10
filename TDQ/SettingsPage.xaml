@@ -48,8 +48,9 @@
                     <RowDefinition Height="200"/>
                 </Grid.RowDefinitions>
 
-                <Image Source="ic_image.png" Aspect="AspectFill" Grid.Column="0" Grid.Row="0"/>
-                <ImageButton Source="ic_add.png" Grid.Column="1" Grid.Row="0" BackgroundColor="{DynamicResource TransparentColour}"/>
+                <Image x:Name="ImgBg"  Source="ic_image.png" Aspect="AspectFill" Grid.Column="0" Grid.Row="0"/>
+                <ImageButton x:Name="BtnAddBg" Source="ic_add.png" Grid.Column="1" Grid.Row="0" 
+                             Clicked="BtnAddBg_Clicked" BackgroundColor="{DynamicResource TransparentColour}"/>
             </Grid>
         </Frame>
 
