@@ -15,6 +15,14 @@ namespace TDQ
         public SettingsPage()
         {
             InitializeComponent();
+
+
+                
+
+
+            if (!string.IsNullOrEmpty(Utils.SavedSettings.BackgroundSettings))
+                SettingsContentPage.BackgroundImageSource = ImageSource.FromFile(Utils.SavedSettings.BackgroundSettings);
+
             if (!string.IsNullOrEmpty(Utils.SavedSettings.ThemeIndexSettings))
                 PickerColour.SelectedIndex = Convert.ToInt32(Utils.SavedSettings.ThemeIndexSettings);
             else
@@ -51,6 +59,7 @@ namespace TDQ
             });
 
             ImgBg.Source = ImageSource.FromFile(result.FullPath);
+            SettingsContentPage.BackgroundImageSource = result.FullPath;
 
             try
             {

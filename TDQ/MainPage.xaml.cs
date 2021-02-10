@@ -13,6 +13,14 @@ namespace TDQ
         public MainPage()
         {
             InitializeComponent();
+            if (!string.IsNullOrEmpty(Utils.SavedSettings.BackgroundSettings))
+                MainContentPage.BackgroundImageSource = ImageSource.FromFile(Utils.SavedSettings.BackgroundSettings);
+        }
+
+        protected override void OnAppearing()
+        {
+            if (!string.IsNullOrEmpty(Utils.SavedSettings.BackgroundSettings))
+                MainContentPage.BackgroundImageSource = ImageSource.FromFile(Utils.SavedSettings.BackgroundSettings);
         }
 
         private async void BtnAddQuestionnaire_Clicked(object sender, EventArgs e)
