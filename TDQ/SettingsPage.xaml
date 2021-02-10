@@ -5,39 +5,38 @@
 
     <StackLayout Margin="30" HorizontalOptions="CenterAndExpand"
                  Padding="20">
-        <Label Text="Select a Theme" FontSize="Large" TextColor="Black"/>
         <Frame HorizontalOptions="CenterAndExpand" HasShadow="True"
                Padding="0">
-            <Grid>
-                <RadioButton Content="Colour 1" TextColor="Black"
-                             Grid.Column="0" Grid.Row="0"
-                             IsChecked="True"/>
-                <RadioButton Content="Colour 2" TextColor="Black"
-                                Grid.Column="1" Grid.Row="0"/>
-                <RadioButton Content="Colour 3" TextColor="Black"
-                                Grid.Column="0" Grid.Row="1"/>
-                <RadioButton Content="Colour 4" TextColor="Black"
-                                Grid.Column="1" Grid.Row="1"/>
-            </Grid>
+            <Picker x:Name="PickerColour" Title="Select a Theme" FontSize="Large"
+                    WidthRequest="500" HorizontalTextAlignment="Center"
+                    TitleColor="{DynamicResource TertiaryTextColour}"
+                    TextColor="{DynamicResource PrimaryTextColour}"
+                    SelectedIndex="{Binding ThemeChoice}"
+                    SelectedIndexChanged="Picker_SelectedIndexChanged">
+                <Picker.Items>
+                    <x:String>Red</x:String>
+                    <x:String>Blue</x:String>
+                </Picker.Items>
+            </Picker>
         </Frame>
 
-        <Label Text="Select Font Size" FontSize="Large" TextColor="Black"/>
+        <Label Text="Select Font Size" FontSize="Large" TextColor="{DynamicResource PrimaryTextColour}"/>
         <Frame HorizontalOptions="CenterAndExpand" HasShadow="True"
                Padding="0">
             <Grid>
-                <RadioButton Content="Medium" TextColor="Black"
+                <RadioButton Content="Medium" TextColor="{DynamicResource PrimaryTextColour}"
                                 Grid.Column="0" Grid.Row="0"
                                 IsChecked="True"/>
-                <RadioButton Content="Large" TextColor="Black"
+                <RadioButton Content="Large" TextColor="{DynamicResource PrimaryTextColour}"
                                 Grid.Column="1" Grid.Row="0"/>
-                <RadioButton Content="X-Large" TextColor="Black"
+                <RadioButton Content="X-Large" TextColor="{DynamicResource PrimaryTextColour}"
                                 Grid.Column="0" Grid.Row="1"/>
-                <RadioButton Content="XX-Large" TextColor="Black"
+                <RadioButton Content="XX-Large" TextColor="{DynamicResource PrimaryTextColour}"
                                 Grid.Column="1" Grid.Row="1"/>
             </Grid>
         </Frame>
 
-        <Label Text="Add Background" FontSize="Large" TextColor="Black"/>
+        <Label Text="Add Background" FontSize="Large" TextColor="{DynamicResource PrimaryTextColour}"/>
         <Frame HasShadow="True">
             <Grid ColumnSpacing="30">
 
@@ -50,7 +49,7 @@
                 </Grid.RowDefinitions>
 
                 <Image Source="ic_image.png" Aspect="AspectFill" Grid.Column="0" Grid.Row="0"/>
-                <ImageButton Source="ic_add.png" Grid.Column="1" Grid.Row="0" BackgroundColor="Transparent"/>
+                <ImageButton Source="ic_add.png" Grid.Column="1" Grid.Row="0" BackgroundColor="{DynamicResource TransparentColour}"/>
             </Grid>
         </Frame>
 

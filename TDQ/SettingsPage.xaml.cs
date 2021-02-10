@@ -15,6 +15,32 @@ namespace TDQ
         public SettingsPage()
         {
             InitializeComponent();
+            if (!string.IsNullOrEmpty(Utils.SavedSettings.ThemeIndexSettings))
+                PickerColour.SelectedIndex = Convert.ToInt32(Utils.SavedSettings.ThemeIndexSettings);
+            else
+                PickerColour.SelectedIndex = 0;
+        }
+
+        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+            if (mergedDictionaries != null)
+            {
+                mergedDictionaries.Clear();
+                switch (PickerColour.SelectedItem)
+                {
+                    case "Red":
+                        Utils.SavedSettings.ThemeIndexSettings = "0";
+                        Utils.SavedSettings.ThemeSettings = "Main";
+                        mergedDictionaries.Add(new Themes.MainTheme());
+                        break;
+                    case "Blue":
+                        Utils.SavedSettings.ThemeIndexSettings = "1";
+                        Utils.SavedSettings.ThemeSettings = "Blue";
+                        mergedDictionaries.Add(new Themes.BlueTheme());
+                        break;
+                }
+            }        
         }
     }
 }

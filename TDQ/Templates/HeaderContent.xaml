@@ -21,7 +21,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <BoxView BackgroundColor="#e80f00"
+            <BoxView BackgroundColor="{DynamicResource PrimaryColour}"
                    Grid.ColumnSpan="5"
                    Grid.RowSpan="4"/>
             <Image x:Name="AccountImage" HeightRequest="80" WidthRequest="80"

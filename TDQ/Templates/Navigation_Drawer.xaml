@@ -4,7 +4,7 @@
             xmlns:local="clr-namespace:TDQ"
        xmlns:template="clr-namespace:TDQ.Templates"
              x:Class="TDQ.Navigation_Drawer"
-       BackgroundColor="#e80f00">
+       BackgroundColor="{DynamicResource PrimaryColour}">
 
 
     <Shell.FlyoutHeader>
