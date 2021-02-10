@@ -44,13 +44,32 @@
                     Grid.Column="0"/>
                     <ImageButton
                     x:Name="ImgBtnAddEmail"
-                        Source="ic_add"
+                    Source="ic_add"
                     Grid.Column="1"
                     HorizontalOptions="End"
                     VerticalOptions="CenterAndExpand" 
                     BackgroundColor="Transparent"
                     Clicked="ImgBtnAddEmail_Clicked"/>
                 </Grid>
+                <CollectionView
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center"
+                HeightRequest="250"
+                Margin="0,10,0,0">
+                    <CollectionView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>email1@example.com</x:String>
+                            <x:String>email2@example.com</x:String>
+                            <x:String>email3@example.com</x:String>
+                            <x:String>email4@example.com</x:String>
+                        </x:Array>
+                    </CollectionView.ItemsSource>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text ="{Binding}" FontSize="16"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </StackLayout>
         </Frame>
     </StackLayout>
