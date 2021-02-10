@@ -29,6 +29,7 @@
                         Clicked="ImgBtnAddGroupPhoto_Clicked"/>
                     </Frame>
                 </Frame>
+                <Entry Placeholder="Group Name"/>
             </StackLayout>
         </Frame>
     </StackLayout>
