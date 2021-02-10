@@ -4,6 +4,7 @@
              x:Class="TDQ.GroupPage">
     <ContentPage.Content>
         <StackLayout>
+            
             <ImageButton x:Name="ImgBtnAddGroup"    
                     Source="ic_add_circle_outline.png"
                     HorizontalOptions="Center"
