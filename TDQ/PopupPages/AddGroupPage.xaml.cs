@@ -16,5 +16,10 @@ namespace TDQ.PopupPages
         {
             InitializeComponent();
         }
+
+        private async void ImgBtnAddGroupPhoto_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Placeholder", "Implement adding photo functionality", "OK");
+        }
     }
 }
