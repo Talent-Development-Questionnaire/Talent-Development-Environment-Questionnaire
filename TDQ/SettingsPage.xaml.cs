@@ -16,17 +16,17 @@ namespace TDQ
         {
             InitializeComponent();
 
-
-                
-
-
-            if (!string.IsNullOrEmpty(Utils.SavedSettings.BackgroundSettings))
-                SettingsContentPage.BackgroundImageSource = ImageSource.FromFile(Utils.SavedSettings.BackgroundSettings);
+            Classes.SettingsPageFunctions.SetBackground(SettingsContentPage);
 
             if (!string.IsNullOrEmpty(Utils.SavedSettings.ThemeIndexSettings))
                 PickerColour.SelectedIndex = Convert.ToInt32(Utils.SavedSettings.ThemeIndexSettings);
             else
                 PickerColour.SelectedIndex = 0;
+        }
+
+        protected override void OnAppearing()
+        {
+            Classes.SettingsPageFunctions.SetBackground(SettingsContentPage);
         }
 
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)

@@ -15,6 +15,13 @@ namespace TDQ
         public GroupPage()
         {
             InitializeComponent();
+
+            Classes.SettingsPageFunctions.SetBackground(GroupContentPage);
+        }
+
+        protected override void OnAppearing()
+        {
+            Classes.SettingsPageFunctions.SetBackground(GroupContentPage);
         }
     }
 }

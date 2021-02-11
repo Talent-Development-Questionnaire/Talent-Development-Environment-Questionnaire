@@ -15,6 +15,13 @@ namespace TDQ
         public GoalsPage()
         {
             InitializeComponent();
+
+            Classes.SettingsPageFunctions.SetBackground(GoalsContentPage);
+        }
+
+        protected override void OnAppearing()
+        {
+            Classes.SettingsPageFunctions.SetBackground(GoalsContentPage);
         }
     }
 }
