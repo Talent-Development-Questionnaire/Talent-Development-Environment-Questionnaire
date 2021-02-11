@@ -5,9 +5,13 @@
              x:Name="GroupContentPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ImageButton x:Name="ImgBtnAddGroup"    
+                    Source="ic_add_circle_outline.png"
+                    HorizontalOptions="Center"
+                    VerticalOptions="EndAndExpand"
+                    BackgroundColor="Transparent"
+                    Margin="0,0,0,10"
+                    Clicked="ImgBtnAddGroup_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

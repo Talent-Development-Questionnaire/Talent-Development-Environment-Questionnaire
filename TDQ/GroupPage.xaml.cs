@@ -23,5 +23,10 @@ namespace TDQ
         {
             Classes.SettingsPageFunctions.SetBackground(GroupContentPage);
         }
+
+        private async void ImgBtnAddGroup_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new PopupPages.AddGroupPage());
+        }
     }
 }
