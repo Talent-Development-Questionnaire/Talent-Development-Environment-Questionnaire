@@ -26,5 +26,10 @@ namespace TDQ.PopupPages
         {
             await DisplayAlert("Placeholder", "Email should be added to list", "OK");
         }
+
+        private async void BtnSave_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Placeholder", "Pop-up should disappear and data should be saved", "OK");
+        }
     }
 }

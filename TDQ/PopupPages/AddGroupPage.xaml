@@ -70,6 +70,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <Button Text="Save" Clicked="BtnSave_Clicked" BackgroundColor="#4C000000" CornerRadius="30"/>
             </StackLayout>
         </Frame>
     </StackLayout>
