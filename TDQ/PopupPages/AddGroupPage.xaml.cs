@@ -16,5 +16,20 @@ namespace TDQ.PopupPages
         {
             InitializeComponent();
         }
+
+        private async void ImgBtnAddGroupPhoto_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Placeholder", "Icon should be changed to photo from camera or gallery", "OK");
+        }
+
+        private async void ImgBtnAddEmail_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Placeholder", "Email should be added to list", "OK");
+        }
+
+        private async void BtnSave_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Placeholder", "Pop-up should disappear and data should be saved", "OK");
+        }
     }
 }

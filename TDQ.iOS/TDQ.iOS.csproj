@@ -154,4 +154,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_add_circle_outline.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_add_photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_add.png" />
+  </ItemGroup>
 </Project>
