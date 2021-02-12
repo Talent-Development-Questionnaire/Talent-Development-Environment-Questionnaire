@@ -104,7 +104,7 @@ namespace TDQ.PopupPages
                 if (emails.Contains(e.SelectedItem.ToString()))
                 {
                     emails.Remove(e.SelectedItem.ToString());
-                    emailList.ItemsSource = emails;
+                    emailList.ItemsSource = emails.ToArray();
                 }
             }
         }
@@ -112,14 +112,17 @@ namespace TDQ.PopupPages
         void CheckList()
         {
             //Check if listview is empty
-            if (!emailList.ItemsSource.Equals(null))
-                foreach (var item in emailList.ItemsSource)
+            if ((emailList.ItemsSource as List<string>).Count() != 0)
+            {
+                List<string> list = (List<string>)emailList.ItemsSource;
+
+                foreach(string itm in list)
                 {
-                    //check emails do not already exist 
-                    if (!emails.Contains(item))
-                        //update array with listviews' existing items
-                        emails.Add(item.ToString());
+                    emails.Add(itm);
+                    if (emails.Count != 0)
+                        emailList.ItemsSource = emails.ToArray();
                 }
+            }
         }
     }
 }
