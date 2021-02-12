@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using TDQ.Models;
+using System.IO;
 
 namespace TDQ
 {
@@ -17,10 +19,59 @@ namespace TDQ
             InitializeComponent();
         }
 
-      
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var groups = new List<Group>();
+
+            var files = Directory.EnumerateFiles(App.FolderPath, "*.group.txt");
+            foreach (var filename in files)
+            {
+                string text = (File.ReadAllText(filename));
+                string[] splitText = text.Split('\n');
+                string[] emailList = PopulateList(splitText);
+
+                    groups.Add(new Group
+                {
+                    Filename = filename,
+                    Name = splitText[0],
+                    GroupNo = Convert.ToInt32(splitText[1]),
+                    EmailList = emailList
+                });
+            }
+
+            LstViewGroup.ItemsSource = groups;
+        }
+
+        string[] PopulateList(string[] list)
+        {
+            List<string> emails = new List<string>();
+            for (int i = 2; i < list.Length; i++)
+            {
+                if(list[i] != "")
+                    emails.Add(list[i]);
+            }
+
+            return emails.ToArray();
+        }
+
         private async void ImgBtnAddGroup_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new PopupPages.AddGroupPage());
+            await Navigation.PushModalAsync(new PopupPages.AddGroupPage { 
+            BindingContext = new Group()
+            });
+        }
+
+        private async void LstViewGroup_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                await Navigation.PushAsync(new PopupPages.AddGroupPage
+                {
+                    BindingContext = e.SelectedItem as Group
+                });
+            }
         }
     }
 }

@@ -3,11 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDQ.PopupPages.AddGroupPage"
              BackgroundColor="Transparent">
+    
     <StackLayout VerticalOptions="CenterAndExpand">
+        
         <Frame Margin="50"
                  Padding="30"
                  BackgroundColor="#4C000000"
                CornerRadius="30">
+            
             <StackLayout>
                 <!-- Two Frames act as a circular border for ImageButton -->               
                 <Frame 
@@ -33,13 +36,15 @@
                         Clicked="ImgBtnAddGroupPhoto_Clicked"/>
                     </Frame>
                 </Frame>
-                <Entry Placeholder="Group Name"/>
+                
+                <Entry Placeholder="Group Name" Text="{Binding Name}"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Entry 
+                    x:Name="entryEmail"
                     Placeholder="Enter Email" 
                     Grid.Column="0"/>
                     <ImageButton
@@ -51,26 +56,23 @@
                     BackgroundColor="Transparent"
                     Clicked="ImgBtnAddEmail_Clicked"/>
                 </Grid>
-                <CollectionView
+                
+                <ListView
+                x:Name="emailList"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="Center"
                 HeightRequest="250"
-                Margin="0,10,0,0">
-                    <CollectionView.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>email1@example.com</x:String>
-                            <x:String>email2@example.com</x:String>
-                            <x:String>email3@example.com</x:String>
-                            <x:String>email4@example.com</x:String>
-                        </x:Array>
-                    </CollectionView.ItemsSource>
-                    <CollectionView.ItemTemplate>
+                Margin="0,10,0,0"
+                ItemsSource="{Binding EmailList}">
+                    <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Label Text ="{Binding}" FontSize="16"/>
+                            <TextCell Text ="{Binding}" TextColor="Black"/>
                         </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
                 <Button Text="Save" Clicked="BtnSave_Clicked" BackgroundColor="#4C000000" CornerRadius="30"/>
+                
             </StackLayout>
         </Frame>
     </StackLayout>
