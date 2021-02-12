@@ -7,15 +7,23 @@
             <!-- Later on when binding data, outer Grid to be made a DataTemplate for a CollectionView -->
             <ListView x:Name="LstViewGroup" 
                       Margin="20"
-                      ItemSelected="LstViewGroup_ItemSelected">
+                      ItemSelected="LstViewGroup_ItemSelected"
+                      HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Image Source="{Binding Image}"/>
+                            <StackLayout Orientation="Horizontal"
+                                         Padding="5">
+                                <Image Source="{Binding ImageFilePath}"
+                                       Aspect="AspectFill"
+                                       WidthRequest="100"
+                                       HeightRequest="100"/>
                                 <StackLayout>
                                     <Label Text="{Binding Name}" TextColor="Black" FontSize="Large"/>
+                                    <StackLayout Orientation="Horizontal">
+                                    <Label Text=" No. of Members: " TextColor="DarkGray" FontSize="Medium"/>
                                     <Label Text="{Binding GroupNo}" TextColor="DarkGray" FontSize="Medium"/>
+                                    </StackLayout>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

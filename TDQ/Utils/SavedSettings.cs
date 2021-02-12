@@ -16,7 +16,9 @@ namespace TDQ.Utils
         #region Setting Constants
 
         private const string ImageKey = "image_key";
+        private const string GroupImageKey = "group_key";
         private static readonly string SettingsDefault = string.Empty;
+
 
         #endregion
 
@@ -30,6 +32,18 @@ namespace TDQ.Utils
             set
             {
                 AppSettings.AddOrUpdateValue(ImageKey, value);
+            }
+        }
+
+        public static string GroupImageSetting
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(GroupImageKey, SettingsDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(GroupImageKey, value);
             }
         }
     }

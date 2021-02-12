@@ -6,6 +6,7 @@ namespace TDQ.Models
 {
     public class Group
     {
+        public string ImageFilePath { get; set; }
         public string Filename { get; set; }
         public string Name { get; set; }
         public string[] EmailList { get; set; }

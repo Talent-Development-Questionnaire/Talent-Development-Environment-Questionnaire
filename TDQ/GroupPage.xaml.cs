@@ -37,6 +37,7 @@ namespace TDQ
                     Filename = filename,
                     Name = splitText[0],
                     GroupNo = Convert.ToInt32(splitText[1]),
+                    ImageFilePath = splitText[2],
                     EmailList = emailList
                 });
             }
@@ -47,7 +48,7 @@ namespace TDQ
         string[] PopulateList(string[] list)
         {
             List<string> emails = new List<string>();
-            for (int i = 2; i < list.Length; i++)
+            for (int i = 3; i < list.Length; i++)
             {
                 if(list[i] != "")
                     emails.Add(list[i]);
@@ -67,7 +68,7 @@ namespace TDQ
         {
             if (e.SelectedItem != null)
             {
-                await Navigation.PushAsync(new PopupPages.AddGroupPage
+                await Navigation.PushModalAsync(new PopupPages.AddGroupPage
                 {
                     BindingContext = e.SelectedItem as Group
                 });
