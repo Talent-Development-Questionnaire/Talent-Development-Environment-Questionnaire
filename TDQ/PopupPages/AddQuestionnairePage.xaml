@@ -19,10 +19,21 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-
-                    <RadioButton Content="59" Grid.Column="0"/>
-                    <RadioButton Content="28" Grid.Column="1"/>
                 </Grid>
+
+                <!-- When testing on Wez's Sony phone the text is too large, however, if fontsize is removed then the text is perfect on wez's phone but too small on the designer  -->
+                <!-- We should have a look at making all the font sizes the same rather than using Large, medium etc-->
+
+                <Picker x:Name="PickerQuestionnaire" Title="Quesionnaire Picker" FontSize="Large"
+                    WidthRequest="500" 
+                    TextColor="{DynamicResource PrimaryTextColour}"
+                    SelectedIndex="{Binding ThemeChoice}"
+                    SelectedIndexChanged="Picker_SelectedIndexChanged">
+                    <Picker.Items>
+                        <x:String>58 Question</x:String>
+                        <x:String>29 Question</x:String>
+                    </Picker.Items>
+                </Picker>
 
                 <Entry Placeholder="Enter new email"/>
                 <Picker/>
