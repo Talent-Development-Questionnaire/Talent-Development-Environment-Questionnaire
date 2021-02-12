@@ -23,12 +23,8 @@ namespace TDQ
 
         protected override void OnAppearing()
         {
-            Classes.SettingsPageFunctions.SetBackground(GroupContentPage);
-        }
-
-        protected override void OnAppearing()
-        {
             base.OnAppearing();
+            Classes.SettingsPageFunctions.SetBackground(GroupContentPage);
 
             var groups = new List<Group>();
 

@@ -18,7 +18,6 @@ namespace TDQ.PopupPages
         public AddGroupPage()
         {
             InitializeComponent();
-            BindingContext = this;
         }
 
         private async void ImgBtnAddGroupPhoto_Clicked(object sender, EventArgs e)
@@ -41,12 +40,19 @@ namespace TDQ.PopupPages
             }
         }
 
-        private void ImgBtnAddEmail_Clicked(object sender, EventArgs e)
+        private async void ImgBtnAddEmail_Clicked(object sender, EventArgs e)
         {
-            if(!string.IsNullOrEmpty(entryEmail.Text))
-            {
-                emails.Add(entryEmail.Text);
-            }
+
+            CheckList();
+
+            if (!string.IsNullOrEmpty(entryEmail.Text))
+                if (Classes.Verification.IsValidEmail(entryEmail.Text))
+                    emails.Add(entryEmail.Text);
+                else
+                {
+                    await DisplayAlert("Error", "Email is not valid", "OK");
+                    entryEmail.Text = string.Empty;
+                }
 
             emailList.ItemsSource = emails.ToArray();
         }
@@ -54,22 +60,18 @@ namespace TDQ.PopupPages
         private async void BtnSave_Clicked(object sender, EventArgs e)
         { 
             var group = (Group)BindingContext;
-            if(group == null)
-            {
-                await DisplayAlert("Debug", "Group is still null", "OK");
-                return;
-            }
 
             if(!string.IsNullOrWhiteSpace(group.Name))
             {
-                if(string.IsNullOrWhiteSpace(group.Filename))
+                group.ImageFilePath = Utils.SavedSettings.GroupImageSetting;
+                group.EmailList = emails.ToArray();
+                group.GroupNo = group.EmailList.Count();
+
+                if (string.IsNullOrWhiteSpace(group.Filename))
                 {
                     if(emails.Count() != 0)
                     {
                         //Save
-                        group.ImageFilePath = Utils.SavedSettings.GroupImageSetting;
-                        group.EmailList = emails.ToArray();
-                        group.GroupNo = group.EmailList.Count();
                         var filename = Path.Combine(App.FolderPath, $"{Path.GetRandomFileName()}.group.txt");
 
                         File.WriteAllText(filename, group.Name + "\n" + group.GroupNo.ToString() + "\n" + group.ImageFilePath + "\n");
@@ -82,12 +84,42 @@ namespace TDQ.PopupPages
                     File.WriteAllText(group.Filename, group.Name + "\n" + group.GroupNo.ToString() + "\n" + group.ImageFilePath + "\n");
                     File.AppendAllLines(group.Filename, group.EmailList);
                 }
+
                 await Navigation.PopModalAsync();
             }
             else
             {
                 await DisplayAlert("Error", "Cannot save empty entry!\n Press back button at top of screen to exit page", "OK");
             }
+        }
+
+        private async void emailList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            CheckList();
+
+            bool deleteEmail = await DisplayAlert("Delete email", "Are you sure you want to delete this email?", "Yes", "No");
+            if (deleteEmail == true)
+            {
+                var debug = e.SelectedItem.ToString() + " " +  e.SelectedItemIndex.ToString();
+                if (emails.Contains(e.SelectedItem.ToString()))
+                {
+                    emails.Remove(e.SelectedItem.ToString());
+                    emailList.ItemsSource = emails;
+                }
+            }
+        }
+
+        void CheckList()
+        {
+            //Check if listview is empty
+            if (!emailList.ItemsSource.Equals(null))
+                foreach (var item in emailList.ItemsSource)
+                {
+                    //check emails do not already exist 
+                    if (!emails.Contains(item))
+                        //update array with listviews' existing items
+                        emails.Add(item.ToString());
+                }
         }
     }
 }
