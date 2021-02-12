@@ -1,13 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              x:Class="TDQ.PopupPages.AddGroupPage"
              BackgroundColor="Transparent">
+    
     <StackLayout VerticalOptions="CenterAndExpand">
+        
         <Frame Margin="50"
                  Padding="30"
                  BackgroundColor="#4C000000"
                CornerRadius="30">
+            
             <StackLayout>
                 <!-- Two Frames act as a circular border for ImageButton -->               
                 <Frame 
@@ -20,26 +24,34 @@
                     <Frame 
                     BackgroundColor="#4C000000"                    
                     CornerRadius="90"
+                    Padding="6"
                     HorizontalOptions="Center"
                     VerticalOptions="StartAndExpand">
-                        <ImageButton
+                        <ic:CircleImage
                         x:Name="ImgBtnAddGroupPhoto"    
-                        Source="ic_add_photo.png"                  
+                        Source="ic_add_photo.png"    
+                        Aspect="AspectFill"
                         HorizontalOptions="Center"
                         VerticalOptions="StartAndExpand"
-                        HeightRequest="64"
-                        WidthRequest="64"
-                        BackgroundColor="Transparent"                            
-                        Clicked="ImgBtnAddGroupPhoto_Clicked"/>
+                        HeightRequest="84"
+                        WidthRequest="84">
+                            <ic:CircleImage.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="ImgBtnAddGroupPhoto_Clicked"
+                                    NumberOfTapsRequired="1"/>
+                            </ic:CircleImage.GestureRecognizers>
+                        </ic:CircleImage>
                     </Frame>
                 </Frame>
-                <Entry Placeholder="Group Name"/>
+                
+                <Entry Placeholder="Group Name" Text="{Binding Name}"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Entry 
+                    x:Name="entryEmail"
                     Placeholder="Enter Email" 
                     Grid.Column="0"/>
                     <ImageButton
@@ -51,26 +63,23 @@
                     BackgroundColor="Transparent"
                     Clicked="ImgBtnAddEmail_Clicked"/>
                 </Grid>
-                <CollectionView
+                
+                <ListView
+                x:Name="emailList"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="Center"
                 HeightRequest="250"
-                Margin="0,10,0,0">
-                    <CollectionView.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>email1@example.com</x:String>
-                            <x:String>email2@example.com</x:String>
-                            <x:String>email3@example.com</x:String>
-                            <x:String>email4@example.com</x:String>
-                        </x:Array>
-                    </CollectionView.ItemsSource>
-                    <CollectionView.ItemTemplate>
+                Margin="0,10,0,0"
+                ItemsSource="{Binding EmailList}">
+                    <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Label Text ="{Binding}" FontSize="16"/>
+                            <TextCell Text ="{Binding}" TextColor="Black"/>
                         </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
                 <Button Text="Save" Clicked="BtnSave_Clicked" BackgroundColor="#4C000000" CornerRadius="30"/>
+                
             </StackLayout>
         </Frame>
     </StackLayout>

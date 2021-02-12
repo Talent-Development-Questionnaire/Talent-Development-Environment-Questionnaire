@@ -6,23 +6,32 @@
     <ContentPage.Content>
         <StackLayout>      
             <!-- Later on when binding data, outer Grid to be made a DataTemplate for a CollectionView -->
-            <Grid Margin="10,20,0,0" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
-                <Image Source="ic_groups.png" Grid.Column="0" Margin="0,0,10,0" WidthRequest="64" HeightRequest="64"/>
-                <Grid Grid.Column="1" Margin="0,10,0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Label Text="Group Name" TextColor="Black" Grid.Row="0" FontSize="16" FontAttributes="Bold"/>
-                    <Label Text="Number of members" TextColor="Black" Grid.Row="1" />
-                </Grid>
-            </Grid>        
-            <ImageButton x:Name="ImgBtnAddGroup"    
+            <ListView x:Name="LstViewGroup" 
+                      Margin="20"
+                      ItemSelected="LstViewGroup_ItemSelected"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal"
+                                         Padding="5">
+                                <Image Source="{Binding ImageFilePath}"
+                                       Aspect="AspectFill"
+                                       WidthRequest="100"
+                                       HeightRequest="100"/>
+                                <StackLayout>
+                                    <Label Text="{Binding Name}" TextColor="Black" FontSize="Large"/>
+                                    <StackLayout Orientation="Horizontal">
+                                    <Label Text=" No. of Members: " TextColor="DarkGray" FontSize="Medium"/>
+                                    <Label Text="{Binding GroupNo}" TextColor="DarkGray" FontSize="Medium"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+                <ImageButton x:Name="ImgBtnAddGroup"    
                     Source="ic_add_circle_outline.png"
                     HorizontalOptions="Center"
                     VerticalOptions="EndAndExpand"
