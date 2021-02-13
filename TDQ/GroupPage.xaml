@@ -8,29 +8,31 @@
             <!-- Later on when binding data, outer Grid to be made a DataTemplate for a CollectionView -->
             <ListView x:Name="LstViewGroup" 
                       Margin="20"
-                      ItemSelected="LstViewGroup_ItemSelected"
                       HasUnevenRows="True"
-                      SeparatorColor="Gray"
-                      ItemsSource="{Binding groups}">
+                      ItemSelected="LstViewGroup_ItemSelected"
+                      ItemsSource="{Binding Groups}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.ContextActions>
                                 <MenuItem Text="Delete Group"
-                                          Clicked="DeleteGroup_Clicked"/>
+                                          Clicked="DeleteGroup_Clicked"
+                                          CommandParameter="{Binding .}"/>
                             </ViewCell.ContextActions>
 
                             <StackLayout Orientation="Horizontal"
-                                         Padding="5">
+                                         Padding="5"
+                                         Margin="0,5,0,5"
+                                         BackgroundColor="#64F5F5F5">
                                 <Image Source="{Binding ImageFilePath}"
                                        Aspect="AspectFill"
                                        WidthRequest="100"
                                        HeightRequest="100"/>
                                 <StackLayout>
-                                    <Label Text="{Binding Name}" TextColor="Black" FontSize="Large"/>
+                                    <Label Text="{Binding Name}" TextColor="Black" FontSize="Large" FontAttributes="Bold"/>
                                     <StackLayout Orientation="Horizontal">
-                                    <Label Text=" No. of Members: " TextColor="DarkGray" FontSize="Medium"/>
-                                    <Label Text="{Binding GroupNo}" TextColor="DarkGray" FontSize="Medium"/>
+                                    <Label Text=" No. of Members: " TextColor="Black" FontSize="Medium"/>
+                                    <Label Text="{Binding GroupNo}" TextColor="Black" FontSize="Medium"/>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>

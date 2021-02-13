@@ -76,7 +76,10 @@
                         ItemSelected="emailList_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text ="{Binding}" TextColor="Black"/>
+                            <ViewCell>
+                                <Label Text="{Binding}" TextColor="White"
+                                       HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                            </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

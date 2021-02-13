@@ -15,20 +15,18 @@ namespace TDQ
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GroupPage : ContentPage
     {
-        private List<Group> groups;
+        public ObservableCollection<Group> Groups;
 
         public GroupPage()
         {
             InitializeComponent();
-
-            Classes.SettingsPageFunctions.SetBackground(GroupContentPage);
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            groups = new List<Group>();
 
+            Groups = new ObservableCollection<Group>();
             Classes.SettingsPageFunctions.SetBackground(GroupContentPage);
             LstViewGroup.SelectedItem = null;
 
@@ -37,9 +35,9 @@ namespace TDQ
             {
                 string text = (File.ReadAllText(filename));
                 string[] splitText = text.Split('\n');
-                string[] emailList = PopulateList(splitText);
+                string[] emailList = PopulateListOnAppearing(splitText);
 
-                    groups.Add(new Group
+                    Groups.Add(new Group
                 {
                     Filename = filename,
                     Name = splitText[0],
@@ -49,10 +47,10 @@ namespace TDQ
                 });
             }
 
-            LstViewGroup.ItemsSource = groups;
+            LstViewGroup.ItemsSource = Groups;
         }
 
-        string[] PopulateList(string[] list)
+        string[] PopulateListOnAppearing(string[] list)
         {
             List<string> emails = new List<string>();
             for (int i = 3; i < list.Length; i++)
@@ -64,6 +62,18 @@ namespace TDQ
             return emails.ToArray();
         }
 
+        List<Group> PopulateListOnDelete()
+        {
+            List<Group> emailList = new List<Group>();
+
+            if (LstViewGroup.ItemsSource != null)
+                foreach(Group item in LstViewGroup.ItemsSource)
+                {
+                    emailList.Add(item);
+                }
+
+            return emailList;
+        }
         private async void ImgBtnAddGroup_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new PopupPages.AddGroupPage { 
@@ -82,9 +92,19 @@ namespace TDQ
             }
         }
 
-        void DeleteGroup_Clicked(System.Object sender, System.EventArgs e)
+        void DeleteGroup_Clicked(object sender, EventArgs e)
         {
-            
+            var mi = ((MenuItem)sender);
+            Group item = ((Group)mi.CommandParameter);
+
+            var files = Directory.EnumerateFiles(App.FolderPath, "*.group.txt");
+            foreach (var file in files)
+                if (item.Filename == file)
+                    File.Delete(file);
+
+            Groups.Remove(item);
+
+            LstViewGroup.ItemsSource = Groups;
         }
     }
 }
