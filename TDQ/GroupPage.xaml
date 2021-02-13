@@ -9,10 +9,17 @@
             <ListView x:Name="LstViewGroup" 
                       Margin="20"
                       ItemSelected="LstViewGroup_ItemSelected"
-                      HasUnevenRows="True">
+                      HasUnevenRows="True"
+                      SeparatorColor="Gray"
+                      ItemsSource="{Binding groups}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete Group"
+                                          Clicked="DeleteGroup_Clicked"/>
+                            </ViewCell.ContextActions>
+
                             <StackLayout Orientation="Horizontal"
                                          Padding="5">
                                 <Image Source="{Binding ImageFilePath}"

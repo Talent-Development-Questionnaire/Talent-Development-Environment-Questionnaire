@@ -8,12 +8,15 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using TDQ.Models;
 using System.IO;
+using System.Collections.ObjectModel;
 
 namespace TDQ
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GroupPage : ContentPage
     {
+        private ObservableCollection<Group> groups = new ObservableCollection<Group>();
+
         public GroupPage()
         {
             InitializeComponent();
@@ -25,8 +28,6 @@ namespace TDQ
         {
             base.OnAppearing();
             Classes.SettingsPageFunctions.SetBackground(GroupContentPage);
-
-            var groups = new List<Group>();
 
             var files = Directory.EnumerateFiles(App.FolderPath, "*.group.txt");
             foreach (var filename in files)
@@ -76,6 +77,11 @@ namespace TDQ
                     BindingContext = e.SelectedItem as Group
                 });
             }
+        }
+
+        void DeleteGroup_Clicked(System.Object sender, System.EventArgs e)
+        {
+            
         }
     }
 }
