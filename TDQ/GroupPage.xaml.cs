@@ -15,7 +15,7 @@ namespace TDQ
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GroupPage : ContentPage
     {
-        private ObservableCollection<Group> groups = new ObservableCollection<Group>();
+        private List<Group> groups;
 
         public GroupPage()
         {
@@ -27,7 +27,10 @@ namespace TDQ
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            groups = new List<Group>();
+
             Classes.SettingsPageFunctions.SetBackground(GroupContentPage);
+            LstViewGroup.SelectedItem = null;
 
             var files = Directory.EnumerateFiles(App.FolderPath, "*.group.txt");
             foreach (var filename in files)
@@ -72,7 +75,7 @@ namespace TDQ
         {
             if (e.SelectedItem != null)
             {
-                await Navigation.PushModalAsync(new PopupPages.AddGroupPage
+                await Navigation.PushModalAsync(new PopupPages.AddGroupPage(e.SelectedItem as Group)
                 {
                     BindingContext = e.SelectedItem as Group
                 });

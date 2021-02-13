@@ -19,6 +19,14 @@ namespace TDQ.PopupPages
         public AddGroupPage()
         {
             InitializeComponent();
+        }
+
+        public AddGroupPage(Group currentGroup)
+        {
+            InitializeComponent();
+
+            ImgBtnAddGroupPhoto.Source = currentGroup.ImageFilePath;
+            Utils.SavedSettings.GroupImageSetting = null;
             CheckList();
         }
 
