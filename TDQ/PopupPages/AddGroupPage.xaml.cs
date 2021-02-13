@@ -19,6 +19,7 @@ namespace TDQ.PopupPages
         public AddGroupPage()
         {
             InitializeComponent();
+            CheckList();
         }
 
         private async void ImgBtnAddGroupPhoto_Clicked(object sender, EventArgs e)
@@ -58,7 +59,8 @@ namespace TDQ.PopupPages
         }
 
         private async void BtnSave_Clicked(object sender, EventArgs e)
-        { 
+        {
+            CheckList();
             var group = (Group)BindingContext;
 
             if(!string.IsNullOrWhiteSpace(group.Name))
