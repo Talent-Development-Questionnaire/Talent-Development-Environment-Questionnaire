@@ -15,6 +15,7 @@ namespace TDQ.PopupPages
     public partial class AddGroupPage : ContentPage
     {
         public readonly List<string> emails = new List<string>();
+
         public AddGroupPage()
         {
             InitializeComponent();
@@ -42,7 +43,6 @@ namespace TDQ.PopupPages
 
         private async void ImgBtnAddEmail_Clicked(object sender, EventArgs e)
         {
-
             CheckList();
 
             if (!string.IsNullOrEmpty(entryEmail.Text))
@@ -112,17 +112,11 @@ namespace TDQ.PopupPages
         void CheckList()
         {
             //Check if listview is empty
-            if ((emailList.ItemsSource as List<string>).Count() != 0)
-            {
-                List<string> list = (List<string>)emailList.ItemsSource;
+            if(emailList.ItemsSource != null)
+                foreach(var item in emailList.ItemsSource)
+                    if (!emails.Contains(item.ToString()))
+                        emails.Add(item.ToString());
 
-                foreach(string itm in list)
-                {
-                    emails.Add(itm);
-                    if (emails.Count != 0)
-                        emailList.ItemsSource = emails.ToArray();
-                }
-            }
         }
     }
 }
