@@ -73,7 +73,9 @@ namespace TDQ.PopupPages
 
             if(!string.IsNullOrWhiteSpace(group.Name))
             {
-                group.ImageFilePath = Utils.SavedSettings.GroupImageSetting;
+                if(group.ImageFilePath == null || Utils.SavedSettings.GroupImageSetting != group.ImageFilePath)
+                    group.ImageFilePath = Utils.SavedSettings.GroupImageSetting;
+
                 group.EmailList = emails.ToArray();
                 group.GroupNo = group.EmailList.Count();
 
