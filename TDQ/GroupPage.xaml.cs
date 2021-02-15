@@ -26,17 +26,21 @@ namespace TDQ
         {
             base.OnAppearing();
 
+            //Initialising variables
             Groups = new ObservableCollection<Group>();
             Classes.SettingsPageFunctions.SetBackground(ImgBg, GroupContentPage);
             LstViewGroup.SelectedItem = null;
 
+            //Gets all the saved files for created groups
             var files = Directory.EnumerateFiles(App.FolderPath, "*.group.txt");
+            //iterates through each file and adds the Group to the list view
             foreach (var filename in files)
             {
                 string text = (File.ReadAllText(filename));
                 string[] splitText = text.Split('\n');
-                string[] emailList = PopulateListOnAppearing(splitText);
+                string[] emailList = PopulateListOnAppearing(splitText);//Method to populate array with emails from the file
 
+                //Adds Group object to list, sets each property of the object
                     Groups.Add(new Group
                 {
                     Filename = filename,
@@ -47,35 +51,29 @@ namespace TDQ
                 });
             }
 
+            //Updates list view with generated list
             LstViewGroup.ItemsSource = Groups;
         }
 
+ 
         string[] PopulateListOnAppearing(string[] list)
         {
             List<string> emails = new List<string>();
+            //starts index at 3, this is where the emails start in the array
             for (int i = 3; i < list.Length; i++)
             {
+                //Adds email to new list as long as the element is not empty.
                 if(list[i] != "")
                     emails.Add(list[i]);
             }
 
+            //returns the new array of just emails
             return emails.ToArray();
         }
 
-        List<Group> PopulateListOnDelete()
-        {
-            List<Group> emailList = new List<Group>();
-
-            if (LstViewGroup.ItemsSource != null)
-                foreach(Group item in LstViewGroup.ItemsSource)
-                {
-                    emailList.Add(item);
-                }
-
-            return emailList;
-        }
         private async void ImgBtnAddGroup_Clicked(object sender, EventArgs e)
         {
+            //opens new AddGroupPage, sets the binding context to Group object
             await Navigation.PushModalAsync(new PopupPages.AddGroupPage { 
             BindingContext = new Group()
             });
@@ -83,6 +81,7 @@ namespace TDQ
 
         private async void LstViewGroup_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            //Opens selected item in AddGroupPage and populates it with the set vales of the object
             if (e.SelectedItem != null)
             {
                 await Navigation.PushModalAsync(new PopupPages.AddGroupPage(e.SelectedItem as Group)
@@ -94,16 +93,19 @@ namespace TDQ
 
         void DeleteGroup_Clicked(object sender, EventArgs e)
         {
-            var mi = ((MenuItem)sender);
-            Group item = ((Group)mi.CommandParameter);
+            var mi = ((MenuItem)sender);//initialises variable as a MenuItem
+            var item = ((Group)mi.CommandParameter);//sets item as the group item that was selected in the list view
 
+            //Gets all the files and deletes the file that matches the Group's Filename property
             var files = Directory.EnumerateFiles(App.FolderPath, "*.group.txt");
             foreach (var file in files)
                 if (item.Filename == file)
                     File.Delete(file);
 
+            //Removes the group from the list
             Groups.Remove(item);
 
+            //Updates the list view with the new list
             LstViewGroup.ItemsSource = Groups;
         }
     }
