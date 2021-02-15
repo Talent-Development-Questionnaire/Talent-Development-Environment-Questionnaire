@@ -135,12 +135,13 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\TDQ\TDQ.csproj">
-      <Project>{6A0257A8-EF0C-4006-B0D5-76346E9CE60F}</Project>
+      <Project>{8C176C49-9DFB-4D0F-ABA0-D5CE325A1F89}</Project>
       <Name>TDQ</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_goals.png" />
+    <BundleResource Include="Resources\ic_action_add_a_photo.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_groups.png" />

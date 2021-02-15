@@ -3,17 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDQ.GroupPage"
              x:Name="GroupContentPage">
-    <ContentPage.Content>
-        <StackLayout>      
-            <!-- Later on when binding data, outer Grid to be made a DataTemplate for a CollectionView -->
+    <AbsoluteLayout>
+
+        <Image x:Name="ImgBg"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0,0,1,1"
+               AbsoluteLayout.LayoutFlags="All"/>
+
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All">         
+
             <ListView x:Name="LstViewGroup" 
                       Margin="20"
                       HasUnevenRows="True"
                       ItemSelected="LstViewGroup_ItemSelected"
                       ItemsSource="{Binding Groups}">
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+
                             <ViewCell.ContextActions>
                                 <MenuItem Text="Delete Group"
                                           Clicked="DeleteGroup_Clicked"
@@ -24,10 +33,12 @@
                                          Padding="5"
                                          Margin="0,5,0,5"
                                          BackgroundColor="#64F5F5F5">
+
                                 <Image Source="{Binding ImageFilePath}"
                                        Aspect="AspectFill"
                                        WidthRequest="100"
                                        HeightRequest="100"/>
+
                                 <StackLayout>
                                     <Label Text="{Binding Name}" TextColor="Black" FontSize="Large" FontAttributes="Bold"/>
                                     <StackLayout Orientation="Horizontal">
@@ -40,13 +51,15 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-                <ImageButton x:Name="ImgBtnAddGroup"    
-                    Source="ic_add_circle_outline.png"
-                    HorizontalOptions="Center"
-                    VerticalOptions="EndAndExpand"
-                    BackgroundColor="Transparent"
-                    Margin="0,0,0,10"
-                    Clicked="ImgBtnAddGroup_Clicked"/>
+
+            <ImageButton x:Name="ImgBtnAddGroup"    
+                Source="ic_add_circle_outline.png"
+                HorizontalOptions="Center"
+                VerticalOptions="EndAndExpand"
+                BackgroundColor="Transparent"
+                Margin="0,0,0,10"
+                Clicked="ImgBtnAddGroup_Clicked"/>
         </StackLayout>
-    </ContentPage.Content>
+    </AbsoluteLayout>
+
 </ContentPage>

@@ -15,18 +15,16 @@ namespace TDQ
         public SettingsPage()
         {
             InitializeComponent();
+        }
 
-            Classes.SettingsPageFunctions.SetBackground(SettingsContentPage);
+        protected override void OnAppearing()
+        {
+            Classes.SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage);
 
             if (!string.IsNullOrEmpty(Utils.SavedSettings.ThemeIndexSettings))
                 PickerColour.SelectedIndex = Convert.ToInt32(Utils.SavedSettings.ThemeIndexSettings);
             else
                 PickerColour.SelectedIndex = 0;
-        }
-
-        protected override void OnAppearing()
-        {
-            Classes.SettingsPageFunctions.SetBackground(SettingsContentPage);
         }
 
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
@@ -47,6 +45,26 @@ namespace TDQ
                         Utils.SavedSettings.ThemeSettings = "Blue";
                         mergedDictionaries.Add(new Themes.BlueTheme());
                         break;
+                    case "Green":
+                        Utils.SavedSettings.ThemeIndexSettings = "2";
+                        Utils.SavedSettings.ThemeSettings = "Green";
+                        mergedDictionaries.Add(new Themes.GreenTheme());
+                        break;
+                    case "Yellow":
+                        Utils.SavedSettings.ThemeIndexSettings = "3";
+                        Utils.SavedSettings.ThemeSettings = "Yellow";
+                        mergedDictionaries.Add(new Themes.YellowTheme());
+                        break;
+                    case "Orange":
+                        Utils.SavedSettings.ThemeIndexSettings = "4";
+                        Utils.SavedSettings.ThemeSettings = "Orange";
+                        mergedDictionaries.Add(new Themes.OrangeTheme());
+                        break;
+                    case "Dark":
+                        Utils.SavedSettings.ThemeIndexSettings = "5";
+                        Utils.SavedSettings.ThemeSettings = "Dark";
+                        mergedDictionaries.Add(new Themes.DarkTheme());
+                        break;
                 }
             }        
         }
@@ -58,8 +76,10 @@ namespace TDQ
                 Title = "Pick a photo"
             });
 
-            ImgBg.Source = ImageSource.FromFile(result.FullPath);
-            SettingsContentPage.BackgroundImageSource = result.FullPath;
+            if (result == null)
+                return;
+            BtnAddBg.Source = ImageSource.FromFile(result.FullPath);
+            Classes.SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage);
 
             try
             {

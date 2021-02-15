@@ -7,10 +7,12 @@ namespace TDQ.Classes
 {
     public class SettingsPageFunctions
     {
-        public static void SetBackground(ContentPage page)
+        public static void SetBackground(Image img, ContentPage page)
         {
             if (!string.IsNullOrEmpty(Utils.SavedSettings.BackgroundSettings))
-                page.BackgroundImageSource = ImageSource.FromFile(Utils.SavedSettings.BackgroundSettings);
+                img.Source = ImageSource.FromFile(Utils.SavedSettings.BackgroundSettings);
+            else if (img.Source == null)
+                page.BackgroundColor = Color.FromHex("#7F7F7F");
         }
     }
 }

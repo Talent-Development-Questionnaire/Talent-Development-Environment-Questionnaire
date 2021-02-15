@@ -27,7 +27,7 @@ namespace TDQ
             base.OnAppearing();
 
             Groups = new ObservableCollection<Group>();
-            Classes.SettingsPageFunctions.SetBackground(GroupContentPage);
+            Classes.SettingsPageFunctions.SetBackground(ImgBg, GroupContentPage);
             LstViewGroup.SelectedItem = null;
 
             var files = Directory.EnumerateFiles(App.FolderPath, "*.group.txt");
