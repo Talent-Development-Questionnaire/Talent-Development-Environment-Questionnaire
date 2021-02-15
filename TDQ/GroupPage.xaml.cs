@@ -84,6 +84,8 @@ namespace TDQ
             //Opens selected item in AddGroupPage and populates it with the set vales of the object
             if (e.SelectedItem != null)
             {
+
+
                 await Navigation.PushModalAsync(new PopupPages.AddGroupPage(e.SelectedItem as Group)
                 {
                     BindingContext = e.SelectedItem as Group
