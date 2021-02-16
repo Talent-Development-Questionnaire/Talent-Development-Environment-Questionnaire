@@ -38,7 +38,7 @@ namespace TDQ
             {
                 string text = (File.ReadAllText(filename));
                 string[] splitText = text.Split('\n');
-                string[] emailList = PopulateListOnAppearing(splitText);//Method to populate array with emails from the file
+                string[] emailList = Classes.GroupPageFunctions.PopulateListOnAppearing(splitText);//Method to populate array with emails from the file
 
                 //Adds Group object to list, sets each property of the object
                     Groups.Add(new Group
@@ -55,22 +55,6 @@ namespace TDQ
             LstViewGroup.ItemsSource = Groups;
         }
 
- 
-        string[] PopulateListOnAppearing(string[] list)
-        {
-            List<string> emails = new List<string>();
-            //starts index at 3, this is where the emails start in the array
-            for (int i = 3; i < list.Length; i++)
-            {
-                //Adds email to new list as long as the element is not empty.
-                if(list[i] != "")
-                    emails.Add(list[i]);
-            }
-
-            //returns the new array of just emails
-            return emails.ToArray();
-        }
-
         private async void ImgBtnAddGroup_Clicked(object sender, EventArgs e)
         {
             //opens new AddGroupPage, sets the binding context to Group object
@@ -84,8 +68,6 @@ namespace TDQ
             //Opens selected item in AddGroupPage and populates it with the set vales of the object
             if (e.SelectedItem != null)
             {
-
-
                 await Navigation.PushModalAsync(new PopupPages.AddGroupPage(e.SelectedItem as Group)
                 {
                     BindingContext = e.SelectedItem as Group
