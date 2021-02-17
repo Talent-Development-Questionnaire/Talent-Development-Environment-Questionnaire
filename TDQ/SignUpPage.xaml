@@ -12,7 +12,8 @@
                 CornerRadius="30">
             <StackLayout Margin="5">
                     <Entry x:Name="EntryEmail"
-                           Placeholder="Email"/>
+                           Placeholder="Email"
+                           TextChanged="EntryEmail_TextChanged"/>
                     <Entry x:Name="EntryPassword"
                            Placeholder="Password"/>
                     <Entry x:Name="EntryConfirmPassword"

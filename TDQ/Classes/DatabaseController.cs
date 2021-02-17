@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using MySql.Data.MySqlClient;
 namespace TDQ.Classes
 {
@@ -30,6 +31,49 @@ namespace TDQ.Classes
             {
                 return false;
             }
+        }
+
+        public static bool EmailCheck(string email)
+        {
+            string MyConnection = "datasource=localhost; Initial Catalog=tdq; username=root;password=Mollyis12yrs!";
+            string Query = "SELECT * FROM users WHERE email = '" + email + "';";
+
+            MySqlConnection con = new MySqlConnection(MyConnection);
+            MySqlCommand cmd = new MySqlCommand(Query, con);
+            MySqlDataReader dr;
+
+            con.Open();
+
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+                if (dr.HasRows == true)
+                    return false;
+
+            return true;
+        }
+
+        public static bool AccountCheck(string email, string password)
+        {
+            string MyConnection = "datasource=localhost; Initial Catalog=tdq; username=root;password=Mollyis12yrs!";
+            string Query = "SELECT * FROM users WHERE email ='" + email + "' AND password = '" + password + "'";
+
+            MySqlConnection con = new MySqlConnection(MyConnection);
+            MySqlCommand cmd = new MySqlCommand(Query, con);
+            MySqlDataReader dr;
+
+            con.Open();
+
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                if (dr.HasRows == false)
+                    return false;
+                else
+                    return true;
+            }
+
+
+            return false;
         }
     }
 }

@@ -63,5 +63,11 @@ namespace TDQ
                 await App.Current.MainPage.DisplayAlert("Debug", ex.Message, "OK");
             }
         }
+
+        void BtnLogOut_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Utils.SavedSettings.LoginSettings = "";
+            (Application.Current).MainPage = new Navigation_Drawer();
+        }
     }
 }
