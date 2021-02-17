@@ -14,8 +14,9 @@
             <StackLayout>
 
                 <Entry Placeholder="Type Unique Name"/>
+
                 <Grid HorizontalOptions="Center"
-                  ColumnSpacing="70">
+                      ColumnSpacing="70">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>

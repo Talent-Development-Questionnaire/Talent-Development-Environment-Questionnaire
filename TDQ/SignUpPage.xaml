@@ -4,18 +4,25 @@
              x:Class="TDQ.SignUpPage">
 
     <StackLayout>
-        <StackLayout VerticalOptions="CenterAndExpand" Margin="40" BackgroundColor="#4C000000">
-            <ScrollView VerticalScrollBarVisibility="Always" Orientation="Vertical" HeightRequest="200">
-                <StackLayout>
-                <Entry Placeholder="First Name"/>
-                <Entry Placeholder="Last Name"/>
-                <Entry Placeholder="D.O.B"/>
-                <Entry Placeholder="Email"/>
-                <Entry Placeholder="Password"/>
-                <Entry Placeholder="Confirm Password"/>
+
+        <Frame VerticalOptions="CenterAndExpand"
+                Margin="30,10,30,0"
+                BackgroundColor="#4C000000"
+                Padding="15"
+                CornerRadius="30">
+            <StackLayout Margin="5">
+                    <Entry x:Name="EntryEmail"
+                           Placeholder="Email"/>
+                    <Entry x:Name="EntryPassword"
+                           Placeholder="Password"/>
+                    <Entry x:Name="EntryConfirmPassword"
+                           Placeholder="Confirm Password"/>
+
+                    <Button Text="Sign Up"
+                            Clicked="BtnSignUp_Clicked"
+                            Margin="30"/>
             </StackLayout>
-            </ScrollView>
-            <Button Text="Sign Up" Margin="30"/>
-        </StackLayout>
+
+        </Frame>
     </StackLayout>
 </ContentPage>

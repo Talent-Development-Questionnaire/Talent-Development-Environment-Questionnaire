@@ -16,5 +16,12 @@ namespace TDQ.Templates
         {
             InitializeComponent();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Classes.SettingsPageFunctions.ChangeTheme();
+      
+        }
     }
 }

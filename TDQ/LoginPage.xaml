@@ -4,6 +4,7 @@
              x:Class="TDQ.LoginPage">
 
     <StackLayout>
+
         <StackLayout VerticalOptions="CenterAndExpand"
                  Margin="30" BackgroundColor="WhiteSmoke">
             <Entry Placeholder="Email Address" PlaceholderColor="{DynamicResource TertiaryTextColour}" Opacity="0.6"/>

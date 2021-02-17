@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using System.IO;
+using TDQ.Models;
 using Xamarin.Forms;
 
 namespace TDQ
 {
     public partial class MainPage : ContentPage
     {
+        public ObservableCollection<Group> Groups;
+
         public MainPage()
         {
             InitializeComponent();
@@ -18,6 +18,7 @@ namespace TDQ
         protected override void OnAppearing()
         {
             Classes.SettingsPageFunctions.SetBackground(ImgBg, MainContentPage);
+            Classes.SettingsPageFunctions.ChangeTheme();
         }
 
         private async void BtnAddQuestionnaire_Clicked(object sender, EventArgs e)

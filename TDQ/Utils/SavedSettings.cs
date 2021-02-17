@@ -20,6 +20,7 @@ namespace TDQ.Utils
         private const string ThemeIndexKey = "theme_index_key";
         private const string ThemeKey = "theme_key";
         private const string BgKey = "background_key";
+        private const string LogInKey = "login_key";
         private static readonly string SettingsDefault = string.Empty;
 
 
@@ -83,6 +84,18 @@ namespace TDQ.Utils
             set
             {
                 AppSettings.AddOrUpdateValue(BgKey, value);
+            }
+        }
+
+        public static string LoginSettings
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(LogInKey, SettingsDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(LogInKey, value);
             }
         }
     }
