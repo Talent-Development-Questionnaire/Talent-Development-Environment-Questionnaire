@@ -93,6 +93,13 @@
                         Style="{DynamicResource buttonStyle}"
                         BackgroundColor="#4C000000"
                         Clicked="BtnSave_Clicked"/>
+
+                <Button x:Name="BtnCanel"
+                        Text="Cancel" 
+                        TextColor="White"
+                        Style="{DynamicResource buttonStyle}"
+                        BackgroundColor="#4C000000"
+                        Clicked="BtnCanel_Clicked"/>
                 
             </StackLayout>
         </Frame>

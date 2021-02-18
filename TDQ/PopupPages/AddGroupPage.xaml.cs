@@ -19,6 +19,11 @@ namespace TDQ.PopupPages
         public AddGroupPage()
         {
             InitializeComponent();
+
+            if (Device.RuntimePlatform == "iOS")
+                BtnCanel.IsVisible = true;
+            else
+                BtnCanel.IsVisible = false;
         }
 
         public AddGroupPage(Group currentGroup)
@@ -152,6 +157,11 @@ namespace TDQ.PopupPages
                     if (!emails.Contains(item.ToString()))
                         emails.Add(item.ToString());
 
+        }
+
+        void BtnCanel_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PopModalAsync();
         }
     }
 }
