@@ -30,6 +30,11 @@ namespace TDQ.PopupPages
         {
             InitializeComponent();
 
+            if (Device.RuntimePlatform == "iOS")
+                BtnCanel.IsVisible = true;
+            else
+                BtnCanel.IsVisible = false;
+
             //sets the image to the selected Groups image
             ImgBtnAddGroupPhoto.Source = currentGroup.ImageFilePath;
             //Resets save image filepath setting to null
