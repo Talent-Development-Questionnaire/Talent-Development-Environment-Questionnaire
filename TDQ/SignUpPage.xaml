@@ -7,22 +7,32 @@
 
         <Frame VerticalOptions="CenterAndExpand"
                 Margin="30,10,30,0"
-                BackgroundColor="#4C000000"
+                BackgroundColor="WhiteSmoke"
                 Padding="15"
                 CornerRadius="30">
+            
             <StackLayout Margin="5">
-                    <Entry x:Name="EntryEmail"
-                           Placeholder="Email"
-                           TextChanged="EntryEmail_TextChanged"/>
-                    <Entry x:Name="EntryPassword"
-                           Placeholder="Password"/>
-                    <Entry x:Name="EntryConfirmPassword"
-                           Placeholder="Confirm Password"/>
+                <Entry x:Name="EntryFirstName"
+                       Placeholder="First Name"
+                       Style="{DynamicResource entryStyle}"/>
+                <Entry x:Name="EntryLastName"
+                       Placeholder="Last Name"
+                       Style="{DynamicResource entryStyle}"/>
+                <Entry x:Name="EntryEmail"
+                        Placeholder="Email"
+                        Style="{DynamicResource entryStyle}"
+                        TextChanged="EntryEmail_TextChanged"/>
+                <Entry x:Name="EntryPassword"
+                        Placeholder="Password"
+                        Style="{DynamicResource entryStyle}"/>
+                <Entry x:Name="EntryConfirmPassword"
+                        Placeholder="Confirm Password"
+                        Style="{DynamicResource entryStyle}"/>
 
-                    <Button Text="Sign Up"
-                            Clicked="BtnSignUp_Clicked"
-                            Margin="30"
-                            Style="{DynamicResource buttonStyle}"/>
+                <Button Text="Sign Up"
+                        Clicked="BtnSignUp_Clicked"
+                        Margin="30"
+                        Style="{DynamicResource buttonStyle}"/>
             </StackLayout>
 
         </Frame>

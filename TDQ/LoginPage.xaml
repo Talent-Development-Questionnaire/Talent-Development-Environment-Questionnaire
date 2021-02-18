@@ -5,26 +5,33 @@
 
     <StackLayout>
 
-        <StackLayout VerticalOptions="CenterAndExpand"
+        <Frame VerticalOptions="CenterAndExpand"
+                Margin="30,10,30,0"
+                BackgroundColor="WhiteSmoke"
+                Padding="0"
+                CornerRadius="30">
+
+            <StackLayout VerticalOptions="CenterAndExpand"
                  Margin="30" BackgroundColor="WhiteSmoke">
 
-            <Entry x:Name="EntryEmail"
+                <Entry x:Name="EntryEmail"
                    Placeholder="Email Address"
                    PlaceholderColor="{DynamicResource TertiaryTextColour}"
                    Style="{DynamicResource entryStyle}"/>
 
-            <Entry x:Name="EntryPassword"
+                <Entry x:Name="EntryPassword"
                    Placeholder="Password"
                    PlaceholderColor="{DynamicResource TertiaryTextColour}"
                    IsPassword="True"
                    Style="{DynamicResource entryStyle}"/>
 
-            <Button x:Name="BtnLogin"
+                <Button x:Name="BtnLogin"
                     Text="Log In"
                     Clicked="BtnLogin_Clicked"
                     Margin="40"
                     Style="{DynamicResource buttonStyle}"/>
 
-        </StackLayout>
+            </StackLayout>
+        </Frame>
     </StackLayout>
 </ContentPage>

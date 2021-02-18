@@ -14,19 +14,12 @@ namespace TDQ
     {
         public SettingsPage()
         {
-            try
-            {
-                InitializeComponent();
-            }
-            catch(Exception e)
-            {
-                var debug = e.Message.ToString();
-            }
-            
+                InitializeComponent();        
         }
 
         protected override void OnAppearing()
         {
+            Classes.SettingsPageFunctions.DeleteBackgroundVisibility(BtnDeleteBg);
             //Sets the page background whenever page is opened
             Classes.SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage);
 
@@ -57,13 +50,13 @@ namespace TDQ
 
             //sets images source to selected image
             BtnAddBg.Source = ImageSource.FromFile(result.FullPath);
-            //Mehtod to set the background of the current content page
-            Classes.SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage);
 
             //Saves the file path to storage to be called again later
             try
             {
                 Utils.SavedSettings.BackgroundSettings = result.FullPath;
+                //Mehtod to set the background of the current content page
+                Classes.SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage);
             }
             catch (Exception ex)
             {
@@ -81,6 +74,16 @@ namespace TDQ
         void PickerFontSize_SelectedIndexChanged(System.Object sender, System.EventArgs e)
         {
             Classes.SettingsPageFunctions.ChangeFontSize(PickerFontSize.SelectedItem.ToString());
+        }
+
+        private void BtnDeleteBg_Clicked(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Utils.SavedSettings.BackgroundSettings))
+            {
+                Utils.SavedSettings.BackgroundSettings = null;
+                Classes.SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage);
+                Classes.SettingsPageFunctions.DeleteBackgroundVisibility(BtnDeleteBg);
+            }
         }
     }
 }
