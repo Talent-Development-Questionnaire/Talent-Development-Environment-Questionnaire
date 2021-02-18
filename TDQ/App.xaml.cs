@@ -33,6 +33,18 @@ namespace TDQ
                     case "Blue":
                         mergedDictionaries.Add(new Themes.BlueTheme());
                         break;
+                    case "Green":
+                        mergedDictionaries.Add(new Themes.GreenTheme());
+                        break;
+                    case "Yellow":
+                        mergedDictionaries.Add(new Themes.YellowTheme());
+                        break;
+                    case "Orange":
+                        mergedDictionaries.Add(new Themes.OrangeTheme());
+                        break;
+                    case "Dark":
+                        mergedDictionaries.Add(new Themes.DarkTheme());
+                        break;
                     default:
                         mergedDictionaries.Add(new Themes.MainTheme());
                         break;

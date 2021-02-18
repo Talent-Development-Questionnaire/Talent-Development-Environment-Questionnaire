@@ -13,13 +13,11 @@ namespace TDQ
         public MainPage()
         {
             InitializeComponent();
-
-            Classes.SettingsPageFunctions.SetBackground(MainContentPage);
         }
 
         protected override void OnAppearing()
         {
-            Classes.SettingsPageFunctions.SetBackground(MainContentPage);
+            Classes.SettingsPageFunctions.SetBackground(ImgBg, MainContentPage);
         }
 
         private async void BtnAddQuestionnaire_Clicked(object sender, EventArgs e)

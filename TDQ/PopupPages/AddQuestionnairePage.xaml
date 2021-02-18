@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDQ.PopupPages.AddQuestionnairePage"
-             BackgroundColor="Transparent">
+             BackgroundColor="Transparent"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.ModalPresentationStyle="OverFullScreen">
 
     <StackLayout VerticalOptions="CenterAndExpand">
         <Frame Margin="50"
@@ -24,24 +26,28 @@
                 <!-- When testing on Wez's Sony phone the text is too large, however, if fontsize is removed then the text is perfect on wez's phone but too small on the designer  -->
                 <!-- We should have a look at making all the font sizes the same rather than using Large, medium etc-->
 
-                <Picker x:Name="PickerQuestionnaire" Title="Quesionnaire Picker" FontSize="Large"
+                <Picker x:Name="PickerQuestionnaire" Title="Select Questionnaire" FontSize="Medium"
                     WidthRequest="500" 
                     TextColor="{DynamicResource PrimaryTextColour}"
-                    SelectedIndex="{Binding ThemeChoice}"
+                    SelectedIndex= "0"
                     SelectedIndexChanged="Picker_SelectedIndexChanged">
                     <Picker.Items>
-                        <x:String>58 Question</x:String>
+                        <x:String>59 Question</x:String>
                         <x:String>29 Question</x:String>
                     </Picker.Items>
                 </Picker>
 
-                <Entry Placeholder="Enter new email"/>
-                <Picker/>
+                <Picker x:Name="PickerGroup"
+                        SelectedIndexChanged="PickerGroup_SelectedIndexChanged"
+                        Title="Choose Group"/>
+                <Entry Placeholder="Add new email"/>
+                
 
-                <ListView HeightRequest="150" VerticalScrollBarVisibility="Always"/>
+                <ListView x:Name="LstViewEmails" HeightRequest="150" VerticalScrollBarVisibility="Always"/>
 
                 <Button x:Name="BtnSendQuestionnaire"
-                    Text="Send"/>
+                        Text="Send"
+                        Clicked="BtnSendQuestionnaire_Clicked"/>
             </StackLayout>
         </Frame>
     </StackLayout>

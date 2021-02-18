@@ -4,12 +4,23 @@
              x:Class="TDQ.MainPage"
              x:Name="MainContentPage">
 
-    <StackLayout>
-        <Button x:Name="BtnAddQuestionnaire"
-                VerticalOptions="EndAndExpand"
-                Margin="30,0,30,10"
-                Text="Add Questionnaire"
-                Clicked="BtnAddQuestionnaire_Clicked"/>
-    </StackLayout>
+    <AbsoluteLayout>
+
+
+        <Image x:Name="ImgBg"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0,0,1,1"
+               AbsoluteLayout.LayoutFlags="All"/>
+
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All">
+
+            <Button x:Name="BtnAddQuestionnaire"
+                    VerticalOptions="EndAndExpand"
+                    Margin="30,0,30,10"
+                    Text="Add Questionnaire"
+                    Clicked="BtnAddQuestionnaire_Clicked"/>
+        </StackLayout>
+    </AbsoluteLayout>
 
 </ContentPage>

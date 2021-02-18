@@ -2,8 +2,10 @@
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDQ.Themes.BlueTheme">
-    <Color x:Key="PrimaryColour">#00aae8</Color>
-    <Color x:Key="SecondaryColour">#0294c9</Color>
+
+    <Color x:Key="PrimaryColour">#007DFF</Color>
+    <Color x:Key="SecondaryColour">#57ABFF</Color>
+    <Color x:Key="TertiaryColour">#B7DBFF</Color>
     <Color x:Key="PrimaryTextColour">Black</Color>
     <Color x:Key="SecondaryTextColour">White</Color>
     <Color x:Key="TertiaryTextColour">Gray</Color>

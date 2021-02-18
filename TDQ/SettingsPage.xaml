@@ -3,60 +3,89 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDQ.SettingsPage"
              x:Name="SettingsContentPage">
+    <AbsoluteLayout>
 
-    <StackLayout Margin="30" HorizontalOptions="CenterAndExpand"
-                 Padding="20">
-        <Frame HorizontalOptions="CenterAndExpand" HasShadow="True"
-               Padding="0">
-            <Picker x:Name="PickerColour" Title="Select a Theme" FontSize="Large"
-                    WidthRequest="500" HorizontalTextAlignment="Center"
-                    TitleColor="{DynamicResource TertiaryTextColour}"
-                    TextColor="{DynamicResource PrimaryTextColour}"
-                    SelectedIndex="{Binding ThemeChoice}"
-                    SelectedIndexChanged="Picker_SelectedIndexChanged">
-                <Picker.Items>
-                    <x:String>Red</x:String>
-                    <x:String>Blue</x:String>
-                </Picker.Items>
-            </Picker>
-        </Frame>
+        <Image x:Name="ImgBg"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0,0,1,1"
+               AbsoluteLayout.LayoutFlags="All"/>
 
-        <Label Text="Select Font Size" FontSize="Large" TextColor="{DynamicResource PrimaryTextColour}"/>
-        <Frame HorizontalOptions="CenterAndExpand" HasShadow="True"
-               Padding="0">
-            <Grid>
-                <RadioButton Content="Medium" TextColor="{DynamicResource PrimaryTextColour}"
-                                Grid.Column="0" Grid.Row="0"
-                                IsChecked="True"/>
-                <RadioButton Content="Large" TextColor="{DynamicResource PrimaryTextColour}"
-                                Grid.Column="1" Grid.Row="0"/>
-                <RadioButton Content="X-Large" TextColor="{DynamicResource PrimaryTextColour}"
-                                Grid.Column="0" Grid.Row="1"/>
-                <RadioButton Content="XX-Large" TextColor="{DynamicResource PrimaryTextColour}"
-                                Grid.Column="1" Grid.Row="1"/>
-            </Grid>
-        </Frame>
+        <StackLayout Margin="30" HorizontalOptions="CenterAndExpand"
+                     Padding="20"
+                     AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All">                 
 
-        <Label Text="Add Background" FontSize="Large" TextColor="{DynamicResource PrimaryTextColour}"/>
-        <Frame HasShadow="True">
-            <Grid ColumnSpacing="30">
+            <Frame HorizontalOptions="CenterAndExpand" HasShadow="True"
+                   Padding="0" Margin="0,0,0,20">
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="200"/>
-                </Grid.RowDefinitions>
+                <Picker x:Name="PickerColour" Title="Select a Theme" FontSize="Large"
+                        WidthRequest="500" HorizontalTextAlignment="Center"
+                        TitleColor="{DynamicResource TertiaryTextColour}"
+                        TextColor="{DynamicResource PrimaryTextColour}"
+                        SelectedIndex="{Binding ThemeChoice}"
+                        SelectedIndexChanged="Picker_SelectedIndexChanged">
 
-                <Image x:Name="ImgBg"  Source="ic_image.png" Aspect="AspectFill" Grid.Column="0" Grid.Row="0"/>
-                <ImageButton x:Name="BtnAddBg" Source="ic_add.png" Grid.Column="1" Grid.Row="0" 
-                             Clicked="BtnAddBg_Clicked" BackgroundColor="{DynamicResource TransparentColour}"/>
-            </Grid>
-        </Frame>
+                    <Picker.Items>
+                        <x:String>Red</x:String>
+                        <x:String>Blue</x:String>
+                        <x:String>Green</x:String>
+                        <x:String>Yellow</x:String>
+                        <x:String>Orange</x:String>
+                        <x:String>Dark</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Frame>
 
-        <Button Text="Log Out" Margin="0,20,0,0"/>
-        <Button Text="Delete Account"/>
+            <Frame HorizontalOptions="CenterAndExpand" HasShadow="True"
+                   Padding="0" Margin="0,0,0,20">
 
-    </StackLayout>
+                <Picker x:Name="PickerFontSize" Title="Change Font Size" FontSize="Large"
+                        WidthRequest="500" HorizontalTextAlignment="Center"
+                        TitleColor="{DynamicResource TertiaryTextColour}"
+                        TextColor="{DynamicResource PrimaryTextColour}"
+                        SelectedIndex="0">
+
+                    <Picker.Items>
+                        <x:String>Small</x:String>
+                        <x:String>Medium</x:String>
+                        <x:String>Large</x:String>
+                        <x:String>X-Large</x:String>
+                    </Picker.Items>
+                </Picker>
+
+            </Frame>
+
+            <Frame HasShadow="True">
+                <Grid ColumnSpacing="30">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Add Background" HorizontalTextAlignment="Center" Grid.Row="0"
+                           Grid.ColumnSpan="2"
+                           FontSize="Large" TextColor="{DynamicResource PrimaryTextColour}"/>
+                    <ImageButton x:Name="BtnAddBg" Source="ic_action_add_a_photo.png" Grid.Row="1" 
+                                 Clicked="BtnAddBg_Clicked" Grid.ColumnSpan="2"
+                                 WidthRequest="64"
+                                 HeightRequest="64"
+                                 BackgroundColor="{DynamicResource TransparentColour}"/>
+                </Grid>
+            </Frame>
+
+            <Button Text="Log Out"
+                    TextColor="Black"
+                    BackgroundColor="White"
+                    Margin="0,20,0,0"/>
+            <Button Text="Delete Account"
+                    TextColor="Black"
+                    BackgroundColor="White"/>
+
+        </StackLayout>
+    </AbsoluteLayout>
 </ContentPage>

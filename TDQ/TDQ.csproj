@@ -18,6 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Themes\YellowTheme %28copy%29.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Update="Templates\Navigation_Drawer.xaml.cs">
       <DependentUpon>Navigation_Drawer.xaml</DependentUpon>
     </Compile>
@@ -25,9 +28,6 @@
 
   <ItemGroup>
     <EmbeddedResource Update="GoalsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="GroupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="LoginPage.xaml">
