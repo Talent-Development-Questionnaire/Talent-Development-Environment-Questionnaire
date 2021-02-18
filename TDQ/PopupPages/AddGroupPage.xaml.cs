@@ -39,6 +39,9 @@ namespace TDQ.PopupPages
                 Title = "Pick a photo"
             });
 
+            if (result == null)
+                return;
+
             ImgBtnAddGroupPhoto.Source = ImageSource.FromFile(result.FullPath);
 
             try
