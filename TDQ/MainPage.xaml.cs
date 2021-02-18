@@ -18,7 +18,7 @@ namespace TDQ
         protected override void OnAppearing()
         {
             Classes.SettingsPageFunctions.SetBackground(ImgBg, MainContentPage);
-            Classes.SettingsPageFunctions.ChangeTheme();
+            Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
         }
 
         private async void BtnAddQuestionnaire_Clicked(object sender, EventArgs e)

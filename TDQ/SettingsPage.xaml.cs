@@ -14,7 +14,15 @@ namespace TDQ
     {
         public SettingsPage()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch(Exception e)
+            {
+                var debug = e.Message.ToString();
+            }
+            
         }
 
         protected override void OnAppearing()
@@ -32,7 +40,7 @@ namespace TDQ
 
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Classes.SettingsPageFunctions.PickerChangeTheme(PickerColour.SelectedItem.ToString());
+            Classes.SettingsPageFunctions.ChangeTheme(PickerColour.SelectedItem.ToString());
         }
 
         private async void BtnAddBg_Clicked(object sender, EventArgs e)
@@ -68,6 +76,11 @@ namespace TDQ
         {
             Utils.SavedSettings.LoginSettings = "";
             (Application.Current).MainPage = new Navigation_Drawer();
+        }
+
+        void PickerFontSize_SelectedIndexChanged(System.Object sender, System.EventArgs e)
+        {
+            Classes.SettingsPageFunctions.ChangeFontSize(PickerFontSize.SelectedItem.ToString());
         }
     }
 }

@@ -15,7 +15,7 @@ namespace TDQ
         public Navigation_Drawer()
         {
             InitializeComponent();
-            Classes.SettingsPageFunctions.ChangeTheme();
+            Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
         }
     }
 }

@@ -19,6 +19,8 @@ namespace TDQ.Utils
         private const string GroupImageKey = "group_key";
         private const string ThemeIndexKey = "theme_index_key";
         private const string ThemeKey = "theme_key";
+        private const string FontIndexKey = "font_index_key";
+        private const string FontKey = "font_key";
         private const string BgKey = "background_key";
         private const string LogInKey = "login_key";
         private static readonly string SettingsDefault = string.Empty;
@@ -72,6 +74,30 @@ namespace TDQ.Utils
             set
             {
                 AppSettings.AddOrUpdateValue(ThemeKey, value);
+            }
+        }
+
+        public static string FontIndexSettings
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(FontIndexKey, SettingsDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(FontIndexKey, value);
+            }
+        }
+
+        public static string FontSettings
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(FontKey, SettingsDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(FontKey, value);
             }
         }
 

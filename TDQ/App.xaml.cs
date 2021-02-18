@@ -13,6 +13,9 @@ namespace TDQ
         public string Theme { get; set; }
         public App()
         {
+            Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
+            Classes.SettingsPageFunctions.ChangeFontSize(Utils.SavedSettings.FontSettings);
+
             InitializeComponent();
 
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
@@ -30,7 +33,7 @@ namespace TDQ
 
         protected override void OnStart()
         {
-            Classes.SettingsPageFunctions.ChangeTheme();
+
         }
 
         protected override void OnSleep()
