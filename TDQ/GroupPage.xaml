@@ -13,6 +13,14 @@
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All">         
 
+            <Label x:Name="LblNewGroup"
+                   Text="You currently have no groups,
+                   please press the button in the top
+                   right to add a new group"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Italic"
+                   Margin="10"
+                   Style="{DynamicResource labelStyle}"/>
             <ListView x:Name="LstViewGroup" 
                       Margin="20"
                       HasUnevenRows="True"

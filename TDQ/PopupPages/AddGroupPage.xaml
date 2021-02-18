@@ -86,7 +86,7 @@
                             <ViewCell>
                                 <Label Text="{Binding}" TextColor="White"
                                        HorizontalTextAlignment="Center" HorizontalOptions="Center"
-                                       Style="{StaticResource labelStyle}"/>
+                                       Style="{DynamicResource labelStyle}"/>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

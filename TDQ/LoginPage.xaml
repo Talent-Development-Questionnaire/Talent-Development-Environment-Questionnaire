@@ -10,14 +10,20 @@
 
             <Entry x:Name="EntryEmail"
                    Placeholder="Email Address"
-                   PlaceholderColor="{DynamicResource TertiaryTextColour}"/>
+                   PlaceholderColor="{DynamicResource TertiaryTextColour}"
+                   Style="{DynamicResource entryStyle}"/>
 
             <Entry x:Name="EntryPassword"
                    Placeholder="Password"
                    PlaceholderColor="{DynamicResource TertiaryTextColour}"
-                   IsPassword="True"/>
+                   IsPassword="True"
+                   Style="{DynamicResource entryStyle}"/>
 
-            <Button x:Name="BtnLogin" Text="Log In" Clicked="BtnLogin_Clicked" Margin="40"/>
+            <Button x:Name="BtnLogin"
+                    Text="Log In"
+                    Clicked="BtnLogin_Clicked"
+                    Margin="40"
+                    Style="{DynamicResource buttonStyle}"/>
 
         </StackLayout>
     </StackLayout>

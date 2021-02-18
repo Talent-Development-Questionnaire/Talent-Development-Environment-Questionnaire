@@ -21,7 +21,8 @@
 
                     <Button Text="Sign Up"
                             Clicked="BtnSignUp_Clicked"
-                            Margin="30"/>
+                            Margin="30"
+                            Style="{DynamicResource buttonStyle}"/>
             </StackLayout>
 
         </Frame>
