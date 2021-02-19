@@ -29,6 +29,11 @@ namespace TDQ
                 PickerColour.SelectedIndex = Convert.ToInt32(Utils.SavedSettings.ThemeIndexSettings);
             else
                 PickerColour.SelectedIndex = 0;
+
+            if (!string.IsNullOrEmpty(Utils.SavedSettings.FontIndexSettings))
+                PickerFontSize.SelectedIndex = Convert.ToInt32(Utils.SavedSettings.FontIndexSettings);
+            else
+                PickerFontSize.SelectedIndex = 0;
         }
 
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
