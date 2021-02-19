@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:TDQ"
+       xmlns:template="clr-namespace:TDQ.Templates"
+             x:Class="TDQ.Navigation_Drawer_Logged_In"
+       BackgroundColor="{DynamicResource PrimaryColour}">
+
+
+    <Shell.FlyoutHeader>
+        <template:HeaderContent/>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem
+                Shell.TabBarIsVisible="False"
+                FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Home" Icon="ic_home.png" IsTabStop="True" ContentTemplate="{DataTemplate local:MainPage}"/>
+        <ShellContent Title="Questionnaire" Icon="ic_question.png" IsTabStop="True" ContentTemplate="{DataTemplate local:QuestionnairePage}"/>
+        <ShellContent Title="Groups" Icon="ic_groups.png" IsTabStop="True" ContentTemplate="{DataTemplate local:GroupPage}"/>
+        <ShellContent Title="Goals" Icon="ic_goals.png" IsTabStop="True" ContentTemplate="{DataTemplate local:GoalsPage}"/>
+    </FlyoutItem>
+    
+    <ShellContent Title="Settings" Icon="ic_settings.png" IsTabStop="True" ContentTemplate="{DataTemplate local:SettingsPage}"/>
+    <ShellContent Title="Account" Icon="ic_account.png" IsTabStop="True" ContentTemplate="{DataTemplate template:LoginTabView}"/>
+    
+</Shell>

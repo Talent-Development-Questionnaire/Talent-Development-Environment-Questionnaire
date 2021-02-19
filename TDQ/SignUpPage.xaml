@@ -4,18 +4,37 @@
              x:Class="TDQ.SignUpPage">
 
     <StackLayout>
-        <StackLayout VerticalOptions="CenterAndExpand" Margin="40" BackgroundColor="#4C000000">
-            <ScrollView VerticalScrollBarVisibility="Always" Orientation="Vertical" HeightRequest="200">
-                <StackLayout>
-                <Entry Placeholder="First Name"/>
-                <Entry Placeholder="Last Name"/>
-                <Entry Placeholder="D.O.B"/>
-                <Entry Placeholder="Email"/>
-                <Entry Placeholder="Password"/>
-                <Entry Placeholder="Confirm Password"/>
+
+        <Frame VerticalOptions="CenterAndExpand"
+                Margin="30,10,30,0"
+                BackgroundColor="WhiteSmoke"
+                Padding="15"
+                CornerRadius="30">
+            
+            <StackLayout Margin="5">
+                <Entry x:Name="EntryFirstName"
+                       Placeholder="First Name"
+                       Style="{DynamicResource entryStyle}"/>
+                <Entry x:Name="EntryLastName"
+                       Placeholder="Last Name"
+                       Style="{DynamicResource entryStyle}"/>
+                <Entry x:Name="EntryEmail"
+                        Placeholder="Email"
+                        Style="{DynamicResource entryStyle}"
+                        TextChanged="EntryEmail_TextChanged"/>
+                <Entry x:Name="EntryPassword"
+                        Placeholder="Password"
+                        Style="{DynamicResource entryStyle}"/>
+                <Entry x:Name="EntryConfirmPassword"
+                        Placeholder="Confirm Password"
+                        Style="{DynamicResource entryStyle}"/>
+
+                <Button Text="Sign Up"
+                        Clicked="BtnSignUp_Clicked"
+                        Margin="30"
+                        Style="{DynamicResource buttonStyle}"/>
             </StackLayout>
-            </ScrollView>
-            <Button Text="Sign Up" Margin="30"/>
-        </StackLayout>
+
+        </Frame>
     </StackLayout>
 </ContentPage>

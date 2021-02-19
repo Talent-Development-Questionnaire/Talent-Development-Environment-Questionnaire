@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace TDQ
+namespace TDQ.Themes
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Navigation_Drawer : Shell
+    public partial class X_LargeFontStyle : ResourceDictionary
     {
-        public Navigation_Drawer()
+        public X_LargeFontStyle()
         {
             InitializeComponent();
-            Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
         }
     }
 }

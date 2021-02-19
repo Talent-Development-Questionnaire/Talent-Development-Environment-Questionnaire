@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace TDQ
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Navigation_Drawer : Shell
+    public partial class Navigation_Drawer_Logged_In : Shell
     {
-        public Navigation_Drawer()
+        public Navigation_Drawer_Logged_In()
         {
             InitializeComponent();
             Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);

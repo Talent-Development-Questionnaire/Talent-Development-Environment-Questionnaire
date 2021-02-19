@@ -6,7 +6,6 @@
 
     <AbsoluteLayout>
 
-
         <Image x:Name="ImgBg"
                Aspect="AspectFill"
                AbsoluteLayout.LayoutBounds="0,0,1,1"
@@ -15,10 +14,17 @@
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All">
 
+            <Label Text="You currently have no questionnaires, please press the button below right to send a new questionnaire"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Italic"
+                   Margin="10"
+                   Style="{DynamicResource labelStyle}"/>
+
             <Button x:Name="BtnAddQuestionnaire"
                     VerticalOptions="EndAndExpand"
                     Margin="30,0,30,10"
                     Text="Add Questionnaire"
+                    Style="{DynamicResource buttonStyle}"
                     Clicked="BtnAddQuestionnaire_Clicked"/>
         </StackLayout>
     </AbsoluteLayout>

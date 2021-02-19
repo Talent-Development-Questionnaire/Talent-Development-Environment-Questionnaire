@@ -18,11 +18,12 @@
             <Frame HorizontalOptions="CenterAndExpand" HasShadow="True"
                    Padding="0" Margin="0,0,0,20">
 
-                <Picker x:Name="PickerColour" Title="Select a Theme" FontSize="Large"
+                <Picker x:Name="PickerColour" 
+                        Title="Select a Theme" 
+                        Style="{DynamicResource pickerStyle}"
                         WidthRequest="500" HorizontalTextAlignment="Center"
                         TitleColor="{DynamicResource TertiaryTextColour}"
                         TextColor="{DynamicResource PrimaryTextColour}"
-                        SelectedIndex="{Binding ThemeChoice}"
                         SelectedIndexChanged="Picker_SelectedIndexChanged">
 
                     <Picker.Items>
@@ -39,11 +40,13 @@
             <Frame HorizontalOptions="CenterAndExpand" HasShadow="True"
                    Padding="0" Margin="0,0,0,20">
 
-                <Picker x:Name="PickerFontSize" Title="Change Font Size" FontSize="Large"
+                <Picker x:Name="PickerFontSize" 
+                        Title="Change Font Size" 
+                        Style="{DynamicResource pickerStyle}"
                         WidthRequest="500" HorizontalTextAlignment="Center"
                         TitleColor="{DynamicResource TertiaryTextColour}"
                         TextColor="{DynamicResource PrimaryTextColour}"
-                        SelectedIndex="0">
+                        SelectedIndexChanged="PickerFontSize_SelectedIndexChanged">
 
                     <Picker.Items>
                         <x:String>Small</x:String>
@@ -69,21 +72,33 @@
 
                     <Label Text="Add Background" HorizontalTextAlignment="Center" Grid.Row="0"
                            Grid.ColumnSpan="2"
-                           FontSize="Large" TextColor="{DynamicResource PrimaryTextColour}"/>
+                           TextColor="{DynamicResource PrimaryTextColour}"
+                           Style="{DynamicResource labelStyle}"/>
+                    
                     <ImageButton x:Name="BtnAddBg" Source="ic_action_add_a_photo.png" Grid.Row="1" 
                                  Clicked="BtnAddBg_Clicked" Grid.ColumnSpan="2"
                                  WidthRequest="64"
                                  HeightRequest="64"
                                  BackgroundColor="{DynamicResource TransparentColour}"/>
+
+                    <Button x:Name="BtnDeleteBg"
+                            Text="Delete Background"
+                            Grid.Row="2" Grid.ColumnSpan="2"
+                            Style="{DynamicResource buttonStyle}"
+                            Clicked="BtnDeleteBg_Clicked"/>
                 </Grid>
             </Frame>
 
             <Button Text="Log Out"
                     TextColor="Black"
                     BackgroundColor="White"
-                    Margin="0,20,0,0"/>
+                    Margin="0,20,0,0"
+                    Style="{DynamicResource buttonStyle}"
+                    Clicked="BtnLogOut_Clicked"/>
+            
             <Button Text="Delete Account"
                     TextColor="Black"
+                    Style="{DynamicResource buttonStyle}"
                     BackgroundColor="White"/>
 
         </StackLayout>

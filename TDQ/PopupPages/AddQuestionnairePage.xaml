@@ -13,9 +13,11 @@
                CornerRadius="30">
             <StackLayout>
 
-                <Entry Placeholder="Type Unique Name"/>
+                <Entry Placeholder="Type Unique Name"
+                       Style="{DynamicResource entryStyle}"/>
+
                 <Grid HorizontalOptions="Center"
-                  ColumnSpacing="70">
+                      ColumnSpacing="70">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -26,11 +28,13 @@
                 <!-- When testing on Wez's Sony phone the text is too large, however, if fontsize is removed then the text is perfect on wez's phone but too small on the designer  -->
                 <!-- We should have a look at making all the font sizes the same rather than using Large, medium etc-->
 
-                <Picker x:Name="PickerQuestionnaire" Title="Select Questionnaire" FontSize="Medium"
-                    WidthRequest="500" 
-                    TextColor="{DynamicResource PrimaryTextColour}"
-                    SelectedIndex= "0"
-                    SelectedIndexChanged="Picker_SelectedIndexChanged">
+                <Picker x:Name="PickerQuestionnaire" 
+                        Title="Select Questionnaire" 
+                        Style="{DynamicResource pickerStyle}"
+                        WidthRequest="500" 
+                        TextColor="{DynamicResource PrimaryTextColour}"
+                        SelectedIndex= "0"
+                        SelectedIndexChanged="Picker_SelectedIndexChanged">
                     <Picker.Items>
                         <x:String>59 Question</x:String>
                         <x:String>29 Question</x:String>
@@ -38,15 +42,20 @@
                 </Picker>
 
                 <Picker x:Name="PickerGroup"
-                        SelectedIndexChanged="PickerGroup_SelectedIndexChanged"
-                        Title="Choose Group"/>
+                        Title="Choose Group"
+                        Style="{DynamicResource pickerStyle}"
+                        SelectedIndexChanged="PickerGroup_SelectedIndexChanged"/>
                 <Entry Placeholder="Add new email"/>
                 
 
-                <ListView x:Name="LstViewEmails" HeightRequest="150" VerticalScrollBarVisibility="Always"/>
+                <ListView x:Name="LstViewEmails" 
+                          Style="{DynamicResource listviewStyle}"
+                          HeightRequest="150" 
+                          VerticalScrollBarVisibility="Always"/>
 
                 <Button x:Name="BtnSendQuestionnaire"
                         Text="Send"
+                        Style="{DynamicResource buttonStyle}"
                         Clicked="BtnSendQuestionnaire_Clicked"/>
             </StackLayout>
         </Frame>

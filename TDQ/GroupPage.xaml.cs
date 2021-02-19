@@ -53,6 +53,9 @@ namespace TDQ
 
             //Updates list view with generated list
             LstViewGroup.ItemsSource = Groups;
+
+            HideList();
+
         }
 
         private async void ImgBtnAddGroup_Clicked(object sender, EventArgs e)
@@ -91,6 +94,22 @@ namespace TDQ
 
             //Updates the list view with the new list
             LstViewGroup.ItemsSource = Groups;
+
+            HideList();
+        }
+
+        public void HideList()
+        {
+            if (Groups == null || Groups.Count() == 0)
+            {
+                LstViewGroup.IsVisible = false;
+                LblNewGroup.IsVisible = true;
+            }
+            else
+            {
+                LstViewGroup.IsVisible = true;
+                LblNewGroup.IsVisible = false;
+            }
         }
     }
 }

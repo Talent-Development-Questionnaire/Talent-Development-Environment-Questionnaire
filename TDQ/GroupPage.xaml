@@ -13,6 +13,12 @@
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All">         
 
+            <Label x:Name="LblNewGroup"
+                   Text="You currently have no groups, please press the button in the top right to add a new group"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Italic"
+                   Margin="10"
+                   Style="{DynamicResource labelStyle}"/>
             <ListView x:Name="LstViewGroup" 
                       Margin="20"
                       HasUnevenRows="True"
@@ -40,10 +46,14 @@
                                        HeightRequest="100"/>
 
                                 <StackLayout>
-                                    <Label Text="{Binding Name}" TextColor="Black" FontSize="Large" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Name}" 
+                                           TextColor="Black" 
+                                           FontSize="Large" 
+                                           FontAttributes="Bold"/>
+                                    
                                     <StackLayout Orientation="Horizontal">
-                                    <Label Text=" No. of Members: " TextColor="Black" FontSize="Medium"/>
-                                    <Label Text="{Binding GroupNo}" TextColor="Black" FontSize="Medium"/>
+                                    <Label Text=" No. of Members: " TextColor="Black" Style="{DynamicResource labelStyle}"/>
+                                        <Label Text="{Binding GroupNo}" TextColor="Black" Style="{DynamicResource labelStyle}"/>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>

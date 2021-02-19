@@ -19,11 +19,21 @@ namespace TDQ.PopupPages
         public AddGroupPage()
         {
             InitializeComponent();
+
+            if (Device.RuntimePlatform == "iOS")
+                BtnCanel.IsVisible = true;
+            else
+                BtnCanel.IsVisible = false;
         }
 
         public AddGroupPage(Group currentGroup)
         {
             InitializeComponent();
+
+            if (Device.RuntimePlatform == "iOS")
+                BtnCanel.IsVisible = true;
+            else
+                BtnCanel.IsVisible = false;
 
             //sets the image to the selected Groups image
             ImgBtnAddGroupPhoto.Source = currentGroup.ImageFilePath;
@@ -152,6 +162,11 @@ namespace TDQ.PopupPages
                     if (!emails.Contains(item.ToString()))
                         emails.Add(item.ToString());
 
+        }
+
+        void BtnCanel_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PopModalAsync();
         }
     }
 }
