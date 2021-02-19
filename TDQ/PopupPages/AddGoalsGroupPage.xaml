@@ -19,9 +19,13 @@
                        FontSize="36"
                        FontAttributes="Italic"/>
 
-                <Picker x:Name="PickerGroup"
-                            Title="Choose Group"
-                            Style="{DynamicResource pickerStyle}"/>
+                    <Picker x:Name="PickerGroup"
+                                Title="Choose Group"
+                                Style="{DynamicResource pickerStyle}"/>
+                    <Button x:Name="BtnSaveGoalsGroup"
+                        Text="Save"
+                        VerticalOptions="EndAndExpand"                      
+                        Style="{DynamicResource buttonStyle}"/>
             </StackLayout>
             </Frame>                
         </StackLayout>
