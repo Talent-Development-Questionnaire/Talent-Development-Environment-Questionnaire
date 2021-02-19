@@ -33,6 +33,9 @@ namespace TDQ.Templates
                 Title = "Pick a photo"
             });
 
+            if(result == null)
+                return;
+
             AccountImage.Source = ImageSource.FromFile(result.FullPath);
 
             try
