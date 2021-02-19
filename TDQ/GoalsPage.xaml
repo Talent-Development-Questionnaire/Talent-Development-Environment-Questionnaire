@@ -5,7 +5,7 @@
              x:Name="GoalsContentPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="ic_action_add.png" Priority="0" Order="Primary"/>
+        <ToolbarItem Icon="ic_action_add.png" Priority="0" Order="Primary" Clicked="AddButton_Clicked"/>
     </ContentPage.ToolbarItems>
     
     <AbsoluteLayout>
@@ -17,9 +17,6 @@
 
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All"> 
-            
-            
-
         </StackLayout>
     </AbsoluteLayout>
 </ContentPage>

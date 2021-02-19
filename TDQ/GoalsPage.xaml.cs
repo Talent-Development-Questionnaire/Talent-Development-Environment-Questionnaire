@@ -21,5 +21,11 @@ namespace TDQ
         {
             Classes.SettingsPageFunctions.SetBackground(ImgBg, GoalsContentPage);
         }
+
+        private async void AddButton_Clicked(object sender, EventArgs e)
+        {
+            //opens new AddGroupPage, sets the binding context to Group object
+            await Navigation.PushModalAsync(new PopupPages.AddGoalsGroupPage());
+        }
     }
 }
