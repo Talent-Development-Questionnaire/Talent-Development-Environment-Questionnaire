@@ -24,7 +24,7 @@ namespace TDQ
 
         private async void AddButton_Clicked(object sender, EventArgs e)
         {
-            //opens new AddGroupPage, sets the binding context to Group object
+            //opens new AddGoalsGroupPage
             await Navigation.PushModalAsync(new PopupPages.AddGoalsGroupPage());
         }
     }
