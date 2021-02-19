@@ -49,13 +49,11 @@ namespace TDQ
                     ImageFilePath = splitText[2],
                     EmailList = emailList
                 });
+                LstViewGroup.ItemsSource = Groups;
             }
-
+          
             //Updates list view with generated list
-            LstViewGroup.ItemsSource = Groups;
-
             HideList();
-
         }
 
         private async void ImgBtnAddGroup_Clicked(object sender, EventArgs e)

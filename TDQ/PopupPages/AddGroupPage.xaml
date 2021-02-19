@@ -17,7 +17,8 @@
 
             <StackLayout>
 
-                <Label Text="New Group"
+                <Label x:Name="LblTitle"
+                       Text="New Group"
                        TextColor="White"
                        HorizontalTextAlignment="Center"
                        FontSize="36"
@@ -69,7 +70,6 @@
                 </Grid>
                 
                 <ListView x:Name="emailList"
-                          Style="{DynamicResource listviewStyle}"
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="Center"
                         HeightRequest="250"
@@ -99,7 +99,7 @@
                         TextColor="White"
                         Style="{DynamicResource buttonStyle}"
                         BackgroundColor="#4C000000"
-                        Clicked="BtnCanel_Clicked"/>
+                        Clicked="BtnCancel_Clicked"/>
                 
             </StackLayout>
         </Frame>

@@ -35,6 +35,8 @@ namespace TDQ.PopupPages
             else
                 BtnCanel.IsVisible = false;
 
+            LblTitle.Text = "Edit Group";
+
             //sets the image to the selected Groups image
             ImgBtnAddGroupPhoto.Source = currentGroup.ImageFilePath;
             //Resets save image filepath setting to null
@@ -164,7 +166,7 @@ namespace TDQ.PopupPages
 
         }
 
-        void BtnCanel_Clicked(System.Object sender, System.EventArgs e)
+        void BtnCancel_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PopModalAsync();
         }
