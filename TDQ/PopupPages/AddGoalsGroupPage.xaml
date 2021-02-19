@@ -17,8 +17,11 @@
                        TextColor="White"
                        HorizontalTextAlignment="Center"
                        FontSize="36"
-                       FontAttributes="Italic"/>           
+                       FontAttributes="Italic"/>
 
+                <Picker x:Name="PickerGroup"
+                            Title="Choose Group"
+                            Style="{DynamicResource pickerStyle}"/>
             </StackLayout>
             </Frame>                
         </StackLayout>
