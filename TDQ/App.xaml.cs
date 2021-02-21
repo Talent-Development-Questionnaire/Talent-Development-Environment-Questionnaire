@@ -12,13 +12,16 @@ namespace TDQ
 
         public string Theme { get; set; }
         public App()
-        {
+        { 
+            InitializeComponent();
+
+            Sharpnado.MaterialFrame.Initializer.Initialize(true, false);
+
             Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
             Classes.SettingsPageFunctions.ChangeFontSize(Utils.SavedSettings.FontSettings);
 
-            InitializeComponent();
-
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+
             switch(Utils.SavedSettings.LoginSettings)
             {
                 case "LoggedIn":

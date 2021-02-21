@@ -134,6 +134,9 @@
     <PackageReference Include="MySql.Data">
       <Version>8.0.23</Version>
     </PackageReference>
+    <PackageReference Include="Sharpnado.Presentation.Forms">
+      <Version>1.7.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -145,6 +148,8 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_goals.png" />
     <BundleResource Include="Resources\ic_action_add_a_photo.png" />
+    <BundleResource Include="Resources\ic_action_add.png" />
+    <BundleResource Include="Resources\ic_action_edit.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_groups.png" />

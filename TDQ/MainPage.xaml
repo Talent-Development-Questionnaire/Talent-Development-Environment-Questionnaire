@@ -5,6 +5,9 @@
              x:Name="MainContentPage"
              Title="Home">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_action_add.png"/>
+    </ContentPage.ToolbarItems>
     <AbsoluteLayout>
 
         <Image x:Name="ImgBg"

@@ -4,6 +4,12 @@
              x:Class="TDQ.GroupPage"
              x:Name="GroupContentPage"
              Title="Groups">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_action_add.png"
+                     Clicked="ImgBtnAddGroup_Clicked"/>
+    </ContentPage.ToolbarItems>
+
     <AbsoluteLayout>
 
         <Image x:Name="ImgBg"
@@ -53,8 +59,10 @@
                                            FontAttributes="Bold"/>
                                     
                                     <StackLayout Orientation="Horizontal">
+                                        
                                     <Label Text=" No. of Members: " TextColor="Black" Style="{DynamicResource labelStyle}"/>
-                                        <Label Text="{Binding GroupNo}" TextColor="Black" Style="{DynamicResource labelStyle}"/>
+                                    <Label Text="{Binding GroupNo}" TextColor="Black" Style="{DynamicResource labelStyle}"/>
+
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
@@ -62,14 +70,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
-            <ImageButton x:Name="ImgBtnAddGroup"    
-                Source="ic_add_circle_outline.png"
-                HorizontalOptions="Center"
-                VerticalOptions="EndAndExpand"
-                BackgroundColor="Transparent"
-                Margin="0,0,0,10"
-                Clicked="ImgBtnAddGroup_Clicked"/>
         </StackLayout>
     </AbsoluteLayout>
 

@@ -25,9 +25,6 @@
                     </Grid.ColumnDefinitions>
                 </Grid>
 
-                <!-- When testing on Wez's Sony phone the text is too large, however, if fontsize is removed then the text is perfect on wez's phone but too small on the designer  -->
-                <!-- We should have a look at making all the font sizes the same rather than using Large, medium etc-->
-
                 <Picker x:Name="PickerQuestionnaire" 
                         Title="Select Questionnaire" 
                         Style="{DynamicResource pickerStyle}"
@@ -48,10 +45,16 @@
                 <Entry Placeholder="Add new email"/>
                 
 
-                <ListView x:Name="LstViewEmails" 
-                          Style="{DynamicResource listviewStyle}"
+                <ListView x:Name="LstViewEmails"
                           HeightRequest="150" 
-                          VerticalScrollBarVisibility="Always"/>
+                          VerticalScrollBarVisibility="Always">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding .}"
+                                      TextColor="White"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
                 <Button x:Name="BtnSendQuestionnaire"
                         Text="Send"

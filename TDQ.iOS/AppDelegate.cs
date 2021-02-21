@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿
 using Foundation;
-using ImageCircle.Forms.Plugin.iOS;
+using Sharpnado.Presentation.Forms.iOS;
 using UIKit;
 
 namespace TDQ.iOS
@@ -23,9 +20,10 @@ namespace TDQ.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            ImageCircleRenderer.Init();
-
             global::Xamarin.Forms.Forms.Init();
+
+            SharpnadoInitializer.Initialize();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

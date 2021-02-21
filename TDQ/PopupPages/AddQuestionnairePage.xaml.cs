@@ -22,6 +22,11 @@ namespace TDQ.PopupPages
         public AddQuestionnairePage()
         {
             InitializeComponent();
+
+            if(Device.RuntimePlatform == "iOS")
+            {
+                LstViewEmails.BackgroundColor = Color.Transparent;
+            }
         }
 
         protected override void OnAppearing()

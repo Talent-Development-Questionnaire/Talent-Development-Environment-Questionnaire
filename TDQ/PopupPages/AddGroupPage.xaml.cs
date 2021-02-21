@@ -20,8 +20,15 @@ namespace TDQ.PopupPages
         {
             InitializeComponent();
 
+            ListVisibility();
+
             if (Device.RuntimePlatform == "iOS")
+            {
                 BtnCanel.IsVisible = true;
+                emailList.BackgroundColor = Color.Transparent;
+                entryEmail.BackgroundColor = Color.Transparent;
+                entryName.BackgroundColor = Color.Transparent;
+            }
             else
                 BtnCanel.IsVisible = false;
         }
@@ -42,6 +49,14 @@ namespace TDQ.PopupPages
             //Resets save image filepath setting to null
             Utils.SavedSettings.GroupImageSetting = null;
             CheckList();
+        }
+
+        void ListVisibility()
+        {
+            if (emailList.ItemsSource == null)
+                emailList.IsVisible = false;
+            else
+                emailList.IsVisible = true;
         }
 
         private async void ImgBtnAddGroupPhoto_Clicked(object sender, EventArgs e)
@@ -83,7 +98,10 @@ namespace TDQ.PopupPages
                 }
 
             //Updates list view with newly added email
+            if(emailList.Height < 160)
+                emailList.HeightRequest = 40 * emails.Count();
             emailList.ItemsSource = emails.ToArray();
+            ListVisibility();
         }
 
         private async void BtnSave_Clicked(object sender, EventArgs e)

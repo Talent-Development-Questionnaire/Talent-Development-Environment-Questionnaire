@@ -68,6 +68,9 @@
     <PackageReference Include="MySql.Data">
       <Version>8.0.23</Version>
     </PackageReference>
+    <PackageReference Include="Sharpnado.Presentation.Forms">
+      <Version>1.7.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -101,6 +104,14 @@
       </SubType>
       <Generator>
       </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\ic_action_add.png">
+      <SubType></SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\ic_action_edit.png">
+      <SubType></SubType>
+      <Generator></Generator>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
