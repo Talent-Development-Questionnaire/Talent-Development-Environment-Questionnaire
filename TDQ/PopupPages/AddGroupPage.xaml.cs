@@ -23,12 +23,7 @@ namespace TDQ.PopupPages
             ListVisibility();
 
             if (Device.RuntimePlatform == "iOS")
-            {
                 BtnCanel.IsVisible = true;
-                emailList.BackgroundColor = Color.Transparent;
-                entryEmail.BackgroundColor = Color.Transparent;
-                entryName.BackgroundColor = Color.Transparent;
-            }
             else
                 BtnCanel.IsVisible = false;
         }
@@ -37,6 +32,7 @@ namespace TDQ.PopupPages
         {
             InitializeComponent();
 
+            emailList.HeightRequest = 160;
             if (Device.RuntimePlatform == "iOS")
                 BtnCanel.IsVisible = true;
             else
@@ -97,9 +93,10 @@ namespace TDQ.PopupPages
                     entryEmail.Text = string.Empty;
                 }
 
-            //Updates list view with newly added email
             if(emailList.Height < 160)
-                emailList.HeightRequest = 40 * emails.Count();
+                emailList.HeightRequest = 35 * emails.Count();
+
+            //Updates list view with newly added email
             emailList.ItemsSource = emails.ToArray();
             emailList.ScrollTo(emails[emails.Count()-1], ScrollToPosition.MakeVisible, true);
             ListVisibility();

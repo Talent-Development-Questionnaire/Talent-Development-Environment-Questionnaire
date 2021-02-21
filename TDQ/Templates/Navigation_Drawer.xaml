@@ -10,7 +10,7 @@
         <template:HeaderContent/>
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Shell.TabBarIsVisible="True"
+    <FlyoutItem Shell.TabBarIsVisible="False"
                 FlyoutDisplayOptions="AsMultipleItems">
 
         <ShellContent Title="Home" Icon="ic_home.png" IsTabStop="True" ContentTemplate="{DataTemplate local:MainPage}"/>

@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDQ.MainPage"
              x:Name="MainContentPage"
-             Title="Home">
+             Title="Home"
+             Style="{DynamicResource contentStyle}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="ic_action_add.png"/>
+        <ToolbarItem IconImageSource="ic_action_add.png"
+                     Clicked="BtnAddQuestionnaire_Clicked"/>
     </ContentPage.ToolbarItems>
     <AbsoluteLayout>
 
@@ -23,13 +25,6 @@
                    FontAttributes="Italic"
                    Margin="10"
                    Style="{DynamicResource labelStyle}"/>
-
-            <Button x:Name="BtnAddQuestionnaire"
-                    VerticalOptions="EndAndExpand"
-                    Margin="30,0,30,10"
-                    Text="Add Questionnaire"
-                    Style="{DynamicResource buttonStyle}"
-                    Clicked="BtnAddQuestionnaire_Clicked"/>
         </StackLayout>
     </AbsoluteLayout>
 

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDQ.GroupPage"
              x:Name="GroupContentPage"
-             Title="Groups">
+             Title="Groups"
+             Style="{DynamicResource contentStyle}">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_action_add.png"
@@ -26,11 +27,13 @@
                    FontAttributes="Italic"
                    Margin="10"
                    Style="{DynamicResource labelStyle}"/>
+
             <ListView x:Name="LstViewGroup" 
                       Margin="20"
                       HasUnevenRows="True"
                       ItemSelected="LstViewGroup_ItemSelected"
-                      ItemsSource="{Binding Groups}">
+                      ItemsSource="{Binding Groups}"
+                      BackgroundColor="Transparent">
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -45,7 +48,7 @@
                             <StackLayout Orientation="Horizontal"
                                          Padding="5"
                                          Margin="0,5,0,5"
-                                         BackgroundColor="#64F5F5F5">
+                                         BackgroundColor="Transparent">
 
                                 <Image Source="{Binding ImageFilePath}"
                                        Aspect="AspectFill"
@@ -54,14 +57,14 @@
 
                                 <StackLayout>
                                     <Label Text="{Binding Name}" 
-                                           TextColor="Black" 
-                                           FontSize="Large" 
+                                           TextColor="{DynamicResource PrimaryTextColour}" 
+                                           FontSize="36"
                                            FontAttributes="Bold"/>
                                     
                                     <StackLayout Orientation="Horizontal">
                                         
-                                    <Label Text=" No. of Members: " TextColor="Black" Style="{DynamicResource labelStyle}"/>
-                                    <Label Text="{Binding GroupNo}" TextColor="Black" Style="{DynamicResource labelStyle}"/>
+                                    <Label Text=" No. of Members: " Style="{DynamicResource labelStyle}"/>
+                                    <Label Text="{Binding GroupNo}" Style="{DynamicResource labelStyle}"/>
 
                                     </StackLayout>
                                 </StackLayout>

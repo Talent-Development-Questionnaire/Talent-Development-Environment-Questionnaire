@@ -10,7 +10,6 @@ namespace TDQ
     {
         public static string FolderPath { get; private set; }
 
-        public string Theme { get; set; }
         public App()
         { 
             InitializeComponent();

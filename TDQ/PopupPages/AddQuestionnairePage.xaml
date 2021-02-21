@@ -8,8 +8,8 @@
 
     <StackLayout VerticalOptions="CenterAndExpand">
         <Frame Margin="50"
-                 Padding="30"
-                 BackgroundColor="#4C000000"
+               Padding="30"
+               BackgroundColor="#4C000000"
                CornerRadius="30">
             <StackLayout>
 
@@ -42,7 +42,8 @@
                         Title="Choose Group"
                         Style="{DynamicResource pickerStyle}"
                         SelectedIndexChanged="PickerGroup_SelectedIndexChanged"/>
-                <Entry Placeholder="Add new email"/>
+                <Entry Placeholder="Add new email"
+                       Style="{DynamicResource entryStyle}"/>
                 
 
                 <ListView x:Name="LstViewEmails"
@@ -51,7 +52,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding .}"
-                                      TextColor="White"/>
+                                      TextColor="{DynamicResource PrimaryTextColour}"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

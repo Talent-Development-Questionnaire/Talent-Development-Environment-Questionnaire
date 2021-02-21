@@ -10,4 +10,8 @@
     <Color x:Key="SecondaryTextColour">White</Color>
     <Color x:Key="TertiaryTextColour">Gray</Color>
     <Color x:Key="TransparentColour">Transparent</Color>
+    <Color x:Key="FrameColour">WhiteSmoke</Color>
+
+    <Color x:Key="BackgroundColour">White</Color>
+
 </ResourceDictionary>

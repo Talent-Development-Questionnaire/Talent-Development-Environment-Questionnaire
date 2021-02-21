@@ -5,10 +5,13 @@
 
     <Color x:Key="PrimaryColour">#0D0D0D</Color>
     <Color x:Key="SecondaryColour">#7F7F7F</Color>
-    <Color x:Key="TertiaryColour">#FFD8A3</Color>
+    <Color x:Key="BackgroundColour">#D9D9D9</Color>
     <Color x:Key="PrimaryTextColour">White</Color>
     <Color x:Key="SecondaryTextColour">WhiteSmoke</Color>
     <Color x:Key="TertiaryTextColour">LightGray</Color>
     <Color x:Key="TransparentColour">Transparent</Color>
+    <Color x:Key="FrameColour">#7F7F7F</Color>
+
+
 
 </ResourceDictionary>

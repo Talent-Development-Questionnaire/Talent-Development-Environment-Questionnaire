@@ -7,16 +7,15 @@ namespace TDQ.Classes
 {
     public class SettingsPageFunctions
     {
+
         //Sets the chosen image as app background
         public static void SetBackground(Image img, ContentPage page)
         {
             if (!string.IsNullOrEmpty(Utils.SavedSettings.BackgroundSettings))
                 img.Source = ImageSource.FromFile(Utils.SavedSettings.BackgroundSettings);
             else if (img.Source == null || string.IsNullOrEmpty(Utils.SavedSettings.BackgroundSettings))
-            {
                 img.Source = null;
-                page.BackgroundColor = Color.White;
-            }
+
         }
 
         public static void DeleteBackgroundVisibility(Button delete)
@@ -32,6 +31,7 @@ namespace TDQ.Classes
         public static void ChangeTheme(string item)
         {
             ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+
             //resets app's resource dictionary to null
             //changes app resource dictionary depending on what the user chooses
             if (mergedDictionaries != null)
@@ -40,11 +40,6 @@ namespace TDQ.Classes
             }
             switch (item)
             {
-                case "Red": //Red and main theme
-                    Utils.SavedSettings.ThemeIndexSettings = "0"; // Saves the chosen index
-                    Utils.SavedSettings.ThemeSettings = "Main"; // Saves which theme was chosen
-                    mergedDictionaries.Add(new Themes.MainTheme()); // Sets the chosen theme
-                    break;
 
                 case "Blue": //Blue theme
                     Utils.SavedSettings.ThemeIndexSettings = "1";
@@ -78,11 +73,13 @@ namespace TDQ.Classes
 
                 default:
                     Utils.SavedSettings.ThemeIndexSettings = "0"; // Saves the chosen index
-                    Utils.SavedSettings.ThemeSettings = "Main"; // Saves which theme was chosen
+                    Utils.SavedSettings.ThemeSettings = "Main";// Saves which theme was chosen
                     mergedDictionaries.Add(new Themes.MainTheme()); // Sets the chosen theme
                     break;
 
             }
+
+            ChangeFontSize(Utils.SavedSettings.FontSettings);
         }
 
         public static void ChangeFontSize(string item)
@@ -92,38 +89,39 @@ namespace TDQ.Classes
             //changes app resource dictionary depending on what the user chooses
             if (mergedDictionaries != null)
             {
-                switch (item)
-                {
-                    case "Small": //Small Font
-                        Utils.SavedSettings.FontIndexSettings = "0"; // Saves the chosen index
-                        Utils.SavedSettings.FontSettings = "Small"; // Saves which theme was chosen
-                        mergedDictionaries.Add(new Themes.SmallFontStyle()); // Sets the chosen theme
+                foreach (var itm in mergedDictionaries)
+                    if (itm.ToString().Contains("FontStyle"))
+                    {
+                        mergedDictionaries.Remove(itm);
                         break;
+                    }
+            }
 
-                    case "Medium": //Medium Font
-                        Utils.SavedSettings.FontIndexSettings = "1";
-                        Utils.SavedSettings.FontSettings = "Medium";
-                        mergedDictionaries.Add(new Themes.MediumFontStyle());
-                        break;
+            switch (item)
+            {
+                case "Small": //Medium Font
+                    Utils.SavedSettings.FontIndexSettings = "0";
+                    Utils.SavedSettings.FontSettings = "Small";
+                    mergedDictionaries.Add(new Themes.SmallFontStyle());
+                    break;
 
-                    case "Large": //Large Font
-                        Utils.SavedSettings.FontIndexSettings = "2";
-                        Utils.SavedSettings.FontSettings = "Large";
-                        mergedDictionaries.Add(new Themes.LargeFontStyle());
-                        break;
+                case "Large": //Large Font
+                    Utils.SavedSettings.FontIndexSettings = "2";
+                    Utils.SavedSettings.FontSettings = "Large";
+                    mergedDictionaries.Add(new Themes.LargeFontStyle());
+                    break;
 
-                    case "X-Large": //Extra Large Font
-                        Utils.SavedSettings.FontIndexSettings = "3";
-                        Utils.SavedSettings.FontSettings = "X-Large";
-                        mergedDictionaries.Add(new Themes.X_LargeFontStyle());
-                        break;
+                case "X-Large": //Extra Large Font
+                    Utils.SavedSettings.FontIndexSettings = "3";
+                    Utils.SavedSettings.FontSettings = "X-Large";
+                    mergedDictionaries.Add(new Themes.X_LargeFontStyle());
+                    break;
 
-                    default:
-                        Utils.SavedSettings.FontIndexSettings = "0"; // Saves the chosen index
-                        Utils.SavedSettings.FontSettings = "Small"; // Saves which theme was chosen
-                        mergedDictionaries.Add(new Themes.SmallFontStyle()); // Sets the chosen theme
-                        break;
-                }
+                default:
+                    Utils.SavedSettings.FontIndexSettings = "1"; // Saves the chosen index
+                    Utils.SavedSettings.FontSettings = "Medium"; // Saves which font was chosen
+                    mergedDictionaries.Add(new Themes.MediumFontStyle()); // Sets the chosen theme
+                    break;
             }
         }
     }

@@ -14,7 +14,7 @@ namespace TDQ
     {
         public SettingsPage()
         {
-                InitializeComponent();        
+            InitializeComponent();        
         }
 
         protected override void OnAppearing()

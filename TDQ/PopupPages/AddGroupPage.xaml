@@ -4,14 +4,13 @@
              xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              x:Class="TDQ.PopupPages.AddGroupPage"
              xmlns:sharp="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
-             BackgroundColor="Transparent"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.ModalPresentationStyle="OverFullScreen">
+             ios:Page.ModalPresentationStyle="OverFullScreen"
+             BackgroundColor="Transparent">
 
     <StackLayout VerticalOptions="CenterAndExpand">
 
-        <sharp:MaterialFrame Margin="50"
-                             Padding="20"
+        <sharp:MaterialFrame Margin="40"
                              CornerRadius="30"
                              Style="{StaticResource BlurFrame}">
 
@@ -45,7 +44,7 @@
                        TextColor="White"
                        PlaceholderColor="White"/>
 
-                <Grid>
+                <Grid Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
@@ -76,13 +75,13 @@
                 <ListView x:Name="emailList"
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="Center"
-                        ItemsSource="{Binding EmailList}"
+                        Style="{DynamicResource listviewStyle}"
                         ItemSelected="emailList_ItemSelected">
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Label Text="{Binding}" TextColor="White"
+                                <Label Text="{Binding}"
                                        HorizontalTextAlignment="Center" HorizontalOptions="Center"
                                        Style="{DynamicResource labelStyle}"/>
                             </ViewCell>
@@ -91,16 +90,12 @@
                 </ListView>
                 
                 <Button Text="Save" 
-                        TextColor="White"
                         Style="{DynamicResource buttonStyle}"
-                        BackgroundColor="#4C000000"
                         Clicked="BtnSave_Clicked"/>
 
                 <Button x:Name="BtnCanel"
                         Text="Cancel" 
-                        TextColor="White"
-                        Style="{DynamicResource buttonStyle}"
-                        BackgroundColor="#4C000000"
+                        Style="{DynamicResource buttonStyle}"  
                         Clicked="BtnCancel_Clicked"/>
                 
             </StackLayout>
