@@ -7,18 +7,28 @@
     <StackLayout>
 
         <Frame VerticalOptions="CenterAndExpand"
-                Margin="30,10,30,0"
+               Margin="20"
                 BackgroundColor="WhiteSmoke"
                 Padding="15"
                 CornerRadius="30">
             
             <StackLayout Margin="5">
-                <Entry x:Name="EntryFirstName"
-                       Placeholder="First Name"
-                       Style="{DynamicResource entryStyle}"/>
-                <Entry x:Name="EntryLastName"
-                       Placeholder="Last Name"
-                       Style="{DynamicResource entryStyle}"/>
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Entry x:Name="EntryFirstName"
+                           Placeholder="First Name"
+                           Style="{DynamicResource entryStyle}"
+                           Grid.Column="0"/>
+                    <Entry x:Name="EntryLastName"
+                           Placeholder="Last Name"
+                           Style="{DynamicResource entryStyle}"
+                           Grid.Column="1"/>
+                </Grid>
                 <Entry x:Name="EntryEmail"
                         Placeholder="Email"
                         Style="{DynamicResource entryStyle}"
@@ -32,7 +42,7 @@
 
                 <Button Text="Sign Up"
                         Clicked="BtnSignUp_Clicked"
-                        Margin="30"
+                        Margin="15"
                         Style="{DynamicResource buttonStyle}"/>
             </StackLayout>
 

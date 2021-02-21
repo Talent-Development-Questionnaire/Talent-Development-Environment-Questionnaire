@@ -101,6 +101,7 @@ namespace TDQ.PopupPages
             if(emailList.Height < 160)
                 emailList.HeightRequest = 40 * emails.Count();
             emailList.ItemsSource = emails.ToArray();
+            emailList.ScrollTo(emails[emails.Count()-1], ScrollToPosition.MakeVisible, true);
             ListVisibility();
         }
 
