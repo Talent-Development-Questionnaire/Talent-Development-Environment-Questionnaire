@@ -31,7 +31,8 @@ namespace TDQ
                 }
                 else
                 {
-                    result = Classes.DatabaseController.InsertNewUser(EntryEmail.Text, EntryPassword.Text);
+                    string name = EntryFirstName.Text + " " + EntryLastName.Text;
+                    result = Classes.DatabaseController.InsertNewUser(EntryEmail.Text, EntryPassword.Text, name);
 
                     if (result == true)
                     {

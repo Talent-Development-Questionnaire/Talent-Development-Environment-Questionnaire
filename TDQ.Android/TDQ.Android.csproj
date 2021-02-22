@@ -57,6 +57,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="MySqlConnector">
+      <Version>1.2.1</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
       <Version>3.0.0.5</Version>
     </PackageReference>
@@ -65,9 +68,6 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.1931" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
-    <PackageReference Include="MySql.Data">
-      <Version>8.0.23</Version>
-    </PackageReference>
     <PackageReference Include="Sharpnado.Presentation.Forms">
       <Version>1.7.1</Version>
     </PackageReference>
@@ -106,12 +106,15 @@
       </Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\ic_action_add.png">
-      <SubType></SubType>
+      <SubType>
+      </SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\ic_action_edit.png">
-      <SubType></SubType>
-      <Generator></Generator>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
