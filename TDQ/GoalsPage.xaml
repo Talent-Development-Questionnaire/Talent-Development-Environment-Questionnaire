@@ -35,16 +35,12 @@
                             <StackLayout Orientation="Horizontal"
                                          Padding="5"
                                          Margin="0,5,0,5"
-                                         BackgroundColor="{Binding Color}"
-                                         >
-
-                               
+                                         BackgroundColor="{Binding Color}">                               
                                 
                                 <Image Source="{Binding ImageFilePath}"
                                        Aspect="AspectFill"
                                        WidthRequest="100"
-                                       HeightRequest="100"
-                                       Opacity="1"/>
+                                       HeightRequest="100"/>
 
                                 <StackLayout>
                                     <Label Text="{Binding Name}" 
