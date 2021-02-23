@@ -43,7 +43,6 @@ namespace TDQ
                 {
                     Filename = filename,
                     Name = splitText[0],
-                    //Group = (Group)splitText[1],
                     ImageFilePath = splitText[2],
                     Color = splitText[3]
                 });
