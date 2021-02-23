@@ -19,7 +19,7 @@
                      AbsoluteLayout.LayoutFlags="All">
 
             <ListView x:Name="LstViewGroup" 
-                      Margin="20"
+                      Margin="0"
                       HasUnevenRows="True"                      
                       ItemsSource="{Binding GoalsGroups}">
 
@@ -28,13 +28,14 @@
                         <ViewCell>
 
                             <ViewCell.ContextActions>
-                                <MenuItem Text="Delete Group"
+                                <MenuItem Text="Delete Goals Group"
+                                          Clicked="DeleteGoalsGroup_Clicked"
                                           CommandParameter="{Binding .}"/>
                             </ViewCell.ContextActions>
 
                             <StackLayout Orientation="Horizontal"
                                          Padding="5"
-                                         Margin="0,5,0,5"
+                                         Margin="0,5,0,0"
                                          BackgroundColor="{Binding Color}">                               
                                 
                                 <Image Source="{Binding ImageFilePath}"

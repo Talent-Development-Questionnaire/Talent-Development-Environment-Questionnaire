@@ -58,7 +58,6 @@ namespace TDQ
                     default:
                         backcolor = "#00000000";
                         break;
-
                 }
 
                 GoalsGroups.Add(new GoalsGroup
@@ -72,8 +71,28 @@ namespace TDQ
 
             //Updates list view with generated list
             LstViewGroup.ItemsSource = GoalsGroups;
+                 
 
-            
+            HideList();
+        }
+
+       
+        void DeleteGoalsGroup_Clicked(object sender, EventArgs e)
+        {
+            var mi = ((MenuItem)sender);//initialises variable as a MenuItem
+            var item = ((GoalsGroup)mi.CommandParameter);//sets item as the group item that was selected in the list view
+
+            //Gets all the files and deletes the file that matches the Group's Filename property
+            var files = Directory.EnumerateFiles(App.FolderPath, "*.goalsgroup.txt");
+            foreach (var file in files)
+                if (item.Filename == file)
+                    File.Delete(file);
+
+            //Removes the group from the list
+            GoalsGroups.Remove(item);
+
+            //Updates the list view with the new list
+            LstViewGroup.ItemsSource = GoalsGroups;
 
             HideList();
         }
