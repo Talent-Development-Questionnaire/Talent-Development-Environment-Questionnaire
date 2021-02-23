@@ -5,11 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using TDQ.Models;
-
 
 namespace TDQ.PopupPages
 {
@@ -55,6 +53,35 @@ namespace TDQ.PopupPages
                 PickerGroup.ItemsSource = groupList.ToArray();
             }
 
+        }
+
+        private async void BtnSaveGoalsGroup_Clicked(object sender, EventArgs e)
+        {
+            //Initialises GoalsGroup object
+            GoalsGroup goalsGroup = (GoalsGroup)BindingContext;
+
+            //Using the group name from picker, assigns goalsGroup.Group to the correct group
+            //Should probably be changed in the future but functions for now
+            foreach (Group group in Groups)
+            {
+                if (group.Name.Equals((string)PickerGroup.SelectedItem))
+                {
+                    goalsGroup.Group = group;
+                    break;
+                } 
+            }
+            
+            //Sets GoalsGroup object properties
+            goalsGroup.Name = goalsGroup.Group.Name;
+            goalsGroup.ImageFilePath = goalsGroup.Group.ImageFilePath;
+            goalsGroup.Color = (String)PickerColor.SelectedItem;
+
+            //Creates new file and writes the Group properties' values to said file
+            var filename = Path.Combine(App.FolderPath, $"{Path.GetRandomFileName()}.goalsgroup.txt");
+
+            File.WriteAllText(filename, goalsGroup.Name + "\n" + goalsGroup.Group.ToString() + "\n" + goalsGroup.ImageFilePath + "\n" + goalsGroup.Color);
+
+            await Navigation.PopModalAsync();
         }
     }
 }
