@@ -39,12 +39,34 @@ namespace TDQ
 
                 //Adds GoalsGroup object to list, sets each property of the object
 
+                string backcolor;
+
+                switch (splitText[3])
+                {
+                    case "Yellow":
+                        backcolor = "#B1FFFF00";
+                        break;
+
+                    case "Red":
+                        backcolor = "#B1FF0000";
+                        break;
+
+                    case "Green":
+                        backcolor = "#B100FF00";
+                        break;
+
+                    default:
+                        backcolor = "#00000000";
+                        break;
+
+                }
+
                 GoalsGroups.Add(new GoalsGroup
                 {
                     Filename = filename,
                     Name = splitText[0],
                     ImageFilePath = splitText[2],
-                    Color = splitText[3]
+                    Color = backcolor
                 });
             }
 
