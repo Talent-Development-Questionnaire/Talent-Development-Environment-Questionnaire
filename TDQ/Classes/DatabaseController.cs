@@ -6,7 +6,7 @@ namespace TDQ.Classes
     public class DatabaseController
     {
         //string assigned the database file address path update datasource with server address? 
-        static string MyConnection = "datasource=146.176.251.103; port=80; Initial Catalog=tdq; username=Russell;password=Tdquestionnaire!";
+        static readonly string MyConnection = "Server=146.176.251.103; port=3306; Database=talent_development_questionnaire; username=root;password=Planetoftheapes12;Connection Timeout=20";
         public DatabaseController()
         {
         }
@@ -15,7 +15,7 @@ namespace TDQ.Classes
         {
             try
             {   
-                string Query = "INSERT INTO users(email,pass,name) values('" + email + "','" + password + "','" + name + "');";//Creates query from user input 
+                string Query = "INSERT INTO coach-users(email,password,name) values('" + email + "','" + password + "','" + name + "');";//Creates query from user input 
 
                 MySqlConnection MyConn = new MySqlConnection(MyConnection); //Creates MySQL object                
                 MySqlCommand MyCommand = new MySqlCommand(Query, MyConn);//This is command class which will handle the query and connection object.
@@ -34,28 +34,27 @@ namespace TDQ.Classes
 
         public static bool EmailCheck(string email)
         {
+            string Query = "SELECT * FROM coach-users WHERE email = '" + email + "';";
+
+            MySqlConnection con = new MySqlConnection(MyConnection);
+            MySqlCommand cmd = new MySqlCommand(Query, con);
+            MySqlDataReader dr;
+
             try
             {
-                string Query = "SELECT * FROM users WHERE email = '" + email + "';";
-
-                MySqlConnection con = new MySqlConnection(MyConnection);
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader dr;
-
                 con.Open();
-
-                dr = cmd.ExecuteReader();
-                while (dr.Read())
-                    if (dr.HasRows == true)
-                        return false;
-
-                return true;
             }
-            catch (System.TypeInitializationException e)
+            catch (Exception ex)
             {
-                var d = e.Message.ToString();
-                return false;
+                var d = ex.Message;
             }
+
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+                if (dr.HasRows == true)
+                    return false;
+
+            return true;
         }
 
         public static bool AccountCheck(string email, string password)
