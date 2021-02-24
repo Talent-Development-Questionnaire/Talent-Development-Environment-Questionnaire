@@ -28,13 +28,12 @@
                             Style="{DynamicResource pickerStyle}">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
-                            <x:String>White</x:String>
                             <x:String>Red</x:String>
-                            <x:String>Blue</x:String>
-                            <x:String>Green</x:String>
-                            <x:String>Yellow</x:String>
                             <x:String>Orange</x:String>
-                            <x:String>Purple</x:String>
+                            <x:String>Yellow</x:String>
+                            <x:String>Green</x:String>
+                            <x:String>Blue</x:String>
+                            <x:String>White</x:String>
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>

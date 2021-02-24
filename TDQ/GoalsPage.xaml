@@ -26,7 +26,6 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-
                             <ViewCell.ContextActions>
                                 <MenuItem Text="Delete Goals Group"
                                           Clicked="DeleteGoalsGroup_Clicked"

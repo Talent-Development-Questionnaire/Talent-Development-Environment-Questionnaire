@@ -39,24 +39,36 @@ namespace TDQ
 
                 //Adds GoalsGroup object to list, sets each property of the object
 
-                string backcolor;
+                string backgroundColor;
 
                 switch (splitText[3])
                 {
-                    case "Yellow":
-                        backcolor = "#B1FFFF00";
+                    case "Red":
+                        backgroundColor = "#FF8181";
                         break;
 
-                    case "Red":
-                        backcolor = "#B1FF0000";
+                    case "Orange":
+                        backgroundColor = "#FFB553";
+                        break;
+
+                    case "Yellow":
+                        backgroundColor = "#FFE979";
                         break;
 
                     case "Green":
-                        backcolor = "#B100FF00";
+                        backgroundColor = "#79F468";
+                        break;
+
+                    case "Blue":
+                        backgroundColor = "#57ABFF";
+                        break;
+
+                    case "White":
+                        backgroundColor = "#000000";
                         break;
 
                     default:
-                        backcolor = "#00000000";
+                        backgroundColor = "#00000000";
                         break;
                 }
 
@@ -65,7 +77,7 @@ namespace TDQ
                     Filename = filename,
                     Name = splitText[0],
                     ImageFilePath = splitText[2],
-                    Color = backcolor
+                    Color = backgroundColor
                 });
             }
 
