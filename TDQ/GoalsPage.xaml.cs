@@ -64,11 +64,11 @@ namespace TDQ
                         break;
 
                     case "White":
-                        backgroundColor = "#000000";
+                        backgroundColor = "#FFFFFF";
                         break;
 
                     default:
-                        backgroundColor = "#00000000";
+                        backgroundColor = "#FFFFFF";
                         break;
                 }
 
