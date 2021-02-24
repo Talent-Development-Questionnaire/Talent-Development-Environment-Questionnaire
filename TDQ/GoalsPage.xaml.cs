@@ -82,7 +82,7 @@ namespace TDQ
             }
 
             //Updates list view with generated list
-            LstViewGroup.ItemsSource = GoalsGroups;
+            ListViewGoalsGroup.ItemsSource = GoalsGroups;
                  
 
             HideList();
@@ -104,7 +104,7 @@ namespace TDQ
             GoalsGroups.Remove(item);
 
             //Updates the list view with the new list
-            LstViewGroup.ItemsSource = GoalsGroups;
+            ListViewGoalsGroup.ItemsSource = GoalsGroups;
 
             HideList();
         }
@@ -113,12 +113,12 @@ namespace TDQ
         {
             if (GoalsGroups == null || GoalsGroups.Count() == 0)
             {
-                LstViewGroup.IsVisible = false;
+                ListViewGoalsGroup.IsVisible = false;
                 
             }
             else
             {
-                LstViewGroup.IsVisible = true;
+                ListViewGoalsGroup.IsVisible = true;
                 
             }
         }

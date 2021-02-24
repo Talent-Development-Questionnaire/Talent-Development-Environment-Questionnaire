@@ -7,7 +7,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_action_add.png" Priority="0" Order="Primary" Clicked="AddButton_Clicked"/>
     </ContentPage.ToolbarItems>
-    
+
     <AbsoluteLayout>
 
         <Image x:Name="ImgBg"
@@ -18,8 +18,7 @@
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All">
 
-            <ListView x:Name="LstViewGroup" 
-                      Margin="0"
+            <ListView x:Name="ListViewGoalsGroup" 
                       HasUnevenRows="True"                      
                       ItemsSource="{Binding GoalsGroups}">
 
@@ -33,20 +32,27 @@
                             </ViewCell.ContextActions>
 
                             <StackLayout Orientation="Horizontal"
-                                         Padding="5"
-                                         Margin="0,5,0,0"
-                                         BackgroundColor="{Binding Color}">                               
-                                
-                                <Image Source="{Binding ImageFilePath}"
-                                       Aspect="AspectFill"
-                                       WidthRequest="100"
-                                       HeightRequest="100"/>
+                                         Padding="10,25,0,25"
+                                         BackgroundColor="{Binding Color}">
 
-                                <StackLayout>
+                                <Image Source="{Binding ImageFilePath}"
+                                       Aspect="AspectFit"
+                                       WidthRequest="80"
+                                       HeightRequest="80"/>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
                                     <Label Text="{Binding Name}" 
                                            TextColor="Black" 
-                                           FontSize="Large" 
-                                           FontAttributes="Bold"/>                                    
+                                           FontAttributes="Bold"
+                                           FontSize="Large"
+                                           HorizontalOptions="CenterAndExpand"
+                                           Style="{DynamicResource labelStyle}"/>
+
+                                    <Label Text="Coaching Goals" 
+                                           TextColor="Black" 
+                                           FontSize="Large"
+                                           HorizontalOptions="CenterAndExpand"
+                                           Style="{DynamicResource labelStyle}"/>
+
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
