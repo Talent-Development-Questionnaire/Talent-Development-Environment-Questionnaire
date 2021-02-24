@@ -27,7 +27,7 @@ namespace TDQ
             //Initialising variables
             GoalsGroups = new ObservableCollection<GoalsGroup>();
             Classes.SettingsPageFunctions.SetBackground(ImgBg, GoalsContentPage);
-            LstViewGroup.SelectedItem = null;
+            ListViewGoalsGroup.SelectedItem = null;
 
             //Gets all the saved files for created goalsgroups
             var files = Directory.EnumerateFiles(App.FolderPath, "*.goalsgroup.txt");
