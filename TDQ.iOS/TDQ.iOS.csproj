@@ -182,4 +182,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_add.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_action_add.png" />
+  </ItemGroup>
 </Project>
