@@ -6,6 +6,10 @@
              Title="Goals"
              Style="{DynamicResource contentStyle}">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_action_add.png" Priority="0" Order="Primary" Clicked="AddButton_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
     <AbsoluteLayout>
 
         <Image x:Name="ImgBg"
@@ -14,8 +18,7 @@
                AbsoluteLayout.LayoutFlags="All"/>
 
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
-                     AbsoluteLayout.LayoutFlags="All">          
-
+                     AbsoluteLayout.LayoutFlags="All"> 
         </StackLayout>
     </AbsoluteLayout>
 </ContentPage>
