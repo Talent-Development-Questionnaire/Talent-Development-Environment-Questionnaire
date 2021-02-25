@@ -22,7 +22,7 @@ namespace TDQ
             var validEmail = Classes.Verification.IsValidEmail(EntryEmail.Text);
             if (EntryPassword.Text == EntryConfirmPassword.Text && validEmail == true)
             {
-                var result = Classes.DatabaseController.EmailCheck(EntryEmail.Text);
+                var result = Classes.DatabaseController.CheckEmail(EntryEmail.Text);
 
                 if (result == false)
                 {

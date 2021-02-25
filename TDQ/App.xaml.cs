@@ -14,6 +14,8 @@ namespace TDQ
         { 
             InitializeComponent();
 
+            //Classes.DatabaseController.SshConnection();
+
             Sharpnado.MaterialFrame.Initializer.Initialize(true, false);
 
             Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);

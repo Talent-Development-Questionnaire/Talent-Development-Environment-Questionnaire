@@ -19,7 +19,7 @@ namespace TDQ
 
         private async void BtnLogin_Clicked(object sender, EventArgs e)
         {
-            var result = Classes.DatabaseController.AccountCheck(EntryEmail.Text, EntryPassword.Text);
+       /*     var result = Classes.DatabaseController.AccountCheck(EntryEmail.Text, EntryPassword.Text);
 
             if (result == true)
             {
@@ -28,6 +28,7 @@ namespace TDQ
             }
             else
                 await DisplayAlert("Account", "Account does not exist, please try again.", "OK");
+       */
         }
     }
 }
