@@ -1,25 +1,22 @@
 ﻿using System;
 using System.Configuration;
 using MySqlConnector;
+using TDQ.Classes;
 namespace TDQ.Classes
 {
     public class DatabaseController
     {
-        //string assigned the database file address path update datasource with server address? 
-        static readonly string MyConnection = "Server=146.176.251.103; port=3306; Database=talent_development_questionnaire; username=root;password=Planetoftheapes12;Connection Timeout=20";
-        public DatabaseController()
-        {
-        }
         //Inserts new entry into User table in MySQL Database
         public static bool InsertNewUser (string email, string password, string name)
         {
             try
-            {   
-                string Query = "INSERT INTO coach-users(email,password,name) values('" + email + "','" + password + "','" + name + "');";//Creates query from user input 
-
-                MySqlConnection MyConn = new MySqlConnection(MyConnection); //Creates MySQL object                
-                MySqlCommand MyCommand = new MySqlCommand(Query, MyConn);//This is command class which will handle the query and connection object.
+            { 
+                MySqlConnection MyConn = new MySqlConnection(Constants.connectionString); //Creates MySQL object                
+                MySqlCommand MyCommand = new MySqlCommand(Constants.insertNewUser, MyConn);//This is command class which will handle the query and connection object.
                 MySqlDataReader MyReader;
+
+                MyCommand.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
+                MyCommand.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
                 MyConn.Open();
 
                 MyReader = MyCommand.ExecuteReader();// Here our query will be executed and data saved into the database.  
@@ -34,9 +31,9 @@ namespace TDQ.Classes
 
         public static bool EmailCheck(string email)
         {
-            string Query = "SELECT * FROM coach-users WHERE email = '" + email + "';";
+            string Query = "SELECT * FROM users WHERE email = '" + email + "';";
 
-            MySqlConnection con = new MySqlConnection(MyConnection);
+            MySqlConnection con = new MySqlConnection(Constants.connectionString);
             MySqlCommand cmd = new MySqlCommand(Query, con);
             MySqlDataReader dr;
 
