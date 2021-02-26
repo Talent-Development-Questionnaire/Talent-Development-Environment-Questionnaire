@@ -109,6 +109,13 @@ namespace TDQ
             HideList();
         }
 
+        private async void ListViewGoalsGroup_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                await Navigation.PushAsync(new DetailedGoalsPage());
+            }
+        }
         public void HideList()
         {
             if (GoalsGroups == null || GoalsGroups.Count() == 0)

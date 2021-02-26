@@ -7,7 +7,7 @@
              Style="{DynamicResource contentStyle}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="ic_action_add.png" Priority="0" Order="Primary" Clicked="AddButton_Clicked"/>
+        <ToolbarItem Icon="ic_action_add.png" Clicked="AddButton_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <AbsoluteLayout>
@@ -22,7 +22,8 @@
 
             <ListView x:Name="ListViewGoalsGroup" 
                       HasUnevenRows="True"                      
-                      ItemsSource="{Binding GoalsGroups}">
+                      ItemsSource="{Binding GoalsGroups}"
+                      ItemSelected="ListViewGoalsGroup_ItemSelected">
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
