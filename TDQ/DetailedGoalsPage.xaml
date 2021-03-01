@@ -17,6 +17,68 @@
                    HorizontalTextAlignment="Center"
                    FontAttributes="Bold"
                    Style="{DynamicResource labelStyle}"/>
+            <Label Text="Strengths"
+                   TextColor="Black"
+                   Margin="10,20,0,10"
+                   FontAttributes="Bold"
+                   Style="{DynamicResource labelStyle}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width = "Auto"/>
+                    <ColumnDefinition Width = "Auto"/>
+                </Grid.ColumnDefinitions>
+                <BoxView BackgroundColor="Lime"
+                       CornerRadius="90"
+                       HeightRequest="15"
+                       WidthRequest="15"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="10,10,15,0"
+                       Grid.Column="0"/>
+                <Label Text="Strength #1"
+                       TextColor="Black"
+                       HorizontalTextAlignment="Start"
+                       HorizontalOptions="StartAndExpand"
+                       Grid.Column="1"
+                       Style="{DynamicResource labelStyle}"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width = "Auto"/>
+                    <ColumnDefinition Width = "Auto"/>
+                </Grid.ColumnDefinitions>
+                <BoxView BackgroundColor="Lime"
+                       CornerRadius="90"
+                       HeightRequest="15"
+                       WidthRequest="15"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="10,10,15,0"
+                       Grid.Column="0"/>
+                <Label Text="Strength #2"
+                       TextColor="Black"
+                       HorizontalTextAlignment="Start"
+                       HorizontalOptions="StartAndExpand"
+                       Grid.Column="1"
+                       Style="{DynamicResource labelStyle}"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width = "Auto"/>
+                    <ColumnDefinition Width = "Auto"/>
+                </Grid.ColumnDefinitions>
+                <BoxView BackgroundColor="Lime"
+                       CornerRadius="90"
+                       HeightRequest="15"
+                       WidthRequest="15"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="10,10,15,0"
+                       Grid.Column="0"/>
+                <Label Text="Strength #3"
+                       TextColor="Black"
+                       HorizontalTextAlignment="Start"
+                       HorizontalOptions="StartAndExpand"
+                       Grid.Column="1"
+                       Style="{DynamicResource labelStyle}"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
