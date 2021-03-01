@@ -113,7 +113,10 @@ namespace TDQ
         {
             if (e.SelectedItem != null)
             {
-                await Navigation.PushAsync(new DetailedGoalsPage());
+                await Navigation.PushAsync(new DetailedGoalsPage()
+                {
+                    BindingContext = e.SelectedItem as GoalsGroup
+                });
             }
         }
         public void HideList()

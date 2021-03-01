@@ -5,7 +5,18 @@
              Title="Goals">
     <ContentPage.Content>
         <StackLayout>
-           
+            <Image 
+                Source="{Binding ImageFilePath}"
+                WidthRequest="80"
+                HeightRequest="80"
+                Margin="0,20,0,0"
+                Aspect="AspectFit"/>
+            <Label Text="{Binding Name}"
+                   TextColor="Black"
+                   FontSize="Large"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   Style="{DynamicResource labelStyle}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
