@@ -120,6 +120,19 @@
                        Grid.Column="1"
                        Style="{DynamicResource labelStyle}"/>
             </Grid>
+            <Label Text="Goals"
+                   TextColor="Black"
+                   Margin="10,20,0,0"
+                   FontAttributes="Bold"
+                   Style="{DynamicResource labelStyle}"/>
+            <Label Text="You currently have no goals set"
+                   TextColor="Black"
+                   HorizontalTextAlignment="Start"
+                   HorizontalOptions="StartAndExpand"
+                   Margin="10,10,0,0"
+                   Style="{DynamicResource labelStyle}"/>
+            <Button Text="Add New Goal"
+                    Style="{DynamicResource buttonStyle}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
