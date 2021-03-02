@@ -11,6 +11,7 @@
                 <Setter Property="Margin" Value="0,0,10,0"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="Grid.Column" Value="0"/>
+                <Setter Property="Stroke" Value="Black"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
