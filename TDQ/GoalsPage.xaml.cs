@@ -68,7 +68,7 @@ namespace TDQ
                         break;
 
                     default:
-                        backgroundColor = "#FFFFFF";
+                        backgroundColor = splitText[2];
                         break;
                 }
 
