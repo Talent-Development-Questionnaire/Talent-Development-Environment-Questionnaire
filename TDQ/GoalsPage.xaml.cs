@@ -41,7 +41,7 @@ namespace TDQ
 
                 string backgroundColor;
 
-                switch (splitText[3])
+                switch (splitText[2])
                 {
                     case "Red":
                         backgroundColor = "#FF8181";
@@ -72,19 +72,18 @@ namespace TDQ
                         break;
                 }
 
+                //This needs to add GoalsList to it, but GoalsList is empty unless they've been added
                 GoalsGroups.Add(new GoalsGroup
                 {
                     Filename = filename,
                     Name = splitText[0],
-                    ImageFilePath = splitText[2],
+                    ImageFilePath = splitText[1],
                     Color = backgroundColor
                 });
             }
 
             //Updates list view with generated list
             ListViewGoalsGroup.ItemsSource = GoalsGroups;
-                 
-
             HideList();
         }
 
@@ -113,7 +112,7 @@ namespace TDQ
         {
             if (e.SelectedItem != null)
             {
-                await Navigation.PushAsync(new DetailedGoalsPage()
+                await Navigation.PushAsync(new DetailedGoalsPage(e.SelectedItem as GoalsGroup)
                 {
                     BindingContext = e.SelectedItem as GoalsGroup
                 });

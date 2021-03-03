@@ -80,7 +80,8 @@ namespace TDQ.PopupPages
             //Creates new file and writes the Group properties' values to said file
             var filename = Path.Combine(App.FolderPath, $"{Path.GetRandomFileName()}.goalsgroup.txt");
 
-            File.WriteAllText(filename, goalsGroup.Name + "\n" + goalsGroup.Group.ToString() + "\n" + goalsGroup.ImageFilePath + "\n" + goalsGroup.Color);
+
+            File.WriteAllText(filename, goalsGroup.Name + "\n" + goalsGroup.ImageFilePath + "\n" + goalsGroup.Color);
 
             await Navigation.PopModalAsync();
         }

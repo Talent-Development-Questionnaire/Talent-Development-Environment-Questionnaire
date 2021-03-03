@@ -126,12 +126,26 @@
                    FontAttributes="Bold"
                    Style="{DynamicResource labelStyle}"/>
             <Label Text="You currently have no goals set"
+                   x:Name="LblNewGoal"
                    TextColor="Black"
                    HorizontalTextAlignment="Start"
                    HorizontalOptions="StartAndExpand"
                    Margin="10,10,0,0"
                    Style="{DynamicResource labelStyle}"/>
+            <!-- When the ListView is added, it somehow removes the labels, styles etc. Why????-->
+            <!--<ListView x:Name="ListViewGoals"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding GoalsList}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding GoalsList}"
+                               TextColor="Black"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate> 
+            </ListView> -->
             <Button Text="Add New Goal"
+                    Clicked="AddGoal_Clicked"
                     Style="{DynamicResource buttonStyle}"/>
         </StackLayout>
     </ContentPage.Content>
