@@ -16,6 +16,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
             <Image 
                 Source="{Binding ImageFilePath}"
@@ -133,20 +134,22 @@
                    Margin="10,10,0,0"
                    Style="{DynamicResource labelStyle}"/>
             <!-- When the ListView is added, it somehow removes the labels, styles etc. Why????-->
-            <!--<ListView x:Name="ListViewGoals"
+                <ListView x:Name="ListViewGoals"
                       HasUnevenRows="True"
-                      ItemsSource="{Binding GoalsList}">
-
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="{Binding GoalsList}"
+                      ItemsSource="{Binding GoalsList}"
+                      HeightRequest="150">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding GoalsList}"
                                TextColor="Black"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate> 
-            </ListView> -->
-            <Button Text="Add New Goal"
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Add New Goal"
                     Clicked="AddGoal_Clicked"
-                    Style="{DynamicResource buttonStyle}"/>
+                    Style="{DynamicResource buttonStyle}"
+                    Margin="0,0,0,20"/>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
