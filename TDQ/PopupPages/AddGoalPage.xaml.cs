@@ -26,16 +26,11 @@ namespace TDQ.PopupPages
 
         private async void BtnSave_Clicked(object sender, EventArgs e)
         {       
-            string goalsText = EntryGoal.Text;
-              
-            /*System.Diagnostics.Debug.WriteLine(xyz.Filename);
-            System.Diagnostics.Debug.WriteLine(xyz.Name);
-            System.Diagnostics.Debug.WriteLine(xyz.ImageFilePath);
-            System.Diagnostics.Debug.WriteLine(xyz.Color); */
+            string goalsText = "\n" + EntryGoal.Text;
 
-            xyz.GoalsList = "iaikjhf";
+            //File.WriteAllText(xyz.Filename, xyz.Name + "\n" + xyz.ImageFilePath + "\n" + xyz.Color + "\n" + goalsText);
+            File.AppendAllText(xyz.Filename, goalsText);
 
-            File.WriteAllText(xyz.Filename, xyz.Name + "\n" + xyz.ImageFilePath + "\n" + xyz.Color + "\n" + goalsText);
 
             await Navigation.PopModalAsync();
         }

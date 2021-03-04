@@ -135,12 +135,13 @@
                    Style="{DynamicResource labelStyle}"/>
                 <ListView x:Name="ListViewGoals"
                       HasUnevenRows="True"
-                      ItemsSource="{Binding correctGoalsGroup}"
-                      HeightRequest="150">
+                      ItemsSource="{Binding goals}"
+                      HeightRequest="150"
+                          >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Label Text="{Binding GoalsList}"
+                                <Label Text="{Binding .}"
                                TextColor="Black"/>
                             </ViewCell>
                         </DataTemplate>

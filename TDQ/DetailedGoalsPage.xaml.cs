@@ -18,7 +18,7 @@ namespace TDQ
         GoalsGroup xyz;
         public ObservableCollection<GoalsGroup> GoalsGroups;
         public ObservableCollection<String> goals;
-        public ObservableCollection<GoalsGroup> correctGoalsGroup;
+
 
         public DetailedGoalsPage(GoalsGroup currentGoalsGroup)
         {
@@ -30,9 +30,8 @@ namespace TDQ
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            GoalsGroups = new ObservableCollection<GoalsGroup>();
+            GoalsGroups = new ObservableCollection<GoalsGroup>();           
             goals = new ObservableCollection<string>();
-            correctGoalsGroup = new ObservableCollection<GoalsGroup>();
 
             //Gets all the saved files for created goalsgroups
             var files = Directory.EnumerateFiles(App.FolderPath, "*.goalsgroup.txt");
@@ -45,13 +44,16 @@ namespace TDQ
                 //Adds GoalsGroup object to list, sets each property of the object
                 if (splitText.Length > 3)
                 {
+                    //Method to populate array with goals from the file
+                    string[] goalsList = Classes.DetailedGoalsPageFunctions.PopulateListOnAppearing(splitText);
+
                     GoalsGroups.Add(new GoalsGroup
                     {                        
                         Filename = filename,
                         Name = splitText[0],
                         ImageFilePath = splitText[1],
                         Color = splitText[2],
-                        GoalsList = splitText[3]
+                        GoalsList = goalsList
                     });
                 }
             }
@@ -61,12 +63,15 @@ namespace TDQ
             {
                 if (goalsGroup.Filename == xyz.Filename)
                 {
-                    correctGoalsGroup.Add(goalsGroup);
+                    foreach(string x in goalsGroup.GoalsList)
+                    {
+                        goals.Add(x);
+                    }
                 }
             }
 
             //Updates ListView
-            ListViewGoals.ItemsSource = correctGoalsGroup;
+            ListViewGoals.ItemsSource = goals;
         }
 
         private async void AddGoal_Clicked(object sender, EventArgs e)

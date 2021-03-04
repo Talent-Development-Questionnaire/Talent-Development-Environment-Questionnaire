@@ -11,6 +11,6 @@ namespace TDQ.Models
         public string ImageFilePath { get; set; }
         public string Color { get; set; }
         public Group Group { get; set; }
-        public string GoalsList { get; set; }
+        public string[] GoalsList { get; set; }
     }
 }

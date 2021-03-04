@@ -71,7 +71,6 @@ namespace TDQ
                         backgroundColor = splitText[2];
                         break;
                 }
-
                 
                 GoalsGroups.Add(new GoalsGroup
                 {
