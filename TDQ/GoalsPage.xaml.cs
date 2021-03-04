@@ -72,7 +72,7 @@ namespace TDQ
                         break;
                 }
 
-                //This needs to add GoalsList to it, but GoalsList is empty unless they've been added
+                
                 GoalsGroups.Add(new GoalsGroup
                 {
                     Filename = filename,
