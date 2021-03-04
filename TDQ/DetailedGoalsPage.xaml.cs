@@ -23,7 +23,6 @@ namespace TDQ
         {
             InitializeComponent();
             selectedGoalsGroup = currentGoalsGroup;
-            System.Diagnostics.Debug.WriteLine(selectedGoalsGroup.Name);
         }
 
         protected override void OnAppearing()
@@ -69,9 +68,24 @@ namespace TDQ
                 }
             }
             //Updates ListView
-            ListViewGoals.ItemsSource = goals;
+            ListViewGoals.HeightRequest = 30 * goals.Count();
+            ListViewGoals.ItemsSource = goals;            
+            HideList();
         }
 
+        public void HideList()
+        {
+            if (goals == null || goals.Count() == 0)
+            {
+                ListViewGoals.IsVisible = false;
+                LblNewGoal.IsVisible = true;
+            }
+            else
+            {
+                ListViewGoals.IsVisible = true;
+                LblNewGoal.IsVisible = false;
+            }
+        }
         private async void AddGoal_Clicked(object sender, EventArgs e)
         {        
             //opens new AddGoalPage

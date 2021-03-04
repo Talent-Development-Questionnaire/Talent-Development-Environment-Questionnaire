@@ -121,13 +121,11 @@ namespace TDQ
         {
             if (GoalsGroups == null || GoalsGroups.Count() == 0)
             {
-                ListViewGoalsGroup.IsVisible = false;
-                
+                ListViewGoalsGroup.IsVisible = false;                
             }
             else
             {
-                ListViewGoalsGroup.IsVisible = true;
-                
+                ListViewGoalsGroup.IsVisible = true;                
             }
         }
 
