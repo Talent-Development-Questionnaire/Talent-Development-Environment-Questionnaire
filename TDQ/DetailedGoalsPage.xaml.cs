@@ -15,16 +15,15 @@ namespace TDQ
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailedGoalsPage : ContentPage
     {
-        GoalsGroup xyz;
+        GoalsGroup selectedGoalsGroup;
         public ObservableCollection<GoalsGroup> GoalsGroups;
         public ObservableCollection<String> goals;
-
 
         public DetailedGoalsPage(GoalsGroup currentGoalsGroup)
         {
             InitializeComponent();
-            xyz = currentGoalsGroup;
-            System.Diagnostics.Debug.WriteLine(xyz.Name);
+            selectedGoalsGroup = currentGoalsGroup;
+            System.Diagnostics.Debug.WriteLine(selectedGoalsGroup.Name);
         }
 
         protected override void OnAppearing()
@@ -61,15 +60,14 @@ namespace TDQ
             //Checks the filename of each GoalsGroup in GoalsGroups against GoalsGroup passed in
             foreach(GoalsGroup goalsGroup in GoalsGroups)
             {
-                if (goalsGroup.Filename == xyz.Filename)
+                if (goalsGroup.Filename == selectedGoalsGroup.Filename)
                 {
-                    foreach(string x in goalsGroup.GoalsList)
+                    foreach(string goal in goalsGroup.GoalsList)
                     {
-                        goals.Add(x);
+                        goals.Add(goal);
                     }
                 }
             }
-
             //Updates ListView
             ListViewGoals.ItemsSource = goals;
         }
@@ -77,7 +75,7 @@ namespace TDQ
         private async void AddGoal_Clicked(object sender, EventArgs e)
         {        
             //opens new AddGoalPage
-            await Navigation.PushModalAsync(new PopupPages.AddGoalPage(xyz));
+            await Navigation.PushModalAsync(new PopupPages.AddGoalPage(selectedGoalsGroup));
         }
     }
 }

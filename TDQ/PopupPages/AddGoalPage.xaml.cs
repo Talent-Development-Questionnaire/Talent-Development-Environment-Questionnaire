@@ -14,12 +14,10 @@ namespace TDQ.PopupPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddGoalPage : ContentPage
     {
-        public string goals;
-
-        GoalsGroup xyz;
+        GoalsGroup selectedGoalsGroup;
         public AddGoalPage(GoalsGroup currentGoalsGroup)
         {
-            xyz = currentGoalsGroup;
+            selectedGoalsGroup = currentGoalsGroup;
             InitializeComponent();
         }
                     
@@ -27,11 +25,7 @@ namespace TDQ.PopupPages
         private async void BtnSave_Clicked(object sender, EventArgs e)
         {       
             string goalsText = "\n" + EntryGoal.Text;
-
-            //File.WriteAllText(xyz.Filename, xyz.Name + "\n" + xyz.ImageFilePath + "\n" + xyz.Color + "\n" + goalsText);
-            File.AppendAllText(xyz.Filename, goalsText);
-
-
+            File.AppendAllText(selectedGoalsGroup.Filename, goalsText);
             await Navigation.PopModalAsync();
         }
     }
