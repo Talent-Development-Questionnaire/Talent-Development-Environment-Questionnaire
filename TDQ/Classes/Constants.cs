@@ -6,11 +6,7 @@ namespace TDQ.Classes
 {
     public static class Constants
     {
-        #region MYSQL CONNECTION STRING
-
-        public static string connectionString = "Server=127.0.0.1; Port=3306; Database=user; Connect Timeout=120; User=root; Password=Planetoftheapes12;";
-
-        #endregion
+        public static string ip = "http://79.66.24.174:5000/";
 
         #region MYSQL INSERT NEW USER
 

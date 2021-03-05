@@ -14,7 +14,7 @@ namespace TDQ
         {
             InitializeComponent();
 
-            Classes.DatabaseController.TestHttpRequest();
+           // Classes.DatabaseController.TestHttpRequest();
             Sharpnado.MaterialFrame.Initializer.Initialize(true, false);
 
             Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
