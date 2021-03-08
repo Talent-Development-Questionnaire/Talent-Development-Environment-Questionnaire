@@ -44,14 +44,12 @@
                                        HeightRequest="80"/>
                                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
                                     <Label Text="{Binding Name}" 
-                                           TextColor="{DynamicResource PrimaryTextColour}" 
                                            FontAttributes="Bold"
                                            FontSize="Large"
                                            HorizontalOptions="CenterAndExpand"
                                            Style="{DynamicResource labelStyle}"/>
 
                                     <Label Text="Coaching Goals" 
-                                           TextColor="Black" 
                                            FontSize="Large"
                                            HorizontalOptions="CenterAndExpand"
                                            Style="{DynamicResource labelStyle}"/>
