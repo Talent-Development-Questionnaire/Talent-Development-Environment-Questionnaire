@@ -29,7 +29,6 @@
                    Style="{DynamicResource labelStyle}"/>
 
             <ListView x:Name="LstViewGroup" 
-                      Margin="20"
                       HasUnevenRows="True"
                       ItemSelected="LstViewGroup_ItemSelected"
                       ItemsSource="{Binding Groups}"
@@ -38,7 +37,6 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-
                             <ViewCell.ContextActions>
                                 <MenuItem Text="Delete Group"
                                           Clicked="DeleteGroup_Clicked"
@@ -46,24 +44,24 @@
                             </ViewCell.ContextActions>
 
                             <StackLayout Orientation="Horizontal"
-                                         Padding="5"
-                                         Margin="0,5,0,5"
+                                         Padding="10,25,0,25"
                                          BackgroundColor="Transparent">
 
                                 <Image Source="{Binding ImageFilePath}"
-                                       Aspect="AspectFill"
-                                       WidthRequest="100"
-                                       HeightRequest="100"/>
+                                       Aspect="AspectFit"
+                                       WidthRequest="80"
+                                       HeightRequest="80"/>
 
-                                <StackLayout>
+                                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                     <Label Text="{Binding Name}" 
                                            TextColor="{DynamicResource PrimaryTextColour}" 
-                                           FontSize="36"
+                                           FontSize="Large"
+                                           HorizontalOptions="CenterAndExpand"
                                            FontAttributes="Bold"/>
                                     
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                                         
-                                    <Label Text=" No. of Members: " Style="{DynamicResource labelStyle}"/>
+                                    <Label Text=" No. of Members: "  Style="{DynamicResource labelStyle}"/>
                                     <Label Text="{Binding GroupNo}" Style="{DynamicResource labelStyle}"/>
 
                                     </StackLayout>

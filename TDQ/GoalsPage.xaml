@@ -42,9 +42,9 @@
                                        Aspect="AspectFit"
                                        WidthRequest="80"
                                        HeightRequest="80"/>
-                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+                                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
                                     <Label Text="{Binding Name}" 
-                                           TextColor="Black" 
+                                           TextColor="{DynamicResource PrimaryTextColour}" 
                                            FontAttributes="Bold"
                                            FontSize="Large"
                                            HorizontalOptions="CenterAndExpand"
