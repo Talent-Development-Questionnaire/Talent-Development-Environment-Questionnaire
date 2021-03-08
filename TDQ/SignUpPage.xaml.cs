@@ -53,7 +53,6 @@ namespace TDQ
 
         }
 
-
         void EntryEmail_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
             EntryEmail.TextColor = Color.Black;

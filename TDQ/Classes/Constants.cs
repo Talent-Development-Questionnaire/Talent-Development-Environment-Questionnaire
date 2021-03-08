@@ -6,7 +6,7 @@ namespace TDQ.Classes
 {
     public static class Constants
     {
-        public static string ip = "http://79.66.24.174:5000/";
+        public static string ip = "http://146.176.251.103/";
 
         #region MYSQL INSERT NEW USER
 

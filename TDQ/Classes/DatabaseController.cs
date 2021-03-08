@@ -56,5 +56,20 @@ namespace TDQ.Classes
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             return response.SupportsHeaders;
         }
+
+        public static void GetUserDetails()
+        {
+            //get user details associated with login
+            //initialise user object with details
+            //return user
+        }
+
+        public static void EditAccountDetails()
+        {
+            //Pass in user object
+            //Check to see if gender and d.o.b fields are null
+            //input into database values if not null
+
+        }
     }
 }
