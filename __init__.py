@@ -3,7 +3,7 @@ import flask
 from flask_mysqldb import MySQL
 from flask import Flask
 from .coach.routes import coach_blueprint
-from .public.routes import public_blueprint
+from .player.routes import player_blueprint
 from .config import app_config
 from .extensions import mysql
 
@@ -21,7 +21,7 @@ def create_app(config_name):
 	mysql.init_app(app)
 
 	app.register_blueprint(coach_blueprint)
-	app.register_blueprint(public_blueprint)
+	app.register_blueprint(player_blueprint)
 
 
 	return app
