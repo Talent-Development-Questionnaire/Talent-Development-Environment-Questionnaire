@@ -38,3 +38,14 @@ def checkAccountExists(email, password):
 		return 'false'
 	else:
 		return 'true'
+
+@coach_blueprint.route('/coach/createQuestionnaire/<size>/<name>')
+def createQuestionnaire(size, name):
+	cursor = mysql.connection.cursor()
+	if size == 59:
+		cursor.execute("" % name)
+	else:
+		cursor.execute("" % name)
+
+	mysql.connection.commit()
+	cursor.close()
