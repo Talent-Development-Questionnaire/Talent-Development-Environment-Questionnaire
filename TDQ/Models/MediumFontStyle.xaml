@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="TDQ.Themes.MediumFontStyle">
+
+    <Style x:Key="labelStyle"
+           TargetType="Label">
+        <Setter Property="FontSize"
+                Value="22"/>
+    </Style>
+    
+    <Style x:Key="accountLabelStyle"
+           TargetType="Label">
+        <Setter Property="FontSize"
+                Value="20"/>
+    </Style>
+
+    <Style x:Key="accountGridStyle"
+           TargetType="Grid">
+        <Setter Property="ColumnSpacing"
+                Value="30">
+        </Setter>
+        <Setter Property="RowSpacing"
+                Value="25">
+        </Setter>
+        <Setter Property="Margin"
+                Value="20,0,0,0">
+        </Setter>
+
+    <Style x:Key="frameStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{DynamicResource FrameColour}"/>
+        <Setter Property="CornerRadius" Value="30"/>
+    </Style>
+
+    <Style x:Key="contentStyle" TargetType="ContentPage">
+        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColour}"/>
+    </Style>
+
+    <Style x:Key="pickerStyle" TargetType="Picker">
+        <Setter Property="BackgroundColor" Value="{DynamicResource FrameColour}"/>
+        <Setter Property="TitleColor" Value="{DynamicResource TertiaryTextColour}"/>
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+
+    <Style x:Key="entryStyle" TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="PlaceholderColor" Value="{DynamicResource TertiaryTextColour}"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+
+    <Style x:Key="entryStyle"
+            TargetType="Entry">
+        <Setter Property="FontSize"
+                Value="14"/>
+    <Style x:Key="listviewStyle" TargetType="ListView">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+    </Style>
+
+    <Style x:Key="labelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+
+    <Style x:Key="buttonStyle" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="#4C000000"/>
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="CornerRadius" Value="30"/>
+        <Setter Property="Margin" Value="0,10,0,0"/>
+    </Style>
+</ResourceDictionary>
