@@ -94,7 +94,7 @@ namespace TDQ.PopupPages
                 }
 
             if(emailList.Height < 160)
-                emailList.HeightRequest = 35 * emails.Count();
+                emailList.HeightRequest = 40 * emails.Count();
 
             //Updates list view with newly added email
             emailList.ItemsSource = emails.ToArray();

@@ -22,13 +22,14 @@ namespace TDQ
             var validEmail = Classes.Verification.IsValidEmail(EntryEmail.Text);
             if (EntryPassword.Text == EntryConfirmPassword.Text && validEmail == true)
             {
-                var result = Classes.DatabaseController.EmailCheck(EntryEmail.Text);
+                var result = Classes.DatabaseController.CheckEmailExists(EntryEmail.Text);
 
                 if (result == false)
                 {
                     EntryEmail.TextColor = Color.Red;
                     await DisplayAlert("Email Exists", "An account with this email already exists, please try again.", "OK");
                 }
+
                 else
                 {
                     string name = EntryFirstName.Text + " " + EntryLastName.Text;
@@ -43,10 +44,13 @@ namespace TDQ
                         await DisplayAlert("Connection Error", "Error occured connecting to database, please try again", "OK");
                 }
             }
+
             else if (validEmail == false)
                 await DisplayAlert("Error", "Email is not valid, please try again", "OK");
+
             else
                 await DisplayAlert("Error", "Passwords do not match, please try again", "OK");
+
         }
 
         void EntryEmail_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)

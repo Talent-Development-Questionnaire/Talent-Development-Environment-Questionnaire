@@ -1,81 +1,75 @@
 ﻿using System;
 using System.Configuration;
 using MySqlConnector;
+using Renci.SshNet;
+using System.Net;
+using System.Security.Cryptography;
+using System.IO;
 using TDQ.Classes;
+using System.Text;
+
 namespace TDQ.Classes
 {
     public class DatabaseController
     {
-        //Inserts new entry into User table in MySQL Database
-        public static bool InsertNewUser (string email, string password, string name)
+        private static string HashPassword(string pass)
         {
-            try
-            { 
-                MySqlConnection MyConn = new MySqlConnection(Constants.connectionString); //Creates MySQL object                
-                MySqlCommand MyCommand = new MySqlCommand(Constants.insertNewUser, MyConn);//This is command class which will handle the query and connection object.
-                MySqlDataReader MyReader;
-
-                MyCommand.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
-                MyCommand.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
-                MyConn.Open();
-
-                MyReader = MyCommand.ExecuteReader();// Here our query will be executed and data saved into the database.  
-                MyConn.Close(); //Closes connection to database
-                return true;
-            }
-            catch (Exception)
+            using (SHA256 sha256Hash = SHA256.Create())
             {
-                return false;
+                // ComputeHash - returns byte array  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(pass));
+
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
             }
         }
-
-        public static bool EmailCheck(string email)
+        //Method to check if inputted email already exists within the database
+        public static bool CheckEmailExists(string email)
         {
-            string Query = "SELECT * FROM users WHERE email = '" + email + "';";
-
-            MySqlConnection con = new MySqlConnection(Constants.connectionString);
-            MySqlCommand cmd = new MySqlCommand(Query, con);
-            MySqlDataReader dr;
-
-            try
-            {
-                con.Open();
-            }
-            catch (Exception ex)
-            {
-                var d = ex.Message;
-            }
-
-            dr = cmd.ExecuteReader();
-            while (dr.Read())
-                if (dr.HasRows == true)
-                    return false;
-
-            return true;
+            string url = $"{Constants.ip}coach/checkEmail/{email}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            return response.SupportsHeaders;
         }
 
+        //Method to insert new user data into the database 
+        public static bool InsertNewUser(string email, string password, string name)
+        {
+            password = HashPassword(password);
+            string url = $"{Constants.ip}coach/addCoach/{email}/{password}/{name}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            return response.SupportsHeaders;
+        }
+
+        //Method to check if account details exist in database
         public static bool AccountCheck(string email, string password)
         {
-            string MyConnection = "datasource=localhost; Initial Catalog=tdq; username=root;password=Planetoftheapes12";
-            string Query = "SELECT * FROM users WHERE email ='" + email + "' AND password = '" + password + "'";
+            password = HashPassword(password);
+            string url = $"{Constants.ip}coach/checkAccountExists/{email}/{password}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            return response.SupportsHeaders;
+        }
 
-            MySqlConnection con = new MySqlConnection(MyConnection);
-            MySqlCommand cmd = new MySqlCommand(Query, con);
-            MySqlDataReader dr;
+        public static void GetUserDetails()
+        {
+            //get user details associated with login
+            //initialise user object with details
+            //return user
+        }
 
-            con.Open();
+        public static void EditAccountDetails()
+        {
+            //Pass in user object
+            //Check to see if gender and d.o.b fields are null
+            //input into database values if not null
 
-            dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                if (dr.HasRows == false)
-                    return false;
-                else
-                    return true;
-            }
-
-
-            return false;
         }
     }
 }

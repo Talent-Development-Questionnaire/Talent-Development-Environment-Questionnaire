@@ -27,7 +27,7 @@ namespace TDQ
                 (Application.Current).MainPage = new Navigation_Drawer_Logged_In();
             }
             else
-                await DisplayAlert("Account", "Account does not exist, please try again.", "OK");
+                await DisplayAlert("Account", "Email or Password may be incorrect, please try again.", "OK");
         }
     }
 }

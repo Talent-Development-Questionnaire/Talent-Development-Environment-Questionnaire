@@ -24,6 +24,8 @@
     <Style x:Key="entryStyle" TargetType="Entry">
         <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="PlaceholderColor" Value="{DynamicResource TertiaryTextColour}"/>
         <Setter Property="FontSize" Value="16"/>
     </Style>
 

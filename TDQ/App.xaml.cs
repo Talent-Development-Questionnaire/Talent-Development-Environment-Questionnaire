@@ -11,9 +11,10 @@ namespace TDQ
         public static string FolderPath { get; private set; }
 
         public App()
-        { 
+        {
             InitializeComponent();
 
+           // Classes.DatabaseController.TestHttpRequest();
             Sharpnado.MaterialFrame.Initializer.Initialize(true, false);
 
             Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
@@ -21,7 +22,7 @@ namespace TDQ
 
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
 
-            switch(Utils.SavedSettings.LoginSettings)
+            switch (Utils.SavedSettings.LoginSettings)
             {
                 case "LoggedIn":
                     MainPage = new Navigation_Drawer_Logged_In();
@@ -30,9 +31,8 @@ namespace TDQ
                     MainPage = new Navigation_Drawer();
                     break;
             }
-            
         }
-
+        
         protected override void OnStart()
         {
 
