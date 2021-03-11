@@ -2,7 +2,25 @@
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     x:Class="TDQ.Themes.MediumFontStyle">
+  
+    <Style x:Key="accountLabelStyle"
+           TargetType="Label">
+        <Setter Property="FontSize"
+                Value="20"/>
+    </Style>
 
+    <Style x:Key="accountGridStyle"
+           TargetType="Grid">
+        <Setter Property="ColumnSpacing"
+                Value="30">
+        </Setter>
+        <Setter Property="RowSpacing"
+                Value="25">
+        </Setter>
+        <Setter Property="Margin"
+                Value="20,0,0,0">
+        </Setter>
+    </Style>
 
     <Style x:Key="frameStyle" TargetType="Frame">
         <Setter Property="BackgroundColor" Value="{DynamicResource FrameColour}"/>
@@ -24,6 +42,8 @@
     <Style x:Key="entryStyle" TargetType="Entry">
         <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="PlaceholderColor" Value="{DynamicResource TertiaryTextColour}"/>
         <Setter Property="FontSize" Value="16"/>
     </Style>
 

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="TDQ.AccountPage"
+             Title="Account">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_settings.png"
+                     Clicked="BtnEditAccount_Clicked"/>
+    </ContentPage.ToolbarItems> 
+
+
+    <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All">
+
+        <ic:CircleImage x:Name="AccountImage"    
+                                Aspect="AspectFill"
+                                HorizontalOptions="Center"
+                                Margin="0,30,0,30"
+                                HeightRequest="160"
+                                WidthRequest="160"
+            Source="ic_account.png" >
+
+            <ic:CircleImage.GestureRecognizers>
+                <TapGestureRecognizer
+                                    Tapped="AccountImage_Tapped"
+                                    NumberOfTapsRequired="1"/>
+            </ic:CircleImage.GestureRecognizers>
+        </ic:CircleImage>
+
+
+        <Grid Style ="{DynamicResource accountGridStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width ="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="auto"/>
+                <RowDefinition Height ="auto"/>
+            </Grid.RowDefinitions>
+
+
+            <Label x:Name="LblName"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Name"
+                    TextColor="#808080"
+                    HorizontalTextAlignment="Start"
+                    Style="{DynamicResource accountLabelStyle}"/>
+
+            <Label x:Name="LblNameInput" 
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="{Binding Name}"
+                    TextColor="Black"
+                    HorizontalTextAlignment="Start"
+                    Style="{DynamicResource accountLabelStyle}"/>
+
+
+            <Label x:Name="LblEmail"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Text="Email"
+                    TextColor="#808080"
+                    HorizontalTextAlignment="Start"
+                    Style="{DynamicResource accountLabelStyle}"/>
+
+            <Label x:Name="LblEmailInput" 
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Text="{Binding Email}"
+                    TextColor="Black"
+                    HorizontalTextAlignment="Start"
+                    Style="{DynamicResource accountLabelStyle}"/>
+
+            <Label x:Name="LblDob"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Text="D.O.B"
+                    TextColor="#808080"
+                    HorizontalTextAlignment ="Start"
+                    Style="{DynamicResource accountLabelStyle}"/>
+
+
+            <Label x:Name="LblDobInput" 
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Text="{Binding Dob}"
+                    TextColor="Black"
+                    HorizontalTextAlignment="Start"
+                    Style="{DynamicResource accountLabelStyle}"/>
+
+            <Label x:Name="LblClubList"
+                        Grid.Row="4" 
+                        Grid.Column="0"
+                        Text="Groups"
+                        TextColor="#808080"
+                        HorizontalTextAlignment ="Start"
+                        Style="{DynamicResource accountLabelStyle}"/>
+
+
+            <!--Need to find a way to get a list of clubs here -->
+
+            <Label x:Name="LblClubListInput"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Text="Hearts"
+                    TextColor="Black"
+                    HorizontalTextAlignment="Start"
+                    Style="{DynamicResource accountLabelStyle}"/>
+        </Grid>
+
+    </StackLayout>
+</ContentPage>

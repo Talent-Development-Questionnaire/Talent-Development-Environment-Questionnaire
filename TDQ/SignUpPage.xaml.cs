@@ -22,7 +22,7 @@ namespace TDQ
             var validEmail = Classes.Verification.IsValidEmail(EntryEmail.Text);
             if (EntryPassword.Text == EntryConfirmPassword.Text && validEmail == true)
             {
-                var result = Classes.DatabaseController.EmailCheck(EntryEmail.Text);
+                var result = Classes.DatabaseController.CheckEmailExists(EntryEmail.Text);
 
                 if (result == false)
                 {
@@ -36,7 +36,7 @@ namespace TDQ
 
                     if (result == true)
                     {
-                        Utils.SavedSettings.LoginSettings = "LoggedIn";
+                        Utils.SavedSettings.LoginSettings = EntryEmail.Text;
                         (Application.Current).MainPage = new Navigation_Drawer_Logged_In();
                     }
                     else

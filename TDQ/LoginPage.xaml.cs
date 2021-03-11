@@ -23,7 +23,7 @@ namespace TDQ
 
             if (result == true)
             {
-                Utils.SavedSettings.LoginSettings = "LoggedIn";
+                Utils.SavedSettings.LoginSettings = EntryEmail.Text;
                 (Application.Current).MainPage = new Navigation_Drawer_Logged_In();
             }
             else
