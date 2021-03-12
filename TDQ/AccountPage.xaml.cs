@@ -13,6 +13,7 @@ namespace TDQ
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AccountPage : ContentPage
     {
+        private Models.CoachUser user;
         public AccountPage()
         {
             InitializeComponent();
@@ -28,13 +29,18 @@ namespace TDQ
             else
                 AccountImage.Source = Utils.SavedSettings.AccountImageSettings;
 
-            BindingContext = AccountPageFunctions.GetAccountDetails();
+            user = DatabaseController.GetUserDetails(Utils.SavedSettings.LoginSettings);
+            if(user != null)
+                BindingContext = user;
         }
 
 
         private async void BtnEditAccount_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new PopupPages.EditAccountPage());
+            await Navigation.PushModalAsync(new PopupPages.EditAccountPage(user)
+            {
+                BindingContext = user
+            }) ;
         }
 
 

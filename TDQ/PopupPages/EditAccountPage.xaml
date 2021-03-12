@@ -16,66 +16,66 @@
                
                HasShadow="True">
 
-    <StackLayout>
+        <StackLayout>
 
-        <Label x:Name="LblTitle"
-                       Text="Edit Profile"
-                       TextColor="White"
-                       HorizontalTextAlignment="Center"
-                       FontSize="36"
-                       FontAttributes="Italic"/>
+            <Label x:Name="LblTitle"
+                           Text="Edit Profile"
+                           TextColor="White"
+                           HorizontalTextAlignment="Center"
+                           FontSize="36"
+                           FontAttributes="Italic"/>
         
-        <ic:CircleImage x:Name="AccountImage"    
-                        Source="ic_add_photo.png"    
-                        Aspect="AspectFill"
-                        HorizontalOptions="Center"
-                        VerticalOptions="StartAndExpand"
-                        HeightRequest="84"
-                        WidthRequest="84">
+            <ic:CircleImage x:Name="AccountImage"    
+                            Source="ic_add_photo.png"    
+                            Aspect="AspectFill"
+                            HorizontalOptions="Center"
+                            VerticalOptions="StartAndExpand"
+                            HeightRequest="84"
+                            WidthRequest="84">
 
-            <ic:CircleImage.GestureRecognizers>
-                <TapGestureRecognizer
-                                    Tapped="AccountImage_Tapped"
-                                    NumberOfTapsRequired="1"/>
-            </ic:CircleImage.GestureRecognizers>
-        </ic:CircleImage>
+                <ic:CircleImage.GestureRecognizers>
+                    <TapGestureRecognizer
+                                        Tapped="AccountImage_Tapped"
+                                        NumberOfTapsRequired="1"/>
+                </ic:CircleImage.GestureRecognizers>
+            </ic:CircleImage>
 
-        <Entry
-                x:Name="entryName"
-                Placeholder="Name"
-                Text="{Binding Name}"
-                Style="{DynamicResource entryStyle}"
-                TextColor="White"
-                PlaceholderColor="White"/>
+            <Entry  x:Name="entryName"
+                    Placeholder="Name"
+                    Text="{Binding Name}"
+                    Style="{DynamicResource entryStyle}"
+                    TextColor="White"
+                    PlaceholderColor="White"/>
 
+            <Entry  x:Name="entryEmail"
+                    Placeholder="Email" 
+                    Text="{Binding Email}"
+                    Style="{DynamicResource entryStyle}"
+                    Keyboard="Email"
+                    TextColor="White"
+                    PlaceholderColor="White"
+                    Grid.Column="0"/>
 
+            <Entry x:Name="entryGender"
+                    Placeholder="Gender" 
+                    Text="{Binding Gender}"
+                    Style="{DynamicResource entryStyle}"
+                    TextColor="White"
+                    PlaceholderColor="White"
+                    Grid.Column="0"/>
 
-        <Entry 
-                x:Name="entryEmail"
-                Placeholder="Email" 
-                Text="{Binding Email}"
-                Style="{DynamicResource entryStyle}"
-                Keyboard="Email"
-                TextColor="White"
-                PlaceholderColor="White"
-                Grid.Column="0"/>
-
-        <Entry 
-                x:Name="entryDOB"
-                Placeholder="D.O.B" 
-                Text="{Binding Dob}"
-                Style="{DynamicResource entryStyle}"
-                TextColor="White"
-                PlaceholderColor="White"
-                Grid.Column="0"/>
-
-                <DatePicker>
-                </DatePicker>
-
-
+                <Entry x:Name="entryDOB"
+                    Placeholder="D.O.B" 
+                    Text="{Binding Dob}"
+                    Style="{DynamicResource entryStyle}"
+                    TextColor="White"
+                    PlaceholderColor="White"
+                    Grid.Column="0"/>
 
 
-                <Button 
+
+
+            <Button 
                 Text="Save" 
                 TextColor="White"
                 Style="{DynamicResource buttonStyle}"
@@ -83,13 +83,13 @@
                 Clicked="BtnSave_Clicked"/>
 
                 <Button x:Name="BtnCanel"
-                Text="Cancel" 
-                TextColor="White"
-                Style="{DynamicResource buttonStyle}"
-                BackgroundColor="#4C000000"
-                Clicked="BtnCancel_Clicked"/>
+                    Text="Cancel" 
+                    TextColor="White"
+                    Style="{DynamicResource buttonStyle}"
+                    BackgroundColor="#4C000000"
+                    Clicked="BtnCancel_Clicked"/>
 
-    </StackLayout>
-    </Frame>
+            </StackLayout>
+        </Frame>
     </StackLayout>
 </ContentPage>

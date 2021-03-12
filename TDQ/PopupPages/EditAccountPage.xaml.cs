@@ -14,9 +14,16 @@ namespace TDQ.PopupPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditAccountPage : ContentPage
     {
+        private Models.CoachUser user;
         public EditAccountPage()
         {
             InitializeComponent();
+        }
+
+        public EditAccountPage(Models.CoachUser coach)
+        {
+            InitializeComponent();
+            user = coach;
         }
 
         protected override void OnAppearing()
@@ -75,8 +82,14 @@ namespace TDQ.PopupPages
             }
         }
 
-        private async void BtnSave_Clicked(object sender, EventArgs e)
+        private void BtnSave_Clicked(object sender, EventArgs e)
         {
+            user.Name = entryName.Text;
+            user.Email = entryEmail.Text;
+            user.Dob = entryDOB.Text;
+            user.Gender = entryGender.Text;
+            Classes.AccountPageFunctions.EditAccountDetails(user);
+            Navigation.PopModalAsync();
         }
 
         void BtnCancel_Clicked(System.Object sender, System.EventArgs e)

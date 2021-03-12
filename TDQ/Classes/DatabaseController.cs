@@ -3,6 +3,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.IO;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace TDQ.Classes
 {
@@ -53,7 +54,7 @@ namespace TDQ.Classes
             return response.SupportsHeaders;
         }
 
-        public static string[] GetUserDetails(string email)
+        public static Models.CoachUser GetUserDetails(string email)
         {
             string url = $"{Constants.ip}coach/getUser/{email}";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
@@ -62,23 +63,24 @@ namespace TDQ.Classes
             string responseString = null;
             using (Stream stream = response.GetResponseStream())
             {
-                StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                StreamReader reader = new StreamReader(stream);
                 responseString = reader.ReadToEnd();
+                responseString = responseString.Replace("(", string.Empty);
+                responseString = responseString.Replace(")", string.Empty);
+                responseString = responseString.TrimEnd(',');
+                var user = JsonConvert.DeserializeObject<Models.CoachUser>(responseString);
+
+                if (user != null)
+                    return user;
+                else
+                    return null;
             }
-            responseString = responseString.Replace("'", string.Empty);
-            responseString = responseString.Trim(new char[] { '(', ')' });
-            responseString = responseString.Remove(0, 2);
-            responseString = responseString.TrimEnd(',');
-            string[] newResponseString = responseString.Split(','); 
-            return newResponseString;
         }
 
-        public static void EditAccountDetails()
+        public static void EditAccountDetails(string id, string email, string name, string gender, string dob)
         {
-            //Pass in user object
-            //Check to see if gender and d.o.b fields are null
-            //input into database values if not null
-
+            string url = $"{Constants.ip}coach/editUser/{id}/{email}/{name}/{gender}/{dob}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
         }
     }
 }
