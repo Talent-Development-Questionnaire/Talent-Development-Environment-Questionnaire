@@ -28,26 +28,25 @@
                    Grid.Column="1"
                    Grid.Row="1"
                    HorizontalOptions="Start"
-                   VerticalOptions="End">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="AccountImage_Tapped" NumberOfTapsRequired="2"/>
-                </Image.GestureRecognizers>
-            </Image>
+                   VerticalOptions="End"/>
+
 
             <StackLayout VerticalOptions="CenterAndExpand" 
                          Grid.Row="1" Margin="10,0,0,0"
                          Grid.Column="2" Grid.ColumnSpan="3"
                          Orientation="Vertical">
 
-                <Label HorizontalTextAlignment="Start"
+                <Label x:Name="lblName"
+                       HorizontalTextAlignment="Start"
                        VerticalTextAlignment="Center"
                        TextColor="White"
-                       Text="Account Name"/>
+                       Text="{Binding Name}"/>
 
-                <Label HorizontalTextAlignment="Start"
+                <Label x:Name="lblEmail"
+                       HorizontalTextAlignment="Start"
                        VerticalTextAlignment="Center"
                        TextColor="White"
-                       Text="Email"/>
+                       Text="{Binding Email}"/>
             </StackLayout>
 
         </Grid>
