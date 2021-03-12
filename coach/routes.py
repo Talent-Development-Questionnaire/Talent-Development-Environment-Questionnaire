@@ -39,13 +39,13 @@ def checkAccountExists(email, password):
 	else:
 		return 'true'
 
-@coach_blueprint.route('/coach/createQuestionnaire/<size>/<name>')
-def createQuestionnaire(size, name):
+@coach_blueprint.route('/coach/createQuestionnaire/<name>/<type>/<email>')
+def createQuestionnaire(name, type, email):
 	cursor = mysql.connection.cursor()
-	if size == 59:
-		cursor.execute("" % name)
-	else:
-		cursor.execute("" % name)
-
+	cursor.execute("SELECT coach_id FROM coaches WHERE email = '%s'" % (email))
+	coach_id = cursor.fetchall
+	cursor.execute("INSERT INTO questionnaire (coach_id, name, type) VALUES ('%s','%s','%i')" % (coach_id, name, type))
 	mysql.connection.commit()
 	cursor.close()
+	return 'true'
+
