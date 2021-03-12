@@ -81,6 +81,7 @@ namespace TDQ.Classes
         {
             string url = $"{Constants.ip}coach/editUser/{id}/{email}/{name}/{gender}/{dob}";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
         }
     }
 }
