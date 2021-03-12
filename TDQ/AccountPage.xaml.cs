@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using TDQ.Classes;
 
 namespace TDQ
 {
@@ -19,37 +20,15 @@ namespace TDQ
         }
 
         protected override void OnAppearing()
-        {
-            
+        {          
             base.OnAppearing();
-
+            
             if (Utils.SavedSettings.AccountImageSettings == null)
-                AccountImage.Source = ImageSource.FromResource("ic_account.png");         
+                AccountImage.Source = ImageSource.FromResource("ic_action_add_a_photo.png");         
             else
-            {
                 AccountImage.Source = Utils.SavedSettings.AccountImageSettings;
-            /*
-                AccountImage.Source = ImageSource.FromResource("ic_add.png");
-                Utils.SavedSettings.AccountImageSettings = result.FullPath;
-            */
-            }
 
-            if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
-            {
-                bool userDetails = (Classes.DatabaseController.GetUserDetails(Utils.SavedSettings.LoginSettings));
-                new Models.CoachUser
-                {
-                    ImageFilePath = null,
-                    Name = null,
-                    Email = null,
-                    Gender = null,
-                   // Dob = null
-                };
-
-                BindingContext = this;
-            }
-            else
-                return;
+            BindingContext = AccountPageFunctions.GetAccountDetails();
         }
 
 

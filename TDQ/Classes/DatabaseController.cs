@@ -53,12 +53,24 @@ namespace TDQ.Classes
             return response.SupportsHeaders;
         }
 
-        public static bool GetUserDetails(string email)
+        public static string[] GetUserDetails(string email)
         {
             string url = $"{Constants.ip}coach/getUser/{email}";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            return response.SupportsHeaders;
+
+            string responseString = null;
+            using (Stream stream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                responseString = reader.ReadToEnd();
+            }
+            responseString = responseString.Replace("'", string.Empty);
+            responseString = responseString.Trim(new char[] { '(', ')' });
+            responseString = responseString.Remove(0, 2);
+            responseString = responseString.TrimEnd(',');
+            string[] newResponseString = responseString.Split(','); 
+            return newResponseString;
         }
 
         public static void EditAccountDetails()

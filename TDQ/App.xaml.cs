@@ -21,16 +21,10 @@ namespace TDQ
 
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
 
-            switch(Utils.SavedSettings.LoginSettings)
-            {
-                case "LoggedIn":
-                    MainPage = new Navigation_Drawer_Logged_In();
-                    break;
-                default:
-                    MainPage = new Navigation_Drawer();
-                    break;
-            }
-            
+            if(!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
+                MainPage = new Navigation_Drawer_Logged_In();
+            else
+                MainPage = new Navigation_Drawer();
         }
 
         protected override void OnStart()

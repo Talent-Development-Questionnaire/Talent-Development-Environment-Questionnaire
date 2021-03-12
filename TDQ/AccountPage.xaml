@@ -29,9 +29,12 @@
         </ic:CircleImage>
 
 
-        <Grid Style ="{DynamicResource accountGridStyle}">
+        <Grid Style ="{DynamicResource accountGridStyle}"
+              HorizontalOptions="CenterAndExpand">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width ="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
@@ -42,7 +45,7 @@
 
 
             <Label x:Name="LblName"
-                    Grid.Row="1"
+                    Grid.Row="0"
                     Grid.Column="0"
                     Text="Name"
                     TextColor="#808080"
@@ -50,7 +53,7 @@
                     Style="{DynamicResource accountLabelStyle}"/>
 
             <Label x:Name="LblNameInput" 
-                    Grid.Row="1"
+                    Grid.Row="0"
                     Grid.Column="1"
                     Text="{Binding Name}"
                     TextColor="Black"
@@ -59,7 +62,7 @@
 
 
             <Label x:Name="LblEmail"
-                    Grid.Row="2"
+                    Grid.Row="1"
                     Grid.Column="0"
                     Text="Email"
                     TextColor="#808080"
@@ -67,9 +70,26 @@
                     Style="{DynamicResource accountLabelStyle}"/>
 
             <Label x:Name="LblEmailInput" 
-                    Grid.Row="2"
+                    Grid.Row="1"
                     Grid.Column="1"
                     Text="{Binding Email}"
+                    TextColor="Black"
+                    HorizontalTextAlignment="Start"
+                    Style="{DynamicResource accountLabelStyle}"/>
+
+            <Label x:Name="LblGender"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Text="Gender"
+                    TextColor="#808080"
+                    HorizontalTextAlignment ="Start"
+                    Style="{DynamicResource accountLabelStyle}"/>
+
+
+            <Label x:Name="LblGenderInput" 
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Text="{Binding Gender}"
                     TextColor="Black"
                     HorizontalTextAlignment="Start"
                     Style="{DynamicResource accountLabelStyle}"/>
