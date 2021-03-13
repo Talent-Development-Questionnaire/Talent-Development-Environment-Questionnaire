@@ -23,11 +23,14 @@ namespace TDQ
         protected override void OnAppearing()
         {          
             base.OnAppearing();
-            
+
             if (Utils.SavedSettings.AccountImageSettings == null)
-                AccountImage.Source = ImageSource.FromResource("ic_action_add_a_photo.png");         
+                AccountImage.Source = ImageSource.FromResource("ic_action_add_a_photo.png");
             else
+            {
                 AccountImage.Source = Utils.SavedSettings.AccountImageSettings;
+                new Templates.HeaderContent();
+            }
 
             user = DatabaseController.GetUserDetails(Utils.SavedSettings.LoginSettings);
             if(user != null)

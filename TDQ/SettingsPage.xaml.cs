@@ -73,6 +73,7 @@ namespace TDQ
         void BtnLogOut_Clicked(System.Object sender, System.EventArgs e)
         {
             Utils.SavedSettings.LoginSettings = "";
+            Utils.SavedSettings.AccountImageSettings = null;
             (Application.Current).MainPage = new Navigation_Drawer();
         }
 
