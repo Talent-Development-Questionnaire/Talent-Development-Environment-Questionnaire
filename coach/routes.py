@@ -62,12 +62,10 @@ def edit_user_details(id, email, name, gender, dob):
     return str(cursor.fetchall())
 
 
-@coach_blueprint.route('/coach/createQuestionnaire/<name>/<type>/<email>')
-def createQuestionnaire(name, type, email):
+@coach_blueprint.route('/coach/createQuestionnaire/<name>/<qType>/<email>')
+def createQuestionnaire(name, qType, email):
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT coach_id FROM coaches WHERE email = '%s'" % (email))
-    coach_id = cursor.fetchall
-    cursor.execute("INSERT INTO questionnaire (coach_id, name, type) VALUES ('%s','%s','%i')" % (coach_id, name, type))
+    cursor.execute("INSERT INTO questionnaire (name, type, coach_id) VALUES ('%s','%s', (SELECT coach_id FROM coaches WHERE email = '%s'))" % (name, qType, email))
     mysql.connection.commit()
     cursor.close()
     return 'true'
