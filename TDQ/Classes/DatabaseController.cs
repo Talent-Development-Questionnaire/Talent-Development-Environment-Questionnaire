@@ -31,7 +31,13 @@ namespace TDQ.Classes
             string url = $"{Constants.ip}coach/checkEmail/{email}";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            return response.SupportsHeaders;
+
+            using (Stream stream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(stream);
+                string responseString = reader.ReadToEnd();
+                return Convert.ToBoolean(responseString);
+            }
         }
 
         //Method to insert new user data into the database 
@@ -41,7 +47,13 @@ namespace TDQ.Classes
             string url = $"{Constants.ip}coach/addCoach/{email}/{password}/{name}";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            return response.SupportsHeaders;
+
+            using (Stream stream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(stream);
+                string responseString = reader.ReadToEnd();
+                return Convert.ToBoolean(responseString);
+            }
         }
 
         //Method to check if account details exist in database
@@ -51,7 +63,13 @@ namespace TDQ.Classes
             string url = $"{Constants.ip}coach/checkAccountExists/{email}/{password}";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            return response.SupportsHeaders;
+
+            using (Stream stream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(stream);
+                string responseString = reader.ReadToEnd();
+                return Convert.ToBoolean(responseString);
+            }
         }
 
         public static Models.CoachUser GetUserDetails(string email)
