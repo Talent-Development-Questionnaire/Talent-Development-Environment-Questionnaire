@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TDQ.Models;
+using Newtonsoft.Json;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -30,33 +25,10 @@ namespace TDQ.PopupPages
         {
             base.OnAppearing();
 
-            /* Old buggy code
-             * This line needs removed 
-            Utils.SavedSettings.AccountImageSettings = null;
-
             if (Utils.SavedSettings.AccountImageSettings == null)
-            {
                 AccountImage.Source = ImageSource.FromResource("ic_account.png");
-            }
-            /* This line is causing an issue 
             else
-            {
-                //AccountImage.Source = Utils.SavedSettings.AccountImageSettings = null;
-                AccountImage.Source = ImageSource.FromResource("ic_add.png");
-
-            }
-            */
-
-            // Fix
-            if (Utils.SavedSettings.AccountImageSettings == null)
-            {
-                AccountImage.Source = ImageSource.FromResource("ic_account.png");
-            }
-
-            else
-            {
                 AccountImage.Source = Utils.SavedSettings.AccountImageSettings;
-            }
         }
 
         private async void AccountImage_Tapped(object sender, EventArgs e)
@@ -92,7 +64,7 @@ namespace TDQ.PopupPages
             Navigation.PopModalAsync();
         }
 
-        void BtnCancel_Clicked(System.Object sender, System.EventArgs e)
+        void BtnCancel_Clicked(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();
         }

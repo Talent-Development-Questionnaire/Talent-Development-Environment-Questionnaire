@@ -5,21 +5,38 @@
              Title="Questionnaire"
              Style="{DynamicResource contentStyle}">
 
-    <ListView x:Name="LstQuestions"
-              HasUnevenRows="True"
-              BackgroundColor="Transparent">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <Frame Padding="2"
-                           Margin="10,5,10,5">
-                        <StackLayout HorizontalOptions="Center">
-                            <Label Text="{Binding .}"/>
-                        </StackLayout>
-                    </Frame>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <StackLayout>
+        <StackLayout x:Name="LayoutUserDetails"
+                     Margin="70">
+            <Entry x:Name="EntryEmail"
+                   Placeholder="Email"
+                   Style="{DynamicResource entryStyle}"/>
+            <Entry x:Name="EntryOTP"
+                   Placeholder="One Time Password"
+                   Style="{DynamicResource entryStyle}"/>
+
+            <Button x:Name="BtnConfirm"
+                    Text="Confirm"
+                    Style="{DynamicResource buttonStyle}"
+                    Clicked="BtnConfirm_Clicked"/>
+        </StackLayout>
+        <ListView x:Name="LstQuestions"
+                  HasUnevenRows="True"
+                  BackgroundColor="Transparent"
+                  IsVisible="False">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame Padding="2"
+                               Margin="10,5,10,5">
+                            <StackLayout HorizontalOptions="Center">
+                                <Label Text="{Binding .}"/>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 
 </ContentPage>

@@ -82,7 +82,7 @@
                 BackgroundColor="#4C000000"
                 Clicked="BtnSave_Clicked"/>
 
-                <Button x:Name="BtnCanel"
+                <Button x:Name="BtnCancel"
                     Text="Cancel" 
                     TextColor="White"
                     Style="{DynamicResource buttonStyle}"
