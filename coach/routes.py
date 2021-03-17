@@ -69,3 +69,21 @@ def createQuestionnaire(name, qType, email):
     mysql.connection.commit()
     cursor.close()
     return 'true'
+
+@coach_blueprint.route('/coach/deleteCoach/<email>/<password>')
+def deleteCoach(email, password):
+    if checkAccountExists(email, password) == 'false':
+        cursor = mysql.connection.cursor()
+        cursor.execute("DELETE FROM question WHERE questionnaire_id = (SELECT questionnaire_id FROM questionnaire WHERE coach_id (SELECT coach_id FROM coaches WHERE email = '%s'))" % email)
+        cursor.execute("DELETE FROM email_verfiy WHERE questionnaire_id = (SELECT questionnaire_id FROM questionnaire WHERE coach_id (SELECT coach_id FROM coaches WHERE email = '%s'))" % email)
+        cursor.execute("DELETE FROM questionnaire WHERE coach_id = (SELECT coach_id FROM coaches WHERE email = '%s')" % email)
+        cursor.execute("DELETE FROM coaches WHERE email = '%'" % email)
+        mysql.connection.commit()
+        cursor.close()
+        return 'true'
+    else:
+        return 'false'
+
+
+
+
