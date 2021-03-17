@@ -101,5 +101,22 @@ namespace TDQ.Classes
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
         }
+
+        public static string[] GenerateQuestions(int questionType)
+        {
+            string url = $"{Constants.ip}player/getQuestions/{questionType}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            string responseString = null;
+            using (Stream stream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(stream);
+                responseString = reader.ReadToEnd();
+                string[] questions = responseString.Split(new string[] { "\n" }, StringSplitOptions.None);
+
+                return questions;
+            }
+        }
     }
 }
