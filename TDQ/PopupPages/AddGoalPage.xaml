@@ -11,11 +11,12 @@
                CornerRadius="30"
                HasShadow="True">
             <StackLayout>
-                <Label Text="New Goal"
+                <Label Text="Add New Goal"
                        TextColor="White"
                        HorizontalTextAlignment="Center"
                        FontSize="36"/>
                 <Entry Placeholder="New Goal"
+                       PlaceholderColor="White"
                        x:Name="EntryGoal"/>
                 <Button Text="Save"
                         x:Name="BtnSave"

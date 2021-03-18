@@ -23,10 +23,17 @@ namespace TDQ.PopupPages
                     
 
         private async void BtnSave_Clicked(object sender, EventArgs e)
-        {       
-            string goalsText = "\n" + EntryGoal.Text;
-            File.AppendAllText(selectedGoalsGroup.Filename, goalsText);
-            await Navigation.PopModalAsync();
+        {   
+            if (string.IsNullOrWhiteSpace(EntryGoal.Text))
+            {               
+                await DisplayAlert("Error", "Goal cannot be empty. Please try again.", "OK");   
+            } 
+            else
+            {
+                string goalsText = "\n" + EntryGoal.Text;
+                File.AppendAllText(selectedGoalsGroup.Filename, goalsText);
+                await Navigation.PopModalAsync();
+            }            
         }
     }
 }

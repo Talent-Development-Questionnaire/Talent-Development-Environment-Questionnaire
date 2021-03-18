@@ -12,8 +12,16 @@
                BackgroundColor="#4C000000"
                CornerRadius="30">
             <StackLayout>
-
+                
+                <Label x:Name="LblTitle"
+                       Text="New Questionnaire"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       FontSize="33"
+                       FontAttributes="Italic"/>
+                
                 <Entry Placeholder="Type Unique Name"
+                       PlaceholderColor="White"
                        Style="{DynamicResource entryStyle}"/>
 
                 <Grid HorizontalOptions="Center"
@@ -26,10 +34,10 @@
                 </Grid>
 
                 <Picker x:Name="PickerQuestionnaire" 
-                        Title="Select Questionnaire" 
+                        Title="Select Questionnaire"
+                        TitleColor="White"
                         Style="{DynamicResource pickerStyle}"
                         WidthRequest="500" 
-                        TextColor="{DynamicResource PrimaryTextColour}"
                         SelectedIndex= "0"
                         SelectedIndexChanged="Picker_SelectedIndexChanged">
                     <Picker.Items>
@@ -40,9 +48,11 @@
 
                 <Picker x:Name="PickerGroup"
                         Title="Choose Group"
+                        TitleColor="White"
                         Style="{DynamicResource pickerStyle}"
                         SelectedIndexChanged="PickerGroup_SelectedIndexChanged"/>
                 <Entry Placeholder="Add new email"
+                       PlaceholderColor="White"
                        Style="{DynamicResource entryStyle}"/>
                 
 
