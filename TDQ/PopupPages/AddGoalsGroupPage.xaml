@@ -20,10 +20,14 @@
                        FontAttributes="Italic"/>
 
                     <Picker x:Name="PickerGroup"
+                                TitleColor="White"
+                                TextColor="White"
                                 Title="Choose Group"
                                 Style="{DynamicResource pickerStyle}"/>
 
                 <Picker x:Name="PickerColor"
+                            TitleColor="White"
+                            TextColor="White"
                             Title="Choose a colour"
                             Style="{DynamicResource pickerStyle}">
                     <Picker.ItemsSource>
