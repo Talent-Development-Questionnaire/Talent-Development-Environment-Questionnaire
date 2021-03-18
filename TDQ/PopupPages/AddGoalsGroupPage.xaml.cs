@@ -58,32 +58,39 @@ namespace TDQ.PopupPages
 
         private async void BtnSaveGoalsGroup_Clicked(object sender, EventArgs e)
         {
-            //Initialises GoalsGroup object
-            GoalsGroup goalsGroup = (GoalsGroup)BindingContext;
-
-            //Using the group name from picker, assigns goalsGroup.Group to the correct group
-            //Should probably be changed in the future but functions for now
-            foreach (Group group in Groups)
+            if (PickerGroup.SelectedItem != null)
             {
-                if (group.Name.Equals((string)PickerGroup.SelectedItem))
+                //Initialises GoalsGroup object
+                GoalsGroup goalsGroup = (GoalsGroup)BindingContext;
+
+                //Using the group name from picker, assigns goalsGroup.Group to the correct group
+                //Should probably be changed in the future but functions for now
+                foreach (Group group in Groups)
                 {
-                    goalsGroup.Group = group;
-                    break;
-                } 
+                    if (group.Name.Equals((string)PickerGroup.SelectedItem))
+                    {
+                        goalsGroup.Group = group;
+                        break;
+                    }
+                }
+
+                //Sets GoalsGroup object properties
+                goalsGroup.Name = goalsGroup.Group.Name;
+                goalsGroup.ImageFilePath = goalsGroup.Group.ImageFilePath;
+                goalsGroup.Color = (String)PickerColor.SelectedItem;
+
+                //Creates new file and writes the Group properties' values to said file
+                var filename = Path.Combine(App.FolderPath, $"{Path.GetRandomFileName()}.goalsgroup.txt");
+
+
+                File.WriteAllText(filename, goalsGroup.Name + "\n" + goalsGroup.ImageFilePath + "\n" + goalsGroup.Color);
+
+                await Navigation.PopModalAsync();
             }
-            
-            //Sets GoalsGroup object properties
-            goalsGroup.Name = goalsGroup.Group.Name;
-            goalsGroup.ImageFilePath = goalsGroup.Group.ImageFilePath;
-            goalsGroup.Color = (String)PickerColor.SelectedItem;
-
-            //Creates new file and writes the Group properties' values to said file
-            var filename = Path.Combine(App.FolderPath, $"{Path.GetRandomFileName()}.goalsgroup.txt");
-
-
-            File.WriteAllText(filename, goalsGroup.Name + "\n" + goalsGroup.ImageFilePath + "\n" + goalsGroup.Color);
-
-            await Navigation.PopModalAsync();
+            else
+            {
+                await DisplayAlert("Error", "Please select a group.", "OK");
+            }
         }
     }
 }
