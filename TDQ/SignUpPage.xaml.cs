@@ -17,8 +17,9 @@ namespace TDQ
             InitializeComponent();
         }
 
-        async void BtnSignUp_Clicked(System.Object sender, System.EventArgs e)
+        async void BtnSignUp_Clicked(object sender, EventArgs e)
         {
+            string otp;
             var validEmail = Classes.Verification.IsValidEmail(EntryEmail.Text);
             if (EntryPassword.Text == EntryConfirmPassword.Text && validEmail == true)
             {
@@ -31,13 +32,24 @@ namespace TDQ
                 }
                 else
                 {
+                    otp = Classes.DatabaseController.GenerateOTP();
                     string name = EntryFirstName.Text + " " + EntryLastName.Text;
-                    result = Classes.DatabaseController.InsertNewUser(EntryEmail.Text, EntryPassword.Text, name);
+                    result = Classes.DatabaseController.InsertNewUser(EntryEmail.Text, EntryPassword.Text, name, otp);
 
                     if (result == true)
                     {
-                        Utils.SavedSettings.LoginSettings = EntryEmail.Text;
-                        (Application.Current).MainPage = new Navigation_Drawer_Logged_In();
+                        Navigation.PushModalAsync(new PopupPages.EnterOTP_Page(EntryEmail.Text));
+
+                        if(Utils.SavedSettings.LoginSettings == EntryEmail.Text)
+                            (Application.Current).MainPage = new Navigation_Drawer();
+                        else
+                        {
+                            EntryFirstName.Text = string.Empty;
+                            EntryLastName.Text = string.Empty;
+                            EntryEmail.Text = string.Empty;
+                            EntryPassword.Text = string.Empty;
+                            EntryConfirmPassword.Text = string.Empty;
+                        }
                     }
                     else
                         await DisplayAlert("Connection Error", "Error occured connecting to database, please try again", "OK");
@@ -46,10 +58,10 @@ namespace TDQ
             else if (validEmail == false)
                 await DisplayAlert("Error", "Email is not valid, please try again", "OK");
             else
-                await DisplayAlert("Error", "Passwords do not match, please try again", "OK");
+                await DisplayAlert("Error", "Passwords do not match, please try again", "OK"); 
         }
 
-        void EntryEmail_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        void EntryEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
             EntryEmail.TextColor = Color.Black;
         }

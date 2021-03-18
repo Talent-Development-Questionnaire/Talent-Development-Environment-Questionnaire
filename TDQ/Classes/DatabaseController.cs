@@ -25,6 +25,31 @@ namespace TDQ.Classes
                 return builder.ToString();
             }
         }
+
+        public static string GenerateOTP()
+        {
+            string alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string small_alphabets = "abcdefghijklmnopqrstuvwxyz";
+            string numbers = "1234567890";
+
+            string characters = numbers;
+
+            characters += alphabets + small_alphabets + numbers;
+            int length = 12;
+            string otp = string.Empty;
+            for (int i = 0; i < length; i++)
+            {
+                string character = string.Empty;
+                do
+                {
+                    int index = new Random().Next(0, characters.Length);
+                    character = characters.ToCharArray()[index].ToString();
+                } while (otp.IndexOf(character) != -1);
+                otp += character;
+            }
+            return otp;
+        }
+
         //Method to check if inputted email already exists within the database
         public static bool CheckEmailExists(string email)
         {
@@ -41,10 +66,10 @@ namespace TDQ.Classes
         }
 
         //Method to insert new user data into the database 
-        public static bool InsertNewUser(string email, string password, string name)
+        public static bool InsertNewUser(string email, string password, string name, string otp)
         {
             password = HashPassword(password);
-            string url = $"{Constants.ip}coach/addCoach/{email}/{password}/{name}";
+            string url = $"{Constants.ip}coach/addCoach/{email}/{password}/{name}/{otp}";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
@@ -108,14 +133,28 @@ namespace TDQ.Classes
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
-            string responseString = null;
             using (Stream stream = response.GetResponseStream())
             {
                 StreamReader reader = new StreamReader(stream);
-                responseString = reader.ReadToEnd();
+                string responseString = reader.ReadToEnd();
                 string[] questions = responseString.Split(new string[] { "\n" }, StringSplitOptions.None);
 
                 return questions;
+            }
+        }
+
+        public static bool VerifyCoachAccount(string email, string otp)
+        {
+            string url = $"{Constants.ip}/coach/verifyAccount/{email}/{otp}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            using (Stream stream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(stream);
+                string responseString = reader.ReadToEnd();
+
+                return Convert.ToBoolean(responseString);
             }
         }
     }
