@@ -11,7 +11,7 @@
                CornerRadius="30"
                HasShadow="True">
             <StackLayout>
-                <Label Text="New Goal"
+                <Label Text="Add New Goal"
                        TextColor="White"
                        HorizontalTextAlignment="Center"
                        FontSize="36"/>
