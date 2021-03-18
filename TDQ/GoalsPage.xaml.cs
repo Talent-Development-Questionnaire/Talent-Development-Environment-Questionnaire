@@ -9,6 +9,8 @@ using Xamarin.Forms.Xaml;
 using TDQ.Models;
 using System.IO;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+
 namespace TDQ
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -87,24 +89,29 @@ namespace TDQ
         }
 
        
-        void DeleteGoalsGroup_Clicked(object sender, EventArgs e)
+        private async void DeleteGoalsGroup_Clicked(object sender, EventArgs e)
         {
-            var mi = ((MenuItem)sender);//initialises variable as a MenuItem
-            var item = ((GoalsGroup)mi.CommandParameter);//sets item as the group item that was selected in the list view
+            bool confirmDelete = await DisplayAlert("Delete Goals Group", "Are you sure you want to permanently delete this goals group?", "Delete", "Cancel");
+            Debug.WriteLine(confirmDelete);
+            if (confirmDelete)
+            {
+                var mi = ((MenuItem)sender);//initialises variable as a MenuItem
+                var item = ((GoalsGroup)mi.CommandParameter);//sets item as the group item that was selected in the list view
 
-            //Gets all the files and deletes the file that matches the Group's Filename property
-            var files = Directory.EnumerateFiles(App.FolderPath, "*.goalsgroup.txt");
-            foreach (var file in files)
-                if (item.Filename == file)
-                    File.Delete(file);
+                //Gets all the files and deletes the file that matches the Group's Filename property
+                var files = Directory.EnumerateFiles(App.FolderPath, "*.goalsgroup.txt");
+                foreach (var file in files)
+                    if (item.Filename == file)
+                        File.Delete(file);
 
-            //Removes the group from the list
-            GoalsGroups.Remove(item);
+                //Removes the group from the list
+                GoalsGroups.Remove(item);
 
-            //Updates the list view with the new list
-            ListViewGoalsGroup.ItemsSource = GoalsGroups;
+                //Updates the list view with the new list
+                ListViewGoalsGroup.ItemsSource = GoalsGroups;
 
-            HideList();
+                HideList();
+            }            
         }
 
         private async void ListViewGoalsGroup_ItemSelected(object sender, SelectedItemChangedEventArgs e)
