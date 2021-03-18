@@ -12,7 +12,14 @@
                BackgroundColor="#4C000000"
                CornerRadius="30">
             <StackLayout>
-
+                
+                <Label x:Name="LblTitle"
+                       Text="New Questionnaire"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       FontSize="36"
+                       FontAttributes="Italic"/>
+                
                 <Entry Placeholder="Type Unique Name"
                        Style="{DynamicResource entryStyle}"/>
 
@@ -43,6 +50,7 @@
                         Style="{DynamicResource pickerStyle}"
                         SelectedIndexChanged="PickerGroup_SelectedIndexChanged"/>
                 <Entry Placeholder="Add new email"
+                       TextColor="White"
                        Style="{DynamicResource entryStyle}"/>
                 
 
