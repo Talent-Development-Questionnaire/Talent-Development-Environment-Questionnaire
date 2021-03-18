@@ -92,7 +92,6 @@ namespace TDQ
         private async void DeleteGoalsGroup_Clicked(object sender, EventArgs e)
         {
             bool confirmDelete = await DisplayAlert("Delete Goals Group", "Are you sure you want to permanently delete this goals group?", "Delete", "Cancel");
-            Debug.WriteLine(confirmDelete);
             if (confirmDelete)
             {
                 var mi = ((MenuItem)sender);//initialises variable as a MenuItem

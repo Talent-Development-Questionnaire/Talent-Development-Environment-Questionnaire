@@ -76,24 +76,28 @@ namespace TDQ
             }
         }
 
-        void DeleteGroup_Clicked(object sender, EventArgs e)
+        private async void DeleteGroup_Clicked(object sender, EventArgs e)
         {
-            var mi = ((MenuItem)sender);//initialises variable as a MenuItem
-            var item = ((Group)mi.CommandParameter);//sets item as the group item that was selected in the list view
+            bool confirmDelete = await DisplayAlert("Delete Group", "Are you sure you want to permanently delete this group?", "Delete", "Cancel");
+            if (confirmDelete)
+            {
+                var mi = ((MenuItem)sender);//initialises variable as a MenuItem
+                var item = ((Group)mi.CommandParameter);//sets item as the group item that was selected in the list view
 
-            //Gets all the files and deletes the file that matches the Group's Filename property
-            var files = Directory.EnumerateFiles(App.FolderPath, "*.group.txt");
-            foreach (var file in files)
-                if (item.Filename == file)
-                    File.Delete(file);
+                //Gets all the files and deletes the file that matches the Group's Filename property
+                var files = Directory.EnumerateFiles(App.FolderPath, "*.group.txt");
+                foreach (var file in files)
+                    if (item.Filename == file)
+                        File.Delete(file);
 
-            //Removes the group from the list
-            Groups.Remove(item);
+                //Removes the group from the list
+                Groups.Remove(item);
 
-            //Updates the list view with the new list
-            LstViewGroup.ItemsSource = Groups;
+                //Updates the list view with the new list
+                LstViewGroup.ItemsSource = Groups;
 
-            HideList();
+                HideList();
+            }            
         }
 
         public void HideList()
