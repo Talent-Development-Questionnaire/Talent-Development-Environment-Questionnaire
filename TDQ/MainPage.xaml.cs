@@ -25,5 +25,20 @@ namespace TDQ
         {
             await Navigation.PushModalAsync(new PopupPages.AddQuestionnairePage());
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var result = await this.DisplayAlert("Confirm Exit", "Are you sure you want to exit?", "Yes", "No");
+
+                if (result)
+                {
+                    System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow(); 
+                }
+            });
+            return true;
+        }
+
     }
 }
