@@ -16,7 +16,7 @@ namespace TDQ
         {
             InitializeComponent();
 
-             //GetQuestions();
+            
         }
 
         void GetQuestions()
@@ -30,6 +30,8 @@ namespace TDQ
 
         void BtnConfirm_Clicked(System.Object sender, System.EventArgs e)
         {
+            LayoutUserDetails.IsVisible = false;
+            GetQuestions();
         }
     }
 }
