@@ -103,11 +103,10 @@ namespace TDQ.Classes
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
-            string responseString = null;
             using (Stream stream = response.GetResponseStream())
             {
                 StreamReader reader = new StreamReader(stream);
-                responseString = reader.ReadToEnd();
+                string responseString = reader.ReadToEnd();
                 responseString = responseString.Replace("(", string.Empty);
                 responseString = responseString.Replace(")", string.Empty);
                 responseString = responseString.TrimEnd(',');
@@ -156,6 +155,32 @@ namespace TDQ.Classes
 
                 return Convert.ToBoolean(responseString);
             }
+        }
+
+        public static Models.Questionnaire AssignAthletesQuestionnaires(string name, string type, string email, string athlete, string otp, int flag)
+        {
+            string url = $"{Constants.ip}/coach/createQuestionnaire/{name}/{type}/{email}/{athlete}/{otp}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            if(flag == 1)
+            {
+                using (Stream stream = response.GetResponseStream())
+                {
+                    StreamReader reader = new StreamReader(stream);
+                    string responseString = reader.ReadToEnd();
+                    responseString = responseString.Replace("(", string.Empty);
+                    responseString = responseString.Replace(")", string.Empty);
+                    responseString = responseString.TrimEnd(',');
+                    var questionnaire = JsonConvert.DeserializeObject<Models.Questionnaire>(responseString);
+
+                    if (questionnaire != null)
+                        return questionnaire;
+                    else
+                        return null;
+                }
+            }
+
+            return null;
         }
     }
 }

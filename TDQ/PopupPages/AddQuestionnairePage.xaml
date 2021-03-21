@@ -20,7 +20,8 @@
                        FontSize="33"
                        FontAttributes="Italic"/>
                 
-                <Entry Placeholder="Type Unique Name"
+                <Entry x:Name="EntryName"
+                       Placeholder="Type Unique Name"
                        PlaceholderColor="White"
                        Style="{DynamicResource entryStyle}"/>
 

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,6 +16,7 @@ namespace TDQ.PopupPages
         ObservableCollection<Group> Groups;
         List<string> groupList = new List<string>();
         string[] emailList;
+        int type;
 
         public AddQuestionnairePage()
         {
@@ -33,6 +32,54 @@ namespace TDQ.PopupPages
         {
             base.OnAppearing();
 
+            PopulateGroupList();
+
+        }
+
+        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (PickerQuestionnaire.SelectedItem)
+            {
+                case "58 Question":
+                    type = 59;
+                    break;
+                case "29 Question":
+                    type = 28;
+                    break;
+            }
+        }
+
+        void BtnSendQuestionnaire_Clicked(object sender, EventArgs e)
+        {
+            Questionnaire item = null;
+            int flag = 0;
+            string otp = Classes.DatabaseController.GenerateOTP();
+
+            foreach (string athlete in emailList)
+            {
+                if (athlete == emailList[emailList.Count() - 1])
+                    flag = 1;
+
+                item = Classes.DatabaseController.AssignAthletesQuestionnaires(EntryName.Text, type.ToString(), Utils.SavedSettings.LoginSettings, athlete, otp, flag);
+            }
+            if (item != null)
+                MainPage.Questionnaires.Add(item);
+            Navigation.PopModalAsync();
+        }
+
+        void PickerGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PickerGroup.SelectedItem != null)
+                foreach (var item in Groups)
+                    if (item.Name == PickerGroup.SelectedItem.ToString())
+                    {
+                        LstViewEmails.ItemsSource = item.EmailList;
+                        emailList = item.EmailList;
+                    }
+        }
+
+        private void PopulateGroupList()
+        {
             //Initialising variables
             Groups = new ObservableCollection<Group>();
 
@@ -58,39 +105,6 @@ namespace TDQ.PopupPages
 
                 PickerGroup.ItemsSource = groupList.ToArray();
             }
-        }
-
-        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (PickerQuestionnaire.SelectedItem)
-            {
-                case "58 Question":
-                    /*
-                        * Change this to open the large questionnaire
-                    */
-                    break;
-                case "29 Question":
-                    /*
-                        * Change this to open the small questionnaire
-                    */
-                    break;
-            }
-        }
-
-        void BtnSendQuestionnaire_Clicked(System.Object sender, System.EventArgs e)
-        {
-            //Add functionality later, just use to escape page on iphone for now.
-            Navigation.PopModalAsync();
-        }
-
-        void PickerGroup_SelectedIndexChanged(System.Object sender, System.EventArgs e)
-        {
-            if (PickerGroup.SelectedItem != null)
-                foreach (var item in Groups)
-                    if (item.Name == PickerGroup.SelectedItem.ToString())
-                    {
-                        LstViewEmails.ItemsSource = item.EmailList;
-                    }
         }
     }
 }
