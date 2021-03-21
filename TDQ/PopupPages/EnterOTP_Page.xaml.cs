@@ -11,11 +11,21 @@ namespace TDQ.PopupPages
         public EnterOTP_Page()
         {
             InitializeComponent();
+
+            if (Device.RuntimePlatform == "iOS")
+                BtnCancel.IsVisible = true;
+            else
+                BtnCancel.IsVisible = false;
         }
         public EnterOTP_Page(string mail)
         {
             InitializeComponent();
             email = mail;
+
+            if (Device.RuntimePlatform == "iOS")
+                BtnCancel.IsVisible = true;
+            else
+                BtnCancel.IsVisible = false;
         }
 
         async void BtnEnterOTP_Clicked(object sender, EventArgs e)
@@ -28,6 +38,11 @@ namespace TDQ.PopupPages
                 Utils.SavedSettings.LoginSettings = email;
                 await Navigation.PopModalAsync();
             }
+        }
+
+        void BtnCancel_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PopModalAsync();
         }
     }
 }

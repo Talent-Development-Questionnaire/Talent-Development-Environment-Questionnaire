@@ -182,5 +182,21 @@ namespace TDQ.Classes
 
             return null;
         }
+
+        public static bool DeleteUser(string email, string password)
+        {
+            password = HashPassword(password);
+
+            string url = $"{Constants.ip}/coach/deleteCoach/{email}/{password}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            using (Stream stream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(stream);
+                string responseString = reader.ReadToEnd();
+                return Convert.ToBoolean(responseString);
+            }
+        }
     }
 }

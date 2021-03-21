@@ -21,6 +21,11 @@ namespace TDQ.PopupPages
         public AddGoalsGroupPage()
         {
             InitializeComponent();
+
+            if (Device.RuntimePlatform == "iOS")
+                BtnCancel.IsVisible = true;
+            else
+                BtnCancel.IsVisible = false;
         }
 
         
@@ -91,6 +96,11 @@ namespace TDQ.PopupPages
             {
                 await DisplayAlert("Error", "Please select a group.", "OK");
             }
+        }
+
+        void BtnCancel_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PopModalAsync();
         }
     }
 }

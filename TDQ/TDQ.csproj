@@ -93,7 +93,6 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Themes\LargeFontStyle.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Update="Themes\MainTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -108,7 +107,6 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Themes\X-LargeFontStyle.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

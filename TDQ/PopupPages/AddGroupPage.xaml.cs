@@ -23,9 +23,9 @@ namespace TDQ.PopupPages
             ListVisibility();
 
             if (Device.RuntimePlatform == "iOS")
-                BtnCanel.IsVisible = true;
+                BtnCancel.IsVisible = true;
             else
-                BtnCanel.IsVisible = false;
+                BtnCancel.IsVisible = false;
         }
 
         public AddGroupPage(Group currentGroup)
@@ -34,9 +34,9 @@ namespace TDQ.PopupPages
 
             emailList.HeightRequest = 160;
             if (Device.RuntimePlatform == "iOS")
-                BtnCanel.IsVisible = true;
+                BtnCancel.IsVisible = true;
             else
-                BtnCanel.IsVisible = false;
+                BtnCancel.IsVisible = false;
 
             LblTitle.Text = "Edit Group";
 

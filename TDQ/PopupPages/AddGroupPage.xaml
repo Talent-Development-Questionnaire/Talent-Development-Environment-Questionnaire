@@ -93,7 +93,7 @@
                         Style="{DynamicResource buttonStyle}"
                         Clicked="BtnSave_Clicked"/>
 
-                <Button x:Name="BtnCanel"
+                <Button x:Name="BtnCancel"
                         Text="Cancel" 
                         Style="{DynamicResource buttonStyle}"  
                         Clicked="BtnCancel_Clicked"/>

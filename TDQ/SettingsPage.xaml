@@ -95,8 +95,10 @@
                     Style="{DynamicResource buttonStyle}"
                     Clicked="BtnLogOut_Clicked"/>
             
-            <Button Text="Delete Account"
-                    Style="{DynamicResource buttonStyle}"/>
+            <Button x:Name="BtnDeleteUser"
+                    Text="Delete Account"
+                    Style="{DynamicResource buttonStyle}"
+                    Clicked="BtnDeleteUser_Clicked"/>
 
         </StackLayout>
     </AbsoluteLayout>

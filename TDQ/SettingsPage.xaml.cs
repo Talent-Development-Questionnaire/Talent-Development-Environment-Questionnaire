@@ -91,5 +91,10 @@ namespace TDQ
                 Classes.SettingsPageFunctions.DeleteBackgroundVisibility(BtnDeleteBg);
             }
         }
+
+        void BtnDeleteUser_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new PopupPages.SettingsPage_DeleteUser());
+        }
     }
 }

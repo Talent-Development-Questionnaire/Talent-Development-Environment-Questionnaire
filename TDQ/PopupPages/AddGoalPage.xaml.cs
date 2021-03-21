@@ -19,6 +19,11 @@ namespace TDQ.PopupPages
         {
             selectedGoalsGroup = currentGoalsGroup;
             InitializeComponent();
+
+            if (Device.RuntimePlatform == "iOS")
+                BtnCancel.IsVisible = true;
+            else
+                BtnCancel.IsVisible = false;
         }
                     
 
@@ -34,6 +39,11 @@ namespace TDQ.PopupPages
                 File.AppendAllText(selectedGoalsGroup.Filename, goalsText);
                 await Navigation.PopModalAsync();
             }            
+        }
+
+        void BtnCancel_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PopModalAsync();
         }
     }
 }

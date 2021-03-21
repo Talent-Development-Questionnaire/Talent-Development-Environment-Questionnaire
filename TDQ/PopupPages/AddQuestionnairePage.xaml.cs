@@ -23,9 +23,9 @@ namespace TDQ.PopupPages
             InitializeComponent();
 
             if(Device.RuntimePlatform == "iOS")
-            {
-                LstViewEmails.BackgroundColor = Color.Transparent;
-            }
+                BtnCancel.IsVisible = true;
+            else
+                BtnCancel.IsVisible = false;
         }
 
         protected override void OnAppearing()
@@ -105,6 +105,11 @@ namespace TDQ.PopupPages
 
                 PickerGroup.ItemsSource = groupList.ToArray();
             }
+        }
+
+        void BtnCancel_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
         }
     }
 }

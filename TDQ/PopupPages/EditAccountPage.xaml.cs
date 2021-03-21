@@ -13,12 +13,22 @@ namespace TDQ.PopupPages
         public EditAccountPage()
         {
             InitializeComponent();
+
+            if (Device.RuntimePlatform == "iOS")
+                BtnCancel.IsVisible = true;
+            else
+                BtnCancel.IsVisible = false;
         }
 
         public EditAccountPage(Models.CoachUser coach)
         {
             InitializeComponent();
             user = coach;
+
+            if (Device.RuntimePlatform == "iOS")
+                BtnCancel.IsVisible = true;
+            else
+                BtnCancel.IsVisible = false;
         }
 
         protected override void OnAppearing()
