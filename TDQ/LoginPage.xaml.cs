@@ -37,5 +37,15 @@ namespace TDQ
                 await DisplayAlert("Account", "Account does not exist, please try again.", "OK");
             }
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//home");
+
+            });
+            return true;
+        }
     }
 }

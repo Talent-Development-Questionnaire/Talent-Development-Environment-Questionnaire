@@ -16,5 +16,15 @@ namespace TDQ
         {
             InitializeComponent();
         }
-    }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//home");
+
+            });
+            return true;
+        }
+    }    
 }

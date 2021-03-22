@@ -142,5 +142,16 @@ namespace TDQ
             BindingContext = new GoalsGroup()
             });
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//home");
+
+            });
+            return true;
+        }
+        
     }
 }

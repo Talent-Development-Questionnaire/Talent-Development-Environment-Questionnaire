@@ -53,5 +53,15 @@ namespace TDQ
         {
             EntryEmail.TextColor = Color.Black;
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//home");
+
+            });
+            return true;
+        }
     }
 }

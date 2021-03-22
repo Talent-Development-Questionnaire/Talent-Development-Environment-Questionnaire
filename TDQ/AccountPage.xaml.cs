@@ -70,5 +70,15 @@ namespace TDQ
                 await App.Current.MainPage.DisplayAlert("Debug", ex.Message, "OK");
             }
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//home");
+
+            });
+            return true;
+        }
     }
 }
