@@ -135,12 +135,14 @@ namespace TDQ
             }
         }
 
-        private async void AddButton_Clicked(object sender, EventArgs e)
+        private async void ImgBtnAddGoalsGroup_Clicked(object sender, EventArgs e)
         {
             //opens new AddGoalsGroupPage, sets BindingContext to GoalsGroup object
+            ImgBtnAddGoalsGroup.IsEnabled = false;
             await Navigation.PushModalAsync(new PopupPages.AddGoalsGroupPage {
             BindingContext = new GoalsGroup()
             });
+            ImgBtnAddGoalsGroup.IsEnabled = true;
         }
 
         protected override bool OnBackButtonPressed()

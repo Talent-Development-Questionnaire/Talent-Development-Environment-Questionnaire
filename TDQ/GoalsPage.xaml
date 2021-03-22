@@ -7,7 +7,9 @@
              Style="{DynamicResource contentStyle}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="ic_action_add.png" Clicked="AddButton_Clicked"/>
+        <ToolbarItem Icon="ic_action_add.png" 
+                     x:Name="ImgBtnAddGoalsGroup"
+                     Clicked="ImgBtnAddGoalsGroup_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <AbsoluteLayout>

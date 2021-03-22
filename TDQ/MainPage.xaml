@@ -8,7 +8,8 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_action_add.png"
-                     Clicked="BtnAddQuestionnaire_Clicked"/>
+                     x:Name="ImgBtnAddQuestionnaire"
+                     Clicked="ImgBtnAddQuestionnaire_Clicked"/>
     </ContentPage.ToolbarItems>
     <AbsoluteLayout>
 

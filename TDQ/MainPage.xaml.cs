@@ -21,9 +21,11 @@ namespace TDQ
             Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
         }
 
-        private async void BtnAddQuestionnaire_Clicked(object sender, EventArgs e)
+        private async void ImgBtnAddQuestionnaire_Clicked(object sender, EventArgs e)
         {
+            ImgBtnAddQuestionnaire.IsEnabled = false;
             await Navigation.PushModalAsync(new PopupPages.AddQuestionnairePage());
+            ImgBtnAddQuestionnaire.IsEnabled = true;
         }
 
         protected override bool OnBackButtonPressed()

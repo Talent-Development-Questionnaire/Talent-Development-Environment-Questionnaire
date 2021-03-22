@@ -8,6 +8,7 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_action_add.png"
+                     x:Name="ImgBtnAddGroup"
                      Clicked="ImgBtnAddGroup_Clicked"/>
     </ContentPage.ToolbarItems>
 
