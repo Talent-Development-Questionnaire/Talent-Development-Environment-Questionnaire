@@ -46,7 +46,7 @@
 
                             <StackLayout Orientation="Horizontal"
                                          Padding="10,25,0,25"
-                                         BackgroundColor="Transparent">
+                                         BackgroundColor="White">
 
                                 <Image Source="{Binding ImageFilePath}"
                                        Aspect="AspectFit"
