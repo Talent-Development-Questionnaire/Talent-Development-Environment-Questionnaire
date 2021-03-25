@@ -8,8 +8,7 @@ namespace TDQ
 {
     public partial class MainPage : ContentPage
     {
-        public ObservableCollection<Group> Groups;
-        public static ObservableCollection<Questionnaire> Questionnaires;
+        ObservableCollection<Questionnaire> Questionnaires = new ObservableCollection<Questionnaire>();
 
         public MainPage()
         {
@@ -29,6 +28,13 @@ namespace TDQ
             ImgBtnAddQuestionnaire.IsEnabled = false;
             await Navigation.PushModalAsync(new PopupPages.AddQuestionnairePage());
             ImgBtnAddQuestionnaire.IsEnabled = true;
+
+            await Navigation.PushModalAsync(new PopupPages.AddQuestionnairePage(this));
+        }
+
+        public void AddQuestionnaireToList(Questionnaire item)
+        {
+            Questionnaires.Add(item);
         }
 
         protected override bool OnBackButtonPressed()

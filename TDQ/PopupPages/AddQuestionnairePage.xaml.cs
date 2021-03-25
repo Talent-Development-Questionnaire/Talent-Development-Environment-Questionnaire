@@ -13,9 +13,10 @@ namespace TDQ.PopupPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddQuestionnairePage : ContentPage
     {
+        MainPage main;
         ObservableCollection<Group> Groups;
-        List<string> groupList = new List<string>();
-        string[] emailList;
+        List<string> emailList = new List<string>();
+
         int type;
 
         public AddQuestionnairePage()
@@ -26,6 +27,18 @@ namespace TDQ.PopupPages
                 BtnCancel.IsVisible = true;
             else
                 BtnCancel.IsVisible = false;
+        }
+
+        public AddQuestionnairePage(MainPage m)
+        {
+            InitializeComponent();
+
+            if (Device.RuntimePlatform == "iOS")
+                BtnCancel.IsVisible = true;
+            else
+                BtnCancel.IsVisible = false;
+
+            main = m;
         }
 
         protected override void OnAppearing()
@@ -43,7 +56,7 @@ namespace TDQ.PopupPages
                 case "58 Question":
                     type = 59;
                     break;
-                case "29 Question":
+                case "28 Question":
                     type = 28;
                     break;
             }
@@ -63,7 +76,7 @@ namespace TDQ.PopupPages
                 item = Classes.DatabaseController.AssignAthletesQuestionnaires(EntryName.Text, type.ToString(), Utils.SavedSettings.LoginSettings, athlete, otp, flag);
             }
             if (item != null)
-                MainPage.Questionnaires.Add(item);
+                main.AddQuestionnaireToList(item);
             Navigation.PopModalAsync();
         }
 
@@ -74,8 +87,41 @@ namespace TDQ.PopupPages
                     if (item.Name == PickerGroup.SelectedItem.ToString())
                     {
                         LstViewEmails.ItemsSource = item.EmailList;
-                        emailList = item.EmailList;
+                        emailList = item.EmailList.ToList();
                     }
+        }
+
+        private async void ImgBtnAddEmail_Clicked(object sender, EventArgs e)
+        {
+            //Method to avoid items in list view duplicating
+            //CheckList();
+
+            //Checks that the entry field is not empty and then verifies text is a valid email
+            if (!string.IsNullOrEmpty(entryEmail.Text))
+            {
+                if (Classes.Verification.IsValidEmail(entryEmail.Text))
+                    emailList.Add(entryEmail.Text);
+                else
+                {
+                    await DisplayAlert("Error", "Email is not valid", "OK");
+                    entryEmail.Text = string.Empty;
+                }
+
+                if (LstViewEmails.Height < 160)
+                    LstViewEmails.HeightRequest = 35 * emailList.Count();
+
+                //Updates list view with newly added email
+                LstViewEmails.ItemsSource = emailList;
+                LstViewEmails.ScrollTo(emailList[emailList.Count() - 1], ScrollToPosition.MakeVisible, true);
+                //ListVisibility();
+
+            }
+            else
+            {
+                await DisplayAlert("Error", "Email cannot be left empty. Please try again.", "OK");
+            }
+            if (LstViewEmails.Height < 160)
+                LstViewEmails.HeightRequest = 35 * emailList.Count();
         }
 
         private void PopulateGroupList()
@@ -90,7 +136,7 @@ namespace TDQ.PopupPages
             {
                 string text = (File.ReadAllText(filename));
                 string[] splitText = text.Split('\n');
-                emailList = Classes.GroupPageFunctions.PopulateListOnAppearing(splitText);//Method to populate array with emails from the file
+                emailList = Classes.GroupPageFunctions.PopulateListOnAppearing(splitText).ToList();//Method to populate array with emails from the file
 
                 //Adds Group object to list, sets each property of the object
                 Groups.Add(new Group
@@ -99,11 +145,11 @@ namespace TDQ.PopupPages
                     Name = splitText[0],
                     GroupNo = Convert.ToInt32(splitText[1]),
                     ImageFilePath = splitText[2],
-                    EmailList = emailList
+                    EmailList = emailList.ToArray()
                 });
-                groupList.Add(splitText[0]);
+                emailList.Add(splitText[0]);
 
-                PickerGroup.ItemsSource = groupList.ToArray();
+                PickerGroup.ItemsSource = emailList.ToArray();
             }
         }
 

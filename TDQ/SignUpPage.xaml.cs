@@ -35,10 +35,11 @@ namespace TDQ
                     otp = Classes.DatabaseController.GenerateOTP();
                     string name = EntryFirstName.Text + " " + EntryLastName.Text;
                     result = Classes.DatabaseController.InsertNewUser(EntryEmail.Text, EntryPassword.Text, name, otp);
+                    Utils.SavedSettings.LoginSettings = EntryEmail.Text;
 
                     if (result == true)
                     {
-                        Navigation.PushModalAsync(new PopupPages.EnterOTP_Page(EntryEmail.Text));
+                        await Navigation.PushModalAsync(new PopupPages.EnterOTP_Page(EntryEmail.Text));
 
                         if(Utils.SavedSettings.LoginSettings == EntryEmail.Text)
                             (Application.Current).MainPage = new Navigation_Drawer();

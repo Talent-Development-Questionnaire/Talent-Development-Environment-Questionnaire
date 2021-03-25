@@ -26,15 +26,6 @@
                        PlaceholderColor="White"
                        Style="{DynamicResource entryStyle}"/>
 
-                <Grid HorizontalOptions="Center"
-                      ColumnSpacing="70">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                </Grid>
-
                 <Picker x:Name="PickerQuestionnaire" 
                         Title="Select Questionnaire"
                         TitleColor="White"
@@ -44,7 +35,7 @@
                         SelectedIndexChanged="Picker_SelectedIndexChanged">
                     <Picker.Items>
                         <x:String>59 Question</x:String>
-                        <x:String>29 Question</x:String>
+                        <x:String>28 Question</x:String>
                     </Picker.Items>
                 </Picker>
 
@@ -53,13 +44,40 @@
                         TitleColor="White"
                         Style="{DynamicResource pickerStyle}"
                         SelectedIndexChanged="PickerGroup_SelectedIndexChanged"/>
-                <Entry Placeholder="Add new email"
-                       PlaceholderColor="White"
-                       Style="{DynamicResource entryStyle}"/>
+
+               <Grid Margin="0,10,0,0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Entry 
+                    x:Name="entryEmail"
+                    Placeholder="Enter Email" 
+                    Style="{DynamicResource entryStyle}"
+                    Keyboard="Email"
+                    TextColor="White"
+                    PlaceholderColor="White"
+                    Grid.Column="0"/>
+                    
+                    <ImageButton
+                    x:Name="ImgBtnAddEmail"
+                    Source="ic_add"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    VerticalOptions="CenterAndExpand" 
+                    BackgroundColor="Transparent"
+                    Clicked="ImgBtnAddEmail_Clicked"/>
+                </Grid>
                 
 
                 <ListView x:Name="LstViewEmails"
-                          HeightRequest="150" 
+                          HeightRequest="35" 
                           VerticalScrollBarVisibility="Always"
                           BackgroundColor="Transparent">
                     <ListView.ItemTemplate>
