@@ -59,9 +59,12 @@ namespace TDQ
         private async void ImgBtnAddGroup_Clicked(object sender, EventArgs e)
         {
             //opens new AddGroupPage, sets the binding context to Group object
+            ImgBtnAddGroup.IsEnabled = false;
             await Navigation.PushModalAsync(new PopupPages.AddGroupPage { 
             BindingContext = new Group()
             });
+            ImgBtnAddGroup.IsEnabled = true;
+
         }
 
         private async void LstViewGroup_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -112,6 +115,16 @@ namespace TDQ
                 LstViewGroup.IsVisible = true;
                 LblNewGroup.IsVisible = false;
             }
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//home");
+
+            });
+            return true;
         }
     }
 }

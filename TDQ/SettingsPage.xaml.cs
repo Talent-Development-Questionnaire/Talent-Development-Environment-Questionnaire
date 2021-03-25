@@ -14,7 +14,7 @@ namespace TDQ
     {
         public SettingsPage()
         {
-            InitializeComponent();        
+            InitializeComponent();
         }
 
         protected override void OnAppearing()
@@ -90,6 +90,15 @@ namespace TDQ
                 Classes.SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage);
                 Classes.SettingsPageFunctions.DeleteBackgroundVisibility(BtnDeleteBg);
             }
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//home");
+
+            });
+            return true;
         }
 
         void BtnDeleteUser_Clicked(object sender, EventArgs e)

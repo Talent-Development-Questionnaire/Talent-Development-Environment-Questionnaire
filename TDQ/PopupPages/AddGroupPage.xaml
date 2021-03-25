@@ -64,7 +64,7 @@
                     
                     <ImageButton
                     x:Name="ImgBtnAddEmail"
-                    Source="ic_add"
+                    Source="ic_action_add"
                     Grid.Column="1"
                     HorizontalOptions="End"
                     VerticalOptions="CenterAndExpand" 
