@@ -3,6 +3,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.IO;
 using System.Text;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace TDQ.Classes
@@ -126,9 +127,38 @@ namespace TDQ.Classes
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
         }
 
-        public static string[] GenerateQuestions(int questionType)
+        public static List<Models.Question> GenerateQuestions(string email, string otp)
         {
-            string url = $"{Constants.ip}player/getQuestions/{questionType}";
+            var questionnnaire = VerifyAthlete(email, otp);
+            if (questionnnaire != null)
+            {
+                string url = $"{Constants.ip}player/getQuestions/{questionnnaire.ID}";
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+                using (Stream stream = response.GetResponseStream())
+                {
+                    StreamReader reader = new StreamReader(stream);
+                    string responseString = reader.ReadToEnd();
+                    string[] questions = responseString.Split(new string[] { "\n" }, StringSplitOptions.None);
+                    List<Models.Question> questionsList = new List<Models.Question>();
+
+                    foreach(var item in questions)
+                    {
+                        questionsList.Add(new Models.Question
+                        {
+                            QuestionText = item
+                        });
+                    }
+                    return questionsList;
+                }
+            }
+            return null;
+        }
+
+        public static Models.Questionnaire VerifyAthlete(string email, string otp)
+        {
+            string url = $"{Constants.ip}/player/verifyAthlete/{email}/{otp}";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
@@ -136,10 +166,15 @@ namespace TDQ.Classes
             {
                 StreamReader reader = new StreamReader(stream);
                 string responseString = reader.ReadToEnd();
-                string[] questions = responseString.Split(new string[] { "\n" }, StringSplitOptions.None);
+                responseString = responseString.Replace("(", string.Empty);
+                responseString = responseString.Replace(")", string.Empty);
+                responseString = responseString.TrimEnd(',');
+                var questionnaire = JsonConvert.DeserializeObject<Models.Questionnaire>(responseString);
 
-                return questions;
+                if (responseString != "false")
+                    return questionnaire;
             }
+            return null;
         }
 
         public static bool VerifyCoachAccount(string email, string otp)
@@ -197,6 +232,6 @@ namespace TDQ.Classes
                 string responseString = reader.ReadToEnd();
                 return Convert.ToBoolean(responseString);
             }
-        }
+        }     
     }
 }

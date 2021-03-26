@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TDQ.PopupPages.LikertScalePage"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.ModalPresentationStyle="OverFullScreen"
+    xmlns:sharp="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    BackgroundColor="Transparent">
+
+    <sharp:MaterialFrame Margin="10"
+                         CornerRadius="30"
+                         Style="{StaticResource BlurFrame}"
+                         VerticalOptions="Center">
+        <StackLayout HorizontalOptions="Center">
+            <Label x:Name="LblQuestionText"
+                   Text="{Binding QuestionText}"
+                   Style="{DynamicResource labelStyle}"
+                   TextColor="White"
+                   HorizontalTextAlignment="Center"/>
+
+            <StackLayout Orientation="Horizontal"
+                         Padding="2"
+                         HorizontalOptions="Center">
+
+                <RadioButton x:Name="RbOne"
+                             Content="1"
+                             CheckedChanged="AnswerRadioButton_CheckedChanged"
+                             BackgroundColor="Transparent"
+                             TextColor="White"
+                             />
+                <RadioButton x:Name="RbTwo"
+                             Content="2"
+                             CheckedChanged="AnswerRadioButton_CheckedChanged"
+                             BackgroundColor="Transparent"
+                             TextColor="White"
+                             BorderColor="White"/>
+                <RadioButton x:Name="RbThree"
+                             Content="3"
+                             CheckedChanged="AnswerRadioButton_CheckedChanged"
+                             BackgroundColor="Transparent"
+                             TextColor="White"
+                             BorderColor="White"/>
+                <RadioButton x:Name="RbFour"
+                             Content="4"
+                             CheckedChanged="AnswerRadioButton_CheckedChanged"
+                             BackgroundColor="Transparent"
+                             TextColor="White"
+                             BorderColor="White"/>
+                <RadioButton x:Name="RbFive"
+                             Content="5"
+                             CheckedChanged="AnswerRadioButton_CheckedChanged"
+                             BackgroundColor="Transparent"
+                             TextColor="White"
+                             BorderColor="White"/>
+            </StackLayout>
+            <Button x:Name="BtnConfirm"
+                    Text="Confirm"
+                    Style="{DynamicResource buttonStyle}"
+                    Clicked="BtnConfirm_Clicked"/>
+        </StackLayout>
+    </sharp:MaterialFrame>
+
+
+</ContentPage>

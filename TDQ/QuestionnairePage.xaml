@@ -5,9 +5,9 @@
              Title="Questionnaire"
              Style="{DynamicResource contentStyle}">
 
-    <StackLayout>
-        <StackLayout x:Name="LayoutUserDetails"
-                     Margin="70">
+    <StackLayout Margin="15">
+        <StackLayout x:Name="LayoutUserVerification"
+                     Margin="55">
             <Entry x:Name="EntryEmail"
                    Placeholder="Email"
                    Style="{DynamicResource entryStyle}"/>
@@ -20,10 +20,31 @@
                     Style="{DynamicResource buttonStyle}"
                     Clicked="BtnConfirm_Clicked"/>
         </StackLayout>
+        <StackLayout x:Name="LayoutUserDetails"
+                     IsVisible="false">
+            <Entry x:Name="EntryName"
+                   Placeholder="Name"/>
+            <Entry x:Name="EntrySport"
+                   Placeholder="Sport"/>
+            <Entry x:Name="EntryAcademy"
+                   Placeholder="Sport Academy"/>
+            <Entry x:Name="EntryDob"
+                   Placeholder="Date of Birth"/>
+            <Picker x:Name="PickerGender"
+                    Title="Gender">
+                <Picker.Items>
+                    <x:String>Male</x:String>
+                    <x:String>Female</x:String>
+                    <x:String>Other</x:String>
+                </Picker.Items>
+            </Picker>
+        </StackLayout>
+
         <ListView x:Name="LstQuestions"
                   HasUnevenRows="True"
                   BackgroundColor="Transparent"
-                  IsVisible="False">
+                  IsVisible="False"
+                  ItemSelected="LstQuestions_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -32,7 +53,7 @@
                                Style="{DynamicResource frameStyle}"
                                CornerRadius="15">
                             <StackLayout HorizontalOptions="Center">
-                                <Label Text="{Binding .}"
+                                <Label Text="{Binding QuestionText}"
                                        Style="{DynamicResource labelStyle}"/>
                             </StackLayout>
                         </Frame>
