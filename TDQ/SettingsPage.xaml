@@ -90,10 +90,10 @@
                 </Grid>
             </Frame>
 
-            <Button Text="Log Out"
+            <Button x:Name="BtnLogInOut"
                     Margin="0,20,0,0"
                     Style="{DynamicResource buttonStyle}"
-                    Clicked="BtnLogOut_Clicked"/>
+                    Clicked="BtnLogInOut_Clicked"/>
             
             <Button x:Name="BtnDeleteUser"
                     Text="Delete Account"
