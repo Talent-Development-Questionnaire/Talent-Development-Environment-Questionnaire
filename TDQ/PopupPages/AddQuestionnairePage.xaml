@@ -18,8 +18,7 @@
                        Text="New Questionnaire"
                        TextColor="White"
                        HorizontalTextAlignment="Center"
-                       FontSize="33"
-                       FontAttributes="Italic"/>
+                       FontSize="33"/>
                 
                 <Entry x:Name="EntryName"
                        Placeholder="Type Unique Name"

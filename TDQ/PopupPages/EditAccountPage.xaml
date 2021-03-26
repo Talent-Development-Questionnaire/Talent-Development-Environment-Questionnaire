@@ -23,8 +23,7 @@
                            Text="Edit Profile"
                            TextColor="White"
                            HorizontalTextAlignment="Center"
-                           FontSize="36"
-                           FontAttributes="Italic"/>
+                           FontSize="36"/>
         
             <ic:CircleImage x:Name="AccountImage"    
                             Source="ic_add_photo.png"    
