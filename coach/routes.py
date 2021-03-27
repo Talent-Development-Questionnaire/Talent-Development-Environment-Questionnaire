@@ -81,15 +81,25 @@ def deleteCoach(email, password):
     else:
         return 'false'
 
-@coach_blueprint.route('/coach/getResults/<qID')
-def deleteCoach(email, password):
-    if checkAccountExists(email, password) == 'false':
-        cursor = mysql.connection.cursor()
-        cursor.execute("DELETE FROM coaches WHERE email = '%s'" % email)
-        mysql.connection.commit()
-        cursor.close()
-        return 'true'
-    else:
-        return 'false'
+
+@coach_blueprint.route('/coach/getResults/<qID>/<qNumber>')
+def getResults(qID, qNumber):
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT completions FROM questionnaire WHERE questionnaire_id = '%s'" % qID)
+    completions = cursor.fetchall()
+    if completions != 0:
+        count = completions[0]["completions"]
+        cursor.execute("SELECT score FROM question WHERE questionnaire_id = '%s' AND question_no = '%s'" % (qID, qNumber))
+        scoreTuple = cursor.fetchall()
+        score = scoreTuple[0]["score"]
+        dividedScore = score / count
+        return str(dividedScore)
+    mysql.connection.commit()
+    cursor.close()
+    return 'False'
+
+
+
+
 
 
