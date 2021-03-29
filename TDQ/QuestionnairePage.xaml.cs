@@ -12,11 +12,14 @@ namespace TDQ
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuestionnairePage : ContentPage
     {
+        public static Color ItemBackgroundColor { get; set; }
+
         List<Models.Question> questions;
 
         public QuestionnairePage()
         {
-            InitializeComponent();         
+            InitializeComponent();
+            ItemBackgroundColor = Color.White;
         }
 
 
@@ -29,18 +32,17 @@ namespace TDQ
             {
                 questions.RemoveAt(questions.Count() - 1);
                 LstQuestions.ItemsSource = questions;
-
             }
             else
-            {
                 await DisplayAlert("Error", "Email or One Time Password is incorrect, please try again!", "OK");
-            }
         }
 
         void BtnConfirm_Clicked(System.Object sender, System.EventArgs e)
         {
             LayoutUserVerification.IsVisible = false;
             GetQuestions();
+            EntryEmail.Text = string.Empty;
+            EntryOTP.Text = string.Empty;
             LayoutUserDetails.IsVisible = true;
         }
 
@@ -68,6 +70,34 @@ namespace TDQ
                 questions[index] = question;
 
             LstQuestions.ItemsSource = questions;
+        }
+
+        async void BtnSendQuestionnaire_Clicked(object sender, EventArgs e)
+        {
+            int index = 0;
+            foreach (var item in questions)
+            {
+                if (string.IsNullOrEmpty(item.Answer))
+                {
+                    await DisplayAlert("Error", "You haven't answered all the questions, please complete the form!", "OK");
+                    return;
+                }
+            }
+
+            foreach (var item in questions)
+            {
+                index++;
+                Classes.DatabaseController.SendCompletedQuestionnaire(item, index);
+
+                if (item == questions[questions.Count - 1])
+                    Classes.DatabaseController.UpdateQuestionnaireCompletions(item);
+            }
+            DisplayAlert("Successful","Questionnaire was successfully completed, thank you!","OK");
+
+            LstQuestions.ItemsSource = null;
+            LayoutUserDetails.IsVisible = false;
+            LayoutUserVerification.IsVisible = true;
+
         }
     }    
 }

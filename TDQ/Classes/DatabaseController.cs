@@ -3,6 +3,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
@@ -147,6 +148,7 @@ namespace TDQ.Classes
                     {
                         questionsList.Add(new Models.Question
                         {
+                            ID = questionnnaire.ID,
                             QuestionText = item
                         });
                     }
@@ -158,7 +160,7 @@ namespace TDQ.Classes
 
         public static Models.Questionnaire VerifyAthlete(string email, string otp)
         {
-            string url = $"{Constants.ip}/player/verifyAthlete/{email}/{otp}";
+            string url = $"{Constants.ip}player/verifyAthlete/{email}/{otp}";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
@@ -179,7 +181,7 @@ namespace TDQ.Classes
 
         public static bool VerifyCoachAccount(string email, string otp)
         {
-            string url = $"{Constants.ip}/coach/verifyAccount/{email}/{otp}";
+            string url = $"{Constants.ip}coach/verifyAccount/{email}/{otp}";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
@@ -194,7 +196,7 @@ namespace TDQ.Classes
 
         public static Models.Questionnaire AssignAthletesQuestionnaires(string name, string type, string email, string athlete, string otp, int flag)
         {
-            string url = $"{Constants.ip}/coach/createQuestionnaire/{name}/{type}/{email}/{athlete}/{otp}";
+            string url = $"{Constants.ip}coach/createQuestionnaire/{name}/{type}/{email}/{athlete}/{otp}";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             if(flag == 1)
@@ -232,6 +234,52 @@ namespace TDQ.Classes
                 string responseString = reader.ReadToEnd();
                 return Convert.ToBoolean(responseString);
             }
-        }     
+        }
+
+        public static void SendCompletedQuestionnaire(Models.Question question, int questionNumber)
+        {
+            string url = $"{Constants.ip}/player/submitQuestion/{question.ID}/{questionNumber}/{question.Answer}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            request.Abort();
+        }
+
+        public static void UpdateQuestionnaireCompletions(Models.Question question)
+        {
+            string url = $"{Constants.ip}/player/updateCompletionCount/{question.ID}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            request.Abort();
+        }
+
+        public static List<Models.Questionnaire> GetQuestionnaires(string email)
+        {
+            List<Models.Questionnaire> questionnaireList = new List<Models.Questionnaire>();
+            var user = GetUserDetails(email);
+
+            string url = $"{Constants.ip}coach/getQuestionnaires/{user.ID}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            using (Stream stream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(stream);
+
+                string responseString = reader.ReadToEnd();
+
+                responseString = responseString.Replace("(", string.Empty);
+                responseString = responseString.Replace(")", string.Empty);
+                responseString = responseString.TrimEnd(',');
+                var list = Regex.Split(responseString, @"({.*?})");
+
+                foreach (var item in list)
+                    if (!string.IsNullOrEmpty(item) && item != ", ")
+                        questionnaireList.Add(JsonConvert.DeserializeObject<Models.Questionnaire>(item));
+
+                if (responseString != "false")
+                    return questionnaireList;
+            }
+            return null;
+        }
     }
 }

@@ -38,29 +38,37 @@
                     <x:String>Other</x:String>
                 </Picker.Items>
             </Picker>
-        </StackLayout>
 
-        <ListView x:Name="LstQuestions"
-                  HasUnevenRows="True"
-                  BackgroundColor="Transparent"
-                  IsVisible="False"
-                  ItemSelected="LstQuestions_ItemSelected">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Frame Padding="5"
-                               Margin="10,5,10,5"
-                               Style="{DynamicResource frameStyle}"
-                               CornerRadius="15">
-                            <StackLayout HorizontalOptions="Center">
-                                <Label Text="{Binding QuestionText}"
-                                       Style="{DynamicResource labelStyle}"/>
-                            </StackLayout>
-                        </Frame>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            <ListView x:Name="LstQuestions"
+                      HasUnevenRows="True"
+                      BackgroundColor="Transparent"
+                      IsVisible="False"
+                      ItemSelected="LstQuestions_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame x:Name="FrameQuestion"
+                                   Padding="5"
+                                   Margin="10,5,10,5"
+                                   Style="{DynamicResource frameStyle}"
+                                   CornerRadius="15"
+                                   BackgroundColor="{Binding ItemBackgroundColor}">
+                                <StackLayout HorizontalOptions="Center">
+                                    <Label Text="{Binding QuestionText}"
+                                           Style="{DynamicResource labelStyle}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="BtnSendQuestionnaire"
+                    Text="Finish"
+                    Clicked="BtnSendQuestionnaire_Clicked"
+                    Style="{DynamicResource buttonStyle}"/>
+
+        </StackLayout>
     </StackLayout>
 
 </ContentPage>
