@@ -99,7 +99,17 @@ def getResults(qID, qNumber):
     return 'False'
 
 
-
-
+@coach_blueprint.route('/coach/checkOTP/<email>')
+def checkOTP(email):
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT otp FROM coaches WHERE email = '%s'" % email)
+    result = cursor.fetchall()
+    otp = result[0]["otp"]
+    if otp == 'true':
+        return 'True'
+        cursor.close()
+    else:
+        return 'False'
+        cursor.close()
 
 
