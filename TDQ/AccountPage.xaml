@@ -125,7 +125,7 @@
             <Label x:Name="LblClubListInput"
                     Grid.Row="4"
                     Grid.Column="1"
-                    Text="Hearts"
+                    Text=""
                     TextColor="Black"
                     HorizontalTextAlignment="Start"
                     Style="{DynamicResource accountLabelStyle}"/>
