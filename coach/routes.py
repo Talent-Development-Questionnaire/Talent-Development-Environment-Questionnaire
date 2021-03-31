@@ -113,3 +113,34 @@ def checkOTP(email):
         cursor.close()
 
 
+@coach_blueprint.route('/coach/verifyOTP/<email>/<otp>')
+def verifyOTP(email, otp):
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT otp FROM coaches WHERE email = '%s'" % email)
+    result = cursor.fetchall()
+    serverOTP = result[0]["otp"]
+    if otp == serverOTP:
+        cursor.execute("UPDATE coaches SET otp = 'true' WHERE email = '%s'" % email)
+        mysql.connection.commit()
+        cursor.close()
+        return 'True'
+    else:
+        cursor.close()
+        return 'False'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
