@@ -42,6 +42,7 @@ namespace TDQ
             else
             {
                 BtnLogInOut.Text = "Log In/Sign Up";
+                BtnDeleteUser.IsVisible = false;
             }
         }
 
