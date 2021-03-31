@@ -5,9 +5,9 @@
              Title="Questionnaire"
              Style="{DynamicResource contentStyle}">
 
-    <StackLayout>
-        <StackLayout x:Name="LayoutUserDetails"
-                     Margin="70">
+    <StackLayout Margin="15">
+        <StackLayout x:Name="LayoutUserVerification"
+                     Margin="55">
             <Entry x:Name="EntryEmail"
                    Placeholder="Email"
                    Style="{DynamicResource entryStyle}"/>
@@ -20,26 +20,55 @@
                     Style="{DynamicResource buttonStyle}"
                     Clicked="BtnConfirm_Clicked"/>
         </StackLayout>
-        <ListView x:Name="LstQuestions"
-                  HasUnevenRows="True"
-                  BackgroundColor="Transparent"
-                  IsVisible="False">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Frame Padding="5"
-                               Margin="10,5,10,5"
-                               Style="{DynamicResource frameStyle}"
-                               CornerRadius="15">
-                            <StackLayout HorizontalOptions="Center">
-                                <Label Text="{Binding .}"
-                                       Style="{DynamicResource labelStyle}"/>
-                            </StackLayout>
-                        </Frame>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <StackLayout x:Name="LayoutUserDetails"
+                     IsVisible="false">
+            <Entry x:Name="EntryName"
+                   Placeholder="Name"/>
+            <Entry x:Name="EntrySport"
+                   Placeholder="Sport"/>
+            <Entry x:Name="EntryAcademy"
+                   Placeholder="Sport Academy"/>
+            <Entry x:Name="EntryDob"
+                   Placeholder="Date of Birth"/>
+            <Picker x:Name="PickerGender"
+                    Title="Gender">
+                <Picker.Items>
+                    <x:String>Male</x:String>
+                    <x:String>Female</x:String>
+                    <x:String>Other</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <ListView x:Name="LstQuestions"
+                      HasUnevenRows="True"
+                      BackgroundColor="Transparent"
+                      IsVisible="False"
+                      ItemSelected="LstQuestions_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame x:Name="FrameQuestion"
+                                   Padding="5"
+                                   Margin="10,5,10,5"
+                                   Style="{DynamicResource frameStyle}"
+                                   CornerRadius="15"
+                                   BackgroundColor="{Binding ItemBackgroundColor}">
+                                <StackLayout HorizontalOptions="Center">
+                                    <Label Text="{Binding QuestionText}"
+                                           Style="{DynamicResource labelStyle}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="BtnSendQuestionnaire"
+                    Text="Finish"
+                    Clicked="BtnSendQuestionnaire_Clicked"
+                    Style="{DynamicResource buttonStyle}"/>
+
+        </StackLayout>
     </StackLayout>
 
 </ContentPage>

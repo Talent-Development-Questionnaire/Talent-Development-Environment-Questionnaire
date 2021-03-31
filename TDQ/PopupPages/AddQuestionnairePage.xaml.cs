@@ -72,11 +72,13 @@ namespace TDQ.PopupPages
             {
                 if (athlete == emailList[emailList.Count() - 1])
                     flag = 1;
+                else
+                    flag = 0;
 
                 item = Classes.DatabaseController.AssignAthletesQuestionnaires(EntryName.Text, type.ToString(), Utils.SavedSettings.LoginSettings, athlete, otp, flag);
             }
             if (item != null)
-                main.AddQuestionnaireToList(item);
+                main.UpdateQuestionnareList();
             Navigation.PopModalAsync();
         }
 

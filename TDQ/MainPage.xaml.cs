@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.IO;
 using TDQ.Models;
 using Xamarin.Forms;
@@ -8,33 +9,40 @@ namespace TDQ
 {
     public partial class MainPage : ContentPage
     {
-        ObservableCollection<Questionnaire> Questionnaires = new ObservableCollection<Questionnaire>();
+        List<Questionnaire> Questionnaires;
 
         public MainPage()
         {
             InitializeComponent();
-            LstQuestionnaire.ItemsSource = Questionnaires;
         }
 
         protected override void OnAppearing()
         {
+            UpdateQuestionnareList();
+
+            LblNoQuestionnaires.IsVisible = true;
+            if (LstQuestionnaire.ItemsSource != null)
+                LblNoQuestionnaires.IsVisible = false;
+
+
             Classes.SettingsPageFunctions.SetBackground(ImgBg, MainContentPage);
             Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
-            LstQuestionnaire.ItemsSource = Questionnaires;
         }
 
         private async void ImgBtnAddQuestionnaire_Clicked(object sender, EventArgs e)
         {
             ImgBtnAddQuestionnaire.IsEnabled = false;
-            await Navigation.PushModalAsync(new PopupPages.AddQuestionnairePage());
-            ImgBtnAddQuestionnaire.IsEnabled = true;
-
             await Navigation.PushModalAsync(new PopupPages.AddQuestionnairePage(this));
+            ImgBtnAddQuestionnaire.IsEnabled = true;
         }
 
-        public void AddQuestionnaireToList(Questionnaire item)
+        public void UpdateQuestionnareList()
         {
-            Questionnaires.Add(item);
+            if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
+            {
+                Questionnaires = Classes.DatabaseController.GetQuestionnaires(Utils.SavedSettings.LoginSettings);
+                LstQuestionnaire.ItemsSource = Questionnaires;
+            }
         }
 
         protected override bool OnBackButtonPressed()
@@ -51,5 +59,18 @@ namespace TDQ
             return true;
         }
 
+        private async void LstQuestionnaire_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                var questionnaire = e.SelectedItem as Questionnaire; 
+                await Navigation.PushAsync(new QuestionnaireScoresPage(questionnaire.Questions));
+            }
+        }
+
+        private void LstQuestionnaire_Refreshing(object sender, EventArgs e)
+        {
+            UpdateQuestionnareList();
+        }
     }
 }
