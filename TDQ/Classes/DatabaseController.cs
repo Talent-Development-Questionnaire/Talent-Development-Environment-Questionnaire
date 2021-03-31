@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using TDQ.Models;
 
 namespace TDQ.Classes
 {
@@ -122,12 +123,12 @@ namespace TDQ.Classes
                 return Convert.ToBoolean(responseString);
             }
         }
-        public static Models.CoachUser GetUserDetails(string email)
+        public static CoachUser GetUserDetails(string email)
         {
             HttpWebResponse response = ConnectToClient($"coach/getUser/{email}");
 
             string responseString = FormatResponse(response);
-            var user = JsonConvert.DeserializeObject<Models.CoachUser>(responseString);
+            var user = JsonConvert.DeserializeObject<CoachUser>(responseString);
 
             if (user != null)
                 return user;
@@ -138,18 +139,18 @@ namespace TDQ.Classes
         {
             ConnectToClient($"coach/editUser/{id}/{email}/{name}/{gender}/{dob}");
         }
-        public static List<Models.Question> GenerateQuestions(string email, string otp)
+        public static List<Question> GenerateQuestions(string email, string otp)
         {
             var questionnnaire = VerifyAthlete(email, otp);
             if (questionnnaire != null)
             {
                 HttpWebResponse response = ConnectToClient($"player/getQuestions/{questionnnaire.ID}");
-                List<Models.Question> questionsList = new List<Models.Question>();
+                List<Question> questionsList = new List<Question>();
                 var questions = FormatFileResponse(response);
 
                 foreach (var item in questions)
                 {
-                    questionsList.Add(new Models.Question
+                    questionsList.Add(new Question
                     {
                         ID = questionnnaire.ID,
                         QuestionText = item
@@ -159,12 +160,12 @@ namespace TDQ.Classes
             }
             return null;
         }
-        public static Models.Questionnaire VerifyAthlete(string email, string otp)
+        public static Questionnaire VerifyAthlete(string email, string otp)
         {
             HttpWebResponse response = ConnectToClient($"player/verifyAthlete/{email}/{otp}");
 
             string responseString = FormatResponse(response);
-            var questionnaire = JsonConvert.DeserializeObject<Models.Questionnaire>(responseString);
+            var questionnaire = JsonConvert.DeserializeObject<Questionnaire>(responseString);
 
             if (responseString != "false")
                 return questionnaire;
@@ -200,19 +201,19 @@ namespace TDQ.Classes
                 return Convert.ToBoolean(responseString);
             }
         }
-        public static void SendCompletedQuestionnaire(Models.Question question, int questionNumber)
+        public static void SendCompletedQuestionnaire(Question question, int questionNumber)
         {
             var response = ConnectToClient($"player/submitQuestion/{question.ID}/{questionNumber}/{question.Answer}");
             response.Close();
         }
-        public static void UpdateQuestionnaireCompletions(Models.Question question)
+        public static void UpdateQuestionnaireCompletions(Question question)
         {
             ConnectToClient($"player/updateCompletionCount/{question.ID}");
         }
-        public static List<Models.Questionnaire> GetQuestionnaires(string email)
+        public static List<Questionnaire> GetQuestionnaires(string email)
         {
-            List<Models.Questionnaire> oldQuestionnaireList = new List<Models.Questionnaire>();
-            List<Models.Questionnaire> newQuestionnaireList = new List<Models.Questionnaire>();
+            List<Questionnaire> oldQuestionnaireList = new List<Questionnaire>();
+            List<Questionnaire> newQuestionnaireList = new List<Questionnaire>();
             var user = GetUserDetails(email);
 
             HttpWebResponse response = ConnectToClient($"coach/getQuestionnaires/{user.ID}");
@@ -224,7 +225,7 @@ namespace TDQ.Classes
             {
                 foreach (var item in list)
                     if (!string.IsNullOrEmpty(item) && item != ", ")
-                        oldQuestionnaireList.Add(JsonConvert.DeserializeObject<Models.Questionnaire>(item));
+                        oldQuestionnaireList.Add(JsonConvert.DeserializeObject<Questionnaire>(item));
 
                 foreach (var item in oldQuestionnaireList)
                     newQuestionnaireList.Add(GetQuestions(item));
@@ -234,7 +235,7 @@ namespace TDQ.Classes
 
             return null;
         }
-        private static Models.Questionnaire GetQuestions(Models.Questionnaire questionnaire)
+        private static Questionnaire GetQuestions(Questionnaire questionnaire)
         {
             HttpWebResponse response = ConnectToClient($"coach/getQuestionnaireQuestions/{questionnaire.ID}");
 
@@ -243,19 +244,19 @@ namespace TDQ.Classes
 
             if (responseString != "false")
             {
-                questionnaire.Questions = new List<Models.Question>();
+                questionnaire.Questions = new List<Question>();
 
                 foreach (var item in list)
                     if (!string.IsNullOrEmpty(item) && item != ", ")
-                        questionnaire.Questions.Add(JsonConvert.DeserializeObject<Models.Question>(item));
+                        questionnaire.Questions.Add(JsonConvert.DeserializeObject<Question>(item));
             }
 
             questionnaire.Questions = GetQuestionText(questionnaire);
-            return questionnaire;          
+            return questionnaire;
         }
-        private static List<Models.Question> GetQuestionText(Models.Questionnaire questionnaire)
+        private static List<Question> GetQuestionText(Questionnaire questionnaire)
         {
-            List<Models.Question> newQuestions = new List<Models.Question>();
+            List<Question> newQuestions = new List<Question>();
             HttpWebResponse response = ConnectToClient($"coach/getQuestions/{questionnaire.ID}");
 
             var questions = FormatFileResponse(response);
@@ -263,19 +264,19 @@ namespace TDQ.Classes
             int index = 0;
             foreach (var item in questions)
                 if (!string.IsNullOrEmpty(item) && questionnaire.Questions != null)
-                { 
+                {
                     var question = questionnaire.Questions[index];
                     if (!newQuestions.Contains(question))
                     {
                         index++;
                         double score = Convert.ToDouble(question.Answer) / Convert.ToDouble(questionnaire.Completions);
-                        newQuestions.Add(new Models.Question
+                        newQuestions.Add(new Question
                         {
                             QuestionNo = index.ToString(),
                             QuestionText = item,
                             Answer = Math.Round(score).ToString()
                         });
-                    }                           
+                    }
                 }
 
             return newQuestions;
