@@ -10,7 +10,8 @@
 
     <StackLayout VerticalOptions="CenterAndExpand">
 
-        <sharp:MaterialFrame Margin="40"
+        <sharp:MaterialFrame Margin="50"
+                             Padding="30"
                              CornerRadius="30"
                              Style="{StaticResource BlurFrame}">
 
