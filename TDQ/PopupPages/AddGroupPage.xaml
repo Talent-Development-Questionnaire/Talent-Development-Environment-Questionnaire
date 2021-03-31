@@ -24,7 +24,7 @@
                        FontSize="36"/>
                 <ic:CircleImage x:Name="ImgBtnAddGroupPhoto"    
                                 Source="ic_add_photo.png"    
-                                Aspect="AspectFill"
+                                Aspect="AspectFit"
                                 HorizontalOptions="Center"
                                 VerticalOptions="StartAndExpand"
                                 HeightRequest="84"
@@ -56,6 +56,8 @@
                     <Entry 
                     x:Name="entryEmail"
                     Placeholder="Enter Email" 
+                    HeightRequest="30"
+
                     Style="{DynamicResource entryStyle}"
                     Keyboard="Email"
                     TextColor="White"
