@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDQ.PopupPages.AddGoalPage"
+             xmlns:sharp="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.ModalPresentationStyle="OverFullScreen"
              BackgroundColor="Transparent">
 
     <StackLayout VerticalOptions="CenterAndExpand">
@@ -11,16 +14,22 @@
                CornerRadius="30"
                HasShadow="True">
             <StackLayout>
-                <Label Text="New Goal"
+                <Label Text="Add New Goal"
                        TextColor="White"
                        HorizontalTextAlignment="Center"
                        FontSize="36"/>
                 <Entry Placeholder="New Goal"
+                       PlaceholderColor="White"
                        x:Name="EntryGoal"/>
                 <Button Text="Save"
                         x:Name="BtnSave"
                         Clicked="BtnSave_Clicked"
                         Style="{DynamicResource buttonStyle}"/>
+
+                <Button x:Name="BtnCancel"
+                        Text="Cancel" 
+                        Style="{DynamicResource buttonStyle}"  
+                        Clicked="BtnCancel_Clicked"/>
             </StackLayout>
         </Frame>
     </StackLayout>

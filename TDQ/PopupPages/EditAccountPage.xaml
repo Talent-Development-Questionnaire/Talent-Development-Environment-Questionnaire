@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="TDQ.PopupPages.EditAccountPage"
+             xmlns:sharp="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.ModalPresentationStyle="OverFullScreen"
+             BackgroundColor="Transparent">
+
+    <StackLayout VerticalOptions="CenterAndExpand">
+
+        <Frame Margin="50"
+               Padding="30"
+               BackgroundColor="#663A3A3A"
+               CornerRadius="30"
+               
+               HasShadow="True">
+
+        <StackLayout>
+
+            <Label x:Name="LblTitle"
+                           Text="Edit Profile"
+                           TextColor="White"
+                           HorizontalTextAlignment="Center"
+                           FontSize="36"
+                           FontAttributes="Italic"/>
+        
+            <ic:CircleImage x:Name="AccountImage"    
+                            Source="ic_add_photo.png"    
+                            Aspect="AspectFill"
+                            HorizontalOptions="Center"
+                            VerticalOptions="StartAndExpand"
+                            HeightRequest="84"
+                            WidthRequest="84">
+
+                <ic:CircleImage.GestureRecognizers>
+                    <TapGestureRecognizer
+                                        Tapped="AccountImage_Tapped"
+                                        NumberOfTapsRequired="1"/>
+                </ic:CircleImage.GestureRecognizers>
+            </ic:CircleImage>
+
+            <Entry  x:Name="entryName"
+                    Placeholder="Name"
+                    Text="{Binding Name}"
+                    Style="{DynamicResource entryStyle}"
+                    TextColor="White"
+                    PlaceholderColor="White"/>
+
+            <Entry  x:Name="entryEmail"
+                    Placeholder="Email" 
+                    Text="{Binding Email}"
+                    Style="{DynamicResource entryStyle}"
+                    Keyboard="Email"
+                    TextColor="White"
+                    PlaceholderColor="White"
+                    Grid.Column="0"/>
+
+            <Entry x:Name="entryGender"
+                    Placeholder="Gender" 
+                    Text="{Binding Gender}"
+                    Style="{DynamicResource entryStyle}"
+                    TextColor="White"
+                    PlaceholderColor="White"
+                    Grid.Column="0"/>
+
+                <Entry x:Name="entryDOB"
+                    Placeholder="D.O.B" 
+                    Text="{Binding Dob}"
+                    Style="{DynamicResource entryStyle}"
+                    TextColor="White"
+                    PlaceholderColor="White"
+                    Grid.Column="0"/>
+
+
+
+
+            <Button 
+                Text="Save" 
+                TextColor="White"
+                Style="{DynamicResource buttonStyle}"
+                BackgroundColor="#4C000000"
+                Clicked="BtnSave_Clicked"/>
+
+                <Button x:Name="BtnCancel"
+                        Text="Cancel" 
+                        Style="{DynamicResource buttonStyle}"  
+                        Clicked="BtnCancel_Clicked"/>
+
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>

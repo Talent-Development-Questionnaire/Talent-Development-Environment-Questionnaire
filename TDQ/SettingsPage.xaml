@@ -15,9 +15,10 @@
         <StackLayout Margin="30" HorizontalOptions="CenterAndExpand"
                      Padding="20"
                      AbsoluteLayout.LayoutBounds="0,0,1,1"
-                     AbsoluteLayout.LayoutFlags="All">                 
+                     AbsoluteLayout.LayoutFlags="All">
 
             <Frame HorizontalOptions="CenterAndExpand"
+                   Style="{DynamicResource frameStyle}"
                    Padding="0" Margin="0,0,0,20">
 
                 <Picker x:Name="PickerColour" 
@@ -39,6 +40,7 @@
             </Frame>
 
             <Frame HorizontalOptions="CenterAndExpand"
+                   Style="{DynamicResource frameStyle}"
                    Padding="0" Margin="0,0,0,20">
 
                 <Picker x:Name="PickerFontSize" 
@@ -93,8 +95,10 @@
                     Style="{DynamicResource buttonStyle}"
                     Clicked="BtnLogOut_Clicked"/>
             
-            <Button Text="Delete Account"
-                    Style="{DynamicResource buttonStyle}"/>
+            <Button x:Name="BtnDeleteUser"
+                    Text="Delete Account"
+                    Style="{DynamicResource buttonStyle}"
+                    Clicked="BtnDeleteUser_Clicked"/>
 
         </StackLayout>
     </AbsoluteLayout>

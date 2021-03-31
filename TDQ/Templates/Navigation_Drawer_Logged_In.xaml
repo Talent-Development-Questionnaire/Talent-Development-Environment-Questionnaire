@@ -21,6 +21,6 @@
     </FlyoutItem>
     
     <ShellContent Title="Settings" Icon="ic_settings.png" IsTabStop="True" ContentTemplate="{DataTemplate local:SettingsPage}"/>
-    <ShellContent Title="Account" Icon="ic_account.png" IsTabStop="True" ContentTemplate="{DataTemplate template:LoginTabView}"/>
+    <ShellContent Title="Account" Icon="ic_account.png" IsTabStop="True" ContentTemplate="{DataTemplate local:AccountPage}"/>
     
 </Shell>

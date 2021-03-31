@@ -11,11 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MySqlConnector" Version="1.2.1" />
-    <PackageReference Include="SSH.NET" Version="2020.0.1" />
+    <PackageReference Include="MySqlConnector" Version="1.3.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1931" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Sharpnado.Presentation.Forms" Version="1.7.1" />
   </ItemGroup>
@@ -26,6 +26,22 @@
   <ItemGroup>
     <Compile Update="Templates\Navigation_Drawer.xaml.cs">
       <DependentUpon>Navigation_Drawer.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\LargeFontStyle.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\MediumFontStyle.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\SmallFontStyle.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\X-LargeFontStyle.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -50,6 +66,9 @@
     </EmbeddedResource>
     <EmbeddedResource Update="PopupPages\AddQuestionnairePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PopupPages\EditAccountPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Templates\LoginTabView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -77,6 +96,14 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Themes\MainTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Themes\MediumFontStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Themes\SmallFontStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Themes\X-LargeFontStyle.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

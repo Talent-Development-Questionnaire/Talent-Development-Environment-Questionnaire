@@ -23,9 +23,9 @@ namespace TDQ.PopupPages
             ListVisibility();
 
             if (Device.RuntimePlatform == "iOS")
-                BtnCanel.IsVisible = true;
+                BtnCancel.IsVisible = true;
             else
-                BtnCanel.IsVisible = false;
+                BtnCancel.IsVisible = false;
         }
 
         public AddGroupPage(Group currentGroup)
@@ -34,9 +34,9 @@ namespace TDQ.PopupPages
 
             emailList.HeightRequest = 160;
             if (Device.RuntimePlatform == "iOS")
-                BtnCanel.IsVisible = true;
+                BtnCancel.IsVisible = true;
             else
-                BtnCanel.IsVisible = false;
+                BtnCancel.IsVisible = false;
 
             LblTitle.Text = "Edit Group";
 
@@ -85,6 +85,7 @@ namespace TDQ.PopupPages
 
             //Checks that the entry field is not empty and then verifies text is a valid email
             if (!string.IsNullOrEmpty(entryEmail.Text))
+            {
                 if (Classes.Verification.IsValidEmail(entryEmail.Text))
                     emails.Add(entryEmail.Text);
                 else
@@ -93,13 +94,20 @@ namespace TDQ.PopupPages
                     entryEmail.Text = string.Empty;
                 }
 
-            if(emailList.Height < 160)
-                emailList.HeightRequest = 40 * emails.Count();
+                if (emailList.Height < 160)
+                    emailList.HeightRequest = 35 * emails.Count();
 
-            //Updates list view with newly added email
-            emailList.ItemsSource = emails.ToArray();
-            emailList.ScrollTo(emails[emails.Count()-1], ScrollToPosition.MakeVisible, true);
-            ListVisibility();
+                //Updates list view with newly added email
+                emailList.ItemsSource = emails.ToArray();
+                emailList.ScrollTo(emails[emails.Count() - 1], ScrollToPosition.MakeVisible, true);
+                ListVisibility();
+
+            } else
+            {
+                await DisplayAlert("Error", "Email cannot be left empty. Please try again.", "OK");
+            }
+            if (emailList.Height < 160)
+                emailList.HeightRequest = 35 * emails.Count();
         }
 
         private async void BtnSave_Clicked(object sender, EventArgs e)

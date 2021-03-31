@@ -13,6 +13,7 @@ namespace TDQ.Templates
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HeaderContent : ContentView
     {
+        private Models.CoachUser user;
         public HeaderContent()
         {
             InitializeComponent();
@@ -24,28 +25,17 @@ namespace TDQ.Templates
             {
                 App.Current.MainPage.DisplayAlert("Debug", "Account image is not working", "OK");
             }
-        }
 
-        private async void AccountImage_Tapped(object sender, EventArgs e)
-        {
-            var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+            if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
             {
-                Title = "Pick a photo"
-            });
-
-            if(result == null)
-                return;
-
-            AccountImage.Source = ImageSource.FromFile(result.FullPath);
-
-            try
-            {
-                Utils.SavedSettings.AccountImageSettings = result.FullPath;
+                user = Classes.DatabaseController.GetUserDetails(Utils.SavedSettings.LoginSettings);
+                BindingContext = user;
             }
-            catch (Exception ex)
-            {
 
-                await App.Current.MainPage.DisplayAlert("Debug", ex.Message, "OK");
+            else
+            {
+                lblName.Text = "Account Name";
+                lblEmail.Text = "Account Email";
             }
         }
     }

@@ -21,13 +21,31 @@ namespace TDQ
         {
             var result = Classes.DatabaseController.AccountCheck(EntryEmail.Text, EntryPassword.Text);
 
-            if (result == true)
+            try
             {
-                Utils.SavedSettings.LoginSettings = "LoggedIn";
-                (Application.Current).MainPage = new Navigation_Drawer_Logged_In();
+                if (result == true)
+                {
+                    Utils.SavedSettings.LoginSettings = EntryEmail.Text;
+                    (Application.Current).MainPage = new Navigation_Drawer_Logged_In();
+                }
+                else
+                    await DisplayAlert("Account", "Account does not exist, please try again.", "OK");
             }
-            else
-                await DisplayAlert("Account", "Email or Password may be incorrect, please try again.", "OK");
+            catch (Exception)
+            {
+
+                await DisplayAlert("Account", "Account does not exist, please try again.", "OK");
+            }
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//home");
+
+            });
+            return true;
         }
     }
 }

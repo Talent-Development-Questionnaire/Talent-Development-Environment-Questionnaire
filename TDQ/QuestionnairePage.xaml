@@ -5,4 +5,41 @@
              Title="Questionnaire"
              Style="{DynamicResource contentStyle}">
 
+    <StackLayout>
+        <StackLayout x:Name="LayoutUserDetails"
+                     Margin="70">
+            <Entry x:Name="EntryEmail"
+                   Placeholder="Email"
+                   Style="{DynamicResource entryStyle}"/>
+            <Entry x:Name="EntryOTP"
+                   Placeholder="One Time Password"
+                   Style="{DynamicResource entryStyle}"/>
+
+            <Button x:Name="BtnConfirm"
+                    Text="Confirm"
+                    Style="{DynamicResource buttonStyle}"
+                    Clicked="BtnConfirm_Clicked"/>
+        </StackLayout>
+        <ListView x:Name="LstQuestions"
+                  HasUnevenRows="True"
+                  BackgroundColor="Transparent"
+                  IsVisible="False">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame Padding="5"
+                               Margin="10,5,10,5"
+                               Style="{DynamicResource frameStyle}"
+                               CornerRadius="15">
+                            <StackLayout HorizontalOptions="Center">
+                                <Label Text="{Binding .}"
+                                       Style="{DynamicResource labelStyle}"/>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
 </ContentPage>

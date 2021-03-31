@@ -14,7 +14,7 @@ namespace TDQ
     {
         public SettingsPage()
         {
-            InitializeComponent();        
+            InitializeComponent();
         }
 
         protected override void OnAppearing()
@@ -73,6 +73,7 @@ namespace TDQ
         void BtnLogOut_Clicked(System.Object sender, System.EventArgs e)
         {
             Utils.SavedSettings.LoginSettings = "";
+            Utils.SavedSettings.AccountImageSettings = null;
             (Application.Current).MainPage = new Navigation_Drawer();
         }
 
@@ -89,6 +90,20 @@ namespace TDQ
                 Classes.SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage);
                 Classes.SettingsPageFunctions.DeleteBackgroundVisibility(BtnDeleteBg);
             }
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync("//home");
+
+            });
+            return true;
+        }
+
+        void BtnDeleteUser_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new PopupPages.SettingsPage_DeleteUser());
         }
     }
 }

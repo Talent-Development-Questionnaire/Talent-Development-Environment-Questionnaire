@@ -14,7 +14,7 @@
     </Style>
 
     <Style x:Key="pickerStyle" TargetType="Picker">
-        <Setter Property="BackgroundColor" Value="{DynamicResource FrameColour}"/>
+        <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="TitleColor" Value="{DynamicResource TertiaryTextColour}"/>
         <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColour}"/>
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
@@ -27,6 +27,25 @@
         <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColour}"/>
         <Setter Property="PlaceholderColor" Value="{DynamicResource TertiaryTextColour}"/>
         <Setter Property="FontSize" Value="18"/>
+    </Style>
+    
+    <Style x:Key="accountLabelStyle"
+           TargetType="Label">
+        <Setter Property="FontSize"
+                Value="24"/>
+    </Style>
+
+    <Style x:Key="accountGridStyle"
+           TargetType="Grid">
+        <Setter Property="ColumnSpacing"
+                Value="20">
+        </Setter>
+        <Setter Property="RowSpacing"
+                Value="30">
+        </Setter>
+        <Setter Property="Margin"
+                Value="15,0,0,0">
+        </Setter>
     </Style>
 
     <Style x:Key="listviewStyle" TargetType="ListView">

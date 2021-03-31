@@ -35,9 +35,11 @@
                         TextChanged="EntryEmail_TextChanged"/>
                 <Entry x:Name="EntryPassword"
                         Placeholder="Password"
+                        IsPassword="True"
                         Style="{DynamicResource entryStyle}"/>
                 <Entry x:Name="EntryConfirmPassword"
                         Placeholder="Confirm Password"
+                        IsPassword="True"
                         Style="{DynamicResource entryStyle}"/>
 
                 <Button Text="Sign Up"

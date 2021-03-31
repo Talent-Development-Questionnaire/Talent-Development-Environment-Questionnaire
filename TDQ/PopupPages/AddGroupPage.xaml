@@ -64,7 +64,7 @@
                     
                     <ImageButton
                     x:Name="ImgBtnAddEmail"
-                    Source="ic_add"
+                    Source="ic_action_add"
                     Grid.Column="1"
                     HorizontalOptions="End"
                     VerticalOptions="CenterAndExpand" 
@@ -93,7 +93,7 @@
                         Style="{DynamicResource buttonStyle}"
                         Clicked="BtnSave_Clicked"/>
 
-                <Button x:Name="BtnCanel"
+                <Button x:Name="BtnCancel"
                         Text="Cancel" 
                         Style="{DynamicResource buttonStyle}"  
                         Clicked="BtnCancel_Clicked"/>
