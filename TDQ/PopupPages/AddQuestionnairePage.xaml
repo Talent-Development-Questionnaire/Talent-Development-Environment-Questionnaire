@@ -8,10 +8,10 @@
              BackgroundColor="Transparent">
 
     <StackLayout VerticalOptions="CenterAndExpand">
-        <Frame Margin="50"
-               Padding="30"
-               BackgroundColor="#4C000000"
-               CornerRadius="30">
+        <sharp:MaterialFrame Margin="50"
+                             Padding="30"
+                             CornerRadius="30"
+                             Style="{StaticResource BlurFrame}">
             <StackLayout>
                 
                 <Label x:Name="LblTitle"
@@ -79,6 +79,6 @@
                         Style="{DynamicResource buttonStyle}"  
                         Clicked="BtnCancel_Clicked"/>
             </StackLayout>
-        </Frame>
+        </sharp:MaterialFrame>
     </StackLayout>
 </ContentPage>
