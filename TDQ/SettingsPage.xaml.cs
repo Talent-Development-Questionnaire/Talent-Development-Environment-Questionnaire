@@ -38,10 +38,12 @@ namespace TDQ
             if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
             {
                 BtnLogInOut.Text = "Log Out";
+                BtnDeleteUser.IsVisible = true;
             }
             else
             {
                 BtnLogInOut.Text = "Log In/Sign Up";
+                BtnDeleteUser.IsVisible = false;
             }
         }
 
