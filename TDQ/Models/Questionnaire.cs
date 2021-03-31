@@ -19,5 +19,7 @@ namespace TDQ.Models
 
         [JsonProperty ("completions")]
         public string Completions { get; set; }
+
+        public List<Question> Questions { get; set; }
     }
 }

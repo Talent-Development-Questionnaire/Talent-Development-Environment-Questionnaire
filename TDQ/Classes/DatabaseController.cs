@@ -144,7 +144,7 @@ namespace TDQ.Classes
                     string[] questions = responseString.Split(new string[] { "\n" }, StringSplitOptions.None);
                     List<Models.Question> questionsList = new List<Models.Question>();
 
-                    foreach(var item in questions)
+                    foreach (var item in questions)
                     {
                         questionsList.Add(new Models.Question
                         {
@@ -199,7 +199,7 @@ namespace TDQ.Classes
             string url = $"{Constants.ip}coach/createQuestionnaire/{name}/{type}/{email}/{athlete}/{otp}";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            if(flag == 1)
+            if (flag == 1)
             {
                 using (Stream stream = response.GetResponseStream())
                 {
@@ -254,7 +254,8 @@ namespace TDQ.Classes
 
         public static List<Models.Questionnaire> GetQuestionnaires(string email)
         {
-            List<Models.Questionnaire> questionnaireList = new List<Models.Questionnaire>();
+            List<Models.Questionnaire> oldQuestionnaireList = new List<Models.Questionnaire>();
+            List<Models.Questionnaire> newQuestionnaireList = new List<Models.Questionnaire>();
             var user = GetUserDetails(email);
 
             string url = $"{Constants.ip}coach/getQuestionnaires/{user.ID}";
@@ -272,14 +273,85 @@ namespace TDQ.Classes
                 responseString = responseString.TrimEnd(',');
                 var list = Regex.Split(responseString, @"({.*?})");
 
-                foreach (var item in list)
-                    if (!string.IsNullOrEmpty(item) && item != ", ")
-                        questionnaireList.Add(JsonConvert.DeserializeObject<Models.Questionnaire>(item));
-
                 if (responseString != "false")
-                    return questionnaireList;
+                {
+                    foreach (var item in list)
+                        if (!string.IsNullOrEmpty(item) && item != ", ")
+                            oldQuestionnaireList.Add(JsonConvert.DeserializeObject<Models.Questionnaire>(item));
+                    foreach (var item in oldQuestionnaireList)
+                        newQuestionnaireList.Add(GetQuestions(item));
+                    return newQuestionnaireList;
+                }
             }
             return null;
+        }
+
+        private static Models.Questionnaire GetQuestions(Models.Questionnaire questionnaire)
+        {
+            string url = $"{Constants.ip}coach/getQuestionnaireQuestions/{questionnaire.ID}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            using (Stream stream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(stream);
+
+                string responseString = reader.ReadToEnd();
+
+                responseString = responseString.Replace("(", string.Empty);
+                responseString = responseString.Replace(")", string.Empty);
+                responseString = responseString.TrimEnd(',');
+                var list = Regex.Split(responseString, @"({.*?})");
+
+                if (responseString != "false")
+                {
+                    questionnaire.Questions = new List<Models.Question>();
+
+                    foreach (var item in list)
+                        if (!string.IsNullOrEmpty(item) && item != ", ")
+                            questionnaire.Questions.Add(JsonConvert.DeserializeObject<Models.Question>(item));
+                }
+                questionnaire.Questions = GetQuestionText(questionnaire);
+                return questionnaire;
+            }
+
+        }
+
+        private static List<Models.Question> GetQuestionText(Models.Questionnaire questionnaire)
+        {
+
+            List<Models.Question> newQuestions = new List<Models.Question>();
+            string url = $"{Constants.ip}coach/getQuestions/{questionnaire.ID}";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            using (Stream stream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(stream);
+                string responseString = reader.ReadToEnd();
+                string[] questions = responseString.Split(new string[] { "\n" }, StringSplitOptions.None);
+
+                int index = 0;
+                foreach (var item in questions)
+                    if (!string.IsNullOrEmpty(item) && questionnaire.Questions != null)
+                        foreach (var question in questionnaire.Questions)
+                        {
+                            index++;
+                            if (!newQuestions.Contains(question))
+                            {
+                                int score = Convert.ToInt32(question.Answer) / Convert.ToInt32(questionnaire.Completions);
+                                newQuestions.Add(new Models.Question
+                                {
+                                    QuestionNo = index.ToString(),
+                                    QuestionText = item,
+                                    Answer = score.ToString()
+                                });
+                            }
+                            break;
+                        }
+
+                return newQuestions;
+            }
         }
     }
 }

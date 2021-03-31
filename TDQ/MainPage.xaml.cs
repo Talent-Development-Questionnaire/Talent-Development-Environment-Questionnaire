@@ -24,6 +24,11 @@ namespace TDQ
                 LstQuestionnaire.ItemsSource = Questionnaires;
             }
 
+            LblNoQuestionnaires.IsVisible = true;
+            if (LstQuestionnaire.ItemsSource != null)
+                LblNoQuestionnaires.IsVisible = false;
+
+
             Classes.SettingsPageFunctions.SetBackground(ImgBg, MainContentPage);
             Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
         }
@@ -58,5 +63,13 @@ namespace TDQ
             return true;
         }
 
+        private async void LstQuestionnaire_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                var questionnaire = e.SelectedItem as Questionnaire; 
+                await Navigation.PushAsync(new QuestionnaireScoresPage(questionnaire.Questions));
+            }
+        }
     }
 }

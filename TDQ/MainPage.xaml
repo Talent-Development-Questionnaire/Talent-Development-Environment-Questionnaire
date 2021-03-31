@@ -21,14 +21,16 @@
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All">
 
-            <Label Text="You currently have no questionnaires, please press the button below right to send a new questionnaire"
+            <Label x:Name="LblNoQuestionnaires"
+                   Text="You currently have no questionnaires, please press the button below right to send a new questionnaire"
                    HorizontalTextAlignment="Center"
                    FontAttributes="Italic"
                    Margin="10"
                    Style="{DynamicResource labelStyle}"/>
         </StackLayout>
 
-        <ListView x:Name="LstQuestionnaire">
+        <ListView x:Name="LstQuestionnaire"
+                  ItemSelected="LstQuestionnaire_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
