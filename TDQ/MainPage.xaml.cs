@@ -18,11 +18,7 @@ namespace TDQ
 
         protected override void OnAppearing()
         {
-            if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
-            {
-                Questionnaires = Classes.DatabaseController.GetQuestionnaires(Utils.SavedSettings.LoginSettings);
-                LstQuestionnaire.ItemsSource = Questionnaires;
-            }
+            UpdateQuestionnareList();
 
             LblNoQuestionnaires.IsVisible = true;
             if (LstQuestionnaire.ItemsSource != null)
@@ -70,6 +66,11 @@ namespace TDQ
                 var questionnaire = e.SelectedItem as Questionnaire; 
                 await Navigation.PushAsync(new QuestionnaireScoresPage(questionnaire.Questions));
             }
+        }
+
+        private void LstQuestionnaire_Refreshing(object sender, EventArgs e)
+        {
+            UpdateQuestionnareList();
         }
     }
 }

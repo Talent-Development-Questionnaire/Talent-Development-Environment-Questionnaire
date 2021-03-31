@@ -30,7 +30,8 @@
         </StackLayout>
 
         <ListView x:Name="LstQuestionnaire"
-                  ItemSelected="LstQuestionnaire_ItemSelected">
+                  ItemSelected="LstQuestionnaire_ItemSelected"
+                  Refreshing="LstQuestionnaire_Refreshing">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

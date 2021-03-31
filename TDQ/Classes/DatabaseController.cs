@@ -334,21 +334,21 @@ namespace TDQ.Classes
                 int index = 0;
                 foreach (var item in questions)
                     if (!string.IsNullOrEmpty(item) && questionnaire.Questions != null)
-                        foreach (var question in questionnaire.Questions)
+                    { 
+                        var question = questionnaire.Questions[index];
+                        if (!newQuestions.Contains(question))
                         {
                             index++;
-                            if (!newQuestions.Contains(question))
+                            double score = Convert.ToDouble(question.Answer) / Convert.ToDouble(questionnaire.Completions);
+                            newQuestions.Add(new Models.Question
                             {
-                                int score = Convert.ToInt32(question.Answer) / Convert.ToInt32(questionnaire.Completions);
-                                newQuestions.Add(new Models.Question
-                                {
-                                    QuestionNo = index.ToString(),
-                                    QuestionText = item,
-                                    Answer = score.ToString()
-                                });
-                            }
-                            break;
+                                QuestionNo = index.ToString(),
+                                QuestionText = item,
+                                Answer = Math.Round(score).ToString()
+                            });
                         }
+                            
+                    }
 
                 return newQuestions;
             }
