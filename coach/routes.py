@@ -106,11 +106,11 @@ def checkOTP(email):
     result = cursor.fetchall()
     otp = result[0]["otp"]
     if otp == 'true':
+        cursor.close()
         return 'True'
-        cursor.close()
     else:
-        return 'False'
         cursor.close()
+        return 'False'
 
 
 @coach_blueprint.route('/coach/verifyOTP/<email>/<otp>')
