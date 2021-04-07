@@ -6,7 +6,7 @@ from app.extensions import mysql
 player_blueprint = Blueprint('player_blueprint', __name__)
 
 
-@player_blueprint.route('/player/getQuestions/<qType>')
+@player_blueprint.route('/getQuestions/<qType>')
 def getQuestions(qType):
 
     if qType == '59':
@@ -51,7 +51,13 @@ def updateCount(qID):
     cursor.close()
 
 
-
+@player_blueprint.route('/player/sendAthleteInfo/<sportAcademy>/<sport>/<name>/<age>/<gender>')
+def sendAthleteInfo(sportAcademy, sport, name, age, gender):
+    cursor = mysql.connection.cursor()
+    cursor.execute("INSERT INTO athlete_info (sport_academy, sport, name, age, gender) VALUES ('%s','%s','%s','%s','%s')" % (sportAcademy, sport, name, age, gender))
+    mysql.connection.commit()
+    cursor.close()
+    return 'true'
 
 
 
