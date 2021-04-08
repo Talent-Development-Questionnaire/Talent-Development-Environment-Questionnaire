@@ -28,7 +28,7 @@ namespace TDQ
 
         private async void BtnHomeHelp_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new PopupPages.AddQuestionnairePage());
+            await Navigation.PushModalAsync(new PopupHelpPages.MainPageHelp());
 
         }
     }
