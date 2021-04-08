@@ -136,5 +136,11 @@ namespace TDQ
             BindingContext = new GoalsGroup()
             });
         }
+
+        private async void BtnGoalsPageHelp_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new PopupHelpPages.GoalsPageHelp());
+
+        }
     }
 }
