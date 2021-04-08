@@ -20,6 +20,7 @@
                        FontSize="36"/>
                 <Entry Placeholder="New Goal"
                        PlaceholderColor="White"
+                       TextColor="White"
                        x:Name="EntryGoal"/>
                 <Button Text="Save"
                         x:Name="BtnSave"

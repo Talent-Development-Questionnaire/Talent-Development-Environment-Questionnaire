@@ -10,7 +10,8 @@
 
     <StackLayout VerticalOptions="CenterAndExpand">
 
-        <sharp:MaterialFrame Margin="40"
+        <sharp:MaterialFrame Margin="50"
+                             Padding="30"
                              CornerRadius="30"
                              Style="{StaticResource BlurFrame}">
 
@@ -20,11 +21,10 @@
                        Text="New Group"
                        TextColor="White"
                        HorizontalTextAlignment="Center"
-                       FontSize="36"
-                       FontAttributes="Italic"/>
+                       FontSize="36"/>
                 <ic:CircleImage x:Name="ImgBtnAddGroupPhoto"    
                                 Source="ic_add_photo.png"    
-                                Aspect="AspectFill"
+                                Aspect="AspectFit"
                                 HorizontalOptions="Center"
                                 VerticalOptions="StartAndExpand"
                                 HeightRequest="84"
@@ -56,6 +56,8 @@
                     <Entry 
                     x:Name="entryEmail"
                     Placeholder="Enter Email" 
+                    HeightRequest="30"
+
                     Style="{DynamicResource entryStyle}"
                     Keyboard="Email"
                     TextColor="White"

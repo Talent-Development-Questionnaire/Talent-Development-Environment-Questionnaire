@@ -34,6 +34,17 @@ namespace TDQ
                 PickerFontSize.SelectedIndex = Convert.ToInt32(Utils.SavedSettings.FontIndexSettings);
             else
                 PickerFontSize.SelectedIndex = 0;
+
+            if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
+            {
+                BtnLogInOut.Text = "Log Out";
+                BtnDeleteUser.IsVisible = true;
+            }
+            else
+            {
+                BtnLogInOut.Text = "Log In/Sign Up";
+                BtnDeleteUser.IsVisible = false;
+            }
         }
 
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
@@ -70,11 +81,20 @@ namespace TDQ
             }
         }
 
-        void BtnLogOut_Clicked(System.Object sender, System.EventArgs e)
+        async void BtnLogInOut_Clicked(System.Object sender, System.EventArgs e)
         {
-            Utils.SavedSettings.LoginSettings = "";
-            Utils.SavedSettings.AccountImageSettings = null;
-            (Application.Current).MainPage = new Navigation_Drawer();
+            if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
+            {
+                //Log Out
+                Utils.SavedSettings.LoginSettings = "";
+                Utils.SavedSettings.AccountImageSettings = null;
+                (Application.Current).MainPage = new Navigation_Drawer();
+            }
+            else
+            {
+                //Go to login/signup page
+                await Shell.Current.GoToAsync("//login");
+            }
         }
 
         void PickerFontSize_SelectedIndexChanged(System.Object sender, System.EventArgs e)
