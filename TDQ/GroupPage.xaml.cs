@@ -109,5 +109,11 @@ namespace TDQ
                 LblNewGroup.IsVisible = false;
             }
         }
+
+        private async void BtnGroupPageHelp_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new PopupHelpPages.GroupPageHelp());
+
+        }
     }
 }
