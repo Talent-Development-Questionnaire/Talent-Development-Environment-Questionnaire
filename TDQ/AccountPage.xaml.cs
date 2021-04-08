@@ -70,5 +70,11 @@ namespace TDQ
                 await App.Current.MainPage.DisplayAlert("Debug", ex.Message, "OK");
             }
         }
+
+        private async void BtnAccountHelp_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new PopupHelpPages.AccountsPageHelp());
+
+        }
     }
 }
