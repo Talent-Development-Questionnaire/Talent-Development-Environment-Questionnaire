@@ -91,5 +91,10 @@ namespace TDQ
                 Classes.SettingsPageFunctions.DeleteBackgroundVisibility(BtnDeleteBg);
             }
         }
+        private async void BtnSettingsHelp_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new PopupHelpPages.SettingsHelp());
+
+        }
     }
 }
