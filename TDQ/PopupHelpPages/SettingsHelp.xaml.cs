@@ -20,8 +20,6 @@ namespace TDQ.PopupHelpPages
         private void BtnOkay_Clicked(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();
-
-        }
         }
     }
 }
