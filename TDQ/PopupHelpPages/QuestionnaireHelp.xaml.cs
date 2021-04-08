@@ -3,25 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using TDQ.Models;
 
-namespace TDQ
+namespace TDQ.PopupHelpPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class QuestionnairePage : ContentPage
+    public partial class QuestionnaireHelp : ContentPage
     {
-        public QuestionnairePage()
+        public QuestionnaireHelp()
         {
             InitializeComponent();
         }
 
-        private async void BtnQuestionnaireHelp_Clicked(object sender, EventArgs e)
+        private void BtnOkay_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new PopupHelpPages.QuestionnaireHelp());
+            Navigation.PopModalAsync();
 
         }
-        
     }
 }
