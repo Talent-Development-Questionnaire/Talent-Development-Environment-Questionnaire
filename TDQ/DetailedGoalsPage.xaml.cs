@@ -18,11 +18,13 @@ namespace TDQ
         GoalsGroup selectedGoalsGroup;
         public ObservableCollection<GoalsGroup> GoalsGroups;
         public ObservableCollection<String> goals;
+        string[] splitText;
 
         public DetailedGoalsPage(GoalsGroup currentGoalsGroup)
         {
             InitializeComponent();
             selectedGoalsGroup = currentGoalsGroup;
+            
         }
 
         protected override void OnAppearing()
@@ -34,10 +36,10 @@ namespace TDQ
             //Gets all the saved files for created goalsgroups
             var files = Directory.EnumerateFiles(App.FolderPath, "*.goalsgroup.txt");
             //iterates through each file
-            foreach (var filename in files)
+            foreach (string filename in files)
             {
                 string text = (File.ReadAllText(filename));
-                string[] splitText = text.Split('\n');
+                splitText = text.Split('\n');
 
                 //Adds GoalsGroup object to list, sets each property of the object
                 if (splitText.Length > 3)
@@ -90,6 +92,11 @@ namespace TDQ
         {        
             //opens new AddGoalPage
             await Navigation.PushModalAsync(new PopupPages.AddGoalPage(selectedGoalsGroup));
+        }
+
+        private void DeleteGoal_Clicked(object sender, EventArgs e)
+        {
+            File.WriteAllText(selectedGoalsGroup.Filename, selectedGoalsGroup.Name + "\n" + selectedGoalsGroup.ImageFilePath + "\n" + selectedGoalsGroup.Color);
         }
     }
 }

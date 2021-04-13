@@ -132,6 +132,11 @@
                                 <Label Text="{Binding .}"
                                            Style="{DynamicResource labelStyle}"
                                            Margin="10,0,0,0"/>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Text="Delete Goal"
+                                          Clicked="DeleteGoal_Clicked"
+                                          CommandParameter="{Binding .}"/>
+                                </ViewCell.ContextActions>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
