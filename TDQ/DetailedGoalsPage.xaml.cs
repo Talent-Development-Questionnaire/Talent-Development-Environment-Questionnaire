@@ -18,13 +18,11 @@ namespace TDQ
         GoalsGroup selectedGoalsGroup;
         public ObservableCollection<GoalsGroup> GoalsGroups;
         public ObservableCollection<String> goals;
-        string[] splitText;
 
         public DetailedGoalsPage(GoalsGroup currentGoalsGroup)
         {
             InitializeComponent();
-            selectedGoalsGroup = currentGoalsGroup;
-            
+            selectedGoalsGroup = currentGoalsGroup;            
         }
 
         protected override void OnAppearing()
@@ -39,7 +37,7 @@ namespace TDQ
             foreach (string filename in files)
             {
                 string text = (File.ReadAllText(filename));
-                splitText = text.Split('\n');
+                string[] splitText = text.Split('\n');
 
                 //Adds GoalsGroup object to list, sets each property of the object
                 if (splitText.Length > 3)
@@ -63,6 +61,7 @@ namespace TDQ
             {
                 if (goalsGroup.Filename == selectedGoalsGroup.Filename)
                 {
+                    selectedGoalsGroup = goalsGroup;
                     foreach(string goal in goalsGroup.GoalsList)
                     {
                         goals.Add(goal);
@@ -96,6 +95,10 @@ namespace TDQ
 
         private void DeleteGoal_Clicked(object sender, EventArgs e)
         {
+            var stringInThisCell = (string)((MenuItem)sender).BindingContext;
+
+            System.Diagnostics.Debug.WriteLine(stringInThisCell);
+
             File.WriteAllText(selectedGoalsGroup.Filename, selectedGoalsGroup.Name + "\n" + selectedGoalsGroup.ImageFilePath + "\n" + selectedGoalsGroup.Color);
         }
     }

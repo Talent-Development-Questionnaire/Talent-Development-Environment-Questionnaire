@@ -28,10 +28,21 @@ namespace TDQ.PopupPages
                     
 
         private async void BtnSave_Clicked(object sender, EventArgs e)
-        {   
+        {
             if (string.IsNullOrWhiteSpace(EntryGoal.Text))
             {               
                 await DisplayAlert("Error", "Goal cannot be empty. Please try again.", "OK");   
+            } 
+            else if (selectedGoalsGroup.GoalsList != null)
+            {
+                if (selectedGoalsGroup.GoalsList.Contains(EntryGoal.Text))
+                    await DisplayAlert("Error", "This goal already exists.", "OK");
+                else
+                {
+                    string goalsText = "\n" + EntryGoal.Text;
+                    File.AppendAllText(selectedGoalsGroup.Filename, goalsText);
+                    await Navigation.PopModalAsync();
+                }
             } 
             else
             {
