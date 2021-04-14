@@ -22,13 +22,13 @@ namespace TDQ
         public DetailedGoalsPage(GoalsGroup currentGoalsGroup)
         {
             InitializeComponent();
-            selectedGoalsGroup = currentGoalsGroup;            
+            selectedGoalsGroup = currentGoalsGroup;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            GoalsGroups = new ObservableCollection<GoalsGroup>();           
+            GoalsGroups = new ObservableCollection<GoalsGroup>();
             goals = new ObservableCollection<string>();
 
             //Gets all the saved files for created goalsgroups
@@ -46,7 +46,7 @@ namespace TDQ
                     string[] goalsList = Classes.DetailedGoalsPageFunctions.PopulateListOnAppearing(splitText);
 
                     GoalsGroups.Add(new GoalsGroup
-                    {                        
+                    {
                         Filename = filename,
                         Name = splitText[0],
                         ImageFilePath = splitText[1],
@@ -57,12 +57,12 @@ namespace TDQ
             }
 
             //Checks the filename of each GoalsGroup in GoalsGroups against GoalsGroup passed in
-            foreach(GoalsGroup goalsGroup in GoalsGroups)
+            foreach (GoalsGroup goalsGroup in GoalsGroups)
             {
                 if (goalsGroup.Filename == selectedGoalsGroup.Filename)
                 {
                     selectedGoalsGroup = goalsGroup;
-                    foreach(string goal in goalsGroup.GoalsList)
+                    foreach (string goal in goalsGroup.GoalsList)
                     {
                         goals.Add(goal);
                     }
@@ -70,7 +70,7 @@ namespace TDQ
             }
             //Updates ListView
             ListViewGoals.HeightRequest = 30 * goals.Count();
-            ListViewGoals.ItemsSource = goals;            
+            ListViewGoals.ItemsSource = goals;
             HideList();
         }
 
@@ -88,7 +88,7 @@ namespace TDQ
             }
         }
         private async void AddGoal_Clicked(object sender, EventArgs e)
-        {        
+        {
             //opens new AddGoalPage
             await Navigation.PushModalAsync(new PopupPages.AddGoalPage(selectedGoalsGroup));
         }
@@ -98,13 +98,13 @@ namespace TDQ
             string goalToBeDeleted = (string)((MenuItem)sender).BindingContext;
             System.Diagnostics.Debug.WriteLine(goalToBeDeleted);
 
-            List<string> newGoals = new List<string>();
+            ObservableCollection<string> newGoals = new ObservableCollection<string>();
 
             File.WriteAllText(selectedGoalsGroup.Filename, selectedGoalsGroup.Name + "\n" + selectedGoalsGroup.ImageFilePath + "\n" + selectedGoalsGroup.Color);
 
             foreach (string goal in goals)
             {
-                if(goal != goalToBeDeleted)
+                if (goal != goalToBeDeleted)
                 {
                     newGoals.Add(goal);
                     string goalText = "\n" + goal;
@@ -112,6 +112,8 @@ namespace TDQ
                 }
             }
 
-            ListViewGoals.ItemsSource = newGoals;
+            goals = newGoals;
+            ListViewGoals.ItemsSource = goals;
+        }
     }
 }
