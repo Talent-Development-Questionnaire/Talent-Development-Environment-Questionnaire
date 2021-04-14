@@ -33,6 +33,7 @@ namespace TDQ.PopupPages
             {               
                 await DisplayAlert("Error", "Goal cannot be empty. Please try again.", "OK");   
             } 
+            //nested if statement necessary because otherwise error if it is null
             else if (selectedGoalsGroup.GoalsList != null)
             {
                 if (selectedGoalsGroup.GoalsList.Contains(EntryGoal.Text))

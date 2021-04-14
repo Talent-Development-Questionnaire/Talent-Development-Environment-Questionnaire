@@ -95,11 +95,23 @@ namespace TDQ
 
         private void DeleteGoal_Clicked(object sender, EventArgs e)
         {
-            var stringInThisCell = (string)((MenuItem)sender).BindingContext;
+            string goalToBeDeleted = (string)((MenuItem)sender).BindingContext;
+            System.Diagnostics.Debug.WriteLine(goalToBeDeleted);
 
-            System.Diagnostics.Debug.WriteLine(stringInThisCell);
+            List<string> newGoals = new List<string>();
 
             File.WriteAllText(selectedGoalsGroup.Filename, selectedGoalsGroup.Name + "\n" + selectedGoalsGroup.ImageFilePath + "\n" + selectedGoalsGroup.Color);
-        }
+
+            foreach (string goal in goals)
+            {
+                if(goal != goalToBeDeleted)
+                {
+                    newGoals.Add(goal);
+                    string goalText = "\n" + goal;
+                    File.AppendAllText(selectedGoalsGroup.Filename, goalText);
+                }
+            }
+
+            ListViewGoals.ItemsSource = newGoals;
     }
 }
