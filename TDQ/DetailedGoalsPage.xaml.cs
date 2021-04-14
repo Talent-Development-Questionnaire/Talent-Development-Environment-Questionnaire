@@ -113,6 +113,7 @@ namespace TDQ
             }
 
             goals = newGoals;
+            ListViewGoals.HeightRequest = 30 * goals.Count();
             ListViewGoals.ItemsSource = goals;
         }
     }
