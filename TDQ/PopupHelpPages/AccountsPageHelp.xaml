@@ -2,29 +2,31 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDQ.PopupHelpPages.AccountsPageHelp" 
+             xmlns:sharp="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.ModalPresentationStyle="OverFullScreen"
              BackgroundColor="Transparent">
 
     <StackLayout VerticalOptions="CenterAndExpand">
-        <Frame Margin="50"
-               Padding="30"
-               BackgroundColor="#663A3A3A"
-               CornerRadius="30"
-               HasShadow="True">
+        <sharp:MaterialFrame Margin="50"
+                             Padding="30"
+                             CornerRadius="30"
+                             Style="{StaticResource BlurFrame}">
             <StackLayout>
-                <Label Text="Help"
+                    <Label Text="Help"
                        TextColor="White"
                        HorizontalTextAlignment="Center"
                        FontSize="36"/>
-                <Label Text="In the account page you are able to change your personal details on the account. Through clicking the settings button at the top right hand side of the application you are able to change anything on the account. You are also able to set your own profile picture!"
+                    <Label Text="In the account page you are able to change your personal details on the account. Through clicking the settings button at the top right hand side of the application you are able to change anything on the account. You are also able to set your own profile picture!"
                        TextColor="White"
                        HorizontalTextAlignment="Center"/>
 
-                <Button Text="Okay"
+                    <Button Text="Okay"
                         x:Name="BtnOkay"
                         Clicked="BtnOkay_Clicked"
                         Style="{DynamicResource buttonStyle}"/>
 
-            </StackLayout>
-        </Frame>
+                </StackLayout>
+        </sharp:MaterialFrame>
     </StackLayout>
 </ContentPage>
