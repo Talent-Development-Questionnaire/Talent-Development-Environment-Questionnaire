@@ -100,6 +100,11 @@ namespace TDQ
             LayoutUserVerification.IsVisible = true;
 
         }
+        private async void BtnQuestionnaireHelp_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new PopupHelpPages.QuestionnaireHelp());
+
+        }
     }
         
 }

@@ -9,6 +9,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_question.png"
                      Clicked="BtnGroupPageHelp_Clicked"/>
+        
         <ToolbarItem IconImageSource="ic_action_add.png"
                      x:Name="ImgBtnAddGroup"
                      Clicked="ImgBtnAddGroup_Clicked"/>
