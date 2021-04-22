@@ -58,7 +58,8 @@ namespace TDQ
 
         void LstQuestions_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Navigation.PushModalAsync(new PopupPages.LikertScalePage(e.SelectedItem as Models.Question){
+            Navigation.PushModalAsync(new PopupPages.LikertScalePage(e.SelectedItem as Models.Question)
+            {
                 BindingContext = e.SelectedItem as Models.Question
             });
         }
@@ -92,20 +93,13 @@ namespace TDQ
                 if (item == questions[questions.Count - 1])
                     Classes.DatabaseController.UpdateQuestionnaireCompletions(item);
             }
-            DisplayAlert("Successful","Questionnaire was successfully completed, thank you!","OK");
+            DisplayAlert("Successful", "Questionnaire was successfully completed, thank you!", "OK");
 
             LstQuestions.ItemsSource = null;
             LayoutUserDetails.IsVisible = false;
             LayoutUserVerification.IsVisible = true;
 
         }
-    }    
-
-        private async void BtnQuestionnaireHelp_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new PopupHelpPages.QuestionnaireHelp());
-
-        }
-        
     }
+        
 }
