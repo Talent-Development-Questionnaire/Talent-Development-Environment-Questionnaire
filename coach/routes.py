@@ -131,7 +131,15 @@ def verifyOTP(email, otp):
 
 
 
-
+@coach_blueprint.route('/coach/recieveAthleteInfo')
+def recieveAthleteInfo():
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT * FROM athlete_info")
+    result = cursor.fetchall()
+    info = str(result)
+    mysql.connection.commit()
+    cursor.close()
+    return info
 
 
 
