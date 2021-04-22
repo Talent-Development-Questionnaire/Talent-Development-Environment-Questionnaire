@@ -15,7 +15,7 @@
                        TextColor="White"
                        HorizontalTextAlignment="Center"
                        FontSize="36"/>
-                <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                <Label Text="In the settings page you can adjust colour themes, font sizes, add backgrounds and log out or delete your account."
                        TextColor="White"
                        HorizontalTextAlignment="Center"/>
                 <Button Text="Okay"

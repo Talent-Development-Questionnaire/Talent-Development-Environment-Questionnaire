@@ -91,5 +91,11 @@ namespace TDQ
             //opens new AddGoalPage
             await Navigation.PushModalAsync(new PopupPages.AddGoalPage(selectedGoalsGroup));
         }
+
+        private async void BtnGoalsPageHelp_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new PopupHelpPages.GoalsPageHelp());
+
+        }
     }
 }

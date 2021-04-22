@@ -15,7 +15,7 @@
                        TextColor="White"
                        HorizontalTextAlignment="Center"
                        FontSize="36"/>
-                <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                <Label Text="In the account page you are able to change your personal details on the account. Through clicking the settings button at the top right hand side of the application you are able to change anything on the account. You are also able to set your own profile picture!"
                        TextColor="White"
                        HorizontalTextAlignment="Center"/>
 

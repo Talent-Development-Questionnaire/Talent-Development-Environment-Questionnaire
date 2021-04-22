@@ -15,7 +15,7 @@
                        TextColor="White"
                        HorizontalTextAlignment="Center"
                        FontSize="36"/>
-                <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                <Label Text="In the questionnaire page athletes are able to fill out the questionnaires sent by their coaches. Start by entering your email and one time passcode you received in the invite email from your coach. This will then open the questionnaire. Fill out the questions by clicking on them and selecting between the numbers 1-5, 1 being the most negative and 5 the most positive. Once you have completed this send the form off and you are all done, the coach will now see your feedback anonymously."
                        TextColor="White"
                        HorizontalTextAlignment="Center"/>
                 <Button Text="Okay"
