@@ -100,4 +100,12 @@ namespace TDQ
 
         }
     }    
+
+        private async void BtnQuestionnaireHelp_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new PopupHelpPages.QuestionnaireHelp());
+
+        }
+        
+    }
 }

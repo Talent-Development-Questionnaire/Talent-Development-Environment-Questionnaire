@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TDQ.PopupHelpPages.QuestionnaireHelp"
+             BackgroundColor="Transparent">
+
+    <StackLayout VerticalOptions="CenterAndExpand">
+        <Frame Margin="50"
+               Padding="30"
+               BackgroundColor="#663A3A3A"
+               CornerRadius="30"
+               HasShadow="True">
+            <StackLayout>
+                <Label Text="Help"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       FontSize="36"/>
+                <Label Text="In the questionnaire page athletes are able to fill out the questionnaires sent by their coaches. Start by entering your email and one time passcode you received in the invite email from your coach. This will then open the questionnaire. Fill out the questions by clicking on them and selecting between the numbers 1-5, 1 being the most negative and 5 the most positive. Once you have completed this send the form off and you are all done, the coach will now see your feedback anonymously."
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"/>
+                <Button Text="Okay"
+                        x:Name="BtnOkay"
+                        Clicked="BtnOkay_Clicked"
+                        Style="{DynamicResource buttonStyle}"/>
+
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>

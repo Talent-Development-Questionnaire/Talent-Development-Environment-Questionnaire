@@ -5,6 +5,12 @@
              x:Name="SettingsContentPage"
              Title="Settings"
              Style="{DynamicResource contentStyle}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_question.png"
+                     Clicked="BtnSettingsHelp_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
     <AbsoluteLayout>
 
         <Image x:Name="ImgBg"

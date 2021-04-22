@@ -116,5 +116,11 @@ namespace TDQ
             ListViewGoals.HeightRequest = 30 * goals.Count();
             ListViewGoals.ItemsSource = goals;
         }
+
+        private async void BtnGoalsPageHelp_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new PopupHelpPages.GoalsPageHelp());
+
+        }
     }
 }

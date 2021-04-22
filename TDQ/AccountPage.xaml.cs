@@ -80,5 +80,11 @@ namespace TDQ
             });
             return true;
         }
+
+        private async void BtnAccountHelp_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new PopupHelpPages.AccountsPageHelp());
+
+        }
     }
 }

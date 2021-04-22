@@ -155,5 +155,11 @@ namespace TDQ
             return true;
         }
         
+
+        private async void BtnGoalsPageHelp_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new PopupHelpPages.GoalsPageHelp());
+
+        }
     }
 }

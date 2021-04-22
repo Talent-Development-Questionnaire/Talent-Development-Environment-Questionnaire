@@ -125,5 +125,10 @@ namespace TDQ
         {
             Navigation.PushModalAsync(new PopupPages.SettingsPage_DeleteUser());
         }
+        private async void BtnSettingsHelp_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new PopupHelpPages.SettingsHelp());
+
+        }
     }
 }

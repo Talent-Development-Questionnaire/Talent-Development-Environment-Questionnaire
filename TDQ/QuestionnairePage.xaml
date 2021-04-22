@@ -71,4 +71,9 @@
         </StackLayout>
     </StackLayout>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_question.png"
+                     Clicked="BtnQuestionnaireHelp_Clicked"/>
+    </ContentPage.ToolbarItems>
+
 </ContentPage>
