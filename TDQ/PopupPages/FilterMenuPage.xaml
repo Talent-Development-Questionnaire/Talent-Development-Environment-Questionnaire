@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TDQ.PopupPages.FilterMenuPage"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.ModalPresentationStyle="OverFullScreen"
+    BackgroundColor="Transparent">
+
+    <StackLayout>
+        <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                  Tapped="OutsideMenu_Tapped"/>
+        </StackLayout.GestureRecognizers>
+        <StackLayout BackgroundColor="{DynamicResource BackgroundColour}"
+                     Margin="0, 95, 30, 0"
+                     Padding="5"
+                     HorizontalOptions="EndAndExpand"
+                     VerticalOptions="StartAndExpand">
+
+            <Label x:Name="lblLowestTen"
+                   Text="Lowest Ten">
+                   <Label.GestureRecognizers>
+                       <TapGestureRecognizer NumberOfTapsRequired="1"
+                                             Tapped="LowestTen_Tapped"/>
+                   </Label.GestureRecognizers>
+                </Label>
+            
+
+            <Label x:Name="lblTopTen"
+                   Text="Top Ten">
+                <Label.GestureRecognizers>
+                       <TapGestureRecognizer NumberOfTapsRequired="1"
+                                             Tapped="TopTen_Tapped"/>
+                   </Label.GestureRecognizers>
+            </Label>
+
+             <Label x:Name="lblAll"
+                   Text="All">
+                <Label.GestureRecognizers>
+                       <TapGestureRecognizer NumberOfTapsRequired="1"
+                                             Tapped="All_Tapped"/>
+                   </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

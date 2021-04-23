@@ -99,5 +99,16 @@ namespace TDQ
             LayoutUserVerification.IsVisible = true;
 
         }
+
+        void BtnAutoComplete_Clicked(object sender, EventArgs e)
+        {
+            Random r = new Random();
+            foreach(var item in questions)
+            {
+                item.Answer = r.Next(1,6).ToString();
+            }
+
+            LstQuestions.ItemsSource = questions;
+        }
     }    
 }
