@@ -32,7 +32,7 @@ namespace TDQ
         private async void ImgBtnAddQuestionnaire_Clicked(object sender, EventArgs e)
         {
             ImgBtnAddQuestionnaire.IsEnabled = false;
-            await Navigation.PushModalAsync(new PopupPages.AddQuestionnairePage(this));
+            await Navigation.PushModalAsync(new PopupPages.AddQuestionnairePage());
             ImgBtnAddQuestionnaire.IsEnabled = true;
         }
 
@@ -41,7 +41,8 @@ namespace TDQ
             if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
             {
                 Questionnaires = Classes.DatabaseController.GetQuestionnaires(Utils.SavedSettings.LoginSettings);
-                LstQuestionnaire.ItemsSource = Questionnaires;
+                if(Questionnaires != null)
+                    LstQuestionnaire.ItemsSource = Questionnaires;
             }
         }
 

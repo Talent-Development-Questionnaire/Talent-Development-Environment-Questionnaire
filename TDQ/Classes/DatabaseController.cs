@@ -86,6 +86,8 @@ namespace TDQ.Classes
             }
         }
         //Method to check if inputted email already exists within the database
+
+
         public static bool CheckEmailExists(string email)
         {
             var response = ConnectToClient($"coach/checkEmail/{email}");
@@ -174,7 +176,7 @@ namespace TDQ.Classes
         }
         public static bool VerifyCoachAccount(string email, string otp)
         {
-            HttpWebResponse response = ConnectToClient($"coach/verifyAccount/{email}/{otp}");
+            HttpWebResponse response = ConnectToClient($"coach/verifyOTP/{email}/{otp}");
 
             using (Stream stream = response.GetResponseStream())
             {
@@ -214,7 +216,10 @@ namespace TDQ.Classes
         {
             List<Questionnaire> oldQuestionnaireList = new List<Questionnaire>();
             List<Questionnaire> newQuestionnaireList = new List<Questionnaire>();
+
             var user = GetUserDetails(email);
+            if (user == null)
+                return null;
 
             HttpWebResponse response = ConnectToClient($"coach/getQuestionnaires/{user.ID}");
 

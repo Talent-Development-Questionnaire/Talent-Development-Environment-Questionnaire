@@ -24,11 +24,11 @@ namespace TDQ
         {          
             base.OnAppearing();
 
-            if (Utils.SavedSettings.AccountImageSettings == null)
+            if (Utils.SavedSettings.AccountVerified == null)
                 AccountImage.Source = ImageSource.FromResource("ic_action_add_a_photo.png");
             else
             {
-                AccountImage.Source = Utils.SavedSettings.AccountImageSettings;
+                AccountImage.Source = Utils.SavedSettings.AccountVerified;
                 new Templates.HeaderContent();
             }
 
@@ -63,7 +63,7 @@ namespace TDQ
 
             try
             {
-                Utils.SavedSettings.AccountImageSettings = result.FullPath;
+                Utils.SavedSettings.AccountVerified = result.FullPath;
             }
             catch (Exception ex)
             {

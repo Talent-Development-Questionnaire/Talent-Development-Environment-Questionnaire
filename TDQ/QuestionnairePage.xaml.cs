@@ -12,14 +12,11 @@ namespace TDQ
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuestionnairePage : ContentPage
     {
-        public static Color ItemBackgroundColor { get; set; }
-
         List<Models.Question> questions;
 
         public QuestionnairePage()
         {
             InitializeComponent();
-            ItemBackgroundColor = Color.White;
         }
 
 
@@ -56,11 +53,14 @@ namespace TDQ
             return true;
         }
 
-        void LstQuestions_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        async void LstQuestions_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Navigation.PushModalAsync(new PopupPages.LikertScalePage(e.SelectedItem as Models.Question){
+            await Navigation.PushModalAsync(new PopupPages.LikertScalePage(e.SelectedItem as Models.Question){
                 BindingContext = e.SelectedItem as Models.Question
             });
+
+            LstQuestions.ItemsSource = questions;
+            BindingContext = questions;
         }
 
         public void UpdateQuestion(Models.Question question)

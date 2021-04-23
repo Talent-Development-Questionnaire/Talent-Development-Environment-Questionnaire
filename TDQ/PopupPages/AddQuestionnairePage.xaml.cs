@@ -13,7 +13,7 @@ namespace TDQ.PopupPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddQuestionnairePage : ContentPage
     {
-        MainPage main;
+  
         ObservableCollection<Group> Groups;
         List<string> emailList = new List<string>();
 
@@ -22,18 +22,11 @@ namespace TDQ.PopupPages
         public AddQuestionnairePage()
         {
             InitializeComponent();
-        }
-
-        public AddQuestionnairePage(MainPage m)
-        {
-            InitializeComponent();
 
             if (Device.RuntimePlatform == "iOS")
                 BtnCancel.IsVisible = true;
             else
                 BtnCancel.IsVisible = false;
-
-            main = m;
         }
 
         protected override void OnAppearing()

@@ -11,7 +11,7 @@
                      x:Name="ImgBtnAddQuestionnaire"
                      Clicked="ImgBtnAddQuestionnaire_Clicked"/>
     </ContentPage.ToolbarItems>
-    <AbsoluteLayout>
+    <AbsoluteLayout Margin="20">
 
         <Image x:Name="ImgBg"
                Aspect="AspectFill"
@@ -36,7 +36,8 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label x:Name="LblName" Text="{Binding Name}"/>
+                            <Label x:Name="LblName" Text="{Binding Name}"
+                                   Style="{DynamicResource labelStyle}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

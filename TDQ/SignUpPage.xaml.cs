@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
+using TDQ.Classes;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,54 +16,51 @@ namespace TDQ
 
         async void BtnSignUp_Clicked(object sender, EventArgs e)
         {
-            string otp;
-            var validEmail = Classes.Verification.IsValidEmail(EntryEmail.Text);
-            if (EntryPassword.Text == EntryConfirmPassword.Text && validEmail == true)
+            //Checks if the passwords entered match and if the email entered is a valid one
+            if(EntryPassword.Text == EntryConfirmPassword.Text && Verification.IsValidEmail(EntryEmail.Text))
             {
-                var result = Classes.DatabaseController.CheckEmailExists(EntryEmail.Text);
-
-                if (result == false)
-                {
-                    EntryEmail.TextColor = Color.Red;
-                    await DisplayAlert("Email Exists", "An account with this email already exists, please try again.", "OK");
-                }
-                else
-                {
-                    otp = Classes.DatabaseController.GenerateOTP();
-                    string name = EntryFirstName.Text + " " + EntryLastName.Text;
-                    result = Classes.DatabaseController.InsertNewUser(EntryEmail.Text, EntryPassword.Text, name, otp);
-                    Utils.SavedSettings.LoginSettings = EntryEmail.Text;
-
-                    if (result == true)
-                    {
-                        await Navigation.PushModalAsync(new PopupPages.EnterOTP_Page(EntryEmail.Text));
-
-                        if(Utils.SavedSettings.LoginSettings == EntryEmail.Text)
-                            (Application.Current).MainPage = new Navigation_Drawer();
-                        else
-                        {
-                            EntryFirstName.Text = string.Empty;
-                            EntryLastName.Text = string.Empty;
-                            EntryEmail.Text = string.Empty;
-                            EntryPassword.Text = string.Empty;
-                            EntryConfirmPassword.Text = string.Empty;
-                        }
-                    }
-                    else
-                        await DisplayAlert("Connection Error", "Error occured connecting to database, please try again", "OK");
-                }
+                //verification checks to catch any errors/mistakes
+                VerifyDetails();
+                return;
             }
-            else if (validEmail == false)
-                await DisplayAlert("Error", "Email is not valid, please try again", "OK");
-            else
-                await DisplayAlert("Error", "Passwords do not match, please try again", "OK"); 
+
+            await DisplayAlert("Error", "Email may not be valid or the passwords entered do not match, please try again.", "OK");
         }
 
+        private async void VerifyDetails()
+        {
+            //Check if an account with the entered email already exists
+            if(!DatabaseController.CheckEmailExists(EntryEmail.Text))
+            {
+                //Display error if email already exists
+                EntryEmail.TextColor = Color.Red;
+                await DisplayAlert("Email Exists", "An account with this email already exists, please try again.", "OK");
+                return;
+            }
+
+            string otp = DatabaseController.GenerateOTP();  //Create a One Time Password
+            string name = EntryFirstName.Text + " " + EntryLastName.Text; //Concatonate first and last name together
+
+            //Check if new user details are sent to the server correctly
+            if (!DatabaseController.InsertNewUser(EntryEmail.Text, EntryPassword.Text, name, otp))
+            {
+                //Display error if can't connect to database
+                await DisplayAlert("Connection Error", "Error occured connecting to database, please try again", "OK");
+                return;
+            }
+
+            await Navigation.PushModalAsync(new PopupPages.EnterOTP_Page(EntryEmail.Text)); //Display page for user to enter their One Time Password
+            ResetText(); //Reset entry fields to be empty
+            return;
+        }
+
+        //Changes the email entry field back from red if user email is not valid
         void EntryEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
             EntryEmail.TextColor = Color.Black;
         }
 
+        //Send user back to main page when back button is pressed (primarily for android users)
         protected override bool OnBackButtonPressed()
         {
             Device.BeginInvokeOnMainThread(async () =>
@@ -75,6 +69,16 @@ namespace TDQ
 
             });
             return true;
+        }
+
+        //Sets all entry fields in the form back to being empty
+        private void ResetText()
+        {
+            EntryFirstName.Text = string.Empty;
+            EntryLastName.Text = string.Empty;
+            EntryEmail.Text = string.Empty;
+            EntryPassword.Text = string.Empty;
+            EntryConfirmPassword.Text = string.Empty;
         }
     }
 }

@@ -35,11 +35,16 @@ namespace TDQ.PopupPages
                 case "5":
                     RbFive.IsChecked = true;
                     break;
+                case "6":
+                    RbSix.IsChecked = true;
+                    break;
             }
         }
 
         void BtnConfirm_Clicked(object sender, EventArgs e)
         {
+            if (q.Answer != null)
+                q.QuestionColor = Color.Green;
             Navigation.PopModalAsync();
         }
 

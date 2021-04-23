@@ -35,10 +35,10 @@ namespace TDQ.PopupPages
         {
             base.OnAppearing();
 
-            if (Utils.SavedSettings.AccountImageSettings == null)
+            if (Utils.SavedSettings.AccountVerified == null)
                 AccountImage.Source = ImageSource.FromResource("ic_account.png");
             else
-                AccountImage.Source = Utils.SavedSettings.AccountImageSettings;
+                AccountImage.Source = Utils.SavedSettings.AccountVerified;
         }
 
         private async void AccountImage_Tapped(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace TDQ.PopupPages
 
             try
             {
-                Utils.SavedSettings.AccountImageSettings = result.FullPath;
+                Utils.SavedSettings.AccountVerified = result.FullPath;
             }
             catch (Exception ex)
             {
