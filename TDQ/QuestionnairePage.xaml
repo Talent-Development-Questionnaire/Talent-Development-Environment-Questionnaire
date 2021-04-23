@@ -64,6 +64,11 @@
                 </ListView.ItemTemplate>
             </ListView>
 
+            <Button x:Name="BtnAutoComplete"
+                    Text="Auto Complete"
+                    Clicked="BtnAutoComplete_Clicked"
+                    Style="{DynamicResource buttonStyle}"/>
+
             <Button x:Name="BtnSendQuestionnaire"
                     Text="Finish"
                     Clicked="BtnSendQuestionnaire_Clicked"
