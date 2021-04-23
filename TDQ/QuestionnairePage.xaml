@@ -4,7 +4,11 @@
              x:Class="TDQ.QuestionnairePage"
              Title="Questionnaire"
              Style="{DynamicResource contentStyle}">
-
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_question.png"
+                     Clicked="BtnQuestionnaireHelp_Clicked"/>
+    </ContentPage.ToolbarItems>
+  
     <StackLayout Margin="15">
         <StackLayout x:Name="LayoutUserVerification"
                      Margin="55">
@@ -72,3 +76,6 @@
     </StackLayout>
 
 </ContentPage>
+    
+    
+    

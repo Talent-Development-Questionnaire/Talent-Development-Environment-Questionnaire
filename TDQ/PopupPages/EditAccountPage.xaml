@@ -10,21 +10,18 @@
 
     <StackLayout VerticalOptions="CenterAndExpand">
 
-        <Frame Margin="50"
-               Padding="30"
-               BackgroundColor="#663A3A3A"
-               CornerRadius="30"
-               
-               HasShadow="True">
+        <sharp:MaterialFrame Margin="50"
+                             Padding="30"
+                             CornerRadius="30"
+                             Style="{StaticResource BlurFrame}">
 
-        <StackLayout>
+            <StackLayout>
 
             <Label x:Name="LblTitle"
                            Text="Edit Profile"
                            TextColor="White"
                            HorizontalTextAlignment="Center"
-                           FontSize="36"
-                           FontAttributes="Italic"/>
+                           FontSize="36"/>
         
             <ic:CircleImage x:Name="AccountImage"    
                             Source="ic_add_photo.png"    
@@ -89,6 +86,6 @@
                         Clicked="BtnCancel_Clicked"/>
 
             </StackLayout>
-        </Frame>
+        </sharp:MaterialFrame>
     </StackLayout>
 </ContentPage>

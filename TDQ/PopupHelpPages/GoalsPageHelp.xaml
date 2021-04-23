@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TDQ.PopupHelpPages.GoalsPageHelp" 
+             xmlns:sharp="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.ModalPresentationStyle="OverFullScreen"
+             BackgroundColor="Transparent">
+
+
+    <StackLayout VerticalOptions="CenterAndExpand">
+        <sharp:MaterialFrame Margin="50"
+                             Padding="30"
+                             CornerRadius="30"
+                             Style="{StaticResource BlurFrame}">
+            <StackLayout>
+                <Label Text="Help"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       FontSize="36"/>
+                <Label Text="To set a goal you must first have created a group, which can be done on the groups page. After you have done this click the plus icon and create your goals group. This will create a new page in which you can see your strengths and weaknesses according to the feedback given from the athletes. You are also able to create personalised goals on this page from the feedback given."
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"/>
+
+                <Button Text="Okay"
+                        x:Name="BtnOkay"
+                        Clicked="BtnOkay_Clicked"
+                        Style="{DynamicResource buttonStyle}"/>
+
+            </StackLayout>
+        </sharp:MaterialFrame>
+    </StackLayout>
+</ContentPage>

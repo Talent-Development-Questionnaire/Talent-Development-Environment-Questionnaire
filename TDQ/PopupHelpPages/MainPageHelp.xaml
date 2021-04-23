@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TDQ.PopupHelpPages.MainPageHelp"
+             xmlns:sharp="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.ModalPresentationStyle="OverFullScreen"
+             BackgroundColor="Transparent">
+
+
+    <StackLayout VerticalOptions="CenterAndExpand">
+        <sharp:MaterialFrame Margin="50"
+                             Padding="30"
+                             CornerRadius="30"
+                             Style="{StaticResource BlurFrame}">
+            <StackLayout>
+
+                <Label Text="Welcome to Talent Development Questionnaire! In this app you will be able to gain feedback on your coaching ability through the people you coach! &#x0a; To get started either press the plus icon in the top right hand corner and enter athletes emails manually, or alternatively head across to the groups page and create a group for your coaching group. We would recommend using this method as it allows you to hold all of the emails in one place! The group page can be accessed through the icon in the top left hand corner. &#x0a; Once you have created a group click the plus icon and begin to fill out the form. The questionnaire will be emailed to all of the emails you entered in the group. Once you have received feedback from one of the athletes the results will be sent to this page."
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"/>
+                
+                <Button Text="Okay"
+                        x:Name="BtnOkay"
+                        Clicked="BtnOkay_Clicked"
+                        Style="{DynamicResource buttonStyle}"/>
+
+            </StackLayout>
+        </sharp:MaterialFrame>
+    </StackLayout>
+</ContentPage>

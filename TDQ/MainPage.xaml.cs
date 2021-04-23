@@ -72,5 +72,11 @@ namespace TDQ
         {
             UpdateQuestionnareList();
         }
+
+        private async void BtnHomeHelp_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new PopupHelpPages.MainPageHelp());
+
+        }
     }
 }

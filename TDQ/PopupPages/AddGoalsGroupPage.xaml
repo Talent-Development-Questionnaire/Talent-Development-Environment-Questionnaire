@@ -17,8 +17,7 @@
                     <Label Text="New Goals Group"
                            TextColor="White"
                            HorizontalTextAlignment="Center"
-                           FontSize="36"
-                           FontAttributes="Italic"/>
+                           FontSize="36"/>
 
                     <Picker x:Name="PickerGroup"
                                     TitleColor="White"

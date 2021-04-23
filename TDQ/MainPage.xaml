@@ -7,6 +7,8 @@
              Style="{DynamicResource contentStyle}">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_question.png"
+                     Clicked="BtnHomeHelp_Clicked"/>
         <ToolbarItem IconImageSource="ic_action_add.png"
                      x:Name="ImgBtnAddQuestionnaire"
                      Clicked="ImgBtnAddQuestionnaire_Clicked"/>

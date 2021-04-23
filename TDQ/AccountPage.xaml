@@ -5,6 +5,8 @@
              Title="Account">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_question.png"
+                     Clicked="BtnAccountHelp_Clicked"/>
         <ToolbarItem IconImageSource="ic_settings.png"
                      Clicked="BtnEditAccount_Clicked"/>
     </ContentPage.ToolbarItems> 
@@ -125,7 +127,7 @@
             <Label x:Name="LblClubListInput"
                     Grid.Row="4"
                     Grid.Column="1"
-                    Text="Hearts"
+                    Text=""
                     TextColor="Black"
                     HorizontalTextAlignment="Start"
                     Style="{DynamicResource accountLabelStyle}"/>

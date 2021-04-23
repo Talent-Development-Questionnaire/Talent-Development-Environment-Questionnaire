@@ -3,6 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDQ.DetailedGoalsPage"
              Title="Goals">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_question.png"
+                     Clicked="BtnGoalsPageHelp_Clicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Ellipse">
@@ -132,6 +138,11 @@
                                 <Label Text="{Binding .}"
                                            Style="{DynamicResource labelStyle}"
                                            Margin="10,0,0,0"/>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Text="Delete Goal"
+                                          Clicked="DeleteGoal_Clicked"
+                                          CommandParameter="{Binding .}"/>
+                                </ViewCell.ContextActions>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
