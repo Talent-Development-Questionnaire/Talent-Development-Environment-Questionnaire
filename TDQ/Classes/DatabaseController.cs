@@ -344,7 +344,7 @@ namespace TDQ.Classes
                             {
                                 QuestionNo = index.ToString(),
                                 QuestionText = item,
-                                Answer = Math.Round(score).ToString()
+                                Answer = score.ToString()
                             });
                         }
                             
