@@ -86,8 +86,6 @@ namespace TDQ.Classes
             }
         }
         //Method to check if inputted email already exists within the database
-
-
         public static bool CheckEmailExists(string email)
         {
             var response = ConnectToClient($"coach/checkEmail/{email}");
@@ -285,6 +283,18 @@ namespace TDQ.Classes
                 }
 
             return newQuestions;
+        }
+        public static bool SendUserDetails(string name, string sport, string academy, string age, string gender)
+        {
+            var response = ConnectToClient($"player/sendAthleteInfo/{academy}/{sport}/{name}/{age}/{gender}");
+
+            using (Stream stream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(stream);
+                string responseString = reader.ReadToEnd();
+
+                return Convert.ToBoolean(responseString);
+            }
         }
     }
 }

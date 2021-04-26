@@ -11,7 +11,7 @@
                      x:Name="ImgBtnAddQuestionnaire"
                      Clicked="ImgBtnAddQuestionnaire_Clicked"/>
     </ContentPage.ToolbarItems>
-    <AbsoluteLayout Margin="20">
+    <AbsoluteLayout>
 
         <Image x:Name="ImgBg"
                Aspect="AspectFill"
@@ -36,17 +36,14 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout>
-                            <Label x:Name="LblName" Text="{Binding Name}"
-                                   Style="{DynamicResource labelStyle}"/>
                         <StackLayout Padding="5">
                             <Label x:Name="LblName" Text="{Binding Name}" Style="{DynamicResource lblStyle}"/>
+
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="No. of Completions: " Style="{DynamicResource lblStyle}"
-                                       TextColor="{DynamicResource TertiaryTextColour}"/>
+                                        TextColor="{DynamicResource TertiaryTextColour}"/>
                                 <Label x:Name="LblComplections" Text="{Binding Completions}" Style="{DynamicResource lblStyle}"
-                                       TextColor="{DynamicResource TertiaryTextColour}"/>
-
+                                        TextColor="{DynamicResource TertiaryTextColour}"/>
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>
