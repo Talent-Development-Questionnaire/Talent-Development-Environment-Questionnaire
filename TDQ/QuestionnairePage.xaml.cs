@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,7 +75,46 @@ namespace TDQ
 
         async void BtnSendQuestionnaire_Clicked(object sender, EventArgs e)
         {
-            int index = 0;
+            //Need to check if information already exists, or do all this after checking the questionnaire has been answered
+            int index = 0, years = 0;
+            string gender = "%02%03";
+            string age = "%02%03";
+
+            if (string.IsNullOrEmpty(EntrySport.Text) || string.IsNullOrEmpty(EntryAcademy.Text))
+            {
+                await DisplayAlert("Error", "Please enter your sport and the academy/club you attend", "OK");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(EntryName.Text))
+                EntryName.Text = "%02%03";
+
+            if (string.IsNullOrEmpty(EntryDob.Text))
+                EntryName.Text = "%02%03";
+
+            if (PickerGender.SelectedIndex != -1)
+                gender = PickerGender.SelectedItem.ToString();
+
+            if (!string.IsNullOrEmpty(EntryDob.Text))
+            {
+                DateTime dob = DateTime.Parse(EntryDob.Text, new CultureInfo("en-GB").DateTimeFormat);
+                DateTime today = DateTime.Now;
+                years = today.Year - dob.Year;
+
+                if (dob.Month == today.Month &&// if the start month and the end month are the same
+                    today.Day < dob.Day // AND the end day is less than the start day
+                    || today.Month < dob.Month)// OR if the end month is less than the start month
+                {
+                    years--;
+                }
+
+                age = years.ToString();
+            }
+
+             
+
+            Classes.DatabaseController.SendUserDetails(EntryName.Text, EntrySport.Text, EntryAcademy.Text, age, gender);
+
             foreach (var item in questions)
             {
                 if (string.IsNullOrEmpty(item.Answer))

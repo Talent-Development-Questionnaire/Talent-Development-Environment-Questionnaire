@@ -12,6 +12,7 @@
                          CornerRadius="30"
                          Style="{StaticResource BlurFrame}"
                          VerticalOptions="Center">
+
         <StackLayout HorizontalOptions="Center">
             <Label x:Name="LblQuestionText"
                    Text="{Binding QuestionText}"
