@@ -59,9 +59,9 @@
                                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                     <Label Text="{Binding Name}" 
                                            TextColor="{DynamicResource PrimaryTextColour}" 
-                                           FontSize="Large"
                                            HorizontalOptions="CenterAndExpand"
-                                           FontAttributes="Bold"/>
+                                           FontAttributes="Bold"
+                                           Style="{DynamicResource lblStyle}"/>
                                     
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                                         

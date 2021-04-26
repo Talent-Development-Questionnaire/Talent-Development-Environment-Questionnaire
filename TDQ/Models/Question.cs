@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 namespace TDQ.Models
 {
     public class Question : Questionnaire
@@ -9,5 +10,7 @@ namespace TDQ.Models
         public string QuestionText { get; set; }
         [JsonProperty ("score")]
         public string Answer { get; set; }
+
+        public Color QuestionColor { get; set; }
     }
 }

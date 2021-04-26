@@ -15,7 +15,7 @@ namespace TDQ.Utils
 
         #region Setting Constants
 
-        private const string ImageKey = "image_key";
+        private const string VerifiedKey = "verified_key";
         private const string GroupImageKey = "group_key";
         private const string ThemeIndexKey = "theme_index_key";
         private const string ThemeKey = "theme_key";
@@ -29,15 +29,15 @@ namespace TDQ.Utils
         #endregion
 
 
-        public static string AccountImageSettings
+        public static string AccountVerified
         {
             get
             {
-                return AppSettings.GetValueOrDefault(ImageKey, SettingsDefault);
+                return AppSettings.GetValueOrDefault(VerifiedKey, SettingsDefault);
             }
             set
             {
-                AppSettings.AddOrUpdateValue(ImageKey, value);
+                AppSettings.AddOrUpdateValue(VerifiedKey, value);
             }
         }
 

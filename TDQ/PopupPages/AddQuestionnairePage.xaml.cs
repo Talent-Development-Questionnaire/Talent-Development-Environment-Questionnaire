@@ -13,7 +13,7 @@ namespace TDQ.PopupPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddQuestionnairePage : ContentPage
     {
-        MainPage main;
+  
         ObservableCollection<Group> Groups;
         List<string> emailList = new List<string>();
 
@@ -23,22 +23,10 @@ namespace TDQ.PopupPages
         {
             InitializeComponent();
 
-            if(Device.RuntimePlatform == "iOS")
-                BtnCancel.IsVisible = true;
-            else
-                BtnCancel.IsVisible = false;
-        }
-
-        public AddQuestionnairePage(MainPage m)
-        {
-            InitializeComponent();
-
             if (Device.RuntimePlatform == "iOS")
                 BtnCancel.IsVisible = true;
             else
                 BtnCancel.IsVisible = false;
-
-            main = m;
         }
 
         protected override void OnAppearing()
@@ -53,10 +41,10 @@ namespace TDQ.PopupPages
         {
             switch (PickerQuestionnaire.SelectedItem)
             {
-                case "58 Question":
+                case "59 Questions":
                     type = 59;
                     break;
-                case "28 Question":
+                case "28 Questions":
                     type = 28;
                     break;
             }
@@ -64,21 +52,9 @@ namespace TDQ.PopupPages
 
         void BtnSendQuestionnaire_Clicked(object sender, EventArgs e)
         {
-            Questionnaire item = null;
-            int flag = 0;
-            string otp = Classes.DatabaseController.GenerateOTP();
-
             foreach (string athlete in emailList)
-            {
-                if (athlete == emailList[emailList.Count() - 1])
-                    flag = 1;
-                else
-                    flag = 0;
+                Classes.DatabaseController.AssignAthletesQuestionnaires(EntryName.Text, type.ToString(), Utils.SavedSettings.LoginSettings, athlete, Classes.DatabaseController.GenerateOTP());
 
-                item = Classes.DatabaseController.AssignAthletesQuestionnaires(EntryName.Text, type.ToString(), Utils.SavedSettings.LoginSettings, athlete, otp, flag);
-            }
-            if (item != null)
-                main.UpdateQuestionnareList();
             Navigation.PopModalAsync();
         }
 
@@ -95,10 +71,6 @@ namespace TDQ.PopupPages
 
         private async void ImgBtnAddEmail_Clicked(object sender, EventArgs e)
         {
-            //Method to avoid items in list view duplicating
-            //CheckList();
-
-            //Checks that the entry field is not empty and then verifies text is a valid email
             if (!string.IsNullOrEmpty(entryEmail.Text))
             {
                 if (Classes.Verification.IsValidEmail(entryEmail.Text))
@@ -112,18 +84,12 @@ namespace TDQ.PopupPages
                 if (LstViewEmails.Height < 160)
                     LstViewEmails.HeightRequest = 35 * emailList.Count();
 
-                //Updates list view with newly added email
                 LstViewEmails.ItemsSource = emailList;
                 LstViewEmails.ScrollTo(emailList[emailList.Count() - 1], ScrollToPosition.MakeVisible, true);
-                //ListVisibility();
+                return;
+            }
 
-            }
-            else
-            {
-                await DisplayAlert("Error", "Email cannot be left empty. Please try again.", "OK");
-            }
-            if (LstViewEmails.Height < 160)
-                LstViewEmails.HeightRequest = 35 * emailList.Count();
+            await DisplayAlert("Error", "Email cannot be left empty. Please try again.", "OK");
         }
 
         private void PopulateGroupList()

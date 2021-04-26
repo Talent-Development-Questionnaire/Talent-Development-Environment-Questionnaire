@@ -23,6 +23,7 @@ namespace TDQ.PopupPages
             if (result == true)
             {
                 Utils.SavedSettings.LoginSettings = null;
+                Utils.SavedSettings.AccountVerified = null;
                 DeleteGroups();
                 DeleteGoals();
                 (Application.Current).MainPage = new Navigation_Drawer();

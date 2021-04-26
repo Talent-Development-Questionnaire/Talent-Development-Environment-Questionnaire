@@ -27,15 +27,20 @@
         <StackLayout x:Name="LayoutUserDetails"
                      IsVisible="false">
             <Entry x:Name="EntryName"
-                   Placeholder="Name"/>
+                   Placeholder="Name"
+                   Style="{DynamicResource entryStyle}"/>
             <Entry x:Name="EntrySport"
-                   Placeholder="Sport"/>
+                   Placeholder="Sport"
+                   Style="{DynamicResource entryStyle}"/>
             <Entry x:Name="EntryAcademy"
-                   Placeholder="Sport Academy"/>
+                   Placeholder="Sport Academy"
+                   Style="{DynamicResource entryStyle}"/>
             <Entry x:Name="EntryDob"
-                   Placeholder="Date of Birth"/>
+                   Placeholder="Date of Birth"
+                   Style="{DynamicResource entryStyle}"/>
             <Picker x:Name="PickerGender"
-                    Title="Gender">
+                    Title="Gender"
+                    Style="{DynamicResource pickerStyle}">
                 <Picker.Items>
                     <x:String>Male</x:String>
                     <x:String>Female</x:String>
@@ -66,6 +71,11 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+            <Button x:Name="BtnAutoComplete"
+                    Text="Auto Complete"
+                    Clicked="BtnAutoComplete_Clicked"
+                    Style="{DynamicResource buttonStyle}"/>
 
             <Button x:Name="BtnSendQuestionnaire"
                     Text="Finish"

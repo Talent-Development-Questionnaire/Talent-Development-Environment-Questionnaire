@@ -33,18 +33,19 @@
 
         <ListView x:Name="LstQuestionnaire"
                   ItemSelected="LstQuestionnaire_ItemSelected"
-                  Refreshing="LstQuestionnaire_Refreshing">
+                  Refreshing="LstQuestionnaire_Refreshing"
+                  HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="5">
-                                <Label x:Name="LblName" Text="{Binding Name}" Style="{DynamicResource labelStyle}"/>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="No. of Completions: " Style="{DynamicResource labelStyle}"
-                                       TextColor="{DynamicResource TertiaryTextColour}"/>
-                                    <Label x:Name="LblComplections" Text="{Binding Completions}" Style="{DynamicResource labelStyle}"
-                                       TextColor="{DynamicResource TertiaryTextColour}"/>
+                            <Label x:Name="LblName" Text="{Binding Name}" Style="{DynamicResource lblStyle}"/>
 
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="No. of Completions: " Style="{DynamicResource lblStyle}"
+                                        TextColor="{DynamicResource TertiaryTextColour}"/>
+                                <Label x:Name="LblComplections" Text="{Binding Completions}" Style="{DynamicResource lblStyle}"
+                                        TextColor="{DynamicResource TertiaryTextColour}"/>
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>

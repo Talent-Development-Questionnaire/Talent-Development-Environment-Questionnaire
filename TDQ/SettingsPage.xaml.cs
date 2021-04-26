@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TDQ.Classes;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -23,15 +20,23 @@ namespace TDQ
             //Sets the page background whenever page is opened
             Classes.SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage);
 
-            //Changes the index of the picker to what the user picked last time
-            //If the setting is null then the picker is set to deafult "Red"
+            //Check if user has set app theme to something other than the default 'red'
             if (!string.IsNullOrEmpty(Utils.SavedSettings.ThemeIndexSettings))
+            {
+                //set theme and them picker selected item to index last chosen by user
                 PickerColour.SelectedIndex = Convert.ToInt32(Utils.SavedSettings.ThemeIndexSettings);
-            else
-                PickerColour.SelectedIndex = 0;
+                return;
+            }
+            //set selected item to default theme - red
+            PickerColour.SelectedIndex = 0;
 
+            //Check if user chose a specific font size from the default one - medium
             if (!string.IsNullOrEmpty(Utils.SavedSettings.FontIndexSettings))
+            {
+                //set font size and font size picker to th index last chosen by user
                 PickerFontSize.SelectedIndex = Convert.ToInt32(Utils.SavedSettings.FontIndexSettings);
+                return;
+            }
             else
                 PickerFontSize.SelectedIndex = 0;
 
@@ -47,9 +52,15 @@ namespace TDQ
             }
         }
 
+            //set selected item to default font size - 'medium'
+            PickerFontSize.SelectedIndex = 1;
+        }
+
+        //Used to run function to change the apps theme colour when new item is selected
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Classes.SettingsPageFunctions.ChangeTheme(PickerColour.SelectedItem.ToString());
+            //Changes theme colours of app
+            SettingsPageFunctions.ChangeTheme(PickerColour.SelectedItem.ToString());
         }
 
         private async void BtnAddBg_Clicked(object sender, EventArgs e)
@@ -64,23 +75,26 @@ namespace TDQ
             if (result == null)
                 return;
 
-            //sets images source to selected image
-            BtnAddBg.Source = ImageSource.FromFile(result.FullPath);
+            BtnAddBg.Source = ImageSource.FromFile(result.FullPath);//sets images source to selected image
 
-            //Saves the file path to storage to be called again later
+            
             try
             {
-                Utils.SavedSettings.BackgroundSettings = result.FullPath;
-                //Mehtod to set the background of the current content page
-                Classes.SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage);
+                Utils.SavedSettings.BackgroundSettings = result.FullPath; //Saves the file path to storage to be called again later             
+                SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage); //Mehtod to set the background of the current content page
             }
             catch (Exception ex)
             {
-
                 await App.Current.MainPage.DisplayAlert("Debug", ex.Message, "OK");
             }
         }
 
+        void BtnLogOut_Clicked(object sender, EventArgs e)
+        {
+            Utils.SavedSettings.LoginSettings = null;
+            Utils.SavedSettings.AccountVerified = null;
+            (Application.Current).MainPage = new Navigation_Drawer();
+        }
         async void BtnLogInOut_Clicked(System.Object sender, System.EventArgs e)
         {
             if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
@@ -107,8 +121,8 @@ namespace TDQ
             if (!string.IsNullOrEmpty(Utils.SavedSettings.BackgroundSettings))
             {
                 Utils.SavedSettings.BackgroundSettings = null;
-                Classes.SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage);
-                Classes.SettingsPageFunctions.DeleteBackgroundVisibility(BtnDeleteBg);
+                SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage);
+                SettingsPageFunctions.DeleteBackgroundVisibility(BtnDeleteBg);
             }
         }
         protected override bool OnBackButtonPressed()
