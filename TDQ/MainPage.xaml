@@ -36,15 +36,12 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout>
-                            <Label x:Name="LblName" Text="{Binding Name}"
-                                   Style="{DynamicResource labelStyle}"/>
                         <StackLayout Padding="5">
-                            <Label x:Name="LblName" Text="{Binding Name}" Style="{DynamicResource lblStyle}"/>
+                            <Label x:Name="LblName" Text="{Binding Name}" Style="{DynamicResource labelStyle}"/>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="No. of Completions: " Style="{DynamicResource lblStyle}"
+                                <Label Text="No. of Completions: " Style="{DynamicResource labelStyle}"
                                        TextColor="{DynamicResource TertiaryTextColour}"/>
-                                <Label x:Name="LblComplections" Text="{Binding Completions}" Style="{DynamicResource lblStyle}"
+                                <Label x:Name="LblComplections" Text="{Binding Completions}" Style="{DynamicResource labelStyle}"
                                        TextColor="{DynamicResource TertiaryTextColour}"/>
 
                             </StackLayout>

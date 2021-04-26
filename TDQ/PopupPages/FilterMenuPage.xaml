@@ -19,7 +19,8 @@
                      VerticalOptions="StartAndExpand">
 
             <Label x:Name="lblLowestTen"
-                   Text="Lowest Ten">
+                   Text="Lowest Ten"
+                   Style="{DynamicResource labelStyle}">
                    <Label.GestureRecognizers>
                        <TapGestureRecognizer NumberOfTapsRequired="1"
                                              Tapped="LowestTen_Tapped"/>
@@ -28,7 +29,8 @@
             
 
             <Label x:Name="lblTopTen"
-                   Text="Top Ten">
+                   Text="Top Ten"
+                   Style="{DynamicResource labelStyle}">
                 <Label.GestureRecognizers>
                        <TapGestureRecognizer NumberOfTapsRequired="1"
                                              Tapped="TopTen_Tapped"/>
@@ -36,7 +38,8 @@
             </Label>
 
              <Label x:Name="lblAll"
-                   Text="All">
+                   Text="All"
+                    Style="{DynamicResource labelStyle}">
                 <Label.GestureRecognizers>
                        <TapGestureRecognizer NumberOfTapsRequired="1"
                                              Tapped="All_Tapped"/>

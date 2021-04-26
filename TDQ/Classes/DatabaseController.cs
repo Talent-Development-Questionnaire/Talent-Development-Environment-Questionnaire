@@ -87,7 +87,6 @@ namespace TDQ.Classes
         }
         //Method to check if inputted email already exists within the database
 
-
         public static bool CheckEmailExists(string email)
         {
             var response = ConnectToClient($"coach/checkEmail/{email}");
@@ -279,12 +278,14 @@ namespace TDQ.Classes
                         {
                             QuestionNo = index.ToString(),
                             QuestionText = item,
-                            Answer = Math.Round(score).ToString()
+                            Answer = score.ToString("0.#")
                         });
                     }
                 }
 
             return newQuestions;
         }
+
+
     }
 }
