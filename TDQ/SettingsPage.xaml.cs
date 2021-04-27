@@ -139,6 +139,8 @@ namespace TDQ
         {
             Navigation.PushModalAsync(new PopupPages.SettingsPage_DeleteUser());
         }
+
+        // If the help button is pressed then launch the help popup
         private async void BtnSettingsHelp_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new PopupHelpPages.SettingsHelp());

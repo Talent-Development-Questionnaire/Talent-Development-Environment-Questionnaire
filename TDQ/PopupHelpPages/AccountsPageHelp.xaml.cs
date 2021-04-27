@@ -17,6 +17,7 @@ namespace TDQ.PopupHelpPages
             InitializeComponent();
         }
 
+        // If the 'Okay' button is pressed go back to the previous page
         private void BtnOkay_Clicked(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();

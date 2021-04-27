@@ -117,6 +117,7 @@ namespace TDQ
             ListViewGoals.ItemsSource = goals;
         }
 
+        // If the help button is pressed then launch the help popup
         private async void BtnGoalsPageHelp_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new PopupHelpPages.GoalsPageHelp());

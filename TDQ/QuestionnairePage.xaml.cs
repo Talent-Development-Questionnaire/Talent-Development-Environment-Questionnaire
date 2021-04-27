@@ -150,6 +150,8 @@ namespace TDQ
 
             LstQuestions.ItemsSource = questions;
         }
+
+        // If the help button is pressed then launch the help popup
         private async void BtnQuestionnaireHelp_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new PopupHelpPages.QuestionnaireHelp());
