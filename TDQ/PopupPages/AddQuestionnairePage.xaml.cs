@@ -16,6 +16,7 @@ namespace TDQ.PopupPages
   
         ObservableCollection<Group> Groups;
         List<string> emailList = new List<string>();
+        List<string> groupNameList = new List<string>();
 
         int type;
 
@@ -115,9 +116,9 @@ namespace TDQ.PopupPages
                     ImageFilePath = splitText[2],
                     EmailList = emailList.ToArray()
                 });
-                emailList.Add(splitText[0]);
+                groupNameList.Add(splitText[0]);
 
-                PickerGroup.ItemsSource = emailList.ToArray();
+                PickerGroup.ItemsSource = groupNameList;
             }
         }
 

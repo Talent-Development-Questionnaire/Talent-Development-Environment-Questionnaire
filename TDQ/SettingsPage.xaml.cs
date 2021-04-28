@@ -37,8 +37,8 @@ namespace TDQ
                 PickerFontSize.SelectedIndex = Convert.ToInt32(Utils.SavedSettings.FontIndexSettings);
                 return;
             }
-            else
-                PickerFontSize.SelectedIndex = 0;
+
+            PickerFontSize.SelectedIndex = 0;
 
             if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
             {
@@ -50,7 +50,6 @@ namespace TDQ
                 BtnLogInOut.Text = "Log In/Sign Up";
                 BtnDeleteUser.IsVisible = false;
             }
-        }
 
             //set selected item to default font size - 'medium'
             PickerFontSize.SelectedIndex = 1;
@@ -92,7 +91,7 @@ namespace TDQ
         void BtnLogOut_Clicked(object sender, EventArgs e)
         {
             Utils.SavedSettings.LoginSettings = null;
-            Utils.SavedSettings.AccountVerified = null;
+            Utils.SavedSettings.AccountImageSettings = null;
             (Application.Current).MainPage = new Navigation_Drawer();
         }
         async void BtnLogInOut_Clicked(System.Object sender, System.EventArgs e)

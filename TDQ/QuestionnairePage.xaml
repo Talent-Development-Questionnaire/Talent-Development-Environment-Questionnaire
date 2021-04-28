@@ -24,6 +24,7 @@
                     Style="{DynamicResource buttonStyle}"
                     Clicked="BtnConfirm_Clicked"/>
         </StackLayout>
+
         <StackLayout x:Name="LayoutUserDetails"
                      IsVisible="false">
             <Entry x:Name="EntryName"

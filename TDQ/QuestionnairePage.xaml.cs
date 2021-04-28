@@ -14,6 +14,8 @@ namespace TDQ
     public partial class QuestionnairePage : ContentPage
     {
         List<Models.Question> questions;
+        List<string> invertedQuestions = new List<string>(new string[] { "8", "11", "15" });
+
 
         public QuestionnairePage()
         {
@@ -127,6 +129,33 @@ namespace TDQ
             foreach (var item in questions)
             {
                 index++;
+
+                if(invertedQuestions.Contains(index.ToString()))
+                {
+                    switch(item.Answer)
+                    {
+                        case "1":
+                            item.Answer = "6";
+                            break;
+                        case "2":
+                            item.Answer = "5";
+                            break;
+                        case "3":
+                            item.Answer = "4";
+                            break;
+                        case "4":
+                            item.Answer = "3";
+                            break;
+                        case "5":
+                            item.Answer = "2";
+                            break;
+                        case "6":
+                            item.Answer = "1";
+                            break;
+                    }
+                }
+                
+
                 Classes.DatabaseController.SendCompletedQuestionnaire(item, index);
 
                 if (item == questions[questions.Count - 1])

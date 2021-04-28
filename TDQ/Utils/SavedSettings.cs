@@ -29,7 +29,7 @@ namespace TDQ.Utils
         #endregion
 
 
-        public static string AccountVerified
+        public static string AccountImageSettings
         {
             get
             {

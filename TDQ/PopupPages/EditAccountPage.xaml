@@ -54,13 +54,19 @@
                     PlaceholderColor="White"
                     Grid.Column="0"/>
 
-            <Entry x:Name="entryGender"
-                    Placeholder="Gender" 
-                    Text="{Binding Gender}"
-                    Style="{DynamicResource entryStyle}"
-                    TextColor="White"
-                    PlaceholderColor="White"
-                    Grid.Column="0"/>
+            <Picker x:Name="pickerGender"
+                    Title="Gender"
+                    Style="{DynamicResource pickerStyle}"
+                    Grid.Column="0">
+
+                <Picker.Items>
+                    <x:String>Male</x:String>
+                    <x:String>Female</x:String>
+                    <x:String>Other</x:String>
+                    <x:String>N/A</x:String>
+                </Picker.Items>
+
+            </Picker>
 
                 <Entry x:Name="entryDOB"
                     Placeholder="D.O.B" 
@@ -88,4 +94,5 @@
             </StackLayout>
         </sharp:MaterialFrame>
     </StackLayout>
+
 </ContentPage>

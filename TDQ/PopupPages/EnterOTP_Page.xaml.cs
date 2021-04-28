@@ -38,10 +38,10 @@ namespace TDQ.PopupPages
                 return;
             }
 
-            Utils.SavedSettings.AccountVerified = result.ToString();
+            Utils.SavedSettings.AccountImageSettings = result.ToString();
             Utils.SavedSettings.LoginSettings = email;
 
-            if (Utils.SavedSettings.LoginSettings == email && Utils.SavedSettings.AccountVerified == "True")
+            if (Utils.SavedSettings.LoginSettings == email && Utils.SavedSettings.AccountImageSettings == "True")
                 (Application.Current).MainPage = new Navigation_Drawer_Logged_In();
         }
 

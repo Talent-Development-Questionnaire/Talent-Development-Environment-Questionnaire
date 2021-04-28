@@ -16,6 +16,7 @@ namespace TDQ.PopupPages
     {
         public readonly List<string> emails = new List<string>();
 
+
         public AddGroupPage()
         {
             InitializeComponent();

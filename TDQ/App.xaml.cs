@@ -12,6 +12,7 @@ namespace TDQ
 
         public App()
         {
+
             InitializeComponent();
 
             Sharpnado.MaterialFrame.Initializer.Initialize(true, false);

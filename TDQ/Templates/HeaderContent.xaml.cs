@@ -19,7 +19,7 @@ namespace TDQ.Templates
             InitializeComponent();
             try
             {
-                AccountImage.Source = ImageSource.FromFile(Utils.SavedSettings.AccountVerified);
+                AccountImage.Source = ImageSource.FromFile(Utils.SavedSettings.AccountImageSettings);
             }
             catch(Exception e)
             {

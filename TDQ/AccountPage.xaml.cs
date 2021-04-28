@@ -25,15 +25,12 @@ namespace TDQ
             base.OnAppearing();
 
             // If there is no profile photo saved on the users mobile device then set the image as the default 'add a profile picture' image
-            if (Utils.SavedSettings.AccountVerified == null)
-                AccountImage.Source = ImageSource.FromResource("ic_action_add_a_photo.png");
+            if (string.IsNullOrEmpty(Utils.SavedSettings.AccountImageSettings))
+                AccountImage.Source = ImageSource.FromFile("ic_action_add_a_photo.png");
 
            // Otherwise, set the profile photo as the image saved previously by the user
             else
-            {
-                AccountImage.Source = Utils.SavedSettings.AccountVerified;
-                new Templates.HeaderContent();
-            }
+                AccountImage.Source = Utils.SavedSettings.AccountImageSettings;
 
             // Get the user details from the saved settings from the database, if there are none then leave these blank
             user = DatabaseController.GetUserDetails(Utils.SavedSettings.LoginSettings);
@@ -67,7 +64,7 @@ namespace TDQ
 
             try
             {
-                Utils.SavedSettings.AccountVerified = result.FullPath;
+                Utils.SavedSettings.AccountImageSettings = result.FullPath;
             }
             catch (Exception ex)
             {

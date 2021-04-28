@@ -292,24 +292,6 @@ namespace TDQ.Classes
             {
                 StreamReader reader = new StreamReader(stream);
                 string responseString = reader.ReadToEnd();
-                int index = 0;
-                foreach (var item in questions)
-                    if (!string.IsNullOrEmpty(item) && questionnaire.Questions != null)
-                    { 
-                        var question = questionnaire.Questions[index];
-                        if (!newQuestions.Contains(question))
-                        {
-                            index++;
-                            double score = Convert.ToDouble(question.Answer) / Convert.ToDouble(questionnaire.Completions);
-                            newQuestions.Add(new Models.Question
-                            {
-                                QuestionNo = index.ToString(),
-                                QuestionText = item,
-                                Answer = score.ToString()
-                            });
-                        }
-                            
-                    }
 
                 return Convert.ToBoolean(responseString);
             }
