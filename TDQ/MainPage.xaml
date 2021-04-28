@@ -24,7 +24,7 @@
                      AbsoluteLayout.LayoutFlags="All">
 
             <Label x:Name="LblNoQuestionnaires"
-                   Text="You currently have no questionnaires, please press the button below right to send a new questionnaire"
+                   Text="Press the plus button to make a new questionnaire or select the questionnaire option from the menu to answer one"
                    HorizontalTextAlignment="Center"
                    FontAttributes="Italic"
                    Margin="10"
