@@ -6,6 +6,7 @@ namespace TDQ.Classes
 {
     public class DetailedGoalsPageFunctions
     {
+        //function to put the existing goals into a list to be displayed
         public static string[] PopulateListOnAppearing(string[] list)
         {
             List<string> goals = new List<string>();

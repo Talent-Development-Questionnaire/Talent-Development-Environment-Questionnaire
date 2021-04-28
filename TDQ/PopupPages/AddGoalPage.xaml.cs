@@ -29,10 +29,12 @@ namespace TDQ.PopupPages
 
         private async void BtnSave_Clicked(object sender, EventArgs e)
         {
+            //displays error message if field is empty
             if (string.IsNullOrWhiteSpace(EntryGoal.Text))
             {               
                 await DisplayAlert("Error", "Goal cannot be empty. Please try again.", "OK");   
             } 
+            //displays error message if goal already exists for that group
             //nested if statement necessary because otherwise error if it is null
             else if (selectedGoalsGroup.GoalsList != null)
             {
@@ -40,6 +42,7 @@ namespace TDQ.PopupPages
                     await DisplayAlert("Error", "This goal already exists.", "OK");
                 else
                 {
+                    //save goal to group
                     string goalsText = "\n" + EntryGoal.Text;
                     File.AppendAllText(selectedGoalsGroup.Filename, goalsText);
                     await Navigation.PopModalAsync();
@@ -47,6 +50,7 @@ namespace TDQ.PopupPages
             } 
             else
             {
+                //save goal to group
                 string goalsText = "\n" + EntryGoal.Text;
                 File.AppendAllText(selectedGoalsGroup.Filename, goalsText);
                 await Navigation.PopModalAsync();

@@ -84,7 +84,7 @@ namespace TDQ.PopupPages
                 goalsGroup.ImageFilePath = goalsGroup.Group.ImageFilePath;
                 goalsGroup.Color = (String)PickerColor.SelectedItem;
 
-                //Creates new file and writes the Group properties' values to said file
+                //Creates new file and writes the GoalsGroup properties' values to said file
                 var filename = Path.Combine(App.FolderPath, $"{Path.GetRandomFileName()}.goalsgroup.txt");
 
 
