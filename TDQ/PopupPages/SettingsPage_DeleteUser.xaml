@@ -15,20 +15,25 @@
                              Style="{StaticResource BlurFrame}">
 
             <StackLayout>
-                <Label Text="Are you sure you want to delte your account?"
+                <Label Text="Are you sure you want to delete your account?"
+                       TextColor="White"
                        Style="{DynamicResource labelStyle}"/>
 
                 <Entry x:Name="EntryPassword"
                        Placeholder="Enter your Password"
+                       PlaceholderColor="White"
+                       TextColor="White"
                        Style="{DynamicResource entryStyle}"/>
 
                 <Button x:Name="BtnEnterPassword"
                         Text="Confirm"
+                        TextColor="White"
                         Style="{DynamicResource buttonStyle}"
                         Clicked="BtnEnterPassword_Clicked"/>
 
                 <Button x:Name="BtnCancel"
                         Text="Cancel" 
+                        TextColor="White"
                         Style="{DynamicResource buttonStyle}"  
                         Clicked="BtnCancel_Clicked"/>
             </StackLayout>

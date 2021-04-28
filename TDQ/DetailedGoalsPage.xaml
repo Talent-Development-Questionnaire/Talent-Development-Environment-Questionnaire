@@ -6,7 +6,7 @@
 
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="ic_question.png"
+        <ToolbarItem IconImageSource="ic_help.png"
                      Clicked="BtnGoalsPageHelp_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>

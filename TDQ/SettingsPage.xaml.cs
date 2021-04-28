@@ -25,20 +25,24 @@ namespace TDQ
             {
                 //set theme and them picker selected item to index last chosen by user
                 PickerColour.SelectedIndex = Convert.ToInt32(Utils.SavedSettings.ThemeIndexSettings);
-                return;
             }
-            //set selected item to default theme - red
-            PickerColour.SelectedIndex = 0;
+            else
+            {
+                //set selected item to default theme - red
+                PickerColour.SelectedIndex = 0;
+            }
 
             //Check if user chose a specific font size from the default one - medium
             if (!string.IsNullOrEmpty(Utils.SavedSettings.FontIndexSettings))
             {
                 //set font size and font size picker to th index last chosen by user
                 PickerFontSize.SelectedIndex = Convert.ToInt32(Utils.SavedSettings.FontIndexSettings);
-                return;
+            } else {
+                //set selected item to default font size - 'medium'
+                PickerFontSize.SelectedIndex = 1;
             }
 
-            PickerFontSize.SelectedIndex = 0;
+            
 
             if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
             {
@@ -50,9 +54,6 @@ namespace TDQ
                 BtnLogInOut.Text = "Log In/Sign Up";
                 BtnDeleteUser.IsVisible = false;
             }
-
-            //set selected item to default font size - 'medium'
-            PickerFontSize.SelectedIndex = 1;
         }
 
         //Used to run function to change the apps theme colour when new item is selected

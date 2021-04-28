@@ -5,9 +5,9 @@
              Title="Account">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="ic_question.png"
+        <ToolbarItem IconImageSource="ic_help.png"
                      Clicked="BtnAccountHelp_Clicked"/>
-        <ToolbarItem IconImageSource="ic_settings.png"
+        <ToolbarItem IconImageSource="ic_settings_white.png"
                      Clicked="BtnEditAccount_Clicked"/>
     </ContentPage.ToolbarItems> 
 

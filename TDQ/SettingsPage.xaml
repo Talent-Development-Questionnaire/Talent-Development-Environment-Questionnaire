@@ -7,7 +7,7 @@
              Style="{DynamicResource contentStyle}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="ic_question.png"
+        <ToolbarItem IconImageSource="ic_help.png"
                      Clicked="BtnSettingsHelp_Clicked"/>
     </ContentPage.ToolbarItems>
     
