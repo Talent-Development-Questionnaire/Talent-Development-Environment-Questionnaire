@@ -5,7 +5,7 @@
              Title="Questionnaire"
              Style="{DynamicResource contentStyle}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="ic_question.png"
+        <ToolbarItem IconImageSource="ic_help.png"
                      Clicked="BtnQuestionnaireHelp_Clicked"/>
     </ContentPage.ToolbarItems>
   
