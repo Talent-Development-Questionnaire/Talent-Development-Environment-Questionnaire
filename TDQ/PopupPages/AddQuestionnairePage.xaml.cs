@@ -84,6 +84,7 @@ namespace TDQ.PopupPages
                 if (LstViewEmails.Height < 160)
                     LstViewEmails.HeightRequest = 35 * emailList.Count();
 
+                LstViewEmails.ItemsSource = null;
                 LstViewEmails.ItemsSource = emailList;
                 LstViewEmails.ScrollTo(emailList[emailList.Count() - 1], ScrollToPosition.MakeVisible, true);
                 return;

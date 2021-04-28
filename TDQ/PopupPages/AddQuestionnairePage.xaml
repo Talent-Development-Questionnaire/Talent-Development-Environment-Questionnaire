@@ -77,7 +77,8 @@
 
                 <ListView x:Name="LstViewEmails"
                           HeightRequest="35" 
-                          BackgroundColor="Transparent">
+                          BackgroundColor="Transparent"
+                          HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding .}"

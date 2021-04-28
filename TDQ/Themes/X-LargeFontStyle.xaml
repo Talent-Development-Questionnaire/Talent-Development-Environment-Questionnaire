@@ -2,7 +2,26 @@
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TDQ.Themes.X_LargeFontStyle">
-    
+
+
+    <Style x:Key="accountLabelStyle"
+           TargetType="Label">
+        <Setter Property="FontSize"
+                Value="24"/>
+    </Style>
+
+    <Style x:Key="accountGridStyle"
+           TargetType="Grid">
+        <Setter Property="ColumnSpacing"
+                Value="30">
+        </Setter>
+        <Setter Property="RowSpacing"
+                Value="25">
+        </Setter>
+        <Setter Property="Margin"
+                Value="20,0,0,0">
+        </Setter>
+    </Style>
 
     <Style x:Key="frameStyle" TargetType="Frame">
         <Setter Property="BackgroundColor" Value="{DynamicResource FrameColour}"/>
@@ -32,24 +51,6 @@
     <Style x:Key="listviewStyle" TargetType="ListView">
         <Setter Property="BackgroundColor" Value="Transparent"/>
     </Style>
-    <Style x:Key="accountLabelStyle"
-           TargetType="Label">
-        <Setter Property="FontSize"
-                Value="28"/>
-    </Style>
-
-    <Style x:Key="accountGridStyle"
-           TargetType="Grid">
-        <Setter Property="ColumnSpacing"
-                Value="30">
-        </Setter>
-        <Setter Property="RowSpacing"
-                Value="10">
-        </Setter>
-        <Setter Property="Margin"
-                Value="8,0,0,0">
-        </Setter>
-    </Style>
 
     <Style x:Key="labelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColour}"/>
@@ -62,6 +63,5 @@
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="CornerRadius" Value="30"/>
         <Setter Property="Margin" Value="0,10,0,0"/>
-     
     </Style>
 </ResourceDictionary>
