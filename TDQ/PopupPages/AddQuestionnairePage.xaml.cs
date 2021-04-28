@@ -17,7 +17,6 @@ namespace TDQ.PopupPages
         ObservableCollection<Group> Groups;
         List<string> emailList = new List<string>();
         List<string> groupNameList = new List<string>();
-
         int type;
 
         public AddQuestionnairePage()

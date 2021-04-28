@@ -10,7 +10,5 @@ namespace TDQ.Models
         public string QuestionText { get; set; }
         [JsonProperty ("score")]
         public string Answer { get; set; }
-
-        public Color QuestionColor { get; set; }
     }
 }

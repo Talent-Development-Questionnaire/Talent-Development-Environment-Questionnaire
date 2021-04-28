@@ -43,8 +43,6 @@ namespace TDQ.PopupPages
 
         void BtnConfirm_Clicked(object sender, EventArgs e)
         {
-            if (q.Answer != null)
-                q.QuestionColor = Color.Green;
             Navigation.PopModalAsync();
         }
 

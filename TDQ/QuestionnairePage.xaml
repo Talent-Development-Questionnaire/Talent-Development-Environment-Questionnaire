@@ -61,8 +61,8 @@
                                    Padding="5"
                                    Margin="10,5,10,5"
                                    Style="{DynamicResource frameStyle}"
-                                   CornerRadius="15"
-                                   BackgroundColor="{Binding ItemBackgroundColor}">
+                                   CornerRadius="15">
+                                
                                 <StackLayout HorizontalOptions="Center">
                                     <Label Text="{Binding QuestionText}"
                                            Style="{DynamicResource labelStyle}"/>
