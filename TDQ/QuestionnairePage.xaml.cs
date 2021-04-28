@@ -37,13 +37,22 @@ namespace TDQ
                 await DisplayAlert("Error", "Email or One Time Password is incorrect, please try again!", "OK");
         }
 
-        void BtnConfirm_Clicked(System.Object sender, System.EventArgs e)
+        async void BtnConfirm_Clicked(System.Object sender, System.EventArgs e)
         {
-            LayoutUserVerification.IsVisible = false;
-            GetQuestions();
-            EntryEmail.Text = string.Empty;
-            EntryOTP.Text = string.Empty;
-            LayoutUserDetails.IsVisible = true;
+            if (!(string.IsNullOrWhiteSpace(EntryEmail.Text) || string.IsNullOrWhiteSpace(EntryOTP.Text)))
+            {
+                LayoutUserVerification.IsVisible = false;
+                GetQuestions();
+                EntryEmail.Text = string.Empty;
+                EntryOTP.Text = string.Empty;
+                LayoutUserDetails.IsVisible = true;
+            } else
+            {
+                await DisplayAlert("Error", "Neither field should be empty, please try again!", "OK");
+            }
+
+
+
         }
 
         protected override bool OnBackButtonPressed()
