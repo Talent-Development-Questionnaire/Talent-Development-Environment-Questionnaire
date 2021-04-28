@@ -3,7 +3,10 @@ from flask_mysqldb import MySQL
 from pathlib import Path
 from app.extensions import mysql
 
-player_blueprint = Blueprint('player_blueprint', __name__)
+player_blueprint = Blueprint('player_blueprint', __name__)  # declaring the name of the blueprint so that it can be referred to in __init__.py
+
+
+# the following function returns either the 28 or 59 question questionnaire
 
 
 @player_blueprint.route('/getQuestions/<qType>')
@@ -16,6 +19,8 @@ def getQuestions(qType):
         questions = open("%s/28questions.txt" %(path), "r", encoding="utf-8")
 
     return questions.read()
+
+# the following function submits a question answer
 
 
 @player_blueprint.route('/submitQuestion/<qID>/<qNumber>/<qScore>')
@@ -37,6 +42,8 @@ def submitQuestion(qID,qNumber,qScore):
     cursor.close()
     return 'True'
 
+# the following function updates the count of questionnaire completions
+
 
 @player_blueprint.route('/updateCompletionCount/<qID>')
 def updateCount(qID):
@@ -53,6 +60,8 @@ def updateCount(qID):
     cursor.close()
     return 'true'
 
+# the following function verifies athletes with their one time password
+
 
 @player_blueprint.route('/verifyAthlete/<email>/<otp>')
 def verify_athlete(email, otp):
@@ -62,6 +71,8 @@ def verify_athlete(email, otp):
         return str(cursor.fetchall())
  
     return 'false'
+
+# the following function sends an athletes info into the server
 
 
 @player_blueprint.route('/sendAthleteInfo/<sportAcademy>/<sport>/<name>/<age>/<gender>')

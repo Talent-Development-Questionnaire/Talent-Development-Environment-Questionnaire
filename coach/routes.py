@@ -4,20 +4,24 @@ from pathlib import Path
 
 from app.extensions import mysql, mail, Message
 
-coach_blueprint = Blueprint('coach_blueprint', __name__)
+coach_blueprint = Blueprint('coach_blueprint', __name__)  # declaring the name of the blueprint so that it can be referred to in __init__.py
+
+# The following function checks if the users email exists in the server
 
 
-@coach_blueprint.route('/coach/checkEmail/<email>')
-def checkEmail(email):
-    cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM coaches WHERE email = '%s'" % email)
-    row_count = cursor.rowcount
-    mysql.connection.commit()
-    cursor.close()
-    if row_count == 0:
+@coach_blueprint.route('/coach/checkEmail/<email>')  # the route is the URL to access and email is a variable
+def checkEmail(email):  # creating the definition
+    cursor = mysql.connection.cursor()  # creates the cursor which points into the sql server
+    cursor.execute("SELECT * FROM coaches WHERE email = '%s'" % email)  # cursor executes
+    row_count = cursor.rowcount  # counts how many results returned
+    mysql.connection.commit()  # commits any changes to database
+    cursor.close()  # closes the cursor
+    if row_count == 0:  # the there were no results then the email is not in server, returns relevant answer
         return 'true'
     else:
         return 'false'
+
+# the following function adds a coach user to the server
 
 
 @coach_blueprint.route('/coach/addCoach/<email>/<password>/<name>/<otp>')
@@ -29,6 +33,8 @@ def addcoach(name, email, password, otp):
     verify_email(email, otp)
     return 'true'
 
+# the following function sends a verification email to the user
+
 
 def verify_email(email, otp):
     msg = Message('TDQ Account Verification', sender='tdq.noreply@gmail.com', recipients=['%s' % email])
@@ -36,7 +42,10 @@ def verify_email(email, otp):
                " your account please enter the OTP into the app: %s\n" \
                "Kind regards,\n" \
                "The TDQ Team" % otp
-    mail.send(msg)
+    mail.send(msg)  # sends the created message
+
+# the following function verifies the users account by checking their one time password
+
 
 @coach_blueprint.route('/coach/verifyAccount/<email>/<otp>')
 def verify_account(email, otp):
@@ -48,6 +57,8 @@ def verify_account(email, otp):
         return 'true'
     else:
         return 'false'
+
+# the following function checks if a users account exists
 
 
 @coach_blueprint.route('/coach/checkAccountExists/<email>/<password>')
@@ -64,6 +75,8 @@ def checkAccountExists(email, password):
     else:
         return 'true'
 
+# the following function gets users details
+
 
 @coach_blueprint.route('/coach/getUser/<email>')
 def get_user_details(email):
@@ -71,6 +84,8 @@ def get_user_details(email):
     cursor.execute("SELECT * FROM coaches WHERE email = '%s'" % email)
     rv = cursor.fetchall()
     return str(rv)
+
+# the following function edits a users details
 
 
 @coach_blueprint.route('/coach/editUser/<id>/<email>/<name>/<gender>/<dob>')
@@ -80,8 +95,9 @@ def edit_user_details(id, email, name, gender, dob):
                    (email, name, gender, dob, id))
     mysql.connection.commit()
     cursor.execute("SELECT * FROM coaches WHERE email = '%s'" % email)
-    return str(cursor.fetchall())
+    return str(cursor.fetchall())  # the fetchall catches what the cursor returns from its statement
 
+# the following function creates a new questionnaire
 
 
 @coach_blueprint.route('/coach/createQuestionnaire/<name>/<qType>/<email>/<list>/<otp>')
@@ -99,6 +115,8 @@ def createQuestionnaire(name, qType, email, list, otp):
     cursor.execute("SELECT * FROM questionnaire WHERE name = '%s' AND coach_id = (SELECT coach_id FROM coaches WHERE email = '%s')" % (name, email))
     return str(cursor.fetchall())
 
+# the following function adds athletes to a list of people that can answer the questionnaire
+
 
 def addAthletes(athlete, email, otp, quiz_name):
     cursor =  mysql.connection.cursor()
@@ -106,6 +124,8 @@ def addAthletes(athlete, email, otp, quiz_name):
     mysql.connection.commit()
     send_athlete_email(athlete, otp, email)
     return 'true'
+
+# the following function sends athletes an invitation to complete a survey
 
 
 def send_athlete_email(athlete, otp, email):
@@ -119,6 +139,8 @@ def send_athlete_email(athlete, otp, email):
                "The TDQ Team" % ("".join(name.values()), otp)
     mail.send(msg)
 
+# the following function deletes a users account
+
 
 @coach_blueprint.route('/coach/deleteCoach/<email>/<password>')
 def deleteCoach(email, password):
@@ -131,6 +153,7 @@ def deleteCoach(email, password):
 
     return 'false'
 
+# the following function gets questionnaire results
 
 
 @coach_blueprint.route('/coach/getResults/<qID>/<qNumber>')
@@ -149,6 +172,8 @@ def getResults(qID, qNumber):
     cursor.close()
     return 'False'
 
+# the following function gets a list of a users questionnaires
+
 
 @coach_blueprint.route('/coach/getQuestionnaires/<coachID>')
 def get_questionnaires(coachID):
@@ -160,6 +185,8 @@ def get_questionnaires(coachID):
 
     return 'false'
 
+# the following function gets a questions results
+
 
 @coach_blueprint.route('/coach/getQuestionnaireQuestions/<qID>')
 def get_questions(qID):
@@ -169,6 +196,8 @@ def get_questions(qID):
        return str(cursor.fetchall())
 
     return 'false' 
+
+# the following function returns either the 28 or 59 question questionnaire
 
 
 @coach_blueprint.route('/coach/getQuestions/<qType>')
@@ -181,6 +210,8 @@ def getQuestions(qType):
         questions = open("%s/28questions.txt" %(path), "r", encoding="utf-8")
 
     return questions.read()
+
+# the following function verifies a users one time password
 
 
 @coach_blueprint.route('/coach/verifyOTP/<email>/<otp>')
@@ -198,6 +229,8 @@ def verifyOTP(email, otp):
         return 'True'
     cursor.close()
     return 'False'
+
+# the following function recieves info on athletes
 
 
 @coach_blueprint.route('/coach/recieveAthleteInfo')
