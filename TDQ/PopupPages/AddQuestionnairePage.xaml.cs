@@ -54,8 +54,14 @@ namespace TDQ.PopupPages
         {
             if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
             {
-                foreach (string athlete in emailList)
-                    Classes.DatabaseController.AssignAthletesQuestionnaires(EntryName.Text, type.ToString(), Utils.SavedSettings.LoginSettings, athlete, Classes.DatabaseController.GenerateOTP());
+                var result = await DisplayAlert("Confirm Questionnaire", "Are you sure you want to send the questionnaire?", "Yes", "No");
+
+                if (result)
+                {
+                    foreach (string athlete in emailList)
+                        Classes.DatabaseController.AssignAthletesQuestionnaires(EntryName.Text, type.ToString(), Utils.SavedSettings.LoginSettings, athlete, Classes.DatabaseController.GenerateOTP());
+                }
+              
             } else
             {
                 await DisplayAlert("Error", "Make sure you're logged in before sending a questionnaire", "OK");
