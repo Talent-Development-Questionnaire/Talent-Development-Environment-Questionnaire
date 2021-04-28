@@ -188,4 +188,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_action_add.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_settings_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_help.png" />
+  </ItemGroup>
 </Project>
