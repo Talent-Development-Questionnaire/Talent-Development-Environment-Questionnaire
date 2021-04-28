@@ -14,30 +14,14 @@ namespace TDQ
     public partial class QuestionnairePage : ContentPage
     {
         List<Models.Question> questions;
-        List<string> invertedQuestions = new List<string>(new string[] { "8", "11", "15" });
-
+        List<string> inverted59Questions = new List<string>(new string[] { "8", "11", "15", "21", "23", "27", "28", "29", "31", "41", "44"});
 
         public QuestionnairePage()
         {
             InitializeComponent();
         }
 
-
-        async void GetQuestions()
-        {
-            LstQuestions.IsVisible = true;
-            questions = Classes.DatabaseController.GenerateQuestions(EntryEmail.Text, EntryOTP.Text);
-
-            if (questions != null)
-            {
-                questions.RemoveAt(questions.Count() - 1);
-                LstQuestions.ItemsSource = questions;
-            }
-            else
-                await DisplayAlert("Error", "Email or One Time Password is incorrect, please try again!", "OK");
-        }
-
-        void BtnConfirm_Clicked(System.Object sender, System.EventArgs e)
+        void BtnConfirm_Clicked(object sender, EventArgs e)
         {
             LayoutUserVerification.IsVisible = false;
             GetQuestions();
@@ -66,56 +50,14 @@ namespace TDQ
             BindingContext = questions;
         }
 
-        public void UpdateQuestion(Models.Question question)
-        {
-            int index = questions.FindIndex(m => m.QuestionText == question.QuestionText);
-            if (index >= 0)
-                questions[index] = question;
-
-            LstQuestions.ItemsSource = questions;
-        }
-
         async void BtnSendQuestionnaire_Clicked(object sender, EventArgs e)
         {
-            //Need to check if information already exists, or do all this after checking the questionnaire has been answered
+            //Set variables to default values
             int index = 0, years = 0;
             string gender = "%02%03";
             string age = "%02%03";
 
-            if (string.IsNullOrEmpty(EntrySport.Text) || string.IsNullOrEmpty(EntryAcademy.Text))
-            {
-                await DisplayAlert("Error", "Please enter your sport and the academy/club you attend", "OK");
-                return;
-            }
-
-            if (string.IsNullOrEmpty(EntryName.Text))
-                EntryName.Text = "%02%03";
-
-            if (string.IsNullOrEmpty(EntryDob.Text))
-                EntryName.Text = "%02%03";
-
-            if (PickerGender.SelectedIndex != -1)
-                gender = PickerGender.SelectedItem.ToString();
-
-            if (!string.IsNullOrEmpty(EntryDob.Text))
-            {
-                DateTime dob = DateTime.Parse(EntryDob.Text, new CultureInfo("en-GB").DateTimeFormat);
-                DateTime today = DateTime.Now;
-                years = today.Year - dob.Year;
-
-                if (dob.Month == today.Month &&// if the start month and the end month are the same
-                    today.Day < dob.Day // AND the end day is less than the start day
-                    || today.Month < dob.Month)// OR if the end month is less than the start month
-                {
-                    years--;
-                }
-
-                age = years.ToString();
-            }
-
-             
-
-            Classes.DatabaseController.SendUserDetails(EntryName.Text, EntrySport.Text, EntryAcademy.Text, age, gender);
+            CheckAtheleteDetailsInput(gender, age, years);
 
             foreach (var item in questions)
             {
@@ -124,13 +66,10 @@ namespace TDQ
                     await DisplayAlert("Error", "You haven't answered all the questions, please complete the form!", "OK");
                     return;
                 }
-            }
 
-            foreach (var item in questions)
-            {
                 index++;
 
-                if(invertedQuestions.Contains(index.ToString()))
+                if(inverted59Questions.Contains(index.ToString()))
                 {
                     switch(item.Answer)
                     {
@@ -169,6 +108,7 @@ namespace TDQ
 
         }
 
+        //Method used for debugging, random auto answers all the questions in the questionnaire
         void BtnAutoComplete_Clicked(object sender, EventArgs e)
         {
             Random r = new Random();
@@ -186,6 +126,67 @@ namespace TDQ
             await Navigation.PushModalAsync(new PopupHelpPages.QuestionnaireHelp());
 
         }
-    }
-        
+
+        //Calculates the age from the inputted text and the present date
+        int CalculateAge(int years)
+        {
+            //Initialising variables
+            DateTime dob = DateTime.Parse(EntryDob.Text, new CultureInfo("en-GB").DateTimeFormat);
+            DateTime today = DateTime.Now;
+            years = today.Year - dob.Year;
+
+            if (dob.Month == today.Month &&// if the start month and the end month are the same
+                today.Day < dob.Day // AND the end day is less than the start day
+                || today.Month < dob.Month)// OR if the end month is less than the start month
+                years--;//minus one if the month and day are less than the present day
+
+            return years;
+        }
+
+        //Gets the file of questions from the server
+        async void GetQuestions()
+        {
+            LstQuestions.IsVisible = true;
+            //returns a list of questions based on the inputted email and one time password
+            questions = Classes.DatabaseController.GenerateQuestions(EntryEmail.Text, EntryOTP.Text);
+            //checks that the questions is not empty - last item in list is always empty
+            if (questions != null)
+            {
+                //removes the empty item in the list
+                questions.RemoveAt(questions.Count() - 1);
+                //sets the list view to the list of questions
+                LstQuestions.ItemsSource = questions;
+            }
+            else
+                //Throws error if the inputted email or One Time Password does not match whats in the database
+                await DisplayAlert("Error", "Email or One Time Password is incorrect, please try again!", "OK");
+        }
+
+        async void CheckAtheleteDetailsInput(string gender, string age, int years)
+        {
+            //Fields cannot be left empty, exit method if they are
+            if (string.IsNullOrEmpty(EntrySport.Text) || string.IsNullOrEmpty(EntryAcademy.Text))
+            {
+                await DisplayAlert("Error", "Please enter your sport and the academy/club you attend", "OK");
+                return;
+            }
+
+            //Set athlete name to value accepted by http url if it's left empty
+            if (string.IsNullOrEmpty(EntryName.Text))
+                EntryName.Text = "%02%03";
+            //Set athlete date of birth to value accepted by http url if it's left empty
+            if (string.IsNullOrEmpty(EntryDob.Text))
+                EntryName.Text = "%02%03";
+            else
+                //Returns the age calculated from the inputed dob as a string
+                age = CalculateAge(years).ToString();
+
+            //set gender to selected choice if an item was selected
+            if (PickerGender.SelectedIndex != -1)
+                gender = PickerGender.SelectedItem.ToString();
+
+            //Send all the inputted details to the server, the ones left empty set to special characters seen as 'null' when in a URL
+            Classes.DatabaseController.SendUserDetails(EntryName.Text, EntrySport.Text, EntryAcademy.Text, age, gender);
+        }
+    }    
 }
