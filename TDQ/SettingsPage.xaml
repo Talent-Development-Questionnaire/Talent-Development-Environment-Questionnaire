@@ -40,7 +40,6 @@
                         <x:String>Green</x:String>
                         <x:String>Yellow</x:String>
                         <x:String>Orange</x:String>
-                        <x:String>Dark</x:String>
                     </Picker.Items>
                 </Picker>
             </Frame>
