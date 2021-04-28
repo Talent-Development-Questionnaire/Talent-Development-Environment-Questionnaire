@@ -21,13 +21,19 @@ namespace TDQ
             InitializeComponent();
         }
 
-        void BtnConfirm_Clicked(object sender, EventArgs e)
+        async void BtnConfirm_Clicked(object sender, EventArgs e)
         {
-            LayoutUserVerification.IsVisible = false;
-            GetQuestions();
-            EntryEmail.Text = string.Empty;
-            EntryOTP.Text = string.Empty;
-            LayoutUserDetails.IsVisible = true;
+            if (!(string.IsNullOrWhiteSpace(EntryEmail.Text) || string.IsNullOrWhiteSpace(EntryOTP.Text)))
+            {
+                LayoutUserVerification.IsVisible = false;
+                GetQuestions();
+                EntryEmail.Text = string.Empty;
+                EntryOTP.Text = string.Empty;
+                LayoutUserDetails.IsVisible = true;
+            } else
+            {
+                await DisplayAlert("Error", "Neither field should be empty, please try again!", "OK");
+            }
         }
 
         protected override bool OnBackButtonPressed()
