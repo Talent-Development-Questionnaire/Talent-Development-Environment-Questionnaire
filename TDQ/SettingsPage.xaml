@@ -17,6 +17,11 @@
                      AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All">
 
+            <Label Text="Theme"
+                   HorizontalTextAlignment="Center"
+                   Style="{DynamicResource labelStyle}"
+                   Margin="0,0,0,10"/>
+
             <Frame HorizontalOptions="CenterAndExpand"
                    Style="{DynamicResource frameStyle}"
                    Padding="0" Margin="0,0,0,20">
@@ -38,10 +43,17 @@
                 </Picker>
             </Frame>
 
+            <Label Text="Font Size"
+                   HorizontalTextAlignment="Center"
+                   Style="{DynamicResource labelStyle}"
+                   Margin="0,0,0,10"/>
+
             <Frame HorizontalOptions="CenterAndExpand"
                    Style="{DynamicResource frameStyle}"
                    Padding="0" Margin="0,0,0,20">
 
+               
+                
                 <Picker x:Name="PickerFontSize" 
                         Title="Change Font Size" 
                         Style="{DynamicResource pickerStyle}"
