@@ -19,14 +19,14 @@ namespace TDQ
 
         private async void BtnLogin_Clicked(object sender, EventArgs e)
         {
-            var result = Classes.DatabaseController.AccountCheck(EntryEmail.Text, EntryPassword.Text);
-            
-            try
+            if (!string.IsNullOrEmpty(EntryEmail.Text) && !string.IsNullOrEmpty(EntryPassword.Text))
             {
+                var result = Classes.DatabaseController.AccountCheck(EntryEmail.Text, EntryPassword.Text);
+
                 if (result == true)
                 {
                     result = Classes.DatabaseController.VerifyCoachAccount(EntryEmail.Text, "%02%03");
-                    if(result)
+                    if (result)
                     {
                         Utils.SavedSettings.LoginSettings = EntryEmail.Text;
                         (Application.Current).MainPage = new Navigation_Drawer_Logged_In();
@@ -34,15 +34,13 @@ namespace TDQ
                     }
 
                     Navigation.PushModalAsync(new PopupPages.EnterOTP_Page(EntryEmail.Text));
+                    return;
                 }
-                else
-                    await DisplayAlert("Account", "Account does not exist, please try again.", "OK");
+                    
+                await DisplayAlert("Account", "Email or password are incorrect, please try again.", "OK");
+                return;
             }
-            catch (Exception)
-            {
-
-                await DisplayAlert("Account", "Account does not exist, please try again.", "OK");
-            }
+            await DisplayAlert("Error", "Email and password must not be left empty, please try again.", "OK");
         }
 
         protected override bool OnBackButtonPressed()

@@ -23,11 +23,17 @@ namespace TDQ
 
         void BtnConfirm_Clicked(object sender, EventArgs e)
         {
-            LayoutUserVerification.IsVisible = false;
-            GetQuestions();
-            EntryEmail.Text = string.Empty;
-            EntryOTP.Text = string.Empty;
-            LayoutUserDetails.IsVisible = true;
+            if (!string.IsNullOrEmpty(EntryEmail.Text) && !string.IsNullOrEmpty(EntryOTP.Text))
+            {
+                if (GetQuestions())
+                {
+                    LayoutUserVerification.IsVisible = false;
+                    EntryEmail.Text = string.Empty;
+                    EntryOTP.Text = string.Empty;
+                    LayoutUserDetails.IsVisible = true;
+                    return;
+                }
+            }
         }
 
         protected override bool OnBackButtonPressed()
@@ -144,7 +150,7 @@ namespace TDQ
         }
 
         //Gets the file of questions from the server
-        async void GetQuestions()
+        bool GetQuestions()
         {
             LstQuestions.IsVisible = true;
             //returns a list of questions based on the inputted email and one time password
@@ -156,10 +162,11 @@ namespace TDQ
                 questions.RemoveAt(questions.Count() - 1);
                 //sets the list view to the list of questions
                 LstQuestions.ItemsSource = questions;
+                return true;
             }
-            else
-                //Throws error if the inputted email or One Time Password does not match whats in the database
-                await DisplayAlert("Error", "Email or One Time Password is incorrect, please try again!", "OK");
+            //Throws error if the inputted email or One Time Password does not match whats in the database
+            DisplayAlert("Error", "Email or One Time Password is incorrect, please try again!", "OK");
+            return false;
         }
 
         async void CheckAtheleteDetailsInput(string gender, string age, int years)

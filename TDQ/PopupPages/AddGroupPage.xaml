@@ -50,13 +50,12 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     
                     <Entry 
                     x:Name="entryEmail"
                     Placeholder="Enter Email" 
-                    HeightRequest="30"
 
                     Style="{DynamicResource entryStyle}"
                     Keyboard="Email"
@@ -85,7 +84,7 @@
                             <ViewCell>
                                 <Label Text="{Binding}"
                                        HorizontalTextAlignment="Center" HorizontalOptions="Center"
-                                       Style="{DynamicResource labelStyle}"/>
+                                       Style="{DynamicResource labelStyle}" TextColor="White"/>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

@@ -46,6 +46,7 @@ namespace TDQ.PopupPages
             //Resets save image filepath setting to null
             Utils.SavedSettings.GroupImageSetting = null;
             CheckList();
+            emailList.ItemsSource = currentGroup.EmailList;
         }
 
         void ListVisibility()
@@ -102,13 +103,10 @@ namespace TDQ.PopupPages
                 emailList.ItemsSource = emails.ToArray();
                 emailList.ScrollTo(emails[emails.Count() - 1], ScrollToPosition.MakeVisible, true);
                 ListVisibility();
+                return;
+            } 
 
-            } else
-            {
-                await DisplayAlert("Error", "Email cannot be left empty. Please try again.", "OK");
-            }
-            if (emailList.Height < 160)
-                emailList.HeightRequest = 35 * emails.Count();
+            await DisplayAlert("Error", "Email cannot be left empty. Please try again.", "OK");
         }
 
         private async void BtnSave_Clicked(object sender, EventArgs e)
@@ -132,7 +130,7 @@ namespace TDQ.PopupPages
                 if (string.IsNullOrWhiteSpace(group.Filename))
                 {
                     //Checks if emails have been added to the group
-                    if(emails.Count() != 0)
+                    if(emails.Count() != 0 || emails == null)
                     {
                         //Save
                         //Creates new file and writes the Group properties' values to said file
@@ -143,7 +141,7 @@ namespace TDQ.PopupPages
                     }
                     else
                     {
-                        await DisplayAlert("Error", "Please add emails to the group, cannot be left empty", "OK");
+                        await DisplayAlert("Error", "Please add emails to the group, field cannot be left empty", "OK");
                     }
                 }
                 else
@@ -158,7 +156,7 @@ namespace TDQ.PopupPages
             }
             else
             {
-                await DisplayAlert("Error", "Cannot save empty entry!\n Press back button at top of screen to exit page", "OK");
+                await DisplayAlert("Error", "Cannot save empty entry!\n Press back button or canel button to exit page", "OK");
             }
         }
 
