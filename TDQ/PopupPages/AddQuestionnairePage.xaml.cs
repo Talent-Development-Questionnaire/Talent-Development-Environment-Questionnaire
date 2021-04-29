@@ -50,11 +50,22 @@ namespace TDQ.PopupPages
             }
         }
 
-        void BtnSendQuestionnaire_Clicked(object sender, EventArgs e)
+        async void BtnSendQuestionnaire_Clicked(object sender, EventArgs e)
         {
-            foreach (string athlete in emailList)
-                Classes.DatabaseController.AssignAthletesQuestionnaires(EntryName.Text, type.ToString(), Utils.SavedSettings.LoginSettings, athlete, Classes.DatabaseController.GenerateOTP());
+            if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
+            {
+                var result = await DisplayAlert("Confirm Questionnaire", "Are you sure you want to send the questionnaire?", "Yes", "No");
 
+                if (result)
+                {
+                    foreach (string athlete in emailList)
+                        Classes.DatabaseController.AssignAthletesQuestionnaires(EntryName.Text, type.ToString(), Utils.SavedSettings.LoginSettings, athlete, Classes.DatabaseController.GenerateOTP());
+                }
+              
+            } else
+            {
+                await DisplayAlert("Error", "Make sure you're logged in before sending a questionnaire", "OK");
+            }
             Navigation.PopModalAsync();
         }
 
