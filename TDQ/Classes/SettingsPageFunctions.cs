@@ -7,27 +7,6 @@ namespace TDQ.Classes
 {
     public class SettingsPageFunctions
     {
-
-        //Sets the chosen image as app background
-        public static void SetBackground(Image img, ContentPage page)
-        {
-            if (!string.IsNullOrEmpty(Utils.SavedSettings.BackgroundSettings))
-                img.Source = ImageSource.FromFile(Utils.SavedSettings.BackgroundSettings);
-            else if (img.Source == null || string.IsNullOrEmpty(Utils.SavedSettings.BackgroundSettings))
-                img.Source = null;
-
-        }
-
-        public static void DeleteBackgroundVisibility(Button delete)
-        {
-            if (string.IsNullOrEmpty(Utils.SavedSettings.BackgroundSettings))
-                delete.IsVisible = false;
-            else
-                delete.IsVisible = true;
-            
-
-        }
-
         public static void ChangeTheme(string item)
         {
             ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;

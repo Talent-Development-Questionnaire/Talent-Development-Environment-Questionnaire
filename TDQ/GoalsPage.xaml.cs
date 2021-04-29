@@ -24,11 +24,8 @@ namespace TDQ
 
         protected override void OnAppearing()
         {
-            Classes.SettingsPageFunctions.SetBackground(ImgBg, GoalsContentPage);
-
             //Initialising variables
             GoalsGroups = new ObservableCollection<GoalsGroup>();
-            Classes.SettingsPageFunctions.SetBackground(ImgBg, GoalsContentPage);
             ListViewGoalsGroup.SelectedItem = null;
 
             //Gets all the saved files for created goalsgroups

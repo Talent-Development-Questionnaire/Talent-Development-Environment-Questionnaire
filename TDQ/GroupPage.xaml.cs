@@ -28,7 +28,6 @@ namespace TDQ
 
             //Initialising variables
             Groups = new ObservableCollection<Group>();
-            Classes.SettingsPageFunctions.SetBackground(ImgBg, GroupContentPage);
             LstViewGroup.SelectedItem = null;
 
             //Gets all the saved files for created groups

@@ -16,10 +16,6 @@ namespace TDQ
 
         protected override void OnAppearing()
         {
-            Classes.SettingsPageFunctions.DeleteBackgroundVisibility(BtnDeleteBg);
-            //Sets the page background whenever page is opened
-            Classes.SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage);
-
             //Check if user has set app theme to something other than the default 'red'
             if (!string.IsNullOrEmpty(Utils.SavedSettings.ThemeIndexSettings))
             {
@@ -63,32 +59,6 @@ namespace TDQ
             SettingsPageFunctions.ChangeTheme(PickerColour.SelectedItem.ToString());
         }
 
-        private async void BtnAddBg_Clicked(object sender, EventArgs e)
-        {
-            //Accesses user's camera roll, gets file path to chosen image
-            var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
-            {
-                Title = "Pick a photo"
-            });
-
-            //if user doesn't pick image stop executing button press
-            if (result == null)
-                return;
-
-            BtnAddBg.Source = ImageSource.FromFile(result.FullPath);//sets images source to selected image
-
-            
-            try
-            {
-                Utils.SavedSettings.BackgroundSettings = result.FullPath; //Saves the file path to storage to be called again later             
-                SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage); //Mehtod to set the background of the current content page
-            }
-            catch (Exception ex)
-            {
-                await App.Current.MainPage.DisplayAlert("Debug", ex.Message, "OK");
-            }
-        }
-
         void BtnLogOut_Clicked(object sender, EventArgs e)
         {
             Utils.SavedSettings.LoginSettings = null;
@@ -116,15 +86,6 @@ namespace TDQ
             Classes.SettingsPageFunctions.ChangeFontSize(PickerFontSize.SelectedItem.ToString());
         }
 
-        private void BtnDeleteBg_Clicked(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(Utils.SavedSettings.BackgroundSettings))
-            {
-                Utils.SavedSettings.BackgroundSettings = null;
-                SettingsPageFunctions.SetBackground(ImgBg, SettingsContentPage);
-                SettingsPageFunctions.DeleteBackgroundVisibility(BtnDeleteBg);
-            }
-        }
         protected override bool OnBackButtonPressed()
         {
             Device.BeginInvokeOnMainThread(async () =>
