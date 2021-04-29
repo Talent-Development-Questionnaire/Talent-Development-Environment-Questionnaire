@@ -31,12 +31,7 @@ namespace TDQ.Templates
                 user = Classes.DatabaseController.GetUserDetails(Utils.SavedSettings.LoginSettings);
                 BindingContext = user;
             }
-
-            else
-            {
-                lblName.Text = "Account Name";
-                lblEmail.Text = "Account Email";
-            }
+            
         }
     }
 }
