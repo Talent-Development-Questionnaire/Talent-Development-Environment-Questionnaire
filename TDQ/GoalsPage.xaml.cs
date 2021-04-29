@@ -43,6 +43,7 @@ namespace TDQ
 
                 string backgroundColor;
 
+                //sets colour of listing
                 switch (splitText[2])
                 {
                     case "Red":

@@ -7,7 +7,7 @@
              Style="{DynamicResource contentStyle}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="ic_question.png"
+        <ToolbarItem IconImageSource="ic_help.png"
                      Clicked="BtnSettingsHelp_Clicked"/>
     </ContentPage.ToolbarItems>
     
@@ -40,7 +40,6 @@
                         <x:String>Green</x:String>
                         <x:String>Yellow</x:String>
                         <x:String>Orange</x:String>
-                        <x:String>Dark</x:String>
                     </Picker.Items>
                 </Picker>
             </Frame>

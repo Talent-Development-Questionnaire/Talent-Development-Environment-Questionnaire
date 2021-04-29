@@ -14,4 +14,4 @@ A full user guide can be accessed through the link given below:
 https://drive.google.com/file/d/1zioP1Ff8ZuuEPqvHq1FpU7qh2FCzv19J/view?usp=sharing
 
 # Authors
-The project was developed by students Struan Clyne, Kane Marshall, Rory Mckenzie, Calum Reid & Wesley Young of Edinburgh Napier University 
+The project was developed by students Struan Clyne, Kane Marshall, Rory McKenzie, Calum Reid & Wesley Young of Edinburgh Napier University 

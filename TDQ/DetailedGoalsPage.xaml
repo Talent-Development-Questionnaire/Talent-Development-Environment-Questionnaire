@@ -6,7 +6,7 @@
 
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="ic_question.png"
+        <ToolbarItem IconImageSource="ic_help.png"
                      Clicked="BtnGoalsPageHelp_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
@@ -34,90 +34,7 @@
                        FontSize="Large"
                        HorizontalTextAlignment="Center"
                        FontAttributes="Bold"
-                       Style="{DynamicResource labelStyle}"/>
-                <Label Text="Strengths"
-                       Margin="10,20,0,0"
-                       FontAttributes="Bold"
-                       Style="{DynamicResource labelStyle}"/>
-                <Grid Margin="10,10,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "Auto"/>
-                        <ColumnDefinition Width = "Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Ellipse Fill="Lime" />
-                    <Label Text="Strength #1"
-                           HorizontalTextAlignment="Start"
-                           HorizontalOptions="StartAndExpand"
-                           Grid.Column="1"
-                           Style="{DynamicResource labelStyle}"/>
-                </Grid>
-                <Grid Margin="10,10,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "Auto"/>
-                        <ColumnDefinition Width = "Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Ellipse Fill="Lime" />
-                    <Label Text="Strength #2"
-                           HorizontalTextAlignment="Start"
-                           HorizontalOptions="StartAndExpand"
-                           Grid.Column="1"
-                           Style="{DynamicResource labelStyle}"/>
-                </Grid>
-                <Grid Margin="10,10,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "Auto"/>
-                        <ColumnDefinition Width = "Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Ellipse Fill="Lime" />
-                    <Label Text="Strength #3"
-                           HorizontalTextAlignment="Start"
-                           HorizontalOptions="StartAndExpand"
-                           VerticalTextAlignment="Center"
-                           Grid.Column="1"
-                           Style="{DynamicResource labelStyle}"/>
-                </Grid>
-
-                <Label Text="Weaknesses"
-                       Margin="10,20,0,0"
-                       FontAttributes="Bold"
-                       Style="{DynamicResource labelStyle}"/>
-                <Grid Margin="10,10,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "Auto"/>
-                        <ColumnDefinition Width = "Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Ellipse Fill="Red"/>
-                    <Label Text="Weakness #1"
-                           HorizontalTextAlignment="Start"
-                           HorizontalOptions="StartAndExpand"
-                           Grid.Column="1"
-                           Style="{DynamicResource labelStyle}"/>
-                </Grid>
-                <Grid Margin="10,10,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "Auto"/>
-                        <ColumnDefinition Width = "Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Ellipse Fill="Red"/>
-                    <Label Text="Weakness #2"
-                           HorizontalTextAlignment="Start"
-                           HorizontalOptions="StartAndExpand"
-                           Grid.Column="1"
-                           Style="{DynamicResource labelStyle}"/>
-                </Grid>
-                <Grid Margin="10,10,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "Auto"/>
-                        <ColumnDefinition Width = "Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Ellipse Fill="Red"/>
-                    <Label Text="Weakness #3"
-                           HorizontalTextAlignment="Start"
-                           HorizontalOptions="StartAndExpand"
-                           VerticalTextAlignment="Center"
-                           Grid.Column="1"
-                           Style="{DynamicResource labelStyle}"/>
-                </Grid>
+                       Style="{DynamicResource labelStyle}"/>               
                 <Label Text="Goals"
                        Margin="10,20,0,0"
                        FontAttributes="Bold"

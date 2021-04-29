@@ -65,12 +65,6 @@ namespace TDQ.Classes
                     mergedDictionaries.Add(new Themes.OrangeTheme());
                     break;
 
-                case "Dark": //Dark theme
-                    Utils.SavedSettings.ThemeIndexSettings = "5";
-                    Utils.SavedSettings.ThemeSettings = "Dark";
-                    mergedDictionaries.Add(new Themes.DarkTheme());
-                    break;
-
                 default:
                     Utils.SavedSettings.ThemeIndexSettings = "0"; // Saves the chosen index
                     Utils.SavedSettings.ThemeSettings = "Main";// Saves which theme was chosen

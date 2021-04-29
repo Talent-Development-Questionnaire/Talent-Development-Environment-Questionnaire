@@ -74,6 +74,7 @@ namespace TDQ
             HideList();
         }
 
+        //Hides lists 
         public void HideList()
         {
             if (goals == null || goals.Count() == 0)
@@ -93,10 +94,10 @@ namespace TDQ
             await Navigation.PushModalAsync(new PopupPages.AddGoalPage(selectedGoalsGroup));
         }
 
+        //Identifies the selected goal, creates new list without that goal, sets the goals property to that list
         private void DeleteGoal_Clicked(object sender, EventArgs e)
         {
             string goalToBeDeleted = (string)((MenuItem)sender).BindingContext;
-            System.Diagnostics.Debug.WriteLine(goalToBeDeleted);
 
             ObservableCollection<string> newGoals = new ObservableCollection<string>();
 
@@ -112,6 +113,7 @@ namespace TDQ
                 }
             }
 
+            //resizes goal list based on the number of goals
             goals = newGoals;
             ListViewGoals.HeightRequest = 30 * goals.Count();
             ListViewGoals.ItemsSource = goals;

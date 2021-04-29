@@ -21,7 +21,7 @@ namespace TDQ
             InitializeComponent();
         }
 
-        void BtnConfirm_Clicked(object sender, EventArgs e)
+        async void BtnConfirm_Clicked(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(EntryEmail.Text) && !string.IsNullOrEmpty(EntryOTP.Text))
             {
