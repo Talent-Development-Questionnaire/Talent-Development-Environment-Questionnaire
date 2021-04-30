@@ -14,7 +14,6 @@
                              Padding="30"
                              CornerRadius="30"
                              Style="{StaticResource BlurFrame}">
-
             <StackLayout>
 
                 <Label x:Name="LblTitle"
@@ -22,20 +21,19 @@
                        TextColor="White"
                        HorizontalTextAlignment="Center"
                        FontSize="36"/>
-                <ic:CircleImage x:Name="ImgBtnAddGroupPhoto"    
+                <Image x:Name="ImgBtnAddGroupPhoto"    
                                 Source="ic_add_photo.png"    
-                                Aspect="AspectFit"
                                 HorizontalOptions="Center"
                                 VerticalOptions="StartAndExpand"
                                 HeightRequest="84"
                                 WidthRequest="84">
 
-                    <ic:CircleImage.GestureRecognizers>
+                    <Image.GestureRecognizers>
                         <TapGestureRecognizer
                                     Tapped="ImgBtnAddGroupPhoto_Clicked"
                                     NumberOfTapsRequired="1"/>
-                    </ic:CircleImage.GestureRecognizers>
-                </ic:CircleImage>
+                    </Image.GestureRecognizers>
+                </Image>
 
                 <Entry x:Name="entryName"
                        Placeholder="Group Name"

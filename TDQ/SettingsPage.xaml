@@ -10,23 +10,22 @@
         <ToolbarItem IconImageSource="ic_help.png"
                      Clicked="BtnSettingsHelp_Clicked"/>
     </ContentPage.ToolbarItems>
-    
+
     <AbsoluteLayout>
-
-        <Image x:Name="ImgBg"
-               Aspect="AspectFill"
-               AbsoluteLayout.LayoutBounds="0,0,1,1"
-               AbsoluteLayout.LayoutFlags="All"/>
-
         <StackLayout Margin="30" HorizontalOptions="CenterAndExpand"
                      Padding="20"
                      AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All">
 
+            <Label Text="Theme"
+                   HorizontalTextAlignment="Center"
+                   Style="{DynamicResource labelStyle}"
+                   Margin="0,0,0,10"/>
+
             <Frame HorizontalOptions="CenterAndExpand"
                    Style="{DynamicResource frameStyle}"
                    Padding="0" Margin="0,0,0,20">
-
+                
                 <Picker x:Name="PickerColour" 
                         Title="Select a Theme" 
                         Style="{DynamicResource pickerStyle}"
@@ -44,10 +43,17 @@
                 </Picker>
             </Frame>
 
+            <Label Text="Font Size"
+                   HorizontalTextAlignment="Center"
+                   Style="{DynamicResource labelStyle}"
+                   Margin="0,0,0,10"/>
+
             <Frame HorizontalOptions="CenterAndExpand"
                    Style="{DynamicResource frameStyle}"
                    Padding="0" Margin="0,0,0,20">
 
+               
+                
                 <Picker x:Name="PickerFontSize" 
                         Title="Change Font Size" 
                         Style="{DynamicResource pickerStyle}"
@@ -61,38 +67,6 @@
                         <x:String>X-Large</x:String>
                     </Picker.Items>
                 </Picker>
-
-            </Frame>
-
-            <Frame Style="{DynamicResource frameStyle}">
-                <Grid ColumnSpacing="30">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-
-                    <Label Text="Add Background" HorizontalTextAlignment="Center" Grid.Row="0"
-                           Grid.ColumnSpan="2"
-                           TextColor="{DynamicResource PrimaryTextColour}"
-                           Style="{DynamicResource labelStyle}"/>
-                    
-                    <ImageButton x:Name="BtnAddBg" Source="ic_action_add_a_photo.png" Grid.Row="1" 
-                                 Clicked="BtnAddBg_Clicked" Grid.ColumnSpan="2"
-                                 WidthRequest="64"
-                                 HeightRequest="64"
-                                 BackgroundColor="{DynamicResource TransparentColour}"/>
-
-                    <Button x:Name="BtnDeleteBg"
-                            Text="Delete Background"
-                            Grid.Row="2" Grid.ColumnSpan="2"
-                            Style="{DynamicResource buttonStyle}"
-                            Clicked="BtnDeleteBg_Clicked"/>
-                </Grid>
             </Frame>
 
             <Button x:Name="BtnLogInOut"

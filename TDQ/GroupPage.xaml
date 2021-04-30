@@ -16,12 +16,6 @@
     </ContentPage.ToolbarItems>
 
     <AbsoluteLayout>
-
-        <Image x:Name="ImgBg"
-               Aspect="AspectFill"
-               AbsoluteLayout.LayoutBounds="0,0,1,1"
-               AbsoluteLayout.LayoutFlags="All"/>
-
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All">         
 

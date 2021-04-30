@@ -24,9 +24,6 @@ namespace TDQ
             if (LstQuestionnaire.ItemsSource != null)
                 LblNoQuestionnaires.IsVisible = false;
 
-            LstQuestionnaire.SelectedItem = null;
-
-            Classes.SettingsPageFunctions.SetBackground(ImgBg, MainContentPage);
             Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
         }
 
