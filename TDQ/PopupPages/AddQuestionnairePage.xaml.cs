@@ -32,19 +32,19 @@ namespace TDQ.PopupPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            emailList = new List<string>();
             PopulateGroupList();
 
         }
 
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (PickerQuestionnaire.SelectedItem)
+            switch (PickerQuestionnaire.SelectedItem.ToString())
             {
-                case "59 Questions":
+                case "59 Question":
                     type = 59;
                     break;
-                case "28 Questions":
+                case "28 Question":
                     type = 28;
                     break;
             }
@@ -117,7 +117,7 @@ namespace TDQ.PopupPages
                     EmailList = emailList.ToArray()
                 });
                 groupNameList.Add(splitText[0]);
-
+                emailList = new List<string>();
                 PickerGroup.ItemsSource = groupNameList;
             }
         }

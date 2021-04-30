@@ -24,6 +24,7 @@ namespace TDQ
             if (LstQuestionnaire.ItemsSource != null)
                 LblNoQuestionnaires.IsVisible = false;
 
+            LstQuestionnaire.SelectedItem = null;
 
             Classes.SettingsPageFunctions.SetBackground(ImgBg, MainContentPage);
             Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
@@ -65,7 +66,7 @@ namespace TDQ
             if (e.SelectedItem != null)
             {
                 var questionnaire = e.SelectedItem as Questionnaire; 
-                await Navigation.PushAsync(new QuestionnaireScoresPage(questionnaire.Questions));
+                await Navigation.PushAsync(new QuestionnaireScoresPage(questionnaire.Questions, questionnaire));
             }
         }
 

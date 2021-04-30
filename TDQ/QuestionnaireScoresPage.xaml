@@ -10,8 +10,11 @@
                      Clicked="ImgBtnFilterScores_Clicked"/>
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <ListView x:Name="LstScore"
-                  HasUnevenRows="True">
+
+        <ListView x:Name="LstScore"                
+                  HasUnevenRows="True"
+                  Margin="0,0,0,10">
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -19,28 +22,14 @@
                         <Label Text="{Binding QuestionText}"
                                Style="{DynamicResource labelStyle}"/>
                         <Label Text="{Binding Answer}"
-                            Style="{DynamicResource labelStyle}"/>
+                               Style="{DynamicResource labelStyle}"
+                               HorizontalOptions="Center"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <ListView x:Name="LstNegativeScores"
-                  HasUnevenRows="True">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Vertical">
-                            <Label Text="{Binding QuestionText}"
-                               Style="{DynamicResource labelStyle}"/>
-                            <Label Text="{Binding Answer}"
-                            Style="{DynamicResource labelStyle}"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
     </StackLayout>
     
 </ContentPage>

@@ -208,7 +208,8 @@ namespace TDQ.Classes
         }
         public static void UpdateQuestionnaireCompletions(Question question)
         {
-            ConnectToClient($"player/updateCompletionCount/{question.ID}");
+            var response = ConnectToClient($"player/updateCompletionCount/{question.ID}");
+            response.Close();
         }
         public static List<Questionnaire> GetQuestionnaires(string email)
         {

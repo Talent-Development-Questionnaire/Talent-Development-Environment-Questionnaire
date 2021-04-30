@@ -15,6 +15,7 @@ namespace TDQ
     {
         List<Models.Question> questions;
         List<string> inverted59Questions = new List<string>(new string[] { "8", "11", "15", "21", "23", "27", "28", "29", "31", "41", "44"});
+        List<string> inverted28Questions = new List<string>(new string[] { "2", "5", "11", "12", "13", "17" });
 
         public QuestionnairePage()
         {
@@ -61,9 +62,8 @@ namespace TDQ
             //Set variables to default values
             int index = 0, years = 0;
             string gender = "%02%03";
-            string age = "%02%03";
 
-            CheckAtheleteDetailsInput(gender, age, years);
+            CheckAtheleteDetailsInput(gender, years);
 
             foreach (var item in questions)
             {
@@ -75,7 +75,7 @@ namespace TDQ
 
                 index++;
 
-                if(inverted59Questions.Contains(index.ToString()))
+                if(inverted59Questions.Contains(index.ToString()) && inverted28Questions.Contains(index.ToString()))
                 {
                     switch(item.Answer)
                     {
@@ -169,7 +169,7 @@ namespace TDQ
             return false;
         }
 
-        async void CheckAtheleteDetailsInput(string gender, string age, int years)
+        async void CheckAtheleteDetailsInput(string gender, int years)
         {
             //Fields cannot be left empty, exit method if they are
             if (string.IsNullOrEmpty(EntrySport.Text) || string.IsNullOrEmpty(EntryAcademy.Text))
@@ -186,14 +186,14 @@ namespace TDQ
                 EntryName.Text = "%02%03";
             else
                 //Returns the age calculated from the inputed dob as a string
-                age = CalculateAge(years).ToString();
+                years = CalculateAge(years);
 
             //set gender to selected choice if an item was selected
             if (PickerGender.SelectedIndex != -1)
                 gender = PickerGender.SelectedItem.ToString();
 
             //Send all the inputted details to the server, the ones left empty set to special characters seen as 'null' when in a URL
-            Classes.DatabaseController.SendUserDetails(EntryName.Text, EntrySport.Text, EntryAcademy.Text, age, gender);
+            Classes.DatabaseController.SendUserDetails(EntryName.Text, EntrySport.Text, EntryAcademy.Text, years.ToString(), gender);
         }
     }    
 }
