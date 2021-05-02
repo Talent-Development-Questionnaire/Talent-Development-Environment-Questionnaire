@@ -31,21 +31,21 @@ namespace TDQ.PopupPages
 
         async void BtnEnterOTP_Clicked(object sender, EventArgs e)
         {
+            //Check that the entered OTP is valid to the entered email
             var result = Classes.DatabaseController.VerifyCoachAccount(email, EntryOTP.Text);
             if (result == false)
             {
                 await DisplayAlert("Error", "OTP is incorrect, please try again.", "OK");
                 return;
             }
-
-            Utils.SavedSettings.AccountImageSettings = result.ToString();
+            //Save entered email for later use
             Utils.SavedSettings.LoginSettings = email;
 
-            if (Utils.SavedSettings.LoginSettings == email && Utils.SavedSettings.AccountImageSettings == "True")
+            if (Utils.SavedSettings.LoginSettings == email && result)
                 (Application.Current).MainPage = new Navigation_Drawer_Logged_In();
         }
 
-        void BtnCancel_Clicked(System.Object sender, System.EventArgs e)
+        void BtnCancel_Clicked(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();
         }

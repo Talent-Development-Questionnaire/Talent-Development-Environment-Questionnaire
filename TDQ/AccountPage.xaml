@@ -113,24 +113,6 @@
                     HorizontalTextAlignment="Start"
                     Style="{DynamicResource accountLabelStyle}"/>
 
-            <Label x:Name="LblClubList"
-                        Grid.Row="4" 
-                        Grid.Column="0"
-                        Text="Groups"
-                        TextColor="#808080"
-                        HorizontalTextAlignment ="Start"
-                        Style="{DynamicResource accountLabelStyle}"/>
-
-
-            <!--Need to find a way to get a list of clubs here -->
-
-            <Label x:Name="LblClubListInput"
-                    Grid.Row="4"
-                    Grid.Column="1"
-                    Text=""
-                    TextColor="Black"
-                    HorizontalTextAlignment="Start"
-                    Style="{DynamicResource accountLabelStyle}"/>
         </Grid>
 
     </StackLayout>

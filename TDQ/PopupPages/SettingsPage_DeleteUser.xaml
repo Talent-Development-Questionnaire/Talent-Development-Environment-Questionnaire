@@ -21,6 +21,7 @@
 
                 <Entry x:Name="EntryPassword"
                        Placeholder="Enter your Password"
+                       IsPassword="True"
                        PlaceholderColor="White"
                        TextColor="White"
                        Style="{DynamicResource entryStyle}"/>

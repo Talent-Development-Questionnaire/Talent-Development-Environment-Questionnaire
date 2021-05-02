@@ -37,7 +37,7 @@ namespace TDQ
             {
                 string text = (File.ReadAllText(filename));
                 string[] splitText = text.Split('\n');
-                string[] emailList = Classes.GroupPageFunctions.PopulateListOnAppearing(splitText);//Method to populate array with emails from the file
+                string[] emailList = Classes.GlobalFunctions.PopulateListOnAppearing(splitText);//Method to populate array with emails from the file
 
                 //Adds Group object to list, sets each property of the object
                     Groups.Add(new Group

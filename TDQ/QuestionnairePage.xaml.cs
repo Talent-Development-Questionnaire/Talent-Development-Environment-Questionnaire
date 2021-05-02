@@ -16,19 +16,27 @@ namespace TDQ
         List<Models.Question> questions;
         List<string> inverted59Questions = new List<string>(new string[] { "8", "11", "15", "21", "23", "27", "28", "29", "31", "41", "44"});
         List<string> inverted28Questions = new List<string>(new string[] { "2", "5", "11", "12", "13", "17" });
+        string email = null;
 
         public QuestionnairePage()
         {
             InitializeComponent();
         }
 
-        async void BtnConfirm_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
+        {
+            if (LstQuestions.SelectedItem != null)
+                LstQuestions.SelectedItem = null;
+        }
+
+        void BtnConfirm_Clicked(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(EntryEmail.Text) && !string.IsNullOrEmpty(EntryOTP.Text))
             {
                 if (GetQuestions())
                 {
                     LayoutUserVerification.IsVisible = false;
+                    email = EntryEmail.Text;
                     EntryEmail.Text = string.Empty;
                     EntryOTP.Text = string.Empty;
                     LayoutUserDetails.IsVisible = true;
@@ -49,12 +57,16 @@ namespace TDQ
 
         async void LstQuestions_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            await Navigation.PushModalAsync(new PopupPages.LikertScalePage(e.SelectedItem as Models.Question){
-                BindingContext = e.SelectedItem as Models.Question
-            });
+            if (e.SelectedItem != null)
+            {
+                await Navigation.PushModalAsync(new PopupPages.LikertScalePage(e.SelectedItem as Models.Question)
+                {
+                    BindingContext = e.SelectedItem as Models.Question
+                });
 
-            LstQuestions.ItemsSource = questions;
-            BindingContext = questions;
+                LstQuestions.ItemsSource = questions;
+                BindingContext = questions;
+            }
         }
 
         async void BtnSendQuestionnaire_Clicked(object sender, EventArgs e)
@@ -101,7 +113,7 @@ namespace TDQ
                 }
                 
 
-                Classes.DatabaseController.SendCompletedQuestionnaire(item, index);
+                Classes.DatabaseController.SendCompletedQuestionnaire(item, index, email);
 
                 if (item == questions[questions.Count - 1])
                     Classes.DatabaseController.UpdateQuestionnaireCompletions(item);

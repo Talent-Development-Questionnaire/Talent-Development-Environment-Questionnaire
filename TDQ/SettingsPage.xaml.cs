@@ -56,7 +56,7 @@ namespace TDQ
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Changes theme colours of app
-            SettingsPageFunctions.ChangeTheme(PickerColour.SelectedItem.ToString());
+            GlobalFunctions.ChangeTheme(PickerColour.SelectedItem.ToString());
         }
 
         void BtnLogOut_Clicked(object sender, EventArgs e)
@@ -83,7 +83,7 @@ namespace TDQ
 
         void PickerFontSize_SelectedIndexChanged(System.Object sender, System.EventArgs e)
         {
-            Classes.SettingsPageFunctions.ChangeFontSize(PickerFontSize.SelectedItem.ToString());
+            GlobalFunctions.ChangeFontSize(PickerFontSize.SelectedItem.ToString());
         }
 
         protected override bool OnBackButtonPressed()

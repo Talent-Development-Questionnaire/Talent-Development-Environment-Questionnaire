@@ -43,7 +43,7 @@ namespace TDQ
                 if (splitText.Length > 3)
                 {
                     //Method to populate array with goals from the file
-                    string[] goalsList = Classes.DetailedGoalsPageFunctions.PopulateListOnAppearing(splitText);
+                    string[] goalsList = Classes.GlobalFunctions.PopulateListOnAppearing(splitText);
 
                     GoalsGroups.Add(new GoalsGroup
                     {

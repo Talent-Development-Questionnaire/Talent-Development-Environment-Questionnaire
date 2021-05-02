@@ -5,8 +5,25 @@ using Xamarin.Forms;
 
 namespace TDQ.Classes
 {
-    public class SettingsPageFunctions
+    public class GlobalFunctions
     {
+        //Populate the list of items (emails/goals) from the array of strings
+        public static string[] PopulateListOnAppearing(string[] list)
+        {
+            List<string> items = new List<string>();
+            //starts index at 3, this is where the emails start in the array
+            for (int i = 3; i < list.Length; i++)
+            {
+                //Adds email to new list as long as the element is not empty.
+                if (list[i] != "")
+                    items.Add(list[i]);
+            }
+
+            //returns the new array of just emails
+            return items.ToArray();
+        }
+
+        //Change the app theme based on users choice
         public static void ChangeTheme(string item)
         {
             ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
@@ -15,6 +32,7 @@ namespace TDQ.Classes
             //changes app resource dictionary depending on what the user chooses
             if (mergedDictionaries != null)
             {
+                //Clear resource dictionary to stop conflicting values
                 mergedDictionaries.Clear();
             }
             switch (item)
@@ -54,7 +72,7 @@ namespace TDQ.Classes
 
             ChangeFontSize(Utils.SavedSettings.FontSettings);
         }
-
+        //Change the app font size based on users choice
         public static void ChangeFontSize(string item)
         {
             ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
@@ -95,6 +113,19 @@ namespace TDQ.Classes
                     Utils.SavedSettings.FontSettings = "Medium"; // Saves which font was chosen
                     mergedDictionaries.Add(new Themes.MediumFontStyle()); // Sets the chosen theme
                     break;
+            }
+        }
+        //Check if the email inputted is a valid email
+        public static bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

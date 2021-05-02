@@ -17,6 +17,7 @@ namespace TDQ.PopupPages
         public LikertScalePage(Models.Question question)
         {
             InitializeComponent();
+            //Set question object answer to selected item text, save which radio button was selected
             q = question;
             switch (q.Answer)
             {
@@ -49,7 +50,7 @@ namespace TDQ.PopupPages
         void AnswerRadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             var x = sender as RadioButton;
-
+            //Change answer to newly selected button
             q.Answer = x.Content.ToString();
         }
     }

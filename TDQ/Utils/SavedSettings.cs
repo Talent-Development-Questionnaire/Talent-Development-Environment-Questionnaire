@@ -28,7 +28,7 @@ namespace TDQ.Utils
 
         #endregion
 
-
+        //Save value to phone to use for later
         public static string AccountImageSettings
         {
             get
@@ -40,7 +40,7 @@ namespace TDQ.Utils
                 AppSettings.AddOrUpdateValue(VerifiedKey, value);
             }
         }
-
+        //
         public static string GroupImageSetting
         {
             get
@@ -52,7 +52,7 @@ namespace TDQ.Utils
                 AppSettings.AddOrUpdateValue(GroupImageKey, value);
             }
         }
-
+        //Save selected index for the theme picker
         public static string ThemeIndexSettings
         {
             get
@@ -64,7 +64,7 @@ namespace TDQ.Utils
                 AppSettings.AddOrUpdateValue(ThemeIndexKey, value);
             }
         }
-
+        //Save theme colour
         public static string ThemeSettings
         {
             get
@@ -76,7 +76,7 @@ namespace TDQ.Utils
                 AppSettings.AddOrUpdateValue(ThemeKey, value);
             }
         }
-
+        //Save selected index for font picker
         public static string FontIndexSettings
         {
             get
@@ -88,7 +88,7 @@ namespace TDQ.Utils
                 AppSettings.AddOrUpdateValue(FontIndexKey, value);
             }
         }
-
+        //Save font size
         public static string FontSettings
         {
             get
@@ -101,18 +101,7 @@ namespace TDQ.Utils
             }
         }
 
-        public static string BackgroundSettings
-        {
-            get
-            {
-                return AppSettings.GetValueOrDefault(BgKey, SettingsDefault);
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue(BgKey, value);
-            }
-        }
-
+        //Save email
         public static string LoginSettings
         {
             get

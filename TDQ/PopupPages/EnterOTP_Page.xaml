@@ -17,6 +17,8 @@
             <StackLayout>
                 <Entry x:Name="EntryOTP"
                        Placeholder="Enter your OTP"
+                       PlaceholderColor ="White"
+                       TextColor="White"
                        Style="{DynamicResource entryStyle}"/>
 
                 <Button x:Name="BtnEnterOTP"

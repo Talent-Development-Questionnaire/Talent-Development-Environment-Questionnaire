@@ -82,20 +82,21 @@ namespace TDQ.PopupPages
 
         private async void ImgBtnAddEmail_Clicked(object sender, EventArgs e)
         {
-            //Method to avoid items in list view duplicating
+            //Avoid items in list view duplicating
             CheckList();
 
             //Checks that the entry field is not empty and then verifies text is a valid email
             if (!string.IsNullOrEmpty(entryEmail.Text))
             {
-                if (Classes.Verification.IsValidEmail(entryEmail.Text))
+                //Check inputted email is a valid emaill
+                if (Classes.GlobalFunctions.IsValidEmail(entryEmail.Text))
                     emails.Add(entryEmail.Text);
                 else
                 {
                     await DisplayAlert("Error", "Email is not valid", "OK");
                     entryEmail.Text = string.Empty;
                 }
-
+                //Increase listview size based on item count
                 if (emailList.Height < 160)
                     emailList.HeightRequest = 35 * emails.Count();
 
@@ -138,26 +139,23 @@ namespace TDQ.PopupPages
 
                         File.WriteAllText(filename, group.Name + "\n" + group.GroupNo.ToString() + "\n" + group.ImageFilePath + "\n");
                         File.AppendAllLines(filename, group.EmailList);
+                        await Navigation.PopModalAsync();
+                        return;
                     }
-                    else
-                    {
-                        await DisplayAlert("Error", "Please add emails to the group, field cannot be left empty", "OK");
-                    }
-                }
-                else
-                {
-                    //Update
-                    //Overwrites the current file with Group values
-                    File.WriteAllText(group.Filename, group.Name + "\n" + group.GroupNo.ToString() + "\n" + group.ImageFilePath + "\n");
-                    File.AppendAllLines(group.Filename, group.EmailList);
+
+                    await DisplayAlert("Error", "Please add emails to the group, field cannot be left empty", "OK");
+                    return;
                 }
 
+                //Update
+                //Overwrites the current file with Group values
+                File.WriteAllText(group.Filename, group.Name + "\n" + group.GroupNo.ToString() + "\n" + group.ImageFilePath + "\n");
+                File.AppendAllLines(group.Filename, group.EmailList);
                 await Navigation.PopModalAsync();
+                return;
             }
-            else
-            {
-                await DisplayAlert("Error", "Cannot save empty entry!\n Press back button or canel button to exit page", "OK");
-            }
+            
+            await DisplayAlert("Error", "Cannot save empty entry!\n Press back button or canel button to exit page", "OK");
         }
 
         private async void emailList_ItemSelected(object sender, SelectedItemChangedEventArgs e)

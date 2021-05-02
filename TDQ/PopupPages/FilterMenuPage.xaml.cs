@@ -14,18 +14,21 @@ namespace TDQ.PopupPages
 
         void LowestTen_Tapped(object sender, EventArgs e)
         {
-            QuestionnaireScoresPage.UpdateList("LowestTen");
+            //Reset list to lowest 10 scoring items
+            QuestionnaireScoresPage.UpdateList("Weaknesses");
             Navigation.PopModalAsync();
         }
 
         void TopTen_Tapped(object sender, EventArgs e)
         {
-            QuestionnaireScoresPage.UpdateList("TopTen");
+            //Reset list to highest 10 scoring items
+            QuestionnaireScoresPage.UpdateList("Strengths");
             Navigation.PopModalAsync();
         }
 
         void All_Tapped(object sender, EventArgs e)
         {
+            //Reset list to original order - highest to lowest
             QuestionnaireScoresPage.UpdateList("All");
             Navigation.PopModalAsync();
             

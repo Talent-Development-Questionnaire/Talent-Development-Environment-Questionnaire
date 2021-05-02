@@ -20,7 +20,8 @@ namespace TDQ.Templates
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
+            //Change the app theme 
+            Classes.GlobalFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
       
         }
     }

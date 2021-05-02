@@ -19,9 +19,11 @@ namespace TDQ.PopupPages
 
         async void BtnEnterPassword_Clicked(object sender, EventArgs e)
         {
+            //Check user details exist and delete them from the database
             var result = Classes.DatabaseController.DeleteUser(Utils.SavedSettings.LoginSettings, EntryPassword.Text);
             if (result == true)
             {
+                //Reset app values
                 Utils.SavedSettings.LoginSettings = null;
                 Utils.SavedSettings.AccountImageSettings = null;
                 DeleteGroups();

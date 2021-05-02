@@ -43,7 +43,7 @@ namespace TDQ.PopupPages
             {
                 string text = (File.ReadAllText(filename));
                 string[] splitText = text.Split('\n');
-                emailList = Classes.GroupPageFunctions.PopulateListOnAppearing(splitText);//Method to populate array with emails from the file
+                emailList = Classes.GlobalFunctions.PopulateListOnAppearing(splitText);//Method to populate array with emails from the file
 
                 //Adds Group object to list, sets each property of the object
                 Groups.Add(new Group

@@ -17,8 +17,8 @@ namespace TDQ
 
             Sharpnado.MaterialFrame.Initializer.Initialize(true, false);
 
-            Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
-            Classes.SettingsPageFunctions.ChangeFontSize(Utils.SavedSettings.FontSettings);
+            Classes.GlobalFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
+            Classes.GlobalFunctions.ChangeFontSize(Utils.SavedSettings.FontSettings);
 
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
 

@@ -17,6 +17,7 @@ namespace TDQ.Templates
         public HeaderContent()
         {
             InitializeComponent();
+
             try
             {
                 AccountImage.Source = ImageSource.FromFile(Utils.SavedSettings.AccountImageSettings);
@@ -25,7 +26,7 @@ namespace TDQ.Templates
             {
                 App.Current.MainPage.DisplayAlert("Debug", "Account image is not working", "OK");
             }
-
+            //Set content values to logged in user
             if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
             {
                 user = Classes.DatabaseController.GetUserDetails(Utils.SavedSettings.LoginSettings);

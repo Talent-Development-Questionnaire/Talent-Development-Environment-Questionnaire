@@ -13,17 +13,22 @@
 
         <ListView x:Name="LstScore"                
                   HasUnevenRows="True"
-                  Margin="0,0,0,10">
+                  Margin="0,0,0,10"
+                  SeparatorVisibility="Default"
+                  SeparatorColor="Gray">
 
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Vertical">
                         <Label Text="{Binding QuestionText}"
-                               Style="{DynamicResource labelStyle}"/>
+                               Style="{DynamicResource labelStyle}"
+                               HorizontalTextAlignment="Center"
+                               Margin="5,0,5,0"/>
                         <Label Text="{Binding Answer}"
                                Style="{DynamicResource labelStyle}"
-                               HorizontalOptions="Center"/>
+                               HorizontalOptions="Center"
+                               Margin="0,5,0,15"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

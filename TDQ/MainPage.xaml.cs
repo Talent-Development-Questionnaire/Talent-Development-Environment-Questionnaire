@@ -24,7 +24,10 @@ namespace TDQ
             if (LstQuestionnaire.ItemsSource != null)
                 LblNoQuestionnaires.IsVisible = false;
 
-            Classes.SettingsPageFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
+            if(LstQuestionnaire.SelectedItem != null)
+                LstQuestionnaire.SelectedItem = null;
+
+            Classes.GlobalFunctions.ChangeTheme(Utils.SavedSettings.ThemeSettings);
         }
 
         private async void ImgBtnAddQuestionnaire_Clicked(object sender, EventArgs e)

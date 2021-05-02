@@ -44,14 +44,27 @@ namespace TDQ
         {
             switch(filter)
             {
-                case "LowestTen":
+                case "Weaknesses":
                     q = copyQ;
-                    q = q.OrderBy(x => x.Answer).Take(10).ToList();
+                    if (newQuestionnaire.Type == "59")
+                    {                      
+                        q = q.OrderBy(x => x.Answer).Take(10).ToList();
+                        return;
+                    }
+                    q = q.OrderBy(x => x.Answer).Take(5).ToList();
                     break;
-                case "TopTen":
+
+                case "Strengths":
                     q = copyQ;
-                    q = q.OrderByDescending(x => x.Answer).Take(10).ToList();
+                    if (newQuestionnaire.Type == "59")
+                    {                        
+                        q = q.OrderByDescending(x => x.Answer).Take(10).ToList();
+                        return;
+                    }
+
+                    q = q.OrderByDescending(x => x.Answer).Take(5).ToList();
                     break;
+
                 case "All":
                     q = copyQ.OrderByDescending(x => x.Answer).ToList();
                     break;

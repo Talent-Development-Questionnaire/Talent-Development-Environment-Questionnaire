@@ -29,6 +29,9 @@ namespace TDQ.PopupPages
             InitializeComponent();
             user = coach;
 
+            if (user.Dob == " ")
+                user.Dob = null; 
+
             if (Device.RuntimePlatform == "iOS")
                 BtnCancel.IsVisible = true;
             else
@@ -74,20 +77,26 @@ namespace TDQ.PopupPages
         // If the save button is pressed then save the current details and send this to the database
         private async void BtnSave_Clicked(object sender, EventArgs e)
         {
-            if(!string.IsNullOrEmpty(entryName.Text) && !string.IsNullOrEmpty(entryEmail.Text))
+            //Check email and name aren't left empty and email is valid
+            if(!string.IsNullOrEmpty(entryName.Text) && !string.IsNullOrEmpty(entryEmail.Text) && Classes.GlobalFunctions.IsValidEmail(entryEmail.Text))
             {
+                //Set user object name and email to entry text
                 user.Name = entryName.Text;
                 user.Email = entryEmail.Text;
 
+                //If user doesn't select an item or select 'N/A' then set value to 'null'
                 if (pickerGender.SelectedIndex == -1 || pickerGender.SelectedIndex == 3)
                     user.Gender = "%02%03";
                 else
                     user.Gender = pickerGender.SelectedItem.ToString();
 
-                if (!string.IsNullOrEmpty(entryDOB.Text))
+                //Check date of birth field is empty
+                if (!string.IsNullOrEmpty(entryDOB.Text) && entryDOB.Text != "(null)")
                 {
+                    //Check the dob is in a valid format
                     if (dobRegex.IsMatch(entryDOB.Text))
                     {
+                        //replace '/' with '-', '/' doesn't work with url
                         if (entryDOB.Text.Contains("/"))
                         {
                             entryDOB.Text = entryDOB.Text.Replace('/', '-');
@@ -99,14 +108,14 @@ namespace TDQ.PopupPages
                 }
                 else
                     user.Dob = "%02%03";
-
-                Classes.AccountPageFunctions.EditAccountDetails(user);
+                //Send the editied details
+                Classes.DatabaseController.EditAccountDetails(user.ID, user.Email, user.Name, user.Gender, user.Dob);
                 Navigation.PopModalAsync();
                 return;
 
             }
 
-            await DisplayAlert("Error", "The email and name entry fields must not be left empty, please fill them out to continue!", "OK");
+            await DisplayAlert("Error", "The email and name entry fields must not be left empty. Email may also be invalid, please fill them out to continue!", "OK");
         }
 
         // If the cancel button is pressed then go back to the previous page

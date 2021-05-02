@@ -23,11 +23,13 @@
                 <Entry x:Name="EntryName"
                        Placeholder="Type Unique Name"
                        PlaceholderColor="White"
+                       TextColor="White"
                        Style="{DynamicResource entryStyle}"/>
 
                 <Picker x:Name="PickerQuestionnaire" 
                         Title="Select Questionnaire"
                         TitleColor="White"
+                        TextColor="White"
                         Style="{DynamicResource pickerStyle}"
                         WidthRequest="500" 
                         SelectedIndex= "0"
@@ -41,6 +43,7 @@
                 <Picker x:Name="PickerGroup"
                         Title="Choose Group"
                         TitleColor="White"
+                        TextColor="White"
                         Style="{DynamicResource pickerStyle}"
                         SelectedIndexChanged="PickerGroup_SelectedIndexChanged"/>
 

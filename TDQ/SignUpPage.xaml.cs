@@ -17,7 +17,7 @@ namespace TDQ
         async void BtnSignUp_Clicked(object sender, EventArgs e)
         {
             //Checks if the passwords entered match and if the email entered is a valid one
-            if(EntryPassword.Text == EntryConfirmPassword.Text && Verification.IsValidEmail(EntryEmail.Text))
+            if(EntryPassword.Text == EntryConfirmPassword.Text && GlobalFunctions.IsValidEmail(EntryEmail.Text))
             {
                 //verification checks to catch any errors/mistakes
                 VerifyDetails();

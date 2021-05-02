@@ -19,7 +19,7 @@
                      VerticalOptions="StartAndExpand">
 
             <Label x:Name="lblLowestTen"
-                   Text="Lowest Ten"
+                   Text="Weaknesses"
                    Style="{DynamicResource labelStyle}">
                    <Label.GestureRecognizers>
                        <TapGestureRecognizer NumberOfTapsRequired="1"
@@ -29,7 +29,7 @@
             
 
             <Label x:Name="lblTopTen"
-                   Text="Top Ten"
+                   Text="Strengths"
                    Style="{DynamicResource labelStyle}">
                 <Label.GestureRecognizers>
                        <TapGestureRecognizer NumberOfTapsRequired="1"

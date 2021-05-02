@@ -56,6 +56,8 @@
 
             <Picker x:Name="pickerGender"
                     Title="Gender"
+                    TitleColor="White"
+                    TextColor="White"
                     Style="{DynamicResource pickerStyle}"
                     Grid.Column="0">
 
@@ -69,11 +71,11 @@
             </Picker>
 
                 <Entry x:Name="entryDOB"
-                    Placeholder="D.O.B" 
+                    Placeholder="Date of Birth"
+                    PlaceholderColor="White"
                     Text="{Binding Dob}"
                     Style="{DynamicResource entryStyle}"
                     TextColor="White"
-                    PlaceholderColor="White"
                     Grid.Column="0"/>
 
 
