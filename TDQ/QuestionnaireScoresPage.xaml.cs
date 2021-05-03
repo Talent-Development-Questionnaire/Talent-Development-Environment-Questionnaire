@@ -15,6 +15,7 @@ namespace TDQ
         static Models.Questionnaire newQuestionnaire;
         static List<Models.Question> q;
         static List<Models.Question> copyQ;
+        static string copyFilter = "All";
 
         public QuestionnaireScoresPage()
         {
@@ -32,6 +33,7 @@ namespace TDQ
 
         protected override void OnAppearing()
         {
+            lblListType.Text = copyFilter;
             LstScore.ItemsSource = q;
         }
 
@@ -42,12 +44,14 @@ namespace TDQ
 
         public static void UpdateList(string filter)
         {
-            switch(filter)
+            copyFilter = filter;
+            switch (filter)
             {
                 case "Weaknesses":
+                    
                     q = copyQ;
                     if (newQuestionnaire.Type == "59")
-                    {                      
+                    {
                         q = q.OrderBy(x => x.Answer).Take(10).ToList();
                         return;
                     }

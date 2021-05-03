@@ -55,6 +55,11 @@
                              BackgroundColor="Transparent"
                              TextColor="White"/>
             </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Strongly Disagree" HorizontalOptions="StartAndExpand"/>
+                <Label Text="Strongly Agree" HorizontalOptions="EndAndExpand"/>
+
+            </StackLayout>
             <Button x:Name="BtnConfirm"
                     Text="Confirm"
                     Style="{DynamicResource buttonStyle}"

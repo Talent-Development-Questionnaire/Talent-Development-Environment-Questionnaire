@@ -21,6 +21,7 @@ namespace TDQ
             UpdateQuestionnareList();
 
             LblNoQuestionnaires.IsVisible = true;
+
             if (LstQuestionnaire.ItemsSource != null)
                 LblNoQuestionnaires.IsVisible = false;
 
@@ -42,8 +43,11 @@ namespace TDQ
             if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
             {
                 Questionnaires = Classes.DatabaseController.GetQuestionnaires(Utils.SavedSettings.LoginSettings);
-                if(Questionnaires != null)
+                if (Questionnaires != null)
+                {
+                    LstQuestionnaire.ItemsSource = null;
                     LstQuestionnaire.ItemsSource = Questionnaires;
+                }
             }
         }
 

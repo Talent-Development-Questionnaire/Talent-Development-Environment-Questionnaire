@@ -11,6 +11,13 @@
     </ContentPage.ToolbarItems>
     <StackLayout>
 
+        <Label x:Name="lblListType"
+               Style="{DynamicResource labelStyle}"
+               Text="All"
+               FontSize="36"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Center"/>
+        
         <ListView x:Name="LstScore"                
                   HasUnevenRows="True"
                   Margin="0,0,0,10"
