@@ -22,7 +22,7 @@ namespace TDQ.Templates
             {
                 AccountImage.Source = ImageSource.FromFile(Utils.SavedSettings.AccountImageSettings);
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 App.Current.MainPage.DisplayAlert("Debug", "Account image is not working", "OK");
             }

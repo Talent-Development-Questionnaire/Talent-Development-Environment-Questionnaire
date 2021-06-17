@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using TDQ.Models;
+using System.Linq;
 
 namespace TDQ.Classes
 {
@@ -276,15 +277,11 @@ namespace TDQ.Classes
             // Run if there are questionnaires linked to the user account
             if (responseString != "false")
             {
-                foreach (var item in list)
-                    //Check that item is not empty or is an unwanted value found in the string
-                    if (!string.IsNullOrEmpty(item) && item != ", ")
-                        //Add questionnaire to list
-                        oldQuestionnaireList.Add(JsonConvert.DeserializeObject<Questionnaire>(item));
-
-                foreach (var item in oldQuestionnaireList)
-                    //Add questionnaires from original list populated with the questions
-                    newQuestionnaireList.Add(GetQuestions(item));
+                //Check that item is not empty or is an unwanted value found in the string
+                //Add questionnaire to list
+                oldQuestionnaireList.AddRange(list.Where(x => !string.IsNullOrEmpty(x) && x != ", ").Select(x => { var y = JsonConvert.DeserializeObject<Questionnaire>(x); return y; }));
+                //Add questionnaires from original list populated with the questions
+                newQuestionnaireList.AddRange(oldQuestionnaireList.Select(x => { x = GetQuestions(x); return x; }).ToList());
 
                 return newQuestionnaireList;
             }
@@ -303,11 +300,8 @@ namespace TDQ.Classes
             {
                 //Initialise question list for questionnaire
                 questionnaire.Questions = new List<Question>();
-
                 //Add question to list if values are correct
-                foreach (var item in list)
-                    if (!string.IsNullOrEmpty(item) && item != ", ")
-                        questionnaire.Questions.Add(JsonConvert.DeserializeObject<Question>(item));
+                questionnaire.Questions.AddRange(list.Where(x => !string.IsNullOrEmpty(x) && x != ", ").Select(x => { var y = JsonConvert.DeserializeObject<Question>(x); return y; }));
             }
 
             //Assign questions text to each of the questions in the list
@@ -323,6 +317,9 @@ namespace TDQ.Classes
             var questions = FormatFileResponse(response);
 
             int index = 0;
+            /*newQuestions.AddRange(questions.Where(x => !string.IsNullOrEmpty(x) &&
+                                            !newQuestions.Contains(questionnaire.Questions))
+                                            .Select(x => { })));*/
             foreach (var item in questions)
                 if (!string.IsNullOrEmpty(item) && questionnaire.Questions != null)
                 {
