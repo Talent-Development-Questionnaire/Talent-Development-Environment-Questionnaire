@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using TDQ.Models;
 using Xamarin.Forms;
+using TDQ.ViewModels;
 
 namespace TDQ
 {
@@ -14,11 +15,11 @@ namespace TDQ
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = new HomePageViewModel();
         }
 
         protected override void OnAppearing()
         {
-            UpdateQuestionnareList();
 
             LblNoQuestionnaires.IsVisible = true;
 
@@ -38,18 +39,7 @@ namespace TDQ
             ImgBtnAddQuestionnaire.IsEnabled = true;
         }
 
-        public void UpdateQuestionnareList()
-        {
-            if (!string.IsNullOrEmpty(Utils.SavedSettings.LoginSettings))
-            {
-                Questionnaires = Classes.DatabaseController.GetQuestionnaires(Utils.SavedSettings.LoginSettings);
-                if (Questionnaires != null)
-                {
-                    LstQuestionnaire.ItemsSource = null;
-                    LstQuestionnaire.ItemsSource = Questionnaires;
-                }
-            }
-        }
+
 
         protected override bool OnBackButtonPressed()
         {
@@ -76,7 +66,7 @@ namespace TDQ
 
         private void LstQuestionnaire_Refreshing(object sender, EventArgs e)
         {
-            UpdateQuestionnareList();
+           // UpdateQuestionnareList();
         }
 
         // If the help button is pressed then launch the help popup

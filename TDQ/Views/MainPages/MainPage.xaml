@@ -20,6 +20,7 @@
             <Label x:Name="LblNoQuestionnaires"
                    Text="Press the plus button to make a new questionnaire or select the questionnaire option from the menu to answer one"
                    HorizontalTextAlignment="Center"
+                   IsVisible="{Binding MessageTextVisibility}"
                    FontAttributes="Italic"
                    Margin="10"
                    Style="{DynamicResource labelStyle}"/>
@@ -27,8 +28,8 @@
 
         <ListView x:Name="LstQuestionnaire"
                   ItemSelected="LstQuestionnaire_ItemSelected"
-                  Refreshing="LstQuestionnaire_Refreshing"
-                  HasUnevenRows="True">
+                  HasUnevenRows="True"
+                  ItemsSource="{Binding QuestionnaireList}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

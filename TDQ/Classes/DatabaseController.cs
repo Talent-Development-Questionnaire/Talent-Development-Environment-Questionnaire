@@ -85,6 +85,7 @@ namespace TDQ.Classes
                 return responseString;
             }
         }
+
         //Get a list of the questionnaire questions
         private static string[] FormatFileResponse(HttpWebResponse response)
         {
@@ -316,11 +317,13 @@ namespace TDQ.Classes
             //get question text
             var questions = FormatFileResponse(response);
 
+            //Update question properties 
             questionnaire.Questions.ForEach(x =>
             {
                 x.QuestionNo = questionnaire.Questions.IndexOf(x)+1.ToString();
                 x.QuestionText = questions[questionnaire.Questions.IndexOf(x)];
-                x.Answer = (Convert.ToDouble(x.Answer) / Convert.ToDouble(x.Completions)).ToString("0.#");
+                double score = Convert.ToDouble(x.Answer) / Convert.ToInt32(x.Completions);
+                x.Answer = string.Format("{0:0.0}", score); ;
             });
 
             return questionnaire;
