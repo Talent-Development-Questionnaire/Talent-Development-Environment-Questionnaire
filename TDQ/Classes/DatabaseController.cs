@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using TDQ.Models;
 using System.Linq;
+using System.Collections;
 
 namespace TDQ.Classes
 {
@@ -305,44 +306,24 @@ namespace TDQ.Classes
             }
 
             //Assign questions text to each of the questions in the list
-            questionnaire.Questions = GetQuestionText(questionnaire);
-            return questionnaire;
+            return UpdateQuestions(questionnaire);
         }
         //Get the text for each question and add it to the question object
-        private static List<Question> GetQuestionText(Questionnaire questionnaire)
+        private static Questionnaire UpdateQuestions(Questionnaire questionnaire)
         {
-            List<Question> newQuestions = new List<Question>();
             HttpWebResponse response = ConnectToClient($"coach/getQuestions/{questionnaire.ID}");
 
+            //get question text
             var questions = FormatFileResponse(response);
 
-            int index = 0;
-            /*newQuestions.AddRange(questions.Where(x => !string.IsNullOrEmpty(x) &&
-                                            !newQuestions.Contains(questionnaire.Questions))
-                                            .Select(x => { })));*/
-            foreach (var item in questions)
-                if (!string.IsNullOrEmpty(item) && questionnaire.Questions != null)
-                {
-                    //Loop through each question in list 
-                    var question = questionnaire.Questions[index];
-                    //Run if question does not already exist in list
-                    if (!newQuestions.Contains(question))
-                    {
-                        //Increment index
-                        index++;
-                        //Assign the average based on overall score / the amount of completions
-                        double score = Convert.ToDouble(question.Answer) / Convert.ToDouble(questionnaire.Completions);
-                        //Add new values to the question object
-                        newQuestions.Add(new Question
-                        {
-                            QuestionNo = index.ToString(),
-                            QuestionText = item,
-                            Answer = score.ToString("0.#")
-                        });
-                    }
-                }
+            questionnaire.Questions.ForEach(x =>
+            {
+                x.QuestionNo = questionnaire.Questions.IndexOf(x)+1.ToString();
+                x.QuestionText = questions[questionnaire.Questions.IndexOf(x)];
+                x.Answer = (Convert.ToDouble(x.Answer) / Convert.ToDouble(x.Completions)).ToString("0.#");
+            });
 
-            return newQuestions;
+            return questionnaire;
         }
         //Send the inputted athlete info to the database
         public static bool SendUserDetails(string name, string sport, string academy, string age, string gender)
